@@ -12,7 +12,7 @@ import {
 	profileConfig,
 	siteConfig,
 } from "@/config";
-import { widgetConfigs } from "../config";
+import { widgetConfigs } from "@/config";
 import { umamiConfig } from "../config.ts";
 import {
 	BANNER_HEIGHT,
@@ -22,10 +22,10 @@ import {
 	DEFAULT_THEME,
 	LIGHT_MODE,
 	PAGE_WIDTH,
-} from "../constants/constants";
-import { defaultFavicons } from "../constants/icon";
-import type { Favicon, SakuraConfig } from "../types/config";
-import { pathsEqual, url } from "../utils/url-utils";
+} from "@constants/constants";
+import { defaultFavicons } from "@constants/icon";
+import type { Favicon, SakuraConfig } from "@/types/config";
+import { pathsEqual, url } from "@utils/url-utils";
 
 import "katex/dist/katex.css";
 import "../styles/mobile-navbar.css";
@@ -272,19 +272,13 @@ if (siteConfig.font) {
 		<style define:vars={{
 			configHue,
 			'page-width': `${PAGE_WIDTH}rem`,
-		}}></style>  <!-- defines global css variables. This will be applied to <html> <body> and some other elements idk why -->
+		}}></style>  <!-- defines global css variables. This will be applied to <html> <body> and some other elements IDK why -->
 
 
 
 		<slot name="head"></slot>
 
-		<!-- Pio 看板娘样式 - 仅在启用时加载 -->
-		{pioConfig.enable && <link rel="stylesheet" href="/pio/static/pio.css" />}
-
 		<link rel="alternate" type="application/rss+xml" title={profileConfig.name} href={`${Astro.site}rss.xml`}/>
-
-		<!-- Umami Analytics -->
-		{umamiEnabled && umamiScripts && <Fragment set:html={umamiScripts} />}
 
 </head>
 	<body class=" min-h-screen " class:list={[{"lg:is-home": isHomePage, "enable-banner": enableBanner}]}
@@ -297,12 +291,6 @@ if (siteConfig.font) {
 		{shouldShowTopHighlight && <div class="top-gradient-highlight"></div>}
 		<ConfigCarrier></ConfigCarrier>
 		<slot />
-		
-		<!-- Music Player - 仅在启用时加载 -->
-		{musicPlayerConfig.enable && <MusicPlayer client:load />}
-		
-		<!-- Pio 看板娘组件 - 仅在启用时加载 -->
-		{pioConfig.enable && <Pio client:load />}
 		
 		<!-- increase the page height during page transition to prevent the scrolling animation from jumping -->
 		<div id="page-height-extend" class="hidden h-[300vh]"></div>
