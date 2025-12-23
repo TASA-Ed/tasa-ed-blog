@@ -62,41 +62,6 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 				collapseThreshold: 5,
 			},
 		},
-		{
-			// 组件类型：标签组件
-			type: "tags",
-			// 是否启用该组件
-			enable: true,
-			// 组件显示顺序
-			order: 4,
-			// 组件位置
-			position: "sticky",
-			// CSS 类名
-			class: "onload-animation",
-			// 动画延迟时间
-			animationDelay: 250,
-			// 响应式配置
-			responsive: {
-				// 折叠阈值：当标签数量超过20个时自动折叠
-				collapseThreshold: 20,
-			},
-		},
-		{
-			// 组件类型：广告栏组件 1
-			type: "advertisement",
-			// 是否启用该组件
-			enable: false,
-			// 组件显示顺序
-			order: 5,
-			// 组件位置
-			position: "sticky",
-			// CSS 类名
-			class: "onload-animation",
-			// 动画延迟时间
-			animationDelay: 300,
-			// 配置ID：使用第一个广告配置
-			configId: "ad1",
-		},
 	],
 
 	// 右侧边栏组件配置列表
@@ -148,24 +113,6 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 			class: "onload-animation",
 			// 动画延迟时间
 			animationDelay: 250,
-		},
-		{
-			// 组件类型：广告栏组件 2
-			type: "advertisement",
-			// 是否启用该组件
-			enable: false,
-			// 组件显示顺序
-			order: 4,
-			// 组件位置
-			position: "sticky",
-			// 是否在文章详情页显示
-			showOnPostPage: true,
-			// CSS 类名
-			class: "onload-animation",
-			// 动画延迟时间
-			animationDelay: 350,
-			// 配置ID：使用第二个广告配置
-			configId: "ad2",
 		},
 	],
 

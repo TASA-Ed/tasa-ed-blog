@@ -61,15 +61,15 @@ export const navBarSearchConfig: NavBarSearchConfig = {
 	// 可选：PageFind， MeiliSearch
 	// 选择PageFind时：NavBarSearchMethod.PageFind,
 	// 选择MeiliSearch时：NavBarSearchMethod.MeiliSearch,
-	method: NavBarSearchMethod.PageFind,
+	method: NavBarSearchMethod.MeiliSearch,
 	// 当选择 MeiliSearch 时的配置
 	meiliSearchConfig: {
-		INDEX_NAME: "posts",
+		INDEX_NAME: "astro_blog",
 		CONTENT_DIR: "src/content/posts",
-		MEILI_HOST: "http://localhost:7700",
-		PUBLIC_MEILI_HOST: "http://localhost:7700",
+		MEILI_HOST: "https://api.tasaed.top/search",
+		PUBLIC_MEILI_HOST: "https://api.tasaed.top/search",
 		PUBLIC_MEILI_SEARCH_KEY:
-			"41134b15079da66ca545375edbea848a9b7173dff13be2028318fefa41ae8f2b",
+			"1b016cecb81c05ccbd4ceb98d1fb2153065ea01a03702be291782fb354ac7741",
 	},
 };
 

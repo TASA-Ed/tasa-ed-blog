@@ -32,34 +32,26 @@ export const sponsorConfig: SponsorConfig = {
 			name: "爱发电",
 			icon: "simple-icons:afdian",
 			qrCode: "",
-			link: "https://afdian.com/a/cuteleaf",
+			link: "https://afdian.com/a/tasafoe3469",
 			description: "通过 爱发电 进行赞助",
-			enabled: true,
-		},
-		{
-			name: "Github",
-			icon: "fa6-brands:github",
-			qrCode: "",
-			link: "https://github.com/CuteLeaf/Firefly",
-			description: "点个Star就是最大的支持",
 			enabled: true,
 		},
 	],
 
 	// 赞助者列表（可选）
-	sponsors: [
-		// 示例：已实名赞助者
-		{
-			name: "夏叶",
-			amount: "¥50",
-			date: "2025-10-01",
-			message: "感谢分享！",
-		},
-		// 示例：匿名赞助者
-		{
-			name: "匿名用户",
-			amount: "¥20",
-			date: "2025-10-01",
-		},
-	],
+	// sponsors: [
+	// 	// 示例：已实名赞助者
+	// 	{
+	// 		name: "夏叶",
+	// 		amount: "¥50",
+	// 		date: "2025-10-01",
+	// 		message: "感谢分享！",
+	// 	},
+	// 	// 示例：匿名赞助者
+	// 	{
+	// 		name: "匿名用户",
+	// 		amount: "¥20",
+	// 		date: "2025-10-01",
+	// 	},
+	// ],
 };
