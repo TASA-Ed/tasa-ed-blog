@@ -45,6 +45,8 @@ const hasChildren = processedLink.children && processedLink.children.length > 0;
 			aria-expanded="false"
 			aria-haspopup="true"
 			data-dropdown-trigger
+      title={processedLink.name}
+      aria-label={processedLink.name}
 		>
 			<div class="flex items-center">
 				{processedLink.icon && <Icon name={processedLink.icon} class="text-[1.1rem] mr-2 navbar-icon" />}
@@ -60,6 +62,8 @@ const hasChildren = processedLink.children && processedLink.children.length > 0;
 						target={child.external ? "_blank" : undefined}
 						isLast={index === (processedLink.children?.length || 0) - 1}
 						class="dropdown-item"
+            title={child.name}
+            ariaLabel={child.name}
 					>
 						{child.icon && <Icon name={child.icon} class="text-[1.25rem] mr-3 navbar-icon" />}
 						<span>{child.name}</span>
@@ -76,6 +80,7 @@ const hasChildren = processedLink.children && processedLink.children.length > 0;
 			href={processedLink.external ? processedLink.url : url(processedLink.url)} 
 			target={processedLink.external ? "_blank" : null}
 			class="btn-plain scale-animation rounded-lg h-11 font-bold px-5 active:scale-95"
+      title={processedLink.name}
 		>
 			<div class="flex items-center">
 				{processedLink.icon && <Icon name={processedLink.icon} class="text-[1.1rem] mr-2 navbar-icon" />}

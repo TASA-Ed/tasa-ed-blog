@@ -231,4 +231,8 @@ export const zh_TW: Translation = {
 	[Key.copyLink]: "複製連結",
 	[Key.savePoster]: "保存海報",
 	[Key.scanToRead]: "掃碼閱讀文章",
+
+  // 自定义
+  [Key.cNavLink]: "鏈接",
+  [Key.cNavAbout]: "關於",
 };

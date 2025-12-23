@@ -53,8 +53,11 @@ export type SiteConfig = {
 
 	// 页面开关配置
 	pages: {
-		sponsor: boolean; // 赞助页面开关
-		guestbook: boolean; // 留言板页面开关
+    // 赞助页面开关
+		sponsor: boolean;
+    // 留言板页面开关
+		guestbook: boolean;
+    // 番组计划页面开关
 		bangumi: boolean;
 	};
 
@@ -82,13 +85,42 @@ export type Favicon = {
 };
 
 export enum LinkPreset {
+  /**
+   * 主页
+   */
 	Home = 0,
+  /**
+   * 归档
+   */
 	Archive = 1,
+  /**
+   * 关于
+   */
 	About = 2,
+  /**
+   * 友链
+   */
 	Friends = 3,
+  /**
+   * 赞助
+   */
 	Sponsor = 4,
+  /**
+   * 留言板
+   */
 	Guestbook = 5,
+  /**
+   * 番组计划
+   */
 	Bangumi = 6,
+  /**
+   * 链接
+   */
+  cLink = 7,
+  /**
+   * 关于
+   */
+  cAbout = 8,
 }
 
 export type NavBarLink = {

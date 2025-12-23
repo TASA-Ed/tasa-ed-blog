@@ -223,6 +223,9 @@ enum I18nKey {
 	copyLink = "copyLink",
 	savePoster = "savePoster",
 	scanToRead = "scanToRead",
+  // custom
+  cNavAbout = "cNavAbout",
+  cNavLink = "cNavLink",
 }
 
 export default I18nKey;

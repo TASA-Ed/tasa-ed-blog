@@ -120,7 +120,7 @@ export const zh_CN: Translation = {
 	[Key.paginationTotal]: "页，总计",
 	[Key.paginationRecords]: "条记录",
 
-	// 404页面
+	// 404 页面
 	[Key.notFound]: "404",
 	[Key.notFoundTitle]: "页面未找到",
 	[Key.notFoundDescription]: "抱歉，您访问的页面不存在或已被移动。",
@@ -229,4 +229,8 @@ export const zh_CN: Translation = {
 	[Key.copyLink]: "复制链接",
 	[Key.savePoster]: "保存海报",
 	[Key.scanToRead]: "扫码阅读文章",
+
+  // 自定义
+  [Key.cNavLink]: "链接",
+  [Key.cNavAbout]: "关于",
 };

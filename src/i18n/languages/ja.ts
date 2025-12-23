@@ -237,4 +237,8 @@ export const ja: Translation = {
 	[Key.copyLink]: "リンクをコピー",
 	[Key.savePoster]: "ポスターを保存",
 	[Key.scanToRead]: "QRコードで読む",
+
+  // 自定义
+  [Key.cNavLink]: "リンク集",
+  [Key.cNavAbout]: "ついて",
 };

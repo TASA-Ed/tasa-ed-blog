@@ -1,4 +1,5 @@
 onlyBuiltDependencies:
   - esbuild
   - sharp
+  - sse4_crc32
   - swup

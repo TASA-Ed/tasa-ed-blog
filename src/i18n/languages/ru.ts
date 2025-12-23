@@ -3,7 +3,7 @@ import type { Translation } from "../translation";
 
 export const ru: Translation = {
 	[Key.home]: "Главная",
-	[Key.about]: "О нас",
+	[Key.about]: "О себе",
 	[Key.archive]: "Архив",
 	[Key.search]: "Поиск",
 	[Key.other]: "Прочее",
@@ -239,4 +239,8 @@ export const ru: Translation = {
 	[Key.copyLink]: "Копировать ссылку",
 	[Key.savePoster]: "Сохранить постер",
 	[Key.scanToRead]: "Сканируйте, чтобы прочитать",
+
+  // 自定义
+  [Key.cNavLink]: "Ссылки",
+  [Key.cNavAbout]: "О нас",
 };
