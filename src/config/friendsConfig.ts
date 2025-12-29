@@ -114,7 +114,7 @@ export const friendsConfig: FriendLink[] = [
     },
     {
         title: "鹰歌框架游戏引擎",
-        imgurl: "/assets/logos/logo-makerframe.png",
+        imgurl: "/blog/assets/logos/logo-makerframe.png",
         desc: "鹰歌MakerFrame框架游戏引擎",
         siteurl: "https://gitee.com/leamus/MakerFrame/",
         tags: ["其他"],

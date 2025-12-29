@@ -25,5 +25,9 @@ export const coverImageConfig: CoverImageConfig = {
 		enable: false,
 		// 封面图API列表
 		apis: [],
+    loading: {
+      enable: true,
+      image: "/assets/images/loading.gif"
+    }
 	},
 };

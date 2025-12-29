@@ -27,6 +27,12 @@ export const profileConfig: ProfileConfig = {
 			url: "https://github.com/ccd2s",
 			showName: false,
 		},
+    {
+      name: "Email",
+      icon: "fa6-solid:envelope",
+      url: "mailto:tasaedem@outlook.com",
+      showName: false,
+    },
 		{
 			name: "RSS",
 			icon: "fa6-solid:rss",

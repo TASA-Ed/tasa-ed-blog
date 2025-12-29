@@ -1,37 +1,67 @@
-# 关于我 / About Me
+# 关于我
 
-你好！我是 **夏叶** ，一个在数字世界中默默无闻的一片叶子。
+你好呀~很高兴认识你！👋，**我叫 阿斯罕**。
 
-## 🛠️ 关于本站
+当然，也可以叫我德二吹风机哦。
 
-这个网站使用 **Astro** 框架构建，采用了 [Firefly](https://github.com/CuteLeaf/Firefly) 模板，Firefly 是基于 [Fuwari](https://github.com/saicaca/fuwari) 的二次开发。
+我居住在 `中国` / `内蒙古` / `呼和浩特`，是来自大草原的人哦！
 
-**Firefly** 是一款基于 Astro 框架和 Fuwari 模板开发的清新美观且现代化个人博客主题模板，专为技术爱好者和内容创作者设计。该主题融合了现代 Web 技术栈，提供了丰富的功能模块和高度可定制的界面，让您能够轻松打造出专业且美观的个人博客网站。
+目前还是一位初中生哦。
 
+我是一名：
 
-**🖥️在线预览： [Firefly - Demo site](https://firefly.cuteleaf.cn/)**
+- 软件工程师
+- 互联网工程师
+- 独立开发者
+- 自媒体博主
 
-**🏠我的博客： [https://blog.cuteleaf.cn](https://blog.cuteleaf.cn/)**
+同时也是TASA-Ed工作室的创始人喵。
 
-**📝Firefly使用文档： [https://docs-firefly.cuteleaf.cn](https://docs-firefly.cuteleaf.cn/)**
+> 我的目的是造福他人，因为这样会给我带来快乐，互联网的意义本就是这样，如果你能支持我们，那就更好了。
+>
+> 我的梦想是，我所做的一切都会被他人采用。
 
-**⭐Firefly开源地址：[https://github.com/CuteLeaf/Firefly](https://github.com/CuteLeaf/Firefly)** 
+## 我参与的作品与项目
 
-**⭐Fuwari开源地址：[https://github.com/saicaca/fuwari](https://github.com/saicaca/fuwari)**
+这里是我参与的一些项目喵。
 
-::github{repo="CuteLeaf/Firefly"}
+- 本网站
+- SCP 2.5D
+- Mi计划
+- 鹰歌引擎文档
+- ...
 
-::github{repo="saicaca/fuwari"}
+::GitHub{repo="TASA-Ed/MakerFrameDocs"}
 
+::GitHub{repo="TASA-Ed/scp25d"}
+
+...
+
+## 爱好
+
+我有许多爱好喵。我的爱好游戏是：
+
+- SCP：秘密实验室
+  - 如果想要和我一起玩可以加我 Steam 好友哦：1315587019。
+
+我的爱好编程语言是：
+
+- TypeScript
+- C#
+- Rust
+- PHP
 
 ## 📫 联系方式
 
-如果你想和我交流技术问题，分享有趣的想法，或者只是想打个招呼，欢迎通过以下方式联系我：
+如果想和我联系，那欢迎通过以下方式联系我哦：
 
-- 💻 **GitHub**: [CuteLeaf](https://github.com/CuteLeaf)
-- ✉️ **Email**: [xiaye@msn.com](mailto:xiaye@msn.com)
+- 💻 **GitHub**: [ccd2s](https://github.com/ccd2s)
+- ✉️ **Email**: [tasaedem@outlook.com](mailto:tasaedem@outlook.com)
+- 📺 **BiliBili** : [与之海edlest](https://space.bilibili.com/1936406435)
+- 🐧 **QQ** : 3112836258
+- 🎮 **Steam** : [德二吹风机D2s](https://steamcommunity.com/id/ccd2s/)
+- ❤️ **爱发电** : [TASA-Ed工作室](https://afdian.com/a/tasafoe3469)
 
 ---
 
 *感谢你的来访！希望在这里能找到对你有用的内容！*
-

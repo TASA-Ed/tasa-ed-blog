@@ -329,8 +329,10 @@ export type CoverImageConfig = {
 		loading?: {
 			// 加载指示器开关
 			enable: boolean;
-			image?: string; // 自定义加载图片路径（相对于public目录），默认 "/assets/images/loading.gif"
-			backgroundColor?: string; // 加载指示器背景颜色，默认与loading.gif背景色一致 (#fefefe)
+      // 自定义加载图片路径（相对于public目录），默认 "/assets/images/loading.gif"
+			image?: string;
+      // 加载指示器背景颜色，默认与loading.gif背景色一致 (#fefefe)
+			backgroundColor?: string;
 		};
 		watermark?: {
 			enable: boolean; // 是否显示水印
