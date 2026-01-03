@@ -24,7 +24,7 @@ export const siteConfig: SiteConfig = {
 	lang: SITE_LANG,
 
 	themeColor: {
-		hue: 165, // 主题色的默认色相，范围从 0 到 360。例如：红色：0，青色：200，蓝绿色：250，粉色：345
+		hue: 40, // 主题色的默认色相，范围从 0 到 360。例如：红色：0，青色：200，蓝绿色：250，粉色：345
 		fixed: true, // 对访问者隐藏主题色选择器
 		defaultMode: "system", // 默认模式："light" 亮色，"dark" 暗色，"system" 跟随系统
 	},
@@ -46,7 +46,7 @@ export const siteConfig: SiteConfig = {
 	navbarLogo: {
 		type: "image",
 		value: "/assets/logos/tasaed.svg",
-		alt: "🍀",
+		alt: "TASA-Ed",
 	},
 	navbarTitle: "德二吹风机的博客", // 导航栏标题，可以设置为与 title 不同的值，如果不设置则使用 title
 	navbarWidthFull: false, // 全宽导航栏，导航栏是否占满屏幕宽度，true：占满，false：不占满
@@ -193,8 +193,6 @@ export const siteConfig: SiteConfig = {
 
 	// 统计分析
 	analytics: {
-		// Microsoft Clarity ID
-		clarityId: "tx9equrgr6",
 	},
 
 	// 字体配置
