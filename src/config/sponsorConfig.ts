@@ -35,7 +35,7 @@ export const sponsorConfig: SponsorConfig = {
 			link: "https://afdian.com/a/tasafoe3469",
 			description: "通过 爱发电 进行赞助",
 			enabled: true,
-		},
+		}
 	],
 
 	// 赞助者列表（可选）
