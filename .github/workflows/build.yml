@@ -17,7 +17,7 @@ jobs:
   check:
     strategy:
       matrix:
-        node: [ 22, 24 ]
+        node: [ 24 ]
     runs-on: ubuntu-latest
     name: Astro Check for Node.js ${{ matrix.node }}
     steps:
@@ -25,6 +25,9 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node }} # Use LTS
+          # 缓存 pnpm 依赖
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
 
       - name: Checkout
         uses: actions/checkout@v6
@@ -33,6 +36,7 @@ jobs:
         uses: pnpm/action-setup@v4
         with:
           run_install: false # Disable auto-install
+          version: 10
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -43,7 +47,7 @@ jobs:
   build:
     strategy:
       matrix:
-        node: [ 22, 24 ]
+        node: [ 24 ]
     runs-on: ubuntu-latest
     name: Astro Build for Node.js ${{ matrix.node }} # Corrected job name
     steps:
@@ -51,6 +55,9 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node }}
+          # 缓存 pnpm 依赖
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
 
       - name: Checkout
         uses: actions/checkout@v6
@@ -59,6 +66,7 @@ jobs:
         uses: pnpm/action-setup@v4
         with:
           run_install: false # Disable auto-install
+          version: 10
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
