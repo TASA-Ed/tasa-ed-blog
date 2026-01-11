@@ -54,6 +54,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Create .env file
+        run: echo "MEILI_MASTER_KEY=${{ secrets.MEILI_MASTER_KEY }}" > .env
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
