@@ -48,7 +48,7 @@ export const siteConfig: SiteConfig = {
 		logo: {
 			type: "image",
 			value: "/assets/logos/tasaed.svg",
-			alt: "🍀",
+			alt: "TASA-Ed",
 		},
 		// 导航栏标题
 		title: "德二吹风机的博客",
@@ -67,6 +67,9 @@ export const siteConfig: SiteConfig = {
 	// 文章过期阈值（天数），超过此天数才显示"上次编辑"卡片
 	outdatedThreshold: 60,
 
+	// 是否开启分享海报生成功能
+	sharePoster: true,
+
 	// OpenGraph图片功能,注意开启后要渲染很长时间，不建议本地调试的时候开启
 	generateOgImages: false,
 
@@ -80,8 +83,7 @@ export const siteConfig: SiteConfig = {
 
 	// 文章列表布局配置
 	postListLayout: {
-		// 默认布局模式："list" 列表模式（单列布局），"grid" 网格模式（双列布局）
-		// 如果sidebarConfig.ts中侧边栏配置启用了"both"双侧边栏，则无法使用文章列表"grid"网格（双列）布局
+		// 默认布局模式："list" 列表模式（单列布局），"grid" 网格模式（多列布局）
 		defaultMode: "list",
 		// 是否允许用户切换布局
 		allowSwitch: false,
@@ -90,8 +92,10 @@ export const siteConfig: SiteConfig = {
 		grid: {
 			// 是否开启瀑布流布局，同时有封面图和无封面图的混合文章推荐开启
 			masonry: true,
-			// 网格模式下封面位置："top" 顶部，"right" 右侧
-			coverPosition: "top",
+			// 网格模式列数：2 或 3
+			// 2列是默认模式，在任何侧边栏配置下均可生效
+			// 3列模式仅在单侧边栏（或无侧边栏）时生效，
+			columns: 2,
 		},
 	},
 

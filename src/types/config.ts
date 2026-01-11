@@ -54,6 +54,7 @@ export type SiteConfig = {
 
 	showLastModified: boolean; // 控制"上次编辑"卡片显示的开关
 	outdatedThreshold?: number; // 文章过期阈值（天数），超过此天数才显示"上次编辑"卡片
+	sharePoster?: boolean; // 是否显示分享海报按钮
 
 	// 页面开关配置
 	pages: {
@@ -73,8 +74,8 @@ export type SiteConfig = {
 			// 网格布局配置，仅在 defaultMode 为 "grid" 或允许切换布局时生效
 			// 是否开启瀑布流布局
 			masonry: boolean;
-			// 网格模式下封面位置："top" 顶部，"right" 右侧
-			coverPosition: "top" | "right";
+			// 网格模式列数：2 或 3，默认为 2。注意：3列模式仅在单侧边栏（或无侧边栏）且屏幕宽度足够时生效
+			columns?: 2 | 3;
 		};
 	};
 
@@ -85,7 +86,8 @@ export type SiteConfig = {
 
 	// 统计分析
 	analytics?: {
-		clarityId?: string; // Microsoft Clarity ID
+		googleAnalyticsId?: string; // Google Analytics ID
+		microsoftClarityId?: string; // Microsoft Clarity ID
 	};
 };
 
@@ -394,6 +396,7 @@ export type WidgetComponentConfig = {
 export type SidebarLayoutConfig = {
 	enable: boolean; // 是否启用侧边栏
 	position: "left" | "both"; // 侧边栏位置：左侧或双侧
+	showRightSidebarOnPostPage?: boolean; // 当position为left时，是否在文章详情页显示右侧边栏
 	leftComponents: WidgetComponentConfig[]; // 左侧边栏组件配置列表
 	rightComponents: WidgetComponentConfig[]; // 右侧边栏组件配置列表
 	defaultAnimation: {
@@ -535,6 +538,8 @@ export type BackgroundWallpaperConfig = {
 			enable: boolean; // 是否在首页显示自定义文字（全局开关）
 			title?: string; // 主标题
 			subtitle?: string | string[]; // 副标题，支持单个字符串或字符串数组
+			titleSize?: string; // 主标题字体大小，如 "3.5rem"
+			subtitleSize?: string; // 副标题字体大小，如 "1.5rem"
 			typewriter?: {
 				enable: boolean; // 是否启用打字机效果
 				speed: number; // 打字速度（毫秒）

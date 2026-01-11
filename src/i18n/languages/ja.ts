@@ -202,7 +202,7 @@ export const ja: Translation = {
 	[Key.sponsorButtonText]:
 		"この記事が役に立ったなら、共有またはサポートをお願いします！",
 
-	[Key.shareOnSocial]: "共有",
+	[Key.shareOnSocial]: "記事を共有",
 	[Key.shareOnSocialDescription]:
 		"この記事が役に立ったなら、ぜひ他の人と共有してください！",
 
@@ -216,6 +216,7 @@ export const ja: Translation = {
 	[Key.siteStatsLastUpdate]: "最終活動",
 	[Key.siteStatsDaysAgo]: "{days} 日前",
 	[Key.siteStatsDays]: "{days} 日",
+	[Key.today]: "今日",
 
 	// カレンダーコンポーネント
 	[Key.calendarSunday]: "日",

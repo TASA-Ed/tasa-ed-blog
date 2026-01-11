@@ -1,4 +1,4 @@
-import type {BackgroundWallpaperConfig} from "@/types/config";
+import type { BackgroundWallpaperConfig } from "@/types/config";
 
 export const backgroundWallpaper: BackgroundWallpaperConfig = {
   // 壁纸模式："banner" 横幅壁纸，"overlay" 全屏透明，"none" 纯色背景无壁纸
@@ -26,6 +26,8 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
       enable: true,
       // 主页横幅主标题
       title: "德二吹风机的博客！",
+      // 主页横幅主标题字体大小
+      titleSize: "3.8rem",
       // 主页横幅副标题
       subtitle: [
         "欢迎来到德二吹风机的博客！这里有一些好玩的东西等你来看！或者留在这也行，这会有一些名言名句：",
@@ -43,6 +45,8 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
         "一向年光有限身，等闲离别易销魂，酒筵歌席莫辞频。 满目山河空念远，落花风雨更伤春，不如怜取眼前人。——晏殊",
         "有志者，事竟成。——范晔"
       ],
+      // 主页横幅副标题字体大小
+      subtitleSize: "1.5rem",
       typewriter: {
         //打字机开启 → 循环显示所有副标题
         //打字机关闭 → 每次刷新随机显示一条副标题

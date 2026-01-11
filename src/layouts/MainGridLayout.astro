@@ -10,11 +10,16 @@ import Live2DWidget from "@components/widget/Live2DWidget.astro";
 import SpineModel from "@components/widget/SpineModel.astro";
 import type { MarkdownHeading } from "astro";
 import { Icon } from "astro-icon/components";
+import FloatingTOC from "@/components/common/controls/FloatingTOC.astro";
 import TypewriterText from "@/components/content/TypewriterText.astro";
-import FloatingTOC from "@/components/interactive/FloatingTOC.astro";
 import IconifyLoader from "@/components/misc/IconifyLoader.astro";
 import ImageWrapper from "@/components/misc/ImageWrapper.astro";
-import { backgroundWallpaper, live2dModelConfig, siteConfig } from "@/config";
+import {
+	backgroundWallpaper,
+	live2dModelConfig,
+	sidebarLayoutConfig,
+	siteConfig,
+} from "@/config";
 import {
 	BANNER_HEIGHT,
 	BANNER_HEIGHT_EXTEND,
@@ -138,7 +143,8 @@ const finalMainPanelTop =
 	isBannerMode && isBackgroundEnabled ? mainPanelTop : "5.5rem";
 
 // 获取响应式侧边栏配置
-const sidebarConfig = getResponsiveSidebarConfig();
+// 传入是否为文章详情页的标志，用于控制是否显示右侧边栏
+const sidebarConfig = getResponsiveSidebarConfig(postSlug !== undefined);
 const { gridCols } = generateGridClasses(sidebarConfig);
 const sidebarClass = generateSidebarClasses(sidebarConfig);
 const rightSidebarClass = sidebarConfig.isBothSidebars
@@ -220,12 +226,12 @@ const navbarWidthFull = siteConfig.navbar.widthFull ?? false;
             <div class="w-4/5 lg:w-3/4 text-center mb-0">
                 <div class="flex flex-col">
                     {backgroundWallpaper.banner?.homeText?.title && (
-                        <h1 class="banner-title text-6xl lg:text-8xl text-white drop-shadow-lg mb-2 lg:mb-4">
+                        <h1 class="banner-title font-bold text-white mb-2 lg:mb-4 leading-tight" style={{ fontSize: backgroundWallpaper.banner.homeText.titleSize || "3rem" }}>
                             {backgroundWallpaper.banner.homeText.title}
                         </h1>
                     )}
                     {backgroundWallpaper.banner?.homeText?.subtitle && (
-                        <h2 id="banner-subtitle" class="banner-subtitle text-xl lg:text-3xl text-white/90 drop-shadow-md" data-subtitles={JSON.stringify(backgroundWallpaper.banner.homeText.subtitle)}>
+                        <h2 id="banner-subtitle" class="banner-subtitle text-white/90 leading-snug" style={{ fontSize: backgroundWallpaper.banner.homeText.subtitleSize || "1.5rem" }} data-subtitles={JSON.stringify(backgroundWallpaper.banner.homeText.subtitle)}>
                             {backgroundWallpaper.banner.homeText.typewriter?.enable ? (
                                 <TypewriterText 
                                     text={backgroundWallpaper.banner.homeText.subtitle}
@@ -380,24 +386,32 @@ const navbarWidthFull = siteConfig.navbar.widthFull ?? false;
 
 
             {/* 渲染侧边栏 - 根据配置决定使用单侧或双侧边栏 */}
-            {sidebarConfig.isBothSidebars ? (
-                <>
-                    {/* 左侧边栏 */}
-                    {sidebarConfig.hasLeftComponents && (sidebarConfig.mobileShowSidebar || sidebarConfig.tabletShowSidebar || sidebarConfig.desktopShowSidebar) && (
-                        <LeftSideBar class={`${sidebarClass} ${transparentClass}`} headings={headings}></LeftSideBar>
-                    )}
-                </>
-            ) : (
-                <>
-                    {/* 单侧边栏布局 */}
-                    {(sidebarConfig.mobileShowSidebar || sidebarConfig.tabletShowSidebar || sidebarConfig.desktopShowSidebar) && (
-                        <SideBar class={`${sidebarClass} ${transparentClass}`} headings={headings}></SideBar>
-                    )}
-                </>
-            )}
+            <div id="left-sidebar-wrapper" class="contents">
+                {sidebarConfig.isBothSidebars ? (
+                    <>
+                        {/* 左侧边栏 */}
+                        {sidebarConfig.hasLeftComponents && (sidebarConfig.mobileShowSidebar || sidebarConfig.tabletShowSidebar || sidebarConfig.desktopShowSidebar) && (
+                            <LeftSideBar class={`${sidebarClass} ${transparentClass}`} headings={headings}></LeftSideBar>
+                        )}
+                    </>
+                ) : (
+                    <>
+                        {/* 单侧边栏布局 */}
+                        {(sidebarConfig.mobileShowSidebar || sidebarConfig.tabletShowSidebar || sidebarConfig.desktopShowSidebar) && (
+                            <SideBar class={`${sidebarClass} ${transparentClass}`} headings={headings}></SideBar>
+                        )}
+                    </>
+                )}
+            </div>
                     
             {/* 主内容区 - 始终渲染，确保 Swup 容器存在 */}
             <main id="swup-container" class={`${mainContentClass} transition-main`}>
+                {/* 携带网格布局类名，用于JS更新父容器 */}
+                <div id="grid-class-carrier" data-grid-class={gridCols} class="hidden"></div>
+                {/* 备用 h1 标题 - 当主页横幅文本未启用时，提供隐藏的主标题 */}
+                {isHomePageCheck && !showHomeText && (
+                        <h1 class="sr-only">{siteConfig.title}</h1>
+                )}
                 <div id="content-wrapper" class="onload-animation transition-leaving">
                     <slot></slot>
                     <div class="footer col-span-2 onload-animation hidden lg:block">
@@ -407,8 +421,26 @@ const navbarWidthFull = siteConfig.navbar.widthFull ?? false;
             </main>
             
             {/* 右侧边栏 - 仅双侧边栏模式 */}
-            {sidebarConfig.isBothSidebars && sidebarConfig.hasRightComponents && (sidebarConfig.mobileShowSidebar || sidebarConfig.tabletShowSidebar || sidebarConfig.desktopShowSidebar) && (
-                <RightSideBar class={`${rightSidebarClass} ${transparentClass}`} headings={headings}></RightSideBar>
+            {/* 
+                如果全局配置为双侧栏(position: both)，则使用静态容器(不被swup替换)，避免闪烁。
+                如果全局配置为单侧栏(position: left)，则使用动态容器(被swup替换)，以便在文章页显示右侧栏。
+                注意：为了满足swup要求所有containers必须存在，我们在两种模式下都必须渲染 #right-sidebar-dynamic。
+            */}
+            {sidebarLayoutConfig.position === "both" ? (
+                <>
+                    <div id="right-sidebar-static" class="contents">
+                        {sidebarConfig.isBothSidebars && sidebarConfig.hasRightComponents && (sidebarConfig.mobileShowSidebar || sidebarConfig.tabletShowSidebar || sidebarConfig.desktopShowSidebar) && (
+                            <RightSideBar class={`${rightSidebarClass} ${transparentClass}`} headings={headings}></RightSideBar>
+                        )}
+                    </div>
+                    <div id="right-sidebar-dynamic" class="hidden"></div>
+                </>
+            ) : (
+                <div id="right-sidebar-dynamic" class="contents">
+                    {sidebarConfig.isBothSidebars && sidebarConfig.hasRightComponents && (sidebarConfig.mobileShowSidebar || sidebarConfig.tabletShowSidebar || sidebarConfig.desktopShowSidebar) && (
+                        <RightSideBar class={`${rightSidebarClass} ${transparentClass}`} headings={headings}></RightSideBar>
+                    )}
+                </div>
             )}
 
             <div class="footer col-span-2 onload-animation block lg:hidden">
@@ -425,48 +457,10 @@ const navbarWidthFull = siteConfig.navbar.widthFull ?? false;
 <!-- 悬浮TOC组件 -->
 <FloatingTOC headings={headings}></FloatingTOC>
 
-<!-- 立即执行脚本：防止刷新时右侧栏闪烁 -->
-<script is:inline define:vars={{ isBothSidebars: sidebarConfig.isBothSidebars }}>
-  (function() {
-    // 立即检查并应用保存的布局状态
-    const savedLayout = localStorage.getItem('postListLayout');
-    if (savedLayout) {
-      const rightSidebar = document.getElementById('right-sidebar');
-      const mainGrid = document.getElementById('main-grid');
-      
-      if (savedLayout === 'grid') {
-        if (isBothSidebars && rightSidebar) {
-          rightSidebar.style.display = 'none';
-        }
-        if (mainGrid) {
-          mainGrid.classList.add('grid-layout-active');
-        }
-      } else {
-        if (isBothSidebars && rightSidebar) {
-          rightSidebar.style.display = '';
-        }
-        if (mainGrid) {
-          mainGrid.classList.remove('grid-layout-active');
-        }
-      }
-    }
-  })();
-</script>
+
 </Layout>
 
 <style is:global>
-  /* 网格布局激活时，调整主网格为两列布局 */
-  @media (min-width: 1024px) {
-    #main-grid.grid-layout-active {
-      grid-template-columns: 17.5rem 1fr !important;
-    }
-  }
-  
-  /* 确保在网格模式下右侧边栏完全不占空间 */
-  #main-grid.grid-layout-active #right-sidebar {
-    display: none !important;
-  }
-  
   /* 在低于1200px时隐藏右侧边栏 */
   @media (max-width: 1199px) {
     #right-sidebar {
@@ -486,48 +480,21 @@ const navbarWidthFull = siteConfig.navbar.widthFull ?? false;
     }
   }
   
-  /* 文章详情页布局切换动画 - 简洁优雅的淡入淡出 */
-  #post-container {
-    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
-  }
-  
-  #post-container.layout-switching {
-    animation: gentleFade 0.4s ease-in-out;
-  }
-  
-  @keyframes gentleFade {
-    0%, 100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 0.92;
-      transform: scale(0.995);
-    }
-  }
-  
-  /* 主内容区布局切换动画 - 平滑宽度过渡 */
-  #swup-container {
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  #swup-container.layout-transitioning {
-    animation: smoothWidth 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  @keyframes smoothWidth {
-    0%, 100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.96;
-    }
-  }
+
   
   /* 右侧栏平滑过渡 */
   #right-sidebar {
     transition: opacity 0.35s ease-in-out, 
                 transform 0.35s ease-in-out;
+  }
+
+  /* 横幅文字阴影 - 更柔和的扩散效果 */
+  .banner-title {
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+  }
+  
+  .banner-subtitle {
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.6);
   }
 </style>
 
