@@ -29,6 +29,13 @@ export const siteConfig: SiteConfig = {
 		defaultMode: "system", // 默认模式："light" 亮色，"dark" 暗色，"system" 跟随系统
 	},
 
+	// 网站Card样式配置
+	card: {
+		// 是否开启卡片边框和阴影，开启后让网站更有立体感
+		border: true,
+	},
+
+	// Favicon 配置
 	favicon: [
 		// 留空以使用默认 favicon
 		{
