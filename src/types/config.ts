@@ -179,13 +179,13 @@ export type MeiliSearchConfig = {
 
 export type NavBarSearchConfig = {
 	method: NavBarSearchMethod;
-	meiliSearchConfig?: MeiliSearchConfig;
+	meiliSearchConfig: MeiliSearchConfig;
 };
 
 export type NavBarConfig = {
 	links: (NavBarLink | LinkPreset)[];
-	searchMethod?: NavBarSearchMethod;
-	meiliSearchConfig?: MeiliSearchConfig;
+	searchMethod: NavBarSearchMethod;
+	meiliSearchConfig: MeiliSearchConfig;
 };
 
 export type ProfileConfig = {
