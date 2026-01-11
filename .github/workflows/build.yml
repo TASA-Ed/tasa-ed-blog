@@ -21,6 +21,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Astro Check for Node.js ${{ matrix.node }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
@@ -28,9 +31,6 @@ jobs:
           # 缓存 pnpm 依赖
           cache: pnpm
           cache-dependency-path: pnpm-lock.yaml
-
-      - name: Checkout
-        uses: actions/checkout@v6
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -51,6 +51,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Astro Build for Node.js ${{ matrix.node }} # Corrected job name
     steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
@@ -58,9 +61,6 @@ jobs:
           # 缓存 pnpm 依赖
           cache: pnpm
           cache-dependency-path: pnpm-lock.yaml
-
-      - name: Checkout
-        uses: actions/checkout@v6
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
