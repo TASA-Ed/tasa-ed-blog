@@ -2,7 +2,7 @@
   import I18nKey from "@i18n/i18nKey";
   import { i18n } from "@i18n/translation";
   import Icon from "@iconify/svelte";
-  import { onMount } from "svelte";
+  import { onDestroy, onMount } from "svelte";
   import type { SearchResult } from "@/global";
   import { MeiliSearch } from "meilisearch";
   import type { MeiliSearchConfig } from "@/types/config.ts";
@@ -18,7 +18,8 @@
   let isSearching = false;
   let initialized = false;
   let meiliClient: MeiliSearch | null = null;
-  let debounceTimer: NodeJS.Timeout;
+  let debounceTimer: ReturnType<typeof setTimeout> | undefined;
+  let requestId = 0;
 
   // 在客户端获取 URL 参数
   const getInitialKeyword = (): string => {
@@ -31,13 +32,21 @@
 
   // --- Core Search Logic ---
   const search = async (): Promise<void> => {
-    if (!initialized || !keyword) {
+    const query = keyword.trim();
+    if (!initialized || !query) {
       results = [];
+      isSearching = false;
+      if (debounceTimer) {
+        clearTimeout(debounceTimer);
+      }
       return;
     }
     isSearching = true;
 
-    clearTimeout(debounceTimer);
+    const currentRequestId = ++requestId;
+    if (debounceTimer) {
+      clearTimeout(debounceTimer);
+    }
     debounceTimer = setTimeout(async () => {
       try {
         let searchResults: SearchResult[] = [];
@@ -45,14 +54,13 @@
         if (!meiliClient)
           throw new Error("MeiliSearch client not initialized.");
         const index = meiliClient.index(meiliSearchConfig.INDEX_NAME);
-        const searchResponse = await index.search(keyword, {
+        const searchResponse = await index.search(query, {
           limit: 100,
           attributesToHighlight: ["title", "content"],
           attributesToCrop: ["content:100"],
           highlightPreTag: "<mark>",
           highlightPostTag: "</mark>",
         });
-        console.log(searchResponse);
         // Map MeiliSearch results to our standard SearchResult format
         searchResults = searchResponse.hits
           .filter((hit) => hit._formatted)
@@ -65,12 +73,18 @@
             };
           });
 
-        results = searchResults;
+        if (currentRequestId === requestId && query === keyword.trim()) {
+          results = searchResults;
+        }
       } catch (error) {
         console.error("Search error:", error);
-        results = [];
+        if (currentRequestId === requestId) {
+          results = [];
+        }
       } finally {
-        isSearching = false;
+        if (currentRequestId === requestId) {
+          isSearching = false;
+        }
       }
     }, 300); // 300ms debounce
   };
@@ -84,7 +98,6 @@
           apiKey: meiliSearchConfig.PUBLIC_MEILI_SEARCH_KEY,
         });
         initialized = true;
-        console.log("MeiliSearch client initialized.");
       } catch (e) {
         console.error("Failed to initialize MeiliSearch:", e);
         initialized = false;
@@ -109,6 +122,12 @@
   const handleInput = () => {
     search();
   };
+
+  onDestroy(() => {
+    if (debounceTimer) {
+      clearTimeout(debounceTimer);
+    }
+  });
 </script>
 
 <div class="card-base px-6 py-6 md:px-9 md:py-6 mb-4 rounded-[var(--radius-large)]">

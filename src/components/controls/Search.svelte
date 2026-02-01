@@ -4,10 +4,10 @@
   import Icon from "@iconify/svelte";
   import { navigateToPage } from "@utils/navigation-utils";
   import { MeiliSearch } from "meilisearch";
-  import { onMount } from "svelte";
+  import { onDestroy, onMount } from "svelte";
   import type { SearchResult } from "@/global";
   import { type MeiliSearchConfig } from "@/types/config";
-  import { url as formatUrl, getSearchUrl } from "@/utils/url-utils";
+  import { getSearchUrl } from "@/utils/url-utils";
 
   // --- Props from Astro ---
   export let meiliSearchConfig: MeiliSearchConfig;
@@ -19,30 +19,30 @@
   let isSearching = false;
   let initialized = false;
   let meiliClient: MeiliSearch | null = null;
-  let debounceTimer: NodeJS.Timeout;
+  let debounceTimer: ReturnType<typeof setTimeout> | undefined;
+  let activeInput: "desktop" | "mobile" | null = null;
+  let isPanelOpen = false;
+  let lastSearchToken = 0;
+  let activeKeyword = "";
+  let activeKeywordTrimmed = "";
 
   // --- UI Logic ---
   const togglePanel = () => {
-    document
-      .getElementById("search-panel")
-      ?.classList.toggle("float-panel-closed");
+    isPanelOpen = !isPanelOpen;
+    if (isPanelOpen) {
+      activeInput = "mobile";
+    } else if (activeInput === "mobile") {
+      activeInput = null;
+    }
   };
 
-  const setPanelVisibility = (show: boolean, isDesktop: boolean): void => {
-    const panel = document.getElementById("search-panel");
-    if (
-      !panel ||
-      (isDesktop && !keywordDesktop) ||
-      (!isDesktop && !keywordMobile)
-    )
-      return;
-    show
-      ? panel.classList.remove("float-panel-closed")
-      : panel.classList.add("float-panel-closed");
+  const setActiveInput = (input: "desktop" | "mobile") => {
+    activeInput = input;
   };
 
   const closeSearchPanel = (): void => {
-    document.getElementById("search-panel")?.classList.add("float-panel-closed");
+    isPanelOpen = false;
+    activeInput = null;
     keywordDesktop = "";
     keywordMobile = "";
     result = [];
@@ -55,17 +55,38 @@
   };
 
   // --- Core Search Logic ---
-  const search = async (keyword: string, isDesktop: boolean): Promise<void> => {
-    if (!keyword) {
-      setPanelVisibility(false, isDesktop);
+  const sanitizeHighlightedHtml = (value: string | undefined): string => {
+    if (!value) return "";
+    const escaped = value
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+    return escaped
+      .replace(/&lt;mark&gt;/g, "<mark>")
+      .replace(/&lt;\/mark&gt;/g, "</mark>");
+  };
+
+  const search = async (
+    keyword: string,
+    input: "desktop" | "mobile",
+  ): Promise<void> => {
+    const trimmedKeyword = keyword.trim();
+    if (!trimmedKeyword) {
       result = [];
+      isSearching = false;
+      if (input === "desktop") {
+        isPanelOpen = false;
+      }
       return;
     }
     if (!initialized) return;
 
     isSearching = true;
+    const searchToken = ++lastSearchToken;
 
-    clearTimeout(debounceTimer);
+    if (debounceTimer) {
+      clearTimeout(debounceTimer);
+    }
     debounceTimer = setTimeout(async () => {
       try {
         let searchResults: SearchResult[] = [];
@@ -73,34 +94,39 @@
         if (!meiliClient)
           throw new Error("MeiliSearch client not initialized.");
         const index = meiliClient.index(meiliSearchConfig.INDEX_NAME);
-        const searchResponse = await index.search(keyword, {
+        const searchResponse = await index.search(trimmedKeyword, {
           limit: 10,
           attributesToHighlight: ["title", "content", "description"],
           attributesToCrop: ["content:50"],
           highlightPreTag: "<mark>",
           highlightPostTag: "</mark>",
         });
-        console.log(searchResponse);
         // Map MeiliSearch results to our standard SearchResult format
         searchResults = searchResponse.hits
           .filter((hit) => hit._formatted)
           .map((hit) => {
             return {
               url: hit._formatted?.slug,
-              meta: {title: hit._formatted?.title},
-              excerpt: hit._formatted?.description,
-              content: hit._formatted?.content,
+              meta: { title: sanitizeHighlightedHtml(hit._formatted?.title) },
+              excerpt: sanitizeHighlightedHtml(hit._formatted?.description),
+              content: sanitizeHighlightedHtml(hit._formatted?.content),
             };
           });
 
+        if (searchToken !== lastSearchToken || activeInput !== input) return;
         result = searchResults;
-        setPanelVisibility(true, isDesktop);
+        isPanelOpen = true;
       } catch (error) {
         console.error("Search error:", error);
+        if (searchToken !== lastSearchToken || activeInput !== input) return;
         result = [];
-        setPanelVisibility(false, isDesktop);
+        if (input === "desktop") {
+          isPanelOpen = false;
+        }
       } finally {
-        isSearching = false;
+        if (searchToken === lastSearchToken) {
+          isSearching = false;
+        }
       }
     }, 300); // 300ms debounce
   };
@@ -113,18 +139,30 @@
         apiKey: meiliSearchConfig.PUBLIC_MEILI_SEARCH_KEY,
       });
       initialized = true;
-      console.log("MeiliSearch client initialized.");
     } catch (e) {
       console.error("Failed to initialize MeiliSearch:", e);
     }
   });
 
+  onDestroy(() => {
+    if (debounceTimer) {
+      clearTimeout(debounceTimer);
+    }
+  });
+
   // --- Reactive Statements ---
-  $: if (initialized && (keywordDesktop || keywordDesktop === "")) {
-    search(keywordDesktop, true);
+  $: activeKeyword =
+    activeInput === "desktop"
+      ? keywordDesktop
+      : activeInput === "mobile"
+        ? keywordMobile
+        : keywordDesktop || keywordMobile;
+  $: activeKeywordTrimmed = activeKeyword.trim();
+  $: if (initialized && activeInput === "desktop") {
+    search(keywordDesktop, "desktop");
   }
-  $: if (initialized && (keywordMobile || keywordMobile === "")) {
-    search(keywordMobile, false);
+  $: if (initialized && activeInput === "mobile") {
+    search(keywordMobile, "mobile");
   }
 </script>
 
@@ -136,7 +174,7 @@
     <Icon icon="material-symbols:search"
           class="absolute text-[1.25rem] pointer-events-none ml-3 transition my-auto text-black/30 dark:text-white/30"></Icon>
     <input placeholder="{i18n(I18nKey.search)}" bind:value={keywordDesktop}
-           on:focus={() => search(keywordDesktop, true)}
+           on:focus={() => setActiveInput("desktop")}
            class="transition-all pl-10 text-sm bg-transparent outline-0
          h-full w-40 active:w-60 focus:w-60 text-black/50 dark:text-white/50"
     >
@@ -149,8 +187,9 @@
 </button>
 
 <!-- search panel -->
-<div id="search-panel" class="float-panel float-panel-closed search-panel absolute md:w-[30rem]
-top-20 left-4 md:left-[unset] right-4 shadow-2xl rounded-2xl p-2">
+<div id="search-panel" class="float-panel search-panel absolute md:w-[30rem]
+top-20 left-4 md:left-[unset] right-4 shadow-2xl rounded-2xl p-2"
+     class:float-panel-closed={!isPanelOpen}>
 
     <!-- search bar inside panel for phone/tablet -->
     <div id="search-bar-inside" class="flex relative lg:hidden transition-all items-center h-11 rounded-xl
@@ -160,6 +199,7 @@ top-20 left-4 md:left-[unset] right-4 shadow-2xl rounded-2xl p-2">
         <Icon icon="material-symbols:search"
               class="absolute text-[1.25rem] pointer-events-none ml-3 transition my-auto text-black/30 dark:text-white/30"></Icon>
         <input placeholder={i18n(I18nKey.search)} bind:value={keywordMobile}
+               on:focus={() => setActiveInput("mobile")}
                class="pl-10 absolute inset-0 text-sm bg-transparent outline-0
                focus:w-60 text-black/50 dark:text-white/50"
         >
@@ -169,6 +209,10 @@ top-20 left-4 md:left-[unset] right-4 shadow-2xl rounded-2xl p-2">
     {#if isSearching}
         <div class="transition first-of-type:mt-2 lg:first-of-type:mt-0 block rounded-xl text-lg px-3 py-2 text-50">
             {i18n(I18nKey.searchLoading)}
+        </div>
+    {:else if !activeKeywordTrimmed}
+        <div class="transition first-of-type:mt-2 lg:first-of-type:mt-0 block rounded-xl text-lg px-3 py-2 text-50">
+            {i18n(I18nKey.searchTypeSomething)}
         </div>
     {:else if result.length > 0}
         {#each result.slice(0, 5) as item}
@@ -181,7 +225,7 @@ top-20 left-4 md:left-[unset] right-4 shadow-2xl rounded-2xl p-2">
                     <Icon icon="fa6-solid:chevron-right"
                           class="transition text-[0.75rem] translate-x-1 my-auto text-[var(--primary)]"></Icon>
                 </div>
-                {#if item.excerpt.includes('<mark>')}
+                {#if item.excerpt?.includes("<mark>")}
                     <div class="transition text-sm text-50"
                          style="display: flex; align-items: flex-start; margin-top: 0.1rem">
                         <span style="display: inline-block; background-color: var(--btn-plain-bg-hover); color: var(--primary); padding: 0.1em 0.4em; border-radius: 5px; font-size: 0.75em; font-weight: 600; margin-right: 0.5em; flex-shrink: 0;">
@@ -193,7 +237,7 @@ top-20 left-4 md:left-[unset] right-4 shadow-2xl rounded-2xl p-2">
                     </div>
                 {/if}
 
-                {#if item.content && item.content.includes('<mark>')}
+                {#if item.content?.includes("<mark>")}
                     <div class="transition text-sm text-30"
                          style="display: flex; align-items: flex-start; margin-top: 0.1rem">
                         <span style="display: inline-block; background-color: var(--btn-plain-bg-active); color: var(--primary); padding: 0.1em 0.4em; border-radius: 5px; font-size: 0.75em; font-weight: 600; margin-right: 0.5em; flex-shrink: 0;">
@@ -207,8 +251,8 @@ top-20 left-4 md:left-[unset] right-4 shadow-2xl rounded-2xl p-2">
             </a>
         {/each}
         {#if result.length > 5}
-            <a href={getSearchUrl(keywordDesktop || keywordMobile)}
-               on:click={(e) => handleResultClick(e, getSearchUrl(keywordDesktop || keywordMobile))}
+            <a href={getSearchUrl(activeKeywordTrimmed)}
+               on:click={(e) => handleResultClick(e, getSearchUrl(activeKeywordTrimmed))}
                class="transition first-of-type:mt-2 lg:first-of-type:mt-0 group block rounded-xl text-lg px-3 py-2 hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] text-[var(--primary)] font-bold text-center">
                 <span class="inline-flex items-center">
                     {i18n(I18nKey.searchViewMore).replace('{count}', (result.length - 5).toString())}
@@ -219,10 +263,6 @@ top-20 left-4 md:left-[unset] right-4 shadow-2xl rounded-2xl p-2">
     {:else if result.length === 0}
         <div class="transition first-of-type:mt-2 lg:first-of-type:mt-0 block rounded-xl text-lg px-3 py-2 text-50">
             {i18n(I18nKey.searchNoResults)}
-        </div>
-    {:else if keywordDesktop || keywordMobile}
-        <div class="transition first-of-type:mt-2 lg:first-of-type:mt-0 block rounded-xl text-lg px-3 py-2 text-50">
-            {i18n(I18nKey.searchTypeSomething)}
         </div>
     {/if}
 </div>
