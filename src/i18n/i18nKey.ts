@@ -173,6 +173,11 @@ enum I18nKey {
 	wallpaperOverlayMode = "wallpaperOverlayMode",
 	wallpaperNoneMode = "wallpaperNoneMode",
 
+	// 文章布局
+	postListLayout = "postListLayout",
+	postListLayoutList = "postListLayoutList",
+	postListLayoutGrid = "postListLayoutGrid",
+
 	// 赞助页面
 	sponsor = "sponsor",
 	sponsorTitle = "sponsorTitle",
@@ -231,9 +236,17 @@ enum I18nKey {
 	copyLink = "copyLink",
 	savePoster = "savePoster",
 	scanToRead = "scanToRead",
+
+	// 代码块折叠配置
+	codeCollapsibleShowMore = "codeCollapsibleShowMore",
+	codeCollapsibleShowLess = "codeCollapsibleShowLess",
+	codeCollapsibleExpanded = "codeCollapsibleExpanded",
+	codeCollapsibleCollapsed = "codeCollapsibleCollapsed",
+	
   // custom
   cNavAbout = "cNavAbout",
   cNavLink = "cNavLink",
+
 }
 
 export default I18nKey;

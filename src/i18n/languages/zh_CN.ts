@@ -46,7 +46,7 @@ export const zh_CN: Translation = {
 	[Key.postCount]: "篇文章",
 	[Key.postsCount]: "篇文章",
 
-	[Key.themeColor]: "主题色",
+	[Key.themeColor]: "主题色相",
 
 	[Key.lightMode]: "亮色",
 	[Key.darkMode]: "暗色",
@@ -177,6 +177,11 @@ export const zh_CN: Translation = {
 	[Key.wallpaperOverlayMode]: "全屏透明",
 	[Key.wallpaperNoneMode]: "纯色背景",
 
+	// 文章布局
+	[Key.postListLayout]: "文章布局",
+	[Key.postListLayoutList]: "列表",
+	[Key.postListLayoutGrid]: "网格",
+
 	// 赞助页面
 	[Key.sponsor]: "赞助",
 	[Key.sponsorTitle]: "赞助支持",
@@ -238,7 +243,14 @@ export const zh_CN: Translation = {
 	[Key.savePoster]: "保存海报",
 	[Key.scanToRead]: "扫码阅读文章",
 
+	// 代码块折叠配置
+	[Key.codeCollapsibleShowMore]: "显示更多",
+	[Key.codeCollapsibleShowLess]: "显示更少",
+	[Key.codeCollapsibleExpanded]: "代码块已展开",
+	[Key.codeCollapsibleCollapsed]: "代码块已折叠",
+
   // 自定义
   [Key.cNavLink]: "链接",
   [Key.cNavAbout]: "关于",
+
 };

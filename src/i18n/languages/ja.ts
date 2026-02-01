@@ -184,6 +184,11 @@ export const ja: Translation = {
 	[Key.wallpaperOverlayMode]: "透明",
 	[Key.wallpaperNoneMode]: "単色背景",
 
+	// 投稿リストレイアウト
+	[Key.postListLayout]: "投稿リストレイアウト",
+	[Key.postListLayoutList]: "リスト",
+	[Key.postListLayoutGrid]: "グリッド",
+
 	// スポンサーページ
 	[Key.sponsor]: "スポンサー",
 	[Key.sponsorTitle]: "サポート",
@@ -246,7 +251,14 @@ export const ja: Translation = {
 	[Key.savePoster]: "ポスターを保存",
 	[Key.scanToRead]: "QRコードで読む",
 
+	// コードブロック折りたたみ設定
+	[Key.codeCollapsibleShowMore]: "もっと表示",
+	[Key.codeCollapsibleShowLess]: "少なく表示",
+	[Key.codeCollapsibleExpanded]: "コードブロックが展開されました",
+	[Key.codeCollapsibleCollapsed]: "コードブロックが折りたたまれました",
+
   // 自定义
   [Key.cNavLink]: "リンク集",
   [Key.cNavAbout]: "ついて",
+
 };

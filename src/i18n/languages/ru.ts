@@ -186,6 +186,11 @@ export const ru: Translation = {
 	[Key.wallpaperOverlayMode]: "Прозрачный",
 	[Key.wallpaperNoneMode]: "Однотонный фон",
 
+	// Макет списка сообщений
+	[Key.postListLayout]: "Макет списка сообщений",
+	[Key.postListLayoutList]: "Список",
+	[Key.postListLayoutGrid]: "Сетка",
+
 	// Страница спонсоров
 	[Key.sponsor]: "Спонсор",
 	[Key.sponsorTitle]: "Поддержать меня",
@@ -248,7 +253,14 @@ export const ru: Translation = {
 	[Key.savePoster]: "Сохранить постер",
 	[Key.scanToRead]: "Сканируйте, чтобы прочитать",
 
+	// Конфигурация блоков коллапсируемого кода
+	[Key.codeCollapsibleShowMore]: "Показать больше",
+	[Key.codeCollapsibleShowLess]: "Показать меньше",
+	[Key.codeCollapsibleExpanded]: "Блок кода развернут",
+	[Key.codeCollapsibleCollapsed]: "Блок кода свернут",
+
   // 自定义
   [Key.cNavLink]: "Ссылки",
   [Key.cNavAbout]: "О нас",
+
 };
