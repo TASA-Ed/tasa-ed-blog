@@ -55,13 +55,13 @@ Stride 中的 C# 脚本利用 C# 12 和 .NET 8 框架中的最新语言功能，
 
 ## 学习
 
-### 引擎手册：
+### 引擎手册
 
 在这里你可以了解有关如何使用 Stride 游戏引擎的信息
 
 [https://doc.stride3d.net/latest/en/manual/](https://doc.stride3d.net/latest/en/manual/)
 
-### 引擎教程：
+### 引擎教程
 
 在这里你可以了解有关 Stride 游戏引擎的更多信息的教程
 

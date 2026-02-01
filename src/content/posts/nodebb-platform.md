@@ -69,13 +69,13 @@ NodeBB 的管理系统可以轻松控制论坛的各个方面。创建无限数�
 
 ## 学习
 
-### NodeBB 文档：
+### NodeBB 文档
 
 在这里你可以了解有关如何使用NodeBB的信息
 
 [https://docs.nodebb.org/](https://docs.nodebb.org/)
 
-### 社区：
+### 社区
 
 在这里你可以提问。
 
@@ -83,20 +83,16 @@ NodeBB 的管理系统可以轻松控制论坛的各个方面。创建无限数�
 
 ## 下载
 
-### 要求：
+### 要求
 
 NodeBB 需要安装以下软件：
 
 - 版本Node.js至少 18 或更高版本（[安装/升级说明](https://github.com/nodesource/distributions))
-
 - MongoDB 版本 3.6 或更高版本**，**或者 Redis 版本 2.8.9 或更高版本
-
 - 如果您使用的是[集群](https://docs.nodebb.org/configuring/scaling/)，则需要安装并配置 Redis。
-
 - Nginx，版本 1.3.13 或更高版本（仅当打算使用 nginx 将请求代理到 NodeBB 时）
 
-
-### 安装：
+### 安装
 
 如果万事俱备，[请参阅特定于平台的安装文档](https://docs.nodebb.org/installing/os)，如果通过PaaS（或使用 Docker）进行安装，[请参阅基于云的安装文档](https://docs.nodebb.org/installing/cloud/)。
 
