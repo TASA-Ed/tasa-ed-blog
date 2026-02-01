@@ -249,8 +249,7 @@ export const zh_CN: Translation = {
 	[Key.codeCollapsibleExpanded]: "代码块已展开",
 	[Key.codeCollapsibleCollapsed]: "代码块已折叠",
 
-  // 自定义
-  [Key.cNavLink]: "链接",
-  [Key.cNavAbout]: "关于",
-
+	// 自定义
+	[Key.cNavLink]: "链接",
+	[Key.cNavAbout]: "关于",
 };

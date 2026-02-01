@@ -251,8 +251,7 @@ export const zh_TW: Translation = {
 	[Key.codeCollapsibleExpanded]: "代碼區塊已展開",
 	[Key.codeCollapsibleCollapsed]: "代碼區塊已折疊",
 
-  	// 自定义
-  	[Key.cNavLink]: "鏈接",
-  	[Key.cNavAbout]: "關於",
-
+	// 自定义
+	[Key.cNavLink]: "鏈接",
+	[Key.cNavAbout]: "關於",
 };

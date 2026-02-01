@@ -242,11 +242,10 @@ enum I18nKey {
 	codeCollapsibleShowLess = "codeCollapsibleShowLess",
 	codeCollapsibleExpanded = "codeCollapsibleExpanded",
 	codeCollapsibleCollapsed = "codeCollapsibleCollapsed",
-	
-  // custom
-  cNavAbout = "cNavAbout",
-  cNavLink = "cNavLink",
 
+	// custom
+	cNavAbout = "cNavAbout",
+	cNavLink = "cNavLink",
 }
 
 export default I18nKey;

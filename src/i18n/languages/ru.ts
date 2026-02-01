@@ -259,8 +259,7 @@ export const ru: Translation = {
 	[Key.codeCollapsibleExpanded]: "Блок кода развернут",
 	[Key.codeCollapsibleCollapsed]: "Блок кода свернут",
 
-  // 自定义
-  [Key.cNavLink]: "Ссылки",
-  [Key.cNavAbout]: "О нас",
-
+	// 自定义
+	[Key.cNavLink]: "Ссылки",
+	[Key.cNavAbout]: "О нас",
 };

@@ -257,8 +257,7 @@ export const ja: Translation = {
 	[Key.codeCollapsibleExpanded]: "コードブロックが展開されました",
 	[Key.codeCollapsibleCollapsed]: "コードブロックが折りたたまれました",
 
-  // 自定义
-  [Key.cNavLink]: "リンク集",
-  [Key.cNavAbout]: "ついて",
-
+	// 自定义
+	[Key.cNavLink]: "リンク集",
+	[Key.cNavAbout]: "ついて",
 };

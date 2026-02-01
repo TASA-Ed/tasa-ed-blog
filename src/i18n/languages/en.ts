@@ -259,7 +259,6 @@ export const en: Translation = {
 	[Key.codeCollapsibleCollapsed]: "Code block collapsed",
 
 	// 自定义
-  	[Key.cNavLink]: "Links",
- 	[Key.cNavAbout]: "About",
-
+	[Key.cNavLink]: "Links",
+	[Key.cNavAbout]: "About",
 };
