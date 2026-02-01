@@ -254,4 +254,5 @@ export const zh_TW: Translation = {
 	// 自定义
 	[Key.cNavLink]: "鏈接",
 	[Key.cNavAbout]: "關於",
+	[Key.cBackToTop]: "返回頂部",
 };

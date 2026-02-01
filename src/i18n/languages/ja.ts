@@ -260,4 +260,5 @@ export const ja: Translation = {
 	// 自定义
 	[Key.cNavLink]: "リンク集",
 	[Key.cNavAbout]: "ついて",
+	[Key.cBackToTop]: "トップへ戻る",
 };

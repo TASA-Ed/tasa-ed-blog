@@ -1,4 +1,6 @@
 ---
+import I18nKey from "@/i18n/i18nKey";
+import { i18n } from "@/i18n/translation";
 import FloatingButton from "@/components/common/FloatingButton.astro";
 ---
 
@@ -7,7 +9,7 @@ import FloatingButton from "@/components/common/FloatingButton.astro";
   <FloatingButton
     id="back-to-top-btn"
     icon="material-symbols:keyboard-arrow-up-rounded"
-    ariaLabel="Back to Top"
+    ariaLabel={i18n(I18nKey.cBackToTop)}
     onclick="backToTop()"
     class=""
   />

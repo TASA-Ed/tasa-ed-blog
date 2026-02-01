@@ -262,4 +262,5 @@ export const ru: Translation = {
 	// 自定义
 	[Key.cNavLink]: "Ссылки",
 	[Key.cNavAbout]: "О нас",
+	[Key.cBackToTop]: "Вернуться к началу",
 };

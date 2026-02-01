@@ -246,6 +246,7 @@ enum I18nKey {
 	// custom
 	cNavAbout = "cNavAbout",
 	cNavLink = "cNavLink",
+	cBackToTop = "cBackToTop",
 }
 
 export default I18nKey;

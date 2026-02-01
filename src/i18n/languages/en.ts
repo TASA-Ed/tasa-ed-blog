@@ -261,4 +261,5 @@ export const en: Translation = {
 	// 自定义
 	[Key.cNavLink]: "Links",
 	[Key.cNavAbout]: "About",
+	[Key.cBackToTop]: "Back to Top",
 };
