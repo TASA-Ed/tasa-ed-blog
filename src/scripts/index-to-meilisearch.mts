@@ -69,7 +69,8 @@ class MeiliSearchIndexer {
 
         return {
           id: idx,
-          slug: (process.env.BASE_URL || "/")+`posts/${finalSlug}/`, // 完整的 URL 路径
+          // 我不行了，dev 时会变成 /posts/，只能写死了。
+          slug: `/blog/posts/${finalSlug}/`, // 完整的 URL 路径
           title: data.title,
           description: data.description || "",
           content: plainText,

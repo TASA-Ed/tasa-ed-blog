@@ -36,7 +36,7 @@ export const profileConfig: ProfileConfig = {
 		{
 			name: "RSS",
 			icon: "fa6-solid:rss",
-			url: "/rss/",
+			url: "/blog/rss/",
 			showName: false,
 		},
 	],

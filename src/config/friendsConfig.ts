@@ -39,7 +39,7 @@ export const friendsConfig: FriendLink[] = [
     },
     {
         title: "新 · 都在",
-        imgurl: "https://api.minio.xindu.site/blog.cnkj.site/backup/logo-doiw.png",
+        imgurl: "/blog/assets/logos/friends/xindu_logo.png",
         desc: "Carol小屋",
         siteurl: "https://blog.xindu.site/",
         tags: ["博客"],
@@ -66,7 +66,7 @@ export const friendsConfig: FriendLink[] = [
     },
     {
         title: "Liu Zijian's Blog",
-        imgurl: "https://blog.liuzijian.com/img/logo.jpg",
+        imgurl: "/blog/assets/logos/friends/liuzijian_logo.jpg",
         desc: "Keep on going never give up",
         siteurl: "https://blog.liuzijian.com",
         tags: ["博客"],
@@ -93,7 +93,7 @@ export const friendsConfig: FriendLink[] = [
     },
     {
         title: "日出资源网",
-        imgurl: "https://img.cdn1.vip/i/6858a134afbf1_1750638900.webp",
+        imgurl: "/blog/assets/logos/friends/rnmcnm_logo.webp",
         desc: "活动，教程，技术，资源反正奇怪又有趣~",
         siteurl: "https://www.rnmcnm.com",
         tags: ["博客"],
