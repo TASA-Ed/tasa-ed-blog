@@ -4,7 +4,8 @@ const robotsTxt = `
 User-agent: *
 Disallow: /_astro/
 
-Sitemap: ${new URL("sitemap-index.xml", import.meta.env.SITE).href}
+Sitemap: https://www.tasaed.top/sitemap-index.xml
+Sitemap: https://www.tasaed.top/blog/sitemap-index.xml
 `.trim();
 
 export const GET: APIRoute = () => {
