@@ -76,3 +76,51 @@ jobs:
 
       - name: Run Astro Build
         run: pnpm astro build
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v6
+        with:
+          name: dist
+          path: dist/
+
+      - name: Deploy to server via SSH
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          source: "dist/*"
+          target: "/tmp/blogdy-temp"
+          strip_components: 1
+          rm: true
+
+      - name: Execute remote commands
+        uses: appleboy/ssh-action@v1
+        env:
+          INDEX_DIR: ${{ secrets.DIR }}
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          envs: INDEX_DIR
+          script: |
+            set -e
+
+            if [ ! -d "/$INDEX_DIR/index/blog/" ]; then exit 1; fi
+            
+            # 清除目标目录
+            sudo rm -rf /$INDEX_DIR/index/blog/*
+
+            # 移动文件到目标目录
+            sudo mv /tmp/blogdy-temp/* /$INDEX_DIR/index/blog/
+
+            # 更改所有者和用户组
+            sudo chown -R 1000:1000 /$INDEX_DIR/index/blog/
+
+            # 清理临时目录
+            rm -rf /tmp/blogdy-temp
+
+            echo "Deployment completed successfully!"
+

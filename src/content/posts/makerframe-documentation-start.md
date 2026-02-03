@@ -11,7 +11,7 @@ draft: false
 
 各位好，最近我一直忙着做这个 [https://docs-mf.tasaed.top/](https://docs-mf.tasaed.top/) 网站，目前是绝大部分已经做好了，效果图如下：
 
-[![鹰歌游戏引擎文档](/public/assets/images/posts/other/鹰歌游戏引擎文档.png)](https://docs-mf.tasaed.top/)
+[![鹰歌游戏引擎文档](/blog/assets/images/posts/other/鹰歌游戏引擎文档.png)](https://docs-mf.tasaed.top/)
 
 使用的是 [VuePress](https://vuejs.press) ，主题用的是 [Hope](https://theme-hope.vuejs.press) 。
 

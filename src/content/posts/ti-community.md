@@ -13,4 +13,4 @@ draft: false
 
 [https://tte.tasaed.top](https://tte.tasaed.top/)
 
-![钛元素社区](/public/assets/images/posts/other/钛元素社区.png)
+![钛元素社区](/blog/assets/images/posts/other/钛元素社区.png)

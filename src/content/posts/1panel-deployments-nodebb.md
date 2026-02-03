@@ -19,7 +19,7 @@ draft: false
 
 由于 NodeBB 的镜像放置在 GHCR 上，因此在国内拉取可能会非常慢，那么我们就需要配置一个镜像加速源了，首先打开 1Panel，进入容器的配置页，设置镜像加速，然后填写 `https://ghcr.nju.edu.cn`，填写完成后点击确认：
 
-![配置镜像加速](/public/assets/images/posts/1panel-deployments-nodebb/配置镜像加速.png)
+![配置镜像加速](/blog/assets/images/posts/1panel-deployments-nodebb/配置镜像加速.png)
 
 ## 安装&配置数据库
 
@@ -39,7 +39,7 @@ NodeBB 有一个数据库抽象层（DBAL），允许用户为自己选择的数
 
 在应用商店的数据库页安装 MongoDB 即可：
 
-![安装 MongoDB](/public/assets/images/posts/1panel-deployments-nodebb/安装%20MongoDB.png)
+![安装 MongoDB](/blog/assets/images/posts/1panel-deployments-nodebb/安装%20MongoDB.png)
 
 一般情况下版本选择最新，用户名，密码和端口保持默认即可。
 
@@ -49,11 +49,11 @@ NodeBB 有一个数据库抽象层（DBAL），允许用户为自己选择的数
 
 首先进入容器页，找到 MongoDB 容器，在操作那一栏上点击终端：
 
-![容器终端](/public/assets/images/posts/1panel-deployments-nodebb/容器终端.png)
+![容器终端](/blog/assets/images/posts/1panel-deployments-nodebb/容器终端.png)
 
 随后在命令那一栏选择 bash（或其他 sh ，按照个人习惯来），连接即可：
 
-![bash](/public/assets/images/posts/1panel-deployments-nodebb/bash.png)
+![bash](/blog/assets/images/posts/1panel-deployments-nodebb/bash.png)
 
 一般的 MongoDB 管理通过 MongoDB Shell `mongosh` 完成，这里假设 MongoDB 使用**默认端口** `27017` 并部署在**本地主机**上，在命令行中输入：
 
@@ -63,7 +63,7 @@ mongosh
 
 如果一切正确，命令行中应显示为：
 
-![mongosh](/public/assets/images/posts/1panel-deployments-nodebb/mongosh.png)
+![mongosh](/blog/assets/images/posts/1panel-deployments-nodebb/mongosh.png)
 
 随后我们切换到内置的 `admin` 数据库：
 
@@ -71,7 +71,7 @@ mongosh
 use admin
 ```
 
-![admin](/public/assets/images/posts/1panel-deployments-nodebb/admin.png)
+![admin](/blog/assets/images/posts/1panel-deployments-nodebb/admin.png)
 
 在配置之前我们需要进行身份验证，请将 `<用户>` 更换为安装时填写的用户名，`<密码>` 更换为安装时填写的密码，如果忘记了请在应用商店已安装应用的参数页面查看：
 
@@ -81,7 +81,7 @@ db.auth("<用户>","<密码>")
 
 如果一切正确，则提示 `{ ok: 1 }` ：
 
-![auth](/public/assets/images/posts/1panel-deployments-nodebb/auth.png)
+![auth](/blog/assets/images/posts/1panel-deployments-nodebb/auth.png)
 
 随后我们需要为 NodeBB 创建一个 `nodebb` 数据库，在命令行输入：
 
@@ -129,7 +129,7 @@ Redis 在某些高可扩展性方案中可能很有用，因为它的设计将�
 
 在应用商店的数据库页安装 Redis 即可：
 
-![安装 Redis](/public/assets/images/posts/1panel-deployments-nodebb/安装%20Redis.png)
+![安装 Redis](/blog/assets/images/posts/1panel-deployments-nodebb/安装%20Redis.png)
 
 一般情况下版本选择最新，密码和端口保持默认即可。
 
@@ -156,7 +156,7 @@ Redis 在某些高可扩展性方案中可能很有用，因为它的设计将�
 
 在应用商店的数据库页安装 PostgreSQL 即可：
 
-![安装 PostgreSQL](/public/assets/images/posts/1panel-deployments-nodebb/安装%20PostgreSQL.png)
+![安装 PostgreSQL](/blog/assets/images/posts/1panel-deployments-nodebb/安装%20PostgreSQL.png)
 
 一般情况下版本选择最新，密码和端口保持默认即可。
 
@@ -170,27 +170,27 @@ Redis 在某些高可扩展性方案中可能很有用，因为它的设计将�
 
 首先在应用商店的建站页找到 NodeBB，并点击安装：
 
-![NodeBB](/public/assets/images/posts/1panel-deployments-nodebb/安装%20NodeBB.png)
+![NodeBB](/blog/assets/images/posts/1panel-deployments-nodebb/安装%20NodeBB.png)
 
 默认情况下版本选择最新，端口默认即可，因为安装时需要通过网页安装程序配置，所以必须打开端口外部访问：
 
-![端口外部访问](/public/assets/images/posts/1panel-deployments-nodebb/端口外部访问.png)
+![端口外部访问](/blog/assets/images/posts/1panel-deployments-nodebb/端口外部访问.png)
 
 因为在首次启动时需要安装 npm 模块，因此需要等待一会，在此期间我们可以来到已安装应用页面找到 NodeBB，打开日志：
 
-![NodeBB 日志](/public/assets/images/posts/1panel-deployments-nodebb/NodeBB%20日志.png)
+![NodeBB 日志](/blog/assets/images/posts/1panel-deployments-nodebb/NodeBB%20日志.png)
 
 当日志中输出 `Web installer listening on http://0.0.0.0:4567` 时我们就可以打开网页安装程序了（在上图中，日志的下方有一个服务端口，点击它即可快速打开）：
 
-![网页安装程序](/public/assets/images/posts/1panel-deployments-nodebb/网页安装程序.png)
+![网页安装程序](/blog/assets/images/posts/1panel-deployments-nodebb/网页安装程序.png)
 
 ### 网页安装程序
 
 随后你会进入网页安装程序，请按照下图文字进行配置：
 
-![创建账号](/public/assets/images/posts/1panel-deployments-nodebb/创建账号.png)
+![创建账号](/blog/assets/images/posts/1panel-deployments-nodebb/创建账号.png)
 
-![数据库](/public/assets/images/posts/1panel-deployments-nodebb/数据库.png)
+![数据库](/blog/assets/images/posts/1panel-deployments-nodebb/数据库.png)
 
 一切就绪后就可以点击`Install NodeBB`进行安装。
 
@@ -198,11 +198,11 @@ Redis 在某些高可扩展性方案中可能很有用，因为它的设计将�
 
 安装完成后应显示为：
 
-![论坛](/public/assets/images/posts/1panel-deployments-nodebb/论坛.png)
+![论坛](/blog/assets/images/posts/1panel-deployments-nodebb/论坛.png)
 
 登录你刚才创建的管理员账户，点击右栏的齿轮即可开始配置：
 
-![管理面板](/public/assets/images/posts/1panel-deployments-nodebb/管理面板.png)
+![管理面板](/blog/assets/images/posts/1panel-deployments-nodebb/管理面板.png)
 
 ## 结尾
 
