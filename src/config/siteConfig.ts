@@ -122,10 +122,6 @@ export const siteConfig: SiteConfig = {
 		postsPerPage: 10,
 	},
 
-	// 统计分析
-	analytics: {
-	},
-
 	// 字体配置
 	// 在src/config/fontConfig.ts中配置具体字体
 	font: fontConfig,

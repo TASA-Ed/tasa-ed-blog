@@ -11,10 +11,10 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 	const links: (NavBarLink | LinkPreset)[] = [
 		LinkPreset.Home,
 		LinkPreset.Archive,
-    LinkPreset.cLink,
-    LinkPreset.Friends,
-    LinkPreset.Guestbook,
-    LinkPreset.cAbout
+		LinkPreset.cLink,
+		LinkPreset.Friends,
+		LinkPreset.Guestbook,
+		LinkPreset.cAbout
 	];
 	// 仅返回链接，其它导航搜索相关配置在模块顶层常量中独立导出
 	return { links } as NavBarConfig;
