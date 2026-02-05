@@ -47,19 +47,19 @@ export const LinkPresets: { [key in LinkPreset]: NavBarLink } = {
         name: "GitHub",
         url: "https://github.com/ccd2s",
         external: true,
-        icon: "fa6-brands:github",
+        icon: "fa7-brands:github",
       },
       {
         name: "Bilibili",
         url: "https://space.bilibili.com/1936406435",
         external: true,
-        icon: "fa6-brands:bilibili",
+        icon: "fa7-brands:bilibili",
       },
       {
         name: "QQ群",
         url: "https://qm.qq.com/cgi-bin/qm/qr?k=meZHnANAtGqxFXNHBnad1m1ms3li_Pgj&jump_from=webapi&authKey=YfabJovSWyCBqhrV7B5VWkVSG5hQTsd19AEvjMTFy2jafZ9goaIlJOm9jh7dv6f/",
         external: true,
-        icon: "fa6-brands:qq",
+        icon: "fa7-brands:qq",
       },
     ]
   },
