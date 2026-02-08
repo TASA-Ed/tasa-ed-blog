@@ -44,6 +44,9 @@ jobs:
       - name: Run Astro Check
         run: pnpm astro check
 
+      - name: Run Markdown Lint
+        run: pnpm markdownlint-cli2 "**/*.md"
+
   build:
     strategy:
       matrix:
