@@ -8,7 +8,6 @@ import type { CoverImageConfig } from "../types/config";
  * 随机封面图使用说明：
  * 1. 在文章的 Frontmatter 中添加 image: "api" 即可使用随机图功能
  * 2. 系统会依次尝试所有配置的 API，全部失败后使用备用图片
- * 3. 如果 enable 为 false，则直接不显示封面图（也不会显示备用图）
  *
  * // 文章 Frontmatter 示例：
  * ---
@@ -25,9 +24,9 @@ export const coverImageConfig: CoverImageConfig = {
 		enable: false,
 		// 封面图API列表
 		apis: [],
-    	loading: {
-      		enable: true,
-      		image: "/assets/images/loading.gif"
-    	}
+    	// 是否显示加载动画
+		showLoading: true,
+		// API失败时的回退图片路径（相对于src目录或以/开头的public目录路径）
+		fallback: "assets/images/cover.avif",
 	},
 };

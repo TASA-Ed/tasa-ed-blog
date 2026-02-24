@@ -2,11 +2,11 @@
 import type { CollectionEntry } from "astro:content";
 import { render } from "astro:content";
 import { Icon } from "astro-icon/components";
-import RandomCoverImage from "@/components/common/RandomCoverImage.astro";
+import CoverImage from "@/components/common/CoverImage.astro";
 import PostMetadata from "@/components/layout/PostMeta.astro";
 import I18nKey from "@/i18n/i18nKey";
 import { i18n } from "@/i18n/translation";
-import { processCoverImageSync } from "@/utils/image-utils";
+import { getApiUrlList, processCoverImageSync } from "@/utils/image-utils";
 import { getFileDirFromPath, getTagUrl } from "@/utils/url-utils";
 
 interface Props {
@@ -23,6 +23,7 @@ interface Props {
 	draft: boolean;
 	pinned?: boolean;
 	style: string;
+	loading?: "lazy" | "eager";
 }
 const {
 	entry,
@@ -36,11 +37,13 @@ const {
 	description,
 	pinned,
 	style,
+	loading = "lazy",
 } = Astro.props;
 const className = Astro.props.class;
 
 // 处理随机图：如果image为"api"，则从配置的API获取随机图
 const processedImage = processCoverImageSync(image, entry.id);
+const apiUrls = getApiUrlList(image, entry.id);
 const hasCover =
 	processedImage !== undefined &&
 	processedImage !== null &&
@@ -82,23 +85,8 @@ const { remarkPluginFrontmatter } = await render(entry);
         before:w-1 before:h-5 before:rounded-md before:bg-(--primary)
         before:absolute before:top-[35px] before:left-[18px] before:hidden md:before:block"
     >
-      <!--       {
-        pinned && (
-          <>
-            <Icon
-              name="mdi:pin"
-              class="inline text-(--primary) text-2xl mr-2 -translate-y-0.5"
-            />
-          </>
-        )
-      } -->
-      {title}
-      <Icon
-        class="inline text-[2rem] text-(--primary) md:hidden translate-y-0.5 absolute"
-        name="material-symbols:chevron-right-rounded"
-      />
-      <Icon
-        class="text-(--primary) text-[2rem] transition hidden md:inline absolute translate-y-0.5 opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0"
+      {title}<Icon
+        class="inline text-[2rem] text-(--primary) md:hidden align-middle -translate-y-[2px] -ml-1"
         name="material-symbols:chevron-right-rounded"
       />
     </a>
@@ -121,7 +109,7 @@ const { remarkPluginFrontmatter } = await render(entry);
     <!-- description -->
     <div
       class:list={[
-        "transition text-75 mb-3.5 pr-4 description grow",
+        "transition text-75 mb-3.5 md:pr-4 description grow",
         { "line-clamp-2 md:line-clamp-1": !description },
       ]}
     >
@@ -167,7 +155,7 @@ const { remarkPluginFrontmatter } = await render(entry);
           "w-full md:w-(--coverWidth)",
           "aspect-2/1 md:aspect-auto",
           "relative md:absolute md:top-4 md:bottom-4 md:right-4",
-          "rounded-t-(--radius-large) md:rounded-xl overflow-hidden active:scale-95",
+          "rounded-t-(--radius-large) md:rounded-xl overflow-hidden",
         ]}
       >
         <div class="absolute pointer-events-none z-10 w-full h-full group-hover:bg-black/30 group-active:bg-black/50 transition" />
@@ -177,13 +165,14 @@ const { remarkPluginFrontmatter } = await render(entry);
             class="transition opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-100 text-white text-5xl"
           />
         </div>
-        <RandomCoverImage
+        <CoverImage
           src={processedImage}
           basePath={getFileDirFromPath(entry.filePath || '')}
           alt="Cover Image of the Post"
-          class="w-full h-full"
-          seed={entry.id}
+          class="w-full h-full transition-transform duration-300 group-hover:scale-110 group-active:scale-115"
           preview={true}
+          loading={loading}
+          apiUrls={apiUrls}
         />
       </a>
     )
@@ -196,7 +185,7 @@ const { remarkPluginFrontmatter } = await render(entry);
         aria-label={title}
         class:list={[
           "post-card-enter-btn",
-          "hidden! md:flex! btn-regular w-13",
+          "hidden md:flex btn-regular w-13",
           "absolute right-3 top-3 bottom-3 rounded-xl bg-(--enter-btn-bg)",
           "hover:bg-(--enter-btn-bg-hover) active:bg-(--enter-btn-bg-active) active:scale-95",
         ]}
@@ -220,13 +209,8 @@ const { remarkPluginFrontmatter } = await render(entry);
 
   :global(.grid-mode) .post-card-content {
     width: 100% !important;
-    padding-right: 1rem !important;
     height: auto !important;
     flex-grow: 1 !important;
-  }
-
-  :global(.grid-mode) .no-cover .post-card-content {
-    padding-right: 1rem !important;
   }
 
   :global(.grid-mode) .post-card-image {

@@ -29,9 +29,10 @@ yarn.lock
 # ide
 .idea
 *.iml
+.claude
 
 # docs
-Docs-Firefly/
+Firefly-docs/
 
 cache/
 package/

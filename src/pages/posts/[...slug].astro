@@ -17,7 +17,7 @@ import {
 import { Icon } from "astro-icon/components";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
-import RandomCoverImage from "@/components/common/RandomCoverImage.astro";
+import CoverImage from "@/components/common/CoverImage.astro";
 import PostMetadata from "@/components/layout/PostMeta.astro";
 import SharePoster from "@/components/misc/SharePoster.svelte";
 import { coverImageConfig } from "@/config/coverImageConfig";
@@ -26,7 +26,7 @@ import { profileConfig } from "@/config/profileConfig";
 import { siteConfig } from "@/config/siteConfig";
 import { sponsorConfig } from "@/config/sponsorConfig";
 import { formatDateToYYYYMMDD } from "@/utils/date-utils";
-import { processCoverImageSync } from "@/utils/image-utils";
+import { getApiUrlList, processCoverImageSync } from "@/utils/image-utils";
 import { url } from "@/utils/url-utils";
 
 export async function getStaticPaths() {
@@ -46,8 +46,17 @@ const { Content, headings } = await render(entry);
 
 const { remarkPluginFrontmatter } = await render(entry);
 
+const bannerPostMeta = {
+	title: entry.data.title,
+	published: entry.data.published,
+	updated: entry.data.updated,
+	words: remarkPluginFrontmatter.words,
+	minutes: remarkPluginFrontmatter.minutes,
+};
+
 // 处理随机图：如果image为"api"，则从配置的API获取随机图
 const processedImage = processCoverImageSync(entry.data.image, entry.id);
+const apiUrls = getApiUrlList(entry.data.image, entry.id);
 
 let posterCoverUrl = processedImage;
 if (processedImage) {
@@ -69,6 +78,30 @@ if (processedImage) {
 		if (file) {
 			const img = await file();
 			posterCoverUrl = img.src;
+		}
+	}
+}
+
+// 处理头像URL
+let posterAvatarUrl: string | null = profileConfig.avatar || null;
+if (posterAvatarUrl) {
+	const isLocalAvatar = !(
+		posterAvatarUrl.startsWith("/") ||
+		posterAvatarUrl.startsWith("http") ||
+		posterAvatarUrl.startsWith("https") ||
+		posterAvatarUrl.startsWith("data:")
+	);
+	if (isLocalAvatar) {
+		const files = import.meta.glob<ImageMetadata>("../../**", {
+			import: "default",
+		});
+		const normalizedPath = path
+			.normalize(path.join("../../", posterAvatarUrl))
+			.replace(/\\/g, "/");
+		const file = files[normalizedPath];
+		if (file) {
+			const img = await file();
+			posterAvatarUrl = img.src;
 		}
 	}
 }
@@ -102,6 +135,7 @@ const jsonLd = {
   setOGTypeArticle={true}
   postSlug={entry.id}
   headings={headings}
+  bannerPostMeta={bannerPostMeta}
 >
   <!-- KaTeX 按需加载 - 仅在文章页面 -->
   <KatexManager slot="head" />
@@ -192,13 +226,13 @@ const jsonLd = {
       {
         processedImage && coverImageConfig.enableInPost && (
           <div style="margin-top:1rem;">
-            <RandomCoverImage
+            <CoverImage
               id="post-cover"
               src={processedImage}
               basePath={getFileDirFromPath(entry.filePath || '')}
               class="mb-8 rounded-xl banner-container onload-animation"
-              seed={entry.id}
               preview={false}
+              apiUrls={apiUrls}
             />
           </div>
         )
@@ -253,7 +287,7 @@ const jsonLd = {
                         coverImage={posterCoverUrl}
                         url={Astro.url.href}
                         siteTitle={siteConfig.title}
-                        avatar={profileConfig.avatar}
+                        avatar={posterAvatarUrl}
                       />
                     )
                   }

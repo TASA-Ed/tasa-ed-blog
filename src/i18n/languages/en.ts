@@ -20,6 +20,25 @@ export const en: Translation = {
 	[Key.recentPosts]: "Recent Posts",
 	[Key.postList]: "Post List",
 	[Key.tableOfContents]: "Table of Contents",
+	[Key.music]: "Music",
+	[Key.musicNoPlaying]: "No playing",
+	[Key.musicLyrics]: "Lyrics",
+	[Key.musicVolume]: "Volume",
+	[Key.musicPlayMode]: "Switch Play Mode",
+	[Key.musicPrev]: "Previous",
+	[Key.musicNext]: "Next",
+	[Key.musicPlaylist]: "Playlist",
+	[Key.musicNoLyrics]: "No lyrics available",
+	[Key.musicLoadingLyrics]: "Loading lyrics...",
+	[Key.musicFailedLyrics]: "Failed to load lyrics",
+	[Key.musicNoSongs]: "No songs",
+	[Key.musicError]: "Player Error",
+	[Key.musicPlay]: "Play",
+	[Key.musicPause]: "Pause",
+	[Key.musicProgress]: "Playback Progress",
+	[Key.musicCover]: "Cover",
+	[Key.musicNoCover]: "No cover available",
+	[Key.musicAudioPlayer]: "Audio Player",
 
 	// Announcement
 	[Key.announcement]: "Announcement",
@@ -58,6 +77,8 @@ export const en: Translation = {
 
 	[Key.author]: "Author",
 	[Key.publishedAt]: "Published at",
+	[Key.updatedAt]: "Updated at",
+	[Key.readTime]: "Read time",
 	[Key.license]: "License",
 	[Key.bangumi]: "Bangumi",
 
@@ -184,6 +205,11 @@ export const en: Translation = {
 	[Key.wallpaperBannerMode]: "Banner Wallpaper",
 	[Key.wallpaperOverlayMode]: "Overlay Wallpaper",
 	[Key.wallpaperNoneMode]: "None Wallpaper",
+
+	// Banner Settings
+	[Key.bannerSettings]: "Banner Settings",
+	[Key.bannerTitle]: "Home Banner Title",
+	[Key.wavesAnimation]: "Waves Animation",
 
 	// Post List Layout
 	[Key.postListLayout]: "Post List Layout",

@@ -20,6 +20,25 @@ export const zh_TW: Translation = {
 	[Key.recentPosts]: "最新文章",
 	[Key.postList]: "文章列表",
 	[Key.tableOfContents]: "目錄",
+	[Key.music]: "音樂",
+	[Key.musicNoPlaying]: "暫未播放",
+	[Key.musicLyrics]: "歌詞",
+	[Key.musicVolume]: "音量",
+	[Key.musicPlayMode]: "切換播放模式",
+	[Key.musicPrev]: "上一首",
+	[Key.musicNext]: "下一首",
+	[Key.musicPlaylist]: "列表",
+	[Key.musicNoLyrics]: "暫無歌詞",
+	[Key.musicLoadingLyrics]: "正在加載歌詞...",
+	[Key.musicFailedLyrics]: "歌詞加載失敗",
+	[Key.musicNoSongs]: "暫無歌曲",
+	[Key.musicError]: "播放器錯誤",
+	[Key.musicPlay]: "播放",
+	[Key.musicPause]: "暫停",
+	[Key.musicProgress]: "播放進度",
+	[Key.musicCover]: "封面",
+	[Key.musicNoCover]: "暫無封面",
+	[Key.musicAudioPlayer]: "音頻播放器",
 
 	// 公告欄
 	[Key.announcement]: "公告",
@@ -56,6 +75,8 @@ export const zh_TW: Translation = {
 
 	[Key.author]: "作者",
 	[Key.publishedAt]: "發布於",
+	[Key.updatedAt]: "更新於",
+	[Key.readTime]: "閱讀時長",
 	[Key.license]: "許可協議",
 	[Key.bangumi]: "番組計劃",
 
@@ -178,6 +199,11 @@ export const zh_TW: Translation = {
 	[Key.wallpaperBannerMode]: "橫幅壁紙",
 	[Key.wallpaperOverlayMode]: "全屏透明",
 	[Key.wallpaperNoneMode]: "純色背景",
+
+	// 橫幅設置
+	[Key.bannerSettings]: "橫幅設置",
+	[Key.bannerTitle]: "首頁橫幅標題",
+	[Key.wavesAnimation]: "水波紋動畫",
 
 	// 文章佈局
 	[Key.postListLayout]: "文章佈局",

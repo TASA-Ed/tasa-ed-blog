@@ -7,11 +7,17 @@ import {
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import {
+	getDefaultBannerTitleEnabled,
 	getDefaultHue,
+	getDefaultWavesEnabled,
 	getHue,
+	getStoredBannerTitleEnabled,
 	getStoredWallpaperMode,
+	getStoredWavesEnabled,
+	setBannerTitleEnabled,
 	setHue,
 	setWallpaperMode,
+	setWavesEnabled,
 } from "@utils/setting-utils";
 import { onMount } from "svelte";
 import Icon from "@/components/common/Icon.svelte";
@@ -29,12 +35,37 @@ let isSmallScreen = $state(
 	typeof window !== "undefined" ? window.innerWidth < 1200 : false,
 );
 let isSwitching = $state(false);
+let wavesEnabled = $state(true);
+const defaultWavesEnabled = getDefaultWavesEnabled();
+let bannerTitleEnabled = $state(true);
+const defaultBannerTitleEnabled = getDefaultBannerTitleEnabled();
 
 const isWallpaperSwitchable = backgroundWallpaper.switchable ?? true;
 const allowLayoutSwitch = siteConfig.postListLayout.allowSwitch;
 const showThemeColor = !siteConfig.themeColor.fixed;
+// 是否允许用户切换水波纹动画（只看 switchable 配置）
+const isWavesSwitchable =
+	backgroundWallpaper.banner?.waves?.switchable ?? false;
+// 检查是否启用横幅标题配置
+const isBannerTitleEnabled =
+	backgroundWallpaper.banner?.homeText?.enable ?? false;
+// 是否允许用户切换横幅标题
+const isBannerTitleSwitchable =
+	isBannerTitleEnabled &&
+	(backgroundWallpaper.banner?.homeText?.switchable ?? false);
+// 是否有任何横幅设置可显示（后续添加新设置时在此处添加条件）
+const hasBannerSettings = isWavesSwitchable || isBannerTitleSwitchable;
+// 横幅设置是否全部为默认值（用于控制恢复默认按钮的显隐）
+let bannerSettingsIsDefault = $derived(
+	(!isBannerTitleSwitchable ||
+		bannerTitleEnabled === defaultBannerTitleEnabled) &&
+		(!isWavesSwitchable || wavesEnabled === defaultWavesEnabled),
+);
 const hasAnyContent =
-	showThemeColor || isWallpaperSwitchable || allowLayoutSwitch;
+	showThemeColor ||
+	isWallpaperSwitchable ||
+	allowLayoutSwitch ||
+	hasBannerSettings;
 
 function resetHue() {
 	hue = getDefaultHue();
@@ -54,6 +85,35 @@ function resetLayout() {
 		detail: { layout: defaultLayout },
 	});
 	window.dispatchEvent(event);
+}
+
+function resetWavesEnabled() {
+	wavesEnabled = defaultWavesEnabled;
+	setWavesEnabled(defaultWavesEnabled);
+}
+
+function resetBannerSettings() {
+	if (
+		isBannerTitleSwitchable &&
+		bannerTitleEnabled !== defaultBannerTitleEnabled
+	) {
+		bannerTitleEnabled = defaultBannerTitleEnabled;
+		setBannerTitleEnabled(defaultBannerTitleEnabled);
+	}
+	if (isWavesSwitchable && wavesEnabled !== defaultWavesEnabled) {
+		wavesEnabled = defaultWavesEnabled;
+		setWavesEnabled(defaultWavesEnabled);
+	}
+}
+
+function toggleWavesEnabled() {
+	wavesEnabled = !wavesEnabled;
+	setWavesEnabled(wavesEnabled);
+}
+
+function toggleBannerTitleEnabled() {
+	bannerTitleEnabled = !bannerTitleEnabled;
+	setBannerTitleEnabled(bannerTitleEnabled);
 }
 
 function switchWallpaperMode(newMode: WALLPAPER_MODE) {
@@ -93,6 +153,12 @@ onMount(() => {
 
 	// 从localStorage读取保存的壁纸模式
 	wallpaperMode = getStoredWallpaperMode();
+
+	// 从localStorage读取水波纹动画状态
+	wavesEnabled = getStoredWavesEnabled();
+
+	// 从localStorage读取横幅标题状态
+	bannerTitleEnabled = getStoredBannerTitleEnabled();
 
 	// 从localStorage读取用户偏好布局
 	const savedLayout = localStorage.getItem("postListLayout");
@@ -135,29 +201,31 @@ $effect(() => {
 <div id="display-setting" class="float-panel float-panel-closed absolute transition-all w-80 right-4 px-4 py-2">
     <!-- Theme Color Section -->
     {#if showThemeColor}
-    <div class="flex flex-row gap-2 mt-2 mb-2 items-center justify-between">
-        <div class="flex gap-2 font-bold text-lg text-neutral-900 dark:text-neutral-100 transition relative ml-3
-            before:w-1 before:h-4 before:rounded-md before:bg-(--primary)
-            before:absolute before:-left-3 before:top-1/2 before:-translate-y-1/2"
-        >
-            {i18n(I18nKey.themeColor)}
-            <button aria-label="Reset to Default" class="btn-regular w-7 h-7 rounded-md  active:scale-90"
-                    class:opacity-0={hue === defaultHue} class:pointer-events-none={hue === defaultHue} onclick={resetHue}>
-                <div class="text-(--btn-content)">
-                    <Icon icon="fa7-solid:arrow-rotate-left" class="text-[0.875rem]"></Icon>
+    <div class="mt-2 mb-2">
+        <div class="flex flex-row gap-2 mb-2 items-center justify-between">
+            <div class="flex gap-2 font-bold text-lg text-neutral-900 dark:text-neutral-100 transition relative ml-3
+                before:w-1 before:h-4 before:rounded-md before:bg-(--primary)
+                before:absolute before:-left-3 before:top-1/2 before:-translate-y-1/2"
+            >
+                {i18n(I18nKey.themeColor)}
+                <button aria-label="Reset to Default" class="btn-regular w-7 h-7 rounded-md  active:scale-90"
+                        class:opacity-0={hue === defaultHue} class:pointer-events-none={hue === defaultHue} onclick={resetHue}>
+                    <div class="text-(--btn-content)">
+                        <Icon icon="fa7-solid:arrow-rotate-left" class="text-[0.875rem]"></Icon>
+                    </div>
+                </button>
+            </div>
+            <div class="flex gap-1">
+                <div id="hueValue" class="transition bg-(--btn-regular-bg) w-10 h-7 rounded-md flex justify-center
+                font-bold text-sm items-center text-(--btn-content)">
+                    {hue}
                 </div>
-            </button>
-        </div>
-        <div class="flex gap-1">
-            <div id="hueValue" class="transition bg-(--btn-regular-bg) w-10 h-7 rounded-md flex justify-center
-            font-bold text-sm items-center text-(--btn-content)">
-                {hue}
             </div>
         </div>
-    </div>
-    <div class="w-full h-6 px-1 bg-[oklch(0.80_0.10_0)] dark:bg-[oklch(0.70_0.10_0)] rounded select-none">
-        <input aria-label={i18n(I18nKey.themeColor)} type="range" min="0" max="360" bind:value={hue}
-               class="slider" id="colorSlider" step="5" style="width: 100%">
+        <div class="w-full h-6 px-1 bg-[oklch(0.80_0.10_0)] dark:bg-[oklch(0.70_0.10_0)] rounded select-none">
+            <input aria-label={i18n(I18nKey.themeColor)} type="range" min="0" max="360" bind:value={hue}
+                   class="slider" id="colorSlider" step="5" style="width: 100%">
+        </div>
     </div>
     {/if}
 
@@ -213,6 +281,62 @@ $effect(() => {
                         <Icon icon="material-symbols:check-circle" class="text-[1rem] shrink-0 text-(--primary)"></Icon>
                     {/if}
                 </button>
+            </div>
+        </div>
+    {/if}
+
+    <!-- Banner Settings Section -->
+    {#if wallpaperMode === WALLPAPER_BANNER && hasBannerSettings}
+        <div class="mt-2 mb-2">
+            <div class="flex gap-2 font-bold text-lg text-neutral-900 dark:text-neutral-100 transition relative ml-3 mb-2
+                before:w-1 before:h-4 before:rounded-md before:bg-(--primary)
+                before:absolute before:-left-3 before:top-1/2 before:-translate-y-1/2"
+            >
+                {i18n(I18nKey.bannerSettings)}
+                <button aria-label="Reset to Default" class="btn-regular w-7 h-7 rounded-md  active:scale-90"
+                        class:opacity-0={bannerSettingsIsDefault} class:pointer-events-none={bannerSettingsIsDefault} onclick={resetBannerSettings}>
+                    <div class="text-(--btn-content)">
+                        <Icon icon="fa7-solid:arrow-rotate-left" class="text-[0.875rem]"></Icon>
+                    </div>
+                </button>
+            </div>
+            <div class="space-y-1 px-1">
+                <!-- Banner Title Switch -->
+                {#if isBannerTitleSwitchable}
+                <button
+                    class="w-full btn-regular rounded-md py-2 px-3 flex items-center gap-3 text-left active:scale-95 transition-all relative overflow-hidden"
+                    class:bg-(--btn-regular-bg-hover)={bannerTitleEnabled}
+                    onclick={toggleBannerTitleEnabled}
+                >
+                    <Icon icon="material-symbols:titlecase-rounded" class="text-[1.25rem] shrink-0"></Icon>
+                    <span class="text-sm flex-1">{i18n(I18nKey.bannerTitle)}</span>
+                    <div class="w-10 h-5 rounded-full transition-all duration-200 relative"
+                         class:bg-(--primary)={bannerTitleEnabled}
+                         class:bg-(--btn-regular-bg-active)={!bannerTitleEnabled}>
+                        <div class="absolute top-0.5 w-4 h-4 bg-white rounded-full shadow transition-all duration-200"
+                             class:left-0.5={!bannerTitleEnabled}
+                             class:left-5={bannerTitleEnabled}></div>
+                    </div>
+                </button>
+                {/if}
+                <!-- Waves Animation Switch -->
+                {#if isWavesSwitchable}
+                <button
+                    class="w-full btn-regular rounded-md py-2 px-3 flex items-center gap-3 text-left active:scale-95 transition-all relative overflow-hidden"
+                    class:bg-(--btn-regular-bg-hover)={wavesEnabled}
+                    onclick={toggleWavesEnabled}
+                >
+                    <Icon icon="material-symbols:airwave-rounded" class="text-[1.25rem] shrink-0"></Icon>
+                    <span class="text-sm flex-1">{i18n(I18nKey.wavesAnimation)}</span>
+                    <div class="w-10 h-5 rounded-full transition-all duration-200 relative"
+                         class:bg-(--primary)={wavesEnabled}
+                         class:bg-(--btn-regular-bg-active)={!wavesEnabled}>
+                        <div class="absolute top-0.5 w-4 h-4 bg-white rounded-full shadow transition-all duration-200"
+                             class:left-0.5={!wavesEnabled}
+                             class:left-5={wavesEnabled}></div>
+                    </div>
+                </button>
+                {/if}
             </div>
         </div>
     {/if}

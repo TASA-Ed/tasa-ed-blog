@@ -31,6 +31,7 @@ import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 import mdx from "@astrojs/mdx";
 import searchIndexer from "./src/integrations/searchIndex.mts";
 import rehypeEmailProtection from "./src/plugins/rehype-email-protection.mjs";
+import rehypeExternalLinks from "./src/plugins/rehype-external-links.mjs";
 import rehypeFigure from "./src/plugins/rehype-figure.mjs";
 
 // https://astro.build/config
@@ -39,6 +40,13 @@ export default defineConfig({
 
 	base: "/blog/",
 	trailingSlash: "always",
+
+	// 图像优化配置
+	image: {
+		// 全局响应式布局
+		experimentalLayout: "constrained",
+	},
+
 	integrations: [
 		swup({
 			theme: false,
@@ -46,7 +54,10 @@ export default defineConfig({
 			// the default value `transition-` cause transition delay
 			// when the Tailwind class `transition-all` is used
 			containers: [
+				"#banner-overlay-container",
+				"#banner-dim-container",
 				"#swup-container",
+				"#left-sidebar-dynamic",
 				"#right-sidebar-dynamic",
 				"#floating-toc-wrapper",
 			],
@@ -170,6 +181,7 @@ export default defineConfig({
 			rehypeSlug,
 			rehypeMermaid,
 			rehypeFigure,
+			[rehypeExternalLinks, { siteUrl: siteConfig.site_url }],
 			[rehypeEmailProtection, { method: "base64" }], // 邮箱保护插件，支持 'base64' 或 'rot13'
 			[
 				rehypeComponents,

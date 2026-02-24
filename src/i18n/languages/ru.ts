@@ -20,6 +20,25 @@ export const ru: Translation = {
 	[Key.recentPosts]: "Последние посты",
 	[Key.postList]: "Список постов",
 	[Key.tableOfContents]: "Содержание",
+	[Key.music]: "Музыка",
+	[Key.musicNoPlaying]: "Ничего не воспроизводится",
+	[Key.musicLyrics]: "Текст песни",
+	[Key.musicVolume]: "Громкость",
+	[Key.musicPlayMode]: "Переключить режим воспроизведения",
+	[Key.musicPrev]: "Предыдущий трек",
+	[Key.musicNext]: "Следующий трек",
+	[Key.musicPlaylist]: "Плейлист",
+	[Key.musicNoLyrics]: "Текст песни отсутствует",
+	[Key.musicLoadingLyrics]: "Загрузка текста песни...",
+	[Key.musicFailedLyrics]: "Ошибка загрузки текста песни",
+	[Key.musicNoSongs]: "Нет песен",
+	[Key.musicError]: "Ошибка плеера",
+	[Key.musicPlay]: "Воспроизвести",
+	[Key.musicPause]: "Пауза",
+	[Key.musicProgress]: "Прогресс воспроизведения",
+	[Key.musicCover]: "Обложка",
+	[Key.musicNoCover]: "Нет обложки",
+	[Key.musicAudioPlayer]: "Аудиоплеер",
 
 	// Объявление
 	[Key.announcement]: "Объявление",
@@ -58,6 +77,8 @@ export const ru: Translation = {
 
 	[Key.author]: "Автор",
 	[Key.publishedAt]: "Опубликовано",
+	[Key.updatedAt]: "Обновлено",
+	[Key.readTime]: "Время чтения",
 	[Key.license]: "Лицензия",
 	[Key.bangumi]: "Бангуми",
 
@@ -185,6 +206,11 @@ export const ru: Translation = {
 	[Key.wallpaperBannerMode]: "Баннер обои",
 	[Key.wallpaperOverlayMode]: "Прозрачный",
 	[Key.wallpaperNoneMode]: "Однотонный фон",
+
+	// Настройки баннера
+	[Key.bannerSettings]: "Настройки баннера",
+	[Key.bannerTitle]: "Заголовок главного баннера",
+	[Key.wavesAnimation]: "Анимация волн",
 
 	// Макет списка сообщений
 	[Key.postListLayout]: "Макет списка сообщений",

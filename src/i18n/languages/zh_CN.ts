@@ -20,6 +20,25 @@ export const zh_CN: Translation = {
 	[Key.recentPosts]: "最新文章",
 	[Key.postList]: "文章列表",
 	[Key.tableOfContents]: "目录",
+	[Key.music]: "音乐",
+	[Key.musicNoPlaying]: "暂未播放",
+	[Key.musicLyrics]: "歌词",
+	[Key.musicVolume]: "音量",
+	[Key.musicPlayMode]: "切换播放模式",
+	[Key.musicPrev]: "上一首",
+	[Key.musicNext]: "下一首",
+	[Key.musicPlaylist]: "列表",
+	[Key.musicNoLyrics]: "暂无歌词",
+	[Key.musicLoadingLyrics]: "正在加载歌词...",
+	[Key.musicFailedLyrics]: "歌词加载失败",
+	[Key.musicNoSongs]: "暂无歌曲",
+	[Key.musicError]: "播放器错误",
+	[Key.musicPlay]: "播放",
+	[Key.musicPause]: "暂停",
+	[Key.musicProgress]: "播放进度",
+	[Key.musicCover]: "封面",
+	[Key.musicNoCover]: "暂无封面",
+	[Key.musicAudioPlayer]: "音频播放器",
 
 	// 公告栏
 	[Key.announcement]: "公告",
@@ -56,6 +75,8 @@ export const zh_CN: Translation = {
 
 	[Key.author]: "作者",
 	[Key.publishedAt]: "发布于",
+	[Key.updatedAt]: "更新于",
+	[Key.readTime]: "阅读时长",
 	[Key.license]: "许可协议",
 	[Key.bangumi]: "番组计划",
 
@@ -176,6 +197,11 @@ export const zh_CN: Translation = {
 	[Key.wallpaperBannerMode]: "横幅壁纸",
 	[Key.wallpaperOverlayMode]: "全屏透明",
 	[Key.wallpaperNoneMode]: "纯色背景",
+
+	// 横幅设置
+	[Key.bannerSettings]: "横幅设置",
+	[Key.bannerTitle]: "首页横幅标题",
+	[Key.wavesAnimation]: "水波纹动画",
 
 	// 文章布局
 	[Key.postListLayout]: "文章布局",

@@ -38,7 +38,7 @@ const initialLayoutClass =
   data-grid-columns={gridColumns}
 >
   {
-    page.data.map((entry: PostEntry) => (
+    page.data.map((entry: PostEntry, index: number) => (
       <PostCard
         entry={entry}
         title={entry.data.title}
@@ -51,6 +51,7 @@ const initialLayoutClass =
         description={entry.data.description}
         draft={entry.data.draft}
         pinned={entry.data.pinned}
+        loading={index < 2 ? "eager" : "lazy"}
         class:list="onload-animation post-card-item"
         style={`animation-delay: calc(var(--content-delay) + ${delay++ * interval}ms);`}
       />
@@ -412,6 +413,10 @@ const initialLayoutClass =
     padding: 1rem !important;
   }
 
+  #post-list-container.grid-mode :global(.no-cover .post-card-content) {
+    padding-right: 4.5rem !important;
+  }
+
   #post-list-container.grid-mode :global(.post-card-title) {
     font-size: 1.125rem !important;
     line-height: 1.75rem !important;
@@ -419,10 +424,6 @@ const initialLayoutClass =
   }
 
   #post-list-container.grid-mode :global(.post-card-title::before) {
-    display: none !important;
-  }
-
-  #post-list-container.grid-mode :global(.post-card-enter-btn) {
     display: none !important;
   }
 
