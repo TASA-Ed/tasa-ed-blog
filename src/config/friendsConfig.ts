@@ -119,6 +119,15 @@ export const friendsConfig: FriendLink[] = [
         enabled: true,
     },
     {
+        title: "B84F2246 的节点",
+        imgurl: "https://assets.b84f2246.top/img/avatar.png",
+        desc: "TECH OTAKUS SAVE THE WORLD!",
+        siteurl: "https://blog.b84f2246.top",
+        tags: ["博客"],
+        weight: 9,
+        enabled: true,
+    },
+    {
         title: "鹰歌框架游戏引擎",
         imgurl: "/blog/assets/logos/logo-makerframe.png",
         desc: "鹰歌MakerFrame框架游戏引擎",

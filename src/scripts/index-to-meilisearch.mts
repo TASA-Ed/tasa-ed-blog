@@ -69,7 +69,7 @@ class MeiliSearchIndexer {
 
         return {
           id: idx,
-          // 我不行了，dev 时会变成 /posts/，只能写死了。
+          // 写死
           slug: `/blog/posts/${finalSlug}/`, // 完整的 URL 路径
           title: data.title,
           description: data.description || "",
