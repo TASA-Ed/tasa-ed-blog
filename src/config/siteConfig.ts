@@ -12,10 +12,11 @@ export const siteConfig: SiteConfig = {
 	description:
 		"德二吹风机的博客！分享有趣的技术和疑难杂症解决方式！",
 	keywords: [
-		"Firefly",
-		"Fuwari",
+		"德二吹风机",
+		"TASA-Ed",
 		"Astro",
-		"ACGN",
+		"TASA-Ed Studio",
+		"TASA-Ed 工作室",
 		"博客",
 		"技术博客",
 		"静态博客",
