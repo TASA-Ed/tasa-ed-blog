@@ -7,10 +7,11 @@ import { commentConfig, siteConfig } from "@/config";
 import I18nKey from "@/i18n/i18nKey";
 import { i18n } from "@/i18n/translation";
 import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import { url } from "@utils/url-utils.ts";
 
 // 检查页面是否启用
 if (!siteConfig.pages.guestbook) {
-	return Astro.redirect("/404/");
+	return Astro.redirect(url("/404/");
 }
 
 const guestbookPost = await getEntry("spec", "guestbook");

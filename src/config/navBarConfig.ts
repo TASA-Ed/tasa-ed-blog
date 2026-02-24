@@ -1,9 +1,9 @@
 import {
-  LinkPreset,
-  type NavBarConfig,
-  type NavBarLink,
-  type NavBarSearchConfig,
-  NavBarSearchMethod,
+	LinkPreset,
+	type NavBarConfig,
+	type NavBarLink,
+	type NavBarSearchConfig,
+	NavBarSearchMethod,
 } from "../types/config";
 
 // 根据页面开关动态生成导航栏配置
@@ -12,6 +12,7 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 		LinkPreset.Home,
 		LinkPreset.Archive,
 		LinkPreset.cLink,
+		LinkPreset.Gallery,
 		LinkPreset.Friends,
 		LinkPreset.Guestbook,
 		LinkPreset.cAbout

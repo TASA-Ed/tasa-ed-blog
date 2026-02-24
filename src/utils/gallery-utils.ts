@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import type { GalleryAlbum } from "@/types/config";
+import { url } from "@utils/url-utils.ts";
 
 /**
  * 扫描相册目录中的所有图片文件
@@ -18,7 +19,7 @@ export function scanAlbumPhotos(albumId: string): string[] {
 		const [coverFile] = files.splice(coverIdx, 1);
 		files.unshift(coverFile);
 	}
-	return files.map((f) => `/gallery/${albumId}/${f}`);
+	return files.map((f) => url(`/gallery/${albumId}/${f}`));
 }
 
 /**

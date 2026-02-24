@@ -8,7 +8,7 @@ import { url } from "@/utils/url-utils";
 
 // 检查页面是否启用
 if (!siteConfig.pages.sponsor) {
-	return Astro.redirect("/404/");
+	return Astro.redirect(url("/404/"));
 }
 
 const title = sponsorConfig.title || i18n(I18nKey.sponsorTitle);

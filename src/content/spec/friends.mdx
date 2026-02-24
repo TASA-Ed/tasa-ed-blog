@@ -8,20 +8,21 @@ description: "与优秀的朋友们一起成长"
 {/* ========== 站点信息 ========= */}
 
 export const site = {
-  name: "夏夜流萤",
-  desc: "飞萤之火自无梦的长夜亮起，绽放在终竟的明天。",
-  url: "https://blog.cuteleaf.cn",
-  avatar: "https://q1.qlogo.cn/g?b=qq&nk=7618557&s=640",
-  email: "xiaye@msn.com",
+  name: "德二吹风机的博客",
+  desc: "德二吹风机的博客！分享有趣的技术和疑难杂症解决方式！",
+  url: "https://www.tasaed.top/blog/",
+  avatar: "https://www.tasaed.top/blog/assets/logos/T832.png",
+  email: "tasaedem@outlook.com",
+  type: "博客"
 };
 
 {/* ========= 注意事项 ========== */}
 
 export const notes = [
-  { title: "互换原则", content: "请先将本站添加到您的友链页面，确认后会添加您的友链" },
-  { title: "链接维护", content: "友链网站长期无法访问或内容违规，将会被移除" },
-  { title: "内容要求", content: "内容积极向上，不含有任何含色情/反动/暴力等违法违规内容" },
-  { title: "站点要求", content: "支持 HTTPS，以原创内容为主，能够正常访问且有持续更新" },
+  { title: "互换原则", content: "请先将本站添加到您的友链页面，我会在确认后添加您的友链。" },
+  { title: "链接维护", content: "如发现友链网站长期无法访问或内容违规，将会移除友链。" },
+  { title: "内容要求", content: "内容积极向上，无违法违规/色情/反动/暴力信息。不允许含有病毒、木马、恶意代码、弹出广告以及任何危害他人计算机安全的内容。" },
+  { title: "站点要求", content: "网站能够正常访问，加载速度合理。支持 HTTPS，以原创内容为主，能够正常访问且有持续更新" },
 ];
 
 {/* ============================= */}
@@ -54,6 +55,7 @@ export const notes = [
         {/* 站点信息列表（可复制） */}
         <div class="space-y-2.5 flex-1">
           {[
+            { label: "站点类型", value: site.type },
             { label: "站点名称", value: site.name },
             { label: "站点描述", value: site.desc },
             { label: "站点链接", value: site.url },
@@ -108,7 +110,7 @@ export const notes = [
               <p class="font-semibold text-sm mb-1">评论区留言/发送申请邮件至：<code class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/10 text-[0.7rem]">{site.email}</code></p>
               <p class="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed">申请模板，把内容复制修改后到评论区或邮件中发送</p>
               <div class="relative rounded-lg bg-black/5 dark:bg-white/5 p-4 pr-10 text-[0.7rem] leading-relaxed overflow-x-auto whitespace-pre">
-                <button onclick="navigator.clipboard.writeText('站点名称：您的站点名称\n站点描述：您的站点描述\n站点链接：您的站点链接\n头像链接：您的站点头像');this.querySelectorAll('svg')[0].classList.add('hidden');this.querySelectorAll('svg')[1].classList.remove('hidden');setTimeout(()=>{this.querySelectorAll('svg')[0].classList.remove('hidden');this.querySelectorAll('svg')[1].classList.add('hidden')},1500)" class="absolute top-2 right-2 w-7 h-7 flex items-center justify-center rounded-md bg-black/10 dark:bg-white/10 text-(--btn-content) hover:opacity-80 transition-opacity cursor-pointer">
+                <button onclick="navigator.clipboard.writeText('站点类型: [您的站点类型，列如博客，百科等]\n站点名称: [您的站点名称]\n站点描述: [您的站点描述]\n站点链接: [您的站点链接，仅接受https地址]\n头像链接: [您的头像链接，您可以在下方上传一个图片或者使用一个网址]');this.querySelectorAll('svg')[0].classList.add('hidden');this.querySelectorAll('svg')[1].classList.remove('hidden');setTimeout(()=>{this.querySelectorAll('svg')[0].classList.remove('hidden');this.querySelectorAll('svg')[1].classList.add('hidden')},1500)" class="absolute top-2 right-2 w-7 h-7 flex items-center justify-center rounded-md bg-black/10 dark:bg-white/10 text-(--btn-content) hover:opacity-80 transition-opacity cursor-pointer">
                   <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
                   <svg class="w-3.5 h-3.5 hidden text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                 </button>
