@@ -277,6 +277,14 @@ export const zh_TW: Translation = {
 	[Key.codeCollapsibleExpanded]: "代碼區塊已展開",
 	[Key.codeCollapsibleCollapsed]: "代碼區塊已折疊",
 
+	// 相簿頁面
+	[Key.gallery]: "相簿",
+	[Key.galleryDescription]: "記錄生活中的美好瞬間",
+	[Key.galleryPhotos]: "張照片",
+	[Key.galleryAlbums]: "本相簿",
+	[Key.galleryNoAlbums]: "暫無相簿",
+	[Key.galleryBackToAlbums]: "返回相簿列表",
+
 	// 自定义
 	[Key.cNavLink]: "鏈接",
 	[Key.cNavAbout]: "關於",

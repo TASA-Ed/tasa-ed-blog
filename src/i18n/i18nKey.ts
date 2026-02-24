@@ -271,6 +271,14 @@ enum I18nKey {
 	codeCollapsibleExpanded = "codeCollapsibleExpanded",
 	codeCollapsibleCollapsed = "codeCollapsibleCollapsed",
 
+	// 相册页面
+	gallery = "gallery",
+	galleryDescription = "galleryDescription",
+	galleryPhotos = "galleryPhotos",
+	galleryAlbums = "galleryAlbums",
+	galleryNoAlbums = "galleryNoAlbums",
+	galleryBackToAlbums = "galleryBackToAlbums",	
+
 	// custom
 	cNavAbout = "cNavAbout",
 	cNavLink = "cNavLink",

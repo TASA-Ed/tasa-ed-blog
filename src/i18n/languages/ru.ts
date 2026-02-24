@@ -285,6 +285,14 @@ export const ru: Translation = {
 	[Key.codeCollapsibleExpanded]: "Блок кода развернут",
 	[Key.codeCollapsibleCollapsed]: "Блок кода свернут",
 
+	// Страница галереи
+	[Key.gallery]: "Галерея",
+	[Key.galleryDescription]: "Запечатлеть прекрасные моменты жизни",
+	[Key.galleryPhotos]: "фото",
+	[Key.galleryAlbums]: "альбомов",
+	[Key.galleryNoAlbums]: "Пока нет альбомов",
+	[Key.galleryBackToAlbums]: "Вернуться к альбомам",
+
 	// 自定义
 	[Key.cNavLink]: "Ссылки",
 	[Key.cNavAbout]: "О нас",

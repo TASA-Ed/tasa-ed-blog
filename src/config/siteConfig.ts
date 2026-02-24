@@ -32,6 +32,7 @@ export const siteConfig: SiteConfig = {
 
 	// 页面整体宽度（单位：rem）
 	// 数值越大可以让页面内容区域更宽
+	// 在使用单侧栏边栏时，建议调低一些宽度以获得更好的视觉效果。
 	pageWidth: 100,
 
 	// 网站Card样式配置
@@ -99,9 +100,14 @@ export const siteConfig: SiteConfig = {
 	// 页面开关配置 - 控制特定页面的访问权限，设为false会返回404
 	// bangumi的数据为编译时获取的，所以不是实时数据，请配置bangumi.userId
 	pages: {
-		sponsor: true, // 赞助页面开关
-		guestbook: true, // 留言板页面开关，需要配置评论系统
-		bangumi: false, // 番组计划页面开关，含追番和游戏，dev调试时只获取一页数据，build才会获取全部数据
+		// 赞助页面开关
+		sponsor: true,
+		// 留言板页面开关，需要配置评论系统
+		guestbook: true,
+		// 番组计划页面开关，含追番、游戏、书籍和音乐，dev调试时只获取一页数据，build才会获取全部数据
+		bangumi: false,
+		// 相册页面开关
+		gallery: true,
 	},
 
 	// 分类导航栏开关，在首页和归档页顶部显示分类快捷导航
@@ -118,10 +124,8 @@ export const siteConfig: SiteConfig = {
 		grid: {
 			// 是否开启瀑布流布局，同时有封面图和无封面图的混合文章推荐开启
 			masonry: true,
-			// 网格模式列数：2 或 3
-			// 2列是默认模式，在任何侧边栏配置下均可生效
-			// 3列模式仅在单侧边栏（或无侧边栏）时生效，
-			columns: 2,
+			// 网格模式卡片最小宽度(px)，浏览器根据容器宽度自动计算列数，默认 280
+			columnWidth: 320,
 		},
 	},
 

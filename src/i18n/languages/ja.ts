@@ -283,6 +283,14 @@ export const ja: Translation = {
 	[Key.codeCollapsibleExpanded]: "コードブロックが展開されました",
 	[Key.codeCollapsibleCollapsed]: "コードブロックが折りたたまれました",
 
+	// ギャラリーページ
+	[Key.gallery]: "ギャラリー",
+	[Key.galleryDescription]: "人生の美しい瞬間を記録する",
+	[Key.galleryPhotos]: "枚の写真",
+	[Key.galleryAlbums]: "冊のアルバム",
+	[Key.galleryNoAlbums]: "アルバムがありません",
+	[Key.galleryBackToAlbums]: "アルバム一覧に戻る",
+
 	// 自定义
 	[Key.cNavLink]: "リンク集",
 	[Key.cNavAbout]: "ついて",
