@@ -11,13 +11,13 @@ import { url } from "@utils/url-utils.ts";
 
 // 检查页面是否启用
 if (!siteConfig.pages.guestbook) {
-	return Astro.redirect(url("/404/");
+	return Astro.redirect(url("/404/"));
 }
 
 const guestbookPost = await getEntry("spec", "guestbook");
 
 if (!guestbookPost) {
-	throw new Error("guestbook page content not found");
+  throw new Error("guestbook page content not found");
 }
 
 const { Content } = await render(guestbookPost);
@@ -51,7 +51,7 @@ const description = i18n(I18nKey.guestbookDescription);
           </p>
         )}
       </div>
-      
+
       <Markdown class="mt-2">
         <Content />
       </Markdown>
