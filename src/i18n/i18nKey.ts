@@ -277,7 +277,16 @@ enum I18nKey {
 	galleryPhotos = "galleryPhotos",
 	galleryAlbums = "galleryAlbums",
 	galleryNoAlbums = "galleryNoAlbums",
-	galleryBackToAlbums = "galleryBackToAlbums",	
+	galleryBackToAlbums = "galleryBackToAlbums",
+
+	// 密码保护
+	passwordProtected = "passwordProtected",
+	passwordProtectedDesc = "passwordProtectedDesc",
+	passwordHint = "passwordHint",
+	passwordPlaceholder = "passwordPlaceholder",
+	passwordSubmit = "passwordSubmit",
+	passwordError = "passwordError",
+	passwordProtectedRss = "passwordProtectedRss",
 
 	// custom
 	cNavAbout = "cNavAbout",

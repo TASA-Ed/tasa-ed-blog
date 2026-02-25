@@ -291,6 +291,17 @@ export const ja: Translation = {
 	[Key.galleryNoAlbums]: "アルバムがありません",
 	[Key.galleryBackToAlbums]: "アルバム一覧に戻る",
 
+	// パスワード保護
+	[Key.passwordProtected]: "パスワード保護",
+	[Key.passwordProtectedDesc]:
+		"この記事はパスワードで保護されています。内容を表示するにはパスワードを入力してください。",
+	[Key.passwordHint]: "ヒント",
+	[Key.passwordPlaceholder]: "パスワードを入力",
+	[Key.passwordSubmit]: "ロック解除",
+	[Key.passwordError]: "パスワードが間違っています。もう一度お試しください。",
+	[Key.passwordProtectedRss]:
+		"この記事は暗号化されています。ウェブサイトにアクセスしてご覧ください。",
+
 	// 自定义
 	[Key.cNavLink]: "リンク集",
 	[Key.cNavAbout]: "ついて",
