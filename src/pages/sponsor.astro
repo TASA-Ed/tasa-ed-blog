@@ -28,9 +28,9 @@ const showSponsorsList = sponsorConfig.showSponsorsList !== false;
             <div class="h-8 w-8 rounded-lg bg-(--primary) flex items-center justify-center text-white dark:text-black/70">
                 <Icon name="material-symbols:favorite" class="text-[1.5rem]"></Icon>
             </div>
-          <h1 class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
+          <div class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
             {title}
-          </h1>
+          </div>
         </div>
         {description && (
           <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4">
@@ -54,7 +54,7 @@ const showSponsorsList = sponsorConfig.showSponsorsList !== false;
       <div class="mb-8">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     {enabledMethods.map((method) => (
-                      <div class="flex flex-col items-center p-6 rounded-lg bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 hover:border-(--primary) transition-colors">
+                      <div class="flex flex-col items-center card-base p-6 rounded-lg bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 hover:border-(--primary) transition-colors">
                         <!-- 图标和名称 -->
                         <div class="flex items-center gap-3 mb-4">
                           {method.icon && (

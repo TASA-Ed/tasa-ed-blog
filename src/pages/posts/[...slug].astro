@@ -9,7 +9,7 @@ import License from "@components/misc/License.astro";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
-import { getSortedPosts } from "@utils/content-utils";
+import { getRelatedPosts, getSortedPosts } from "@utils/content-utils";
 import {
 	getFileDirFromPath,
 	getPostUrlBySlug,
@@ -20,6 +20,7 @@ import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import CoverImage from "@/components/common/CoverImage.astro";
 import PostMetadata from "@/components/layout/PostMeta.astro";
+import RecommendedPost from "@/components/misc/RecommendedPost.astro";
 import SharePoster from "@/components/misc/SharePoster.svelte";
 import { coverImageConfig } from "@/config/coverImageConfig";
 import { licenseConfig } from "@/config/licenseConfig";
@@ -126,6 +127,8 @@ const jsonLd = {
 		: siteConfig.lang.replace("_", "-"),
 	// TODO include cover image here
 };
+
+const relatedPosts = await getRelatedPosts(entry, 5);
 ---
 
 <MainGridLayout
@@ -190,6 +193,18 @@ const jsonLd = {
             }
           </div>
         </div>
+        {entry.data.password && (
+          <div class="flex flex-row items-center">
+            <div
+              class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2"
+            >
+              <Icon name="material-symbols:lock-outline" />
+            </div>
+            <div class="text-sm">
+              {i18n(I18nKey.postEncrypted)}
+            </div>
+          </div>
+        )}
       </div>
 
       <!-- title -->
@@ -472,49 +487,37 @@ const jsonLd = {
     class="flex flex-col md:flex-row justify-between mb-4 gap-4 overflow-hidden w-full"
   >
     <a
-      href={entry.data.nextSlug ? getPostUrlBySlug(entry.data.nextSlug) : "#"}
-      class:list={[
-        "w-full font-bold overflow-hidden active:scale-95",
-        { "pointer-events-none": !entry.data.nextSlug },
-      ]}
+      href={entry.data.nextSlug ? getPostUrlBySlug(entry.data.nextSlug) : url("/")}
+      class="w-full font-bold overflow-hidden active:scale-95"
     >
-      {
-        entry.data.nextSlug && (
-          <div class="btn-card rounded-2xl w-full h-15 max-w-full px-4 flex items-center justify-start! gap-4">
-            <Icon
-              name="material-symbols:chevron-left-rounded"
-              class="text-[2rem] text-(--primary)"
-            />
-            <div class="overflow-hidden transition text-ellipsis whitespace-nowrap max-w-[calc(100%-3rem)] text-black/75 dark:text-white/75">
-              {entry.data.nextTitle}
-            </div>
-          </div>
-        )
-      }
+      <div class="btn-card rounded-2xl w-full h-15 max-w-full px-4 flex items-center justify-start! gap-4">
+        <Icon
+          name="material-symbols:chevron-left-rounded"
+          class="text-[2rem] text-(--primary)"
+        />
+        <div class="overflow-hidden transition text-ellipsis whitespace-nowrap max-w-[calc(100%-3rem)] text-black/75 dark:text-white/75">
+          {entry.data.nextTitle || i18n(I18nKey.home)}
+        </div>
+      </div>
     </a>
 
     <a
-      href={entry.data.prevSlug ? getPostUrlBySlug(entry.data.prevSlug) : "#"}
-      class:list={[
-        "w-full font-bold overflow-hidden active:scale-95",
-        { "pointer-events-none": !entry.data.prevSlug },
-      ]}
+      href={entry.data.prevSlug ? getPostUrlBySlug(entry.data.prevSlug) : url("/")}
+      class="w-full font-bold overflow-hidden active:scale-95"
     >
-      {
-        entry.data.prevSlug && (
-          <div class="btn-card rounded-2xl w-full h-15 max-w-full px-4 flex items-center justify-end! gap-4">
-            <div class="overflow-hidden transition text-ellipsis whitespace-nowrap max-w-[calc(100%-3rem)] text-black/75 dark:text-white/75">
-              {entry.data.prevTitle}
-            </div>
-            <Icon
-              name="material-symbols:chevron-right-rounded"
-              class="text-[2rem] text-(--primary)"
-            />
-          </div>
-        )
-      }
+      <div class="btn-card rounded-2xl w-full h-15 max-w-full px-4 flex items-center justify-end! gap-4">
+        <div class="overflow-hidden transition text-ellipsis whitespace-nowrap max-w-[calc(100%-3rem)] text-black/75 dark:text-white/75">
+          {entry.data.prevTitle || i18n(I18nKey.home)}
+        </div>
+        <Icon
+          name="material-symbols:chevron-right-rounded"
+          class="text-[2rem] text-(--primary)"
+        />
+      </div>
     </a>
   </div>
+
+  <RecommendedPost relatedPosts={relatedPosts} currentPostId={entry.id} />
 
   <!-- 评论 -->
   {entry.data.comment && !entry.data.password && <Comment post={entry} />}

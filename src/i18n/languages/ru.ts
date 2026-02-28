@@ -201,6 +201,15 @@ export const ru: Translation = {
 	// Закреплено
 	[Key.pinned]: "Закреплено",
 
+	// Похожие статьи
+	[Key.relatedPosts]: "Похожие статьи",
+	[Key.randomPosts]: "Случайные статьи",
+	[Key.smartRecommend]: "Умный",
+	[Key.randomRecommend]: "Случайный",
+
+	// Зашифровано
+	[Key.postEncrypted]: "Эта статья зашифрована",
+
 	// Режим обоев
 	[Key.wallpaperMode]: "Режим обоев",
 	[Key.wallpaperBannerMode]: "Баннер обои",
