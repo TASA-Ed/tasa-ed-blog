@@ -45,7 +45,7 @@ export const friendsConfig: FriendLink[] = [
     },
     {
         title: "新 · 都在",
-        imgurl: "/blog/assets/logos/friends/xindu_logo.png",
+        imgurl: "/blog/assets/logos/friends/xindu_logo.avif",
         desc: "Carol小屋",
         siteurl: "https://blog.xindu.site/",
         tags: ["博客"],
@@ -72,7 +72,7 @@ export const friendsConfig: FriendLink[] = [
     },
     {
         title: "Liu Zijian's Blog",
-        imgurl: "/blog/assets/logos/friends/liuzijian_logo.jpg",
+        imgurl: "/blog/assets/logos/friends/liuzijian_logo.avif",
         desc: "Keep on going never give up",
         siteurl: "https://blog.liuzijian.com",
         tags: ["博客"],
@@ -135,7 +135,7 @@ export const friendsConfig: FriendLink[] = [
     },
     {
         title: "鹰歌框架游戏引擎",
-        imgurl: "/blog/assets/logos/logo-makerframe.png",
+        imgurl: "/blog/assets/logos/logo-makerframe.avif",
         desc: "鹰歌MakerFrame框架游戏引擎",
         siteurl: "https://gitee.com/leamus/MakerFrame/",
         tags: ["其他"],

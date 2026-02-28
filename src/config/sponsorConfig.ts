@@ -25,7 +25,7 @@ export const sponsorConfig: SponsorConfig = {
 			name: "微信",
 			icon: "fa7-brands:weixin",
 			// 收款码图片路径
-			qrCode: "/assets/images/sponsor/wechat.png",
+			qrCode: "/assets/images/sponsor/wechat.webp",
 			link: "",
 			description: "使用 微信 扫码赞助",
 			enabled: true,
