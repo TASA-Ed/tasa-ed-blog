@@ -11,4 +11,12 @@ export const commentConfig: CommentConfig = {
 		visitorCount: true, // 文章访问量统计功能。
 	},
 
+	waline: {
+		serverURL: "http://localhost:8089",
+		emoji: true,
+		reaction: true,
+		search: false,
+		recaptchaV3Key: "6LdVtPgrAAAAAJtpGCnbua8kHO7G5T-xrStf6fnY"
+	}
+
 };

@@ -6,6 +6,7 @@ import type {
 	WALLPAPER_NONE,
 	WALLPAPER_OVERLAY,
 } from "../constants/constants";
+import type { WalineEmojiInfo, WalineEmojiPresets, WalineSearchOptions } from "@waline/client";
 
 export type SiteConfig = {
 	title: string;
@@ -263,7 +264,10 @@ export type CommentConfig = {
 	waline?: {
 		serverURL: string;
 		lang?: string;
-		emoji: string[];
+		emoji?: (WalineEmojiInfo | WalineEmojiPresets)[] | boolean;
+		reaction?: string[] | boolean;
+		search?: WalineSearchOptions | boolean;
+		recaptchaV3Key?: string;
 		login?: "enable" | "force" | "disable";
 		visitorCount?: boolean; // 是否统计访问量，true 启用访问量，false 关闭
 	};
