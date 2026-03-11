@@ -23,6 +23,7 @@
 			reaction: commentConfig.waline?.reaction,
 			search: commentConfig.waline?.search,
 			recaptchaV3Key: commentConfig.waline?.recaptchaV3Key,
+			requiredMeta: ['nick', 'mail'],
 			el: "#waline",
 			path: path,
 			dark: "html.dark",
