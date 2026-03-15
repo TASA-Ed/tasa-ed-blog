@@ -137,6 +137,15 @@ export const friendsConfig: FriendLink[] = [
         enabled: true,
     },
     {
+        title: "yyyyt 的文档站",
+        imgurl: "https://cf-img.yyyyt.top/avatar/avatar",
+        desc: "Bad or Worse!",
+        siteurl: "https://docs.yyyyt.top",
+        tags: ["博客"],
+        weight: 9,
+        enabled: true,
+    },
+    {
         title: "鹰歌框架游戏引擎",
         imgurl: "/blog/assets/logos/logo-makerframe.avif",
         desc: "鹰歌MakerFrame框架游戏引擎",
