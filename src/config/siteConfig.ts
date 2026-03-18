@@ -68,12 +68,14 @@ export const siteConfig: SiteConfig = {
 		},
 		// 导航栏标题
 		title: "德二吹风机的博客",
-		// 全宽导航栏，导航栏是否占满屏幕宽度，true：占满，false：不占满
+		// 全宽导航栏，导航栏是否占满屏幕宽度
 		widthFull: false,
 		// 导航菜单对齐方式，left：左对齐，center：居中
 		menuAlign: "center",
 		// 导航栏图标和标题是否跟随主题色
 		followTheme: false,
+		// 导航栏是否固定在顶部并始终可见
+		stickyNavbar: true,
 	},
 
 	// 站点开始日期，用于统计运行天数
@@ -104,6 +106,8 @@ export const siteConfig: SiteConfig = {
 	// 页面开关配置 - 控制特定页面的访问权限，设为false会返回404
 	// bangumi的数据为编译时获取的，所以不是实时数据，请配置bangumi.userId
 	pages: {
+		// 友链页面开关
+		friends: true,
 		// 赞助页面开关
 		sponsor: true,
 		// 留言板页面开关，需要配置评论系统
