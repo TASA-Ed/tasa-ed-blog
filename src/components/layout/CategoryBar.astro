@@ -150,11 +150,14 @@ const archiveUrl = url("/archive/");
       getCategoryBarState(bar, currentUrl);
 
     // 在首页、首页分页和归档页显示
+    const wrapper = document.getElementById("category-bar-wrapper");
+    const target = (wrapper || bar) as HTMLElement;
+    target.style.visibility = "";
     if (!isHome && !isHomePagination && !isArchive) {
-      bar.style.display = "none";
+      target.style.display = "none";
       return;
     }
-    bar.style.display = "";
+    target.style.display = "";
 
     const pills = bar.querySelectorAll<HTMLAnchorElement>(".category-pill");
     pills.forEach((pill) => pill.removeAttribute("data-active"));
@@ -284,4 +287,29 @@ const archiveUrl = url("/archive/");
   document.addEventListener("swup:contentReplaced", () => {
     updateCategoryBar();
   });
+
+  // 在 Swup 导航时控制 CategoryBar 显示/隐藏
+  function setupSwupEarlyUpdate() {
+    if (!window.swup?.hooks) return;
+    // visit:start: 仅用 visibility 隐藏，保留占位避免内容跳动
+    window.swup.hooks.on("visit:start", (visit: any) => {
+      const bar = document.getElementById("category-bar");
+      if (!bar) return;
+      const targetUrl = new URL(visit.to.url, window.location.href);
+      const { isHome, isHomePagination, isArchive } = getCategoryBarState(bar, targetUrl);
+      const wrapper = document.getElementById("category-bar-wrapper");
+      const target = (wrapper || bar) as HTMLElement;
+      if (!isHome && !isHomePagination && !isArchive) {
+        target.style.visibility = "hidden";
+      } else {
+        target.style.visibility = "";
+        target.style.display = "";
+      }
+    });
+  }
+  if (window.swup?.hooks) {
+    setupSwupEarlyUpdate();
+  } else {
+    document.addEventListener("swup:enable", setupSwupEarlyUpdate);
+  }
 </script>
