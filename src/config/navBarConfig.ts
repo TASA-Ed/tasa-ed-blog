@@ -23,8 +23,7 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 
 // 导航搜索配置
 export const navBarSearchConfig: NavBarSearchConfig = {
-	// 可选：PageFind， MeiliSearch
-	// 选择PageFind时：NavBarSearchMethod.PageFind,
+	// 可选：MeiliSearch
 	// 选择MeiliSearch时：NavBarSearchMethod.MeiliSearch,
 	method: NavBarSearchMethod.MeiliSearch,
 	// 当选择 MeiliSearch 时的配置

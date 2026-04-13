@@ -13,6 +13,7 @@
 	}: Props = $props();
 
 	let walineInstance;
+	let el;
 
 	onMount(() => {
 		walineInstance = init({
@@ -35,11 +36,15 @@
 	});
 
 	onDestroy(() => {
-		walineInstance?.destroy();
+		// 只有节点仍在 DOM 树中时才 destroy，否则 swup 已经处理了
+		if (walineInstance && document.body.contains(el)) {
+			walineInstance?.destroy();
+		}
+		walineInstance = null;
 	});
 </script>
 
-<div id="waline"></div>
+<div id="waline" bind:this={el}></div>
 
 <style>
     :root {

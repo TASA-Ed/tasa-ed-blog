@@ -2,7 +2,7 @@
   import I18nKey from "@i18n/i18nKey";
   import { i18n } from "@i18n/translation";
   import { navigateToPage } from "@utils/navigation-utils";
-  import { MeiliSearch } from "meilisearch";
+  import { Meilisearch } from "meilisearch";
   import { onDestroy, onMount } from "svelte";
   import Icon from "@/components/common/Icon.svelte";
   import type { SearchResult } from "@/global";
@@ -18,7 +18,7 @@
   let result: SearchResult[] = [];
   let isSearching = false;
   let initialized = false;
-  let meiliClient: MeiliSearch | null = null;
+  let meiliClient: Meilisearch | null = null;
   let debounceTimer: ReturnType<typeof setTimeout> | undefined;
   let activeInput: "desktop" | "mobile" | null = null;
   let isPanelOpen = false;
@@ -134,7 +134,7 @@
   // --- Initialization onMount ---
   onMount(() => {
     try {
-      meiliClient = new MeiliSearch({
+      meiliClient = new Meilisearch({
         host: meiliSearchConfig.PUBLIC_MEILI_HOST,
         apiKey: meiliSearchConfig.PUBLIC_MEILI_SEARCH_KEY,
       });

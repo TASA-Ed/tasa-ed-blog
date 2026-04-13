@@ -4,7 +4,7 @@
   import { onDestroy, onMount } from "svelte";
   import Icon from "@/components/common/Icon.svelte";
   import type { SearchResult } from "@/global";
-  import { MeiliSearch } from "meilisearch";
+  import { Meilisearch } from "meilisearch";
   import type { MeiliSearchConfig } from "@/types/config.ts";
 
   // --- Props ---
@@ -17,7 +17,7 @@
   let results: SearchResult[] = [];
   let isSearching = false;
   let initialized = false;
-  let meiliClient: MeiliSearch | null = null;
+  let meiliClient: Meilisearch | null = null;
   let debounceTimer: ReturnType<typeof setTimeout> | undefined;
   let requestId = 0;
 
@@ -93,7 +93,7 @@
   onMount(() => {
     const initialize = () => {
       try {
-        meiliClient = new MeiliSearch({
+        meiliClient = new Meilisearch({
           host: meiliSearchConfig.PUBLIC_MEILI_HOST,
           apiKey: meiliSearchConfig.PUBLIC_MEILI_SEARCH_KEY,
         });

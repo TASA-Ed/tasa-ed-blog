@@ -3,11 +3,11 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { glob } from "glob";
 import matter from "gray-matter";
-import { MeiliSearch } from "meilisearch";
+import { Meilisearch } from "meilisearch";
 import { navBarSearchConfig } from "../config/index.ts";
 
 class MeiliSearchIndexer {
-  private client: MeiliSearch;
+  private client: Meilisearch;
 
   constructor(
     private MEILI_HOST: string,
@@ -27,7 +27,7 @@ class MeiliSearchIndexer {
       );
       process.exit(1);
     }
-    this.client = new MeiliSearch({
+    this.client = new Meilisearch({
       host: this.MEILI_HOST,
       apiKey: this.MEILI_MASTER_KEY,
     });
