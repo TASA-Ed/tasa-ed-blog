@@ -149,6 +149,15 @@ export const friendsConfig: FriendLink[] = [
         enabled: true,
     },
     {
+        title: "FayeDerolex",
+        imgurl: "http://202.189.6.122:28800/files/2026/04/22/af449258-af7f-4f91-816a-08f3f1ac7785.png",
+        desc: "一个濒临死亡的沙漠",
+        siteurl: "https://fayederolex.top/",
+        tags: ["博客"],
+        weight: 9,
+        enabled: true,
+    },
+    {
         title: "鹰歌框架游戏引擎",
         imgurl: "/blog/assets/logos/logo-makerframe.avif",
         desc: "鹰歌MakerFrame框架游戏引擎",
