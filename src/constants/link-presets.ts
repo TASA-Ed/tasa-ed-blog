@@ -21,12 +21,12 @@ export const LinkPresets: { [key in LinkPreset]: NavBarLink } = {
 	[LinkPreset.Friends]: {
 		name: i18n(I18nKey.friends),
 		url: "/friends/",
-		icon: "material-symbols:group",
+		icon: "fa7-solid:user-group",
 	},
 	[LinkPreset.Sponsor]: {
 		name: i18n(I18nKey.sponsor),
 		url: "/sponsor/",
-		icon: "material-symbols:favorite",
+		icon: "fa7-solid:heart",
 	},
 	[LinkPreset.Guestbook]: {
 		name: i18n(I18nKey.guestbook),
