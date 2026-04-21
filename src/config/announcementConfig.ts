@@ -16,7 +16,7 @@ export const announcementConfig: AnnouncementConfig = {
 		// 链接文本
 		text: "了解更多",
 		// 链接 URL
-		url: "/about/",
+		url: "/blog/about/",
 		// 内部链接
 		external: true,
 	},

@@ -518,7 +518,7 @@ function portal(node: HTMLElement) {
             <Icon icon="material-symbols:check" size="md" />
             <span>{i18n(I18nKey.copied)}</span>
           {:else}
-            <Icon icon="material-symbols:link" size="md" />
+            <Icon icon="material-symbols:link" is:inline size="md" />
             <span>{i18n(I18nKey.copyLink)}</span>
           {/if}
         </button>
