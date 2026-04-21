@@ -20,14 +20,12 @@ const config = {
     <!-- 挂载点 -->
     <div id="artalk" style="--at-color-main: var(--primary); --at-color-bg: var(--card-bg); --at-color-border: var(--line-divider);"></div>
 
-    <!-- 引入 Artalk 样式与 JS -->
-    <link href="https://api.tasaed.top/artalk/Artalk.css" rel="stylesheet">
-    <!--<script src="https://talk.tasaed.top/dist/Artalk.js"></script>-->
+    <!-- 引入 Artalk 样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/artalk/dist/Artalk.css"/>
 
     <!-- 脚本逻辑 -->
     <script type="module" is:inline define:vars={{config}}>
-        // 2.9.1
-        import Artalk from 'https://api.tasaed.top/artalk/Artalk291.mjs';
+        import Artalk from 'https://unpkg.com/artalk/dist/Artalk.mjs';
 
         // 初始化 Artalk
         const artalk = Artalk.init(config);
