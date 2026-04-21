@@ -131,6 +131,10 @@ const jsonLd = {
 const relatedPosts = await getRelatedPosts(entry, 5);
 ---
 
+<div aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;">
+  <Icon name="fa7-solid:heart" />
+  <Icon name="material-symbols:chevron-right-rounded" />
+</div>
 <MainGridLayout
   banner={processedImage}
   title={entry.data.title}
@@ -270,10 +274,7 @@ const relatedPosts = await getRelatedPosts(entry, 5);
                     <div class="flex items-center gap-3 flex-1">
                       <div class="h-12 w-12 rounded-lg bg-(--primary) flex items-center justify-center text-white dark:text-black/70 shrink-0">
                         <Icon
-                          name={sponsorConfig.showButtonInPost &&
-                          siteConfig.pages.sponsor
-                            ? "fa7-solid:heart"
-                            : "material-symbols:share"}
+                          name="fa7-solid:heart"
                           class="text-2xl"
                         />
                       </div>
@@ -358,10 +359,7 @@ const relatedPosts = await getRelatedPosts(entry, 5);
                     <div class="flex items-center gap-3 flex-1">
                       <div class="h-12 w-12 rounded-lg bg-(--primary) flex items-center justify-center text-white dark:text-black/70 shrink-0">
                         <Icon
-                          name={sponsorConfig.showButtonInPost &&
-                          siteConfig.pages.sponsor
-                            ? "fa7-solid:heart"
-                            : "material-symbols:share"}
+                          name="fa7-solid:heart"
                           class="text-2xl"
                         />
                       </div>
