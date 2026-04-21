@@ -3,6 +3,7 @@ import QRCode from "qrcode";
 import { onMount } from "svelte";
 import Icon from "@/components/common/Icon.svelte";
 import I18nKey from "../../i18n/i18nKey";
+import { url as resolveUrl } from "@/utils/url-utils.ts"
 import { i18n } from "../../i18n/translation";
 
 export let title: string;
@@ -121,7 +122,7 @@ async function generatePoster() {
 		const [qrImg, coverImg, avatarImg] = await Promise.all([
 			loadImage(qrCodeUrl),
 			coverImage ? loadImage(coverImage) : Promise.resolve(null),
-			avatar ? loadImage(avatar) : Promise.resolve(null),
+			avatar ? loadImage(resolveUrl(avatar)) : Promise.resolve(null),
 		]);
 
 		// 2. Setup Canvas for measuring

@@ -42,7 +42,7 @@ export const friendsConfig: FriendLink[] = [
     },
     {
         title: "张洪Heo",
-        imgurl: "https://bu.dusays.com/2022/12/28/63ac2812183aa.png",
+        imgurl: "/blog/assets/logos/friends/zhheo_logo.avif",
         desc: "分享设计与科技生活",
         siteurl: "https://blog.zhheo.com/",
         tags: ["博客"],
@@ -150,7 +150,7 @@ export const friendsConfig: FriendLink[] = [
     },
     {
         title: "FayeDerolex",
-        imgurl: "http://202.189.6.122:28800/files/2026/04/22/af449258-af7f-4f91-816a-08f3f1ac7785.png",
+        imgurl: "/blog/assets/logos/friends/fayederolex_logo.avif",
         desc: "一个濒临死亡的沙漠",
         siteurl: "https://fayederolex.top/",
         tags: ["博客"],

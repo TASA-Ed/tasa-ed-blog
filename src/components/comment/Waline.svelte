@@ -44,7 +44,9 @@
 	});
 </script>
 
-<div id="waline" bind:this={el}></div>
+<div class="relative w-full">
+  <div id="waline" bind:this={el}></div>
+</div>
 
 <style>
     :root {

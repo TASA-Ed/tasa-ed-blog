@@ -29,11 +29,17 @@
 - SCP 2.5D
 - Mi计划
 - 鹰歌引擎文档
+- NanoYunhu
+- MultiLogin-Bukkit
 - ...
 
 ::GitHub{repo="TASA-Ed/MakerFrameDocs"}
 
 ::GitHub{repo="TASA-Ed/scp25d"}
+
+::GitHub{repo="TASA-Ed/nanoyunhu"}
+
+::GitHub{repo="ccd2s/MultiLogin-Bukkit"}
 
 ...
 
