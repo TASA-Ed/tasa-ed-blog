@@ -17,7 +17,7 @@ jobs:
   check:
     strategy:
       matrix:
-        node: [ 24 ]
+        node: [ 26 ]
     runs-on: ubuntu-latest
     name: Astro Check for Node.js ${{ matrix.node }}
     steps:
@@ -25,10 +25,10 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
         with:
           run_install: false # Disable auto-install
-          version: 10
+          version: 11
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
@@ -50,7 +50,7 @@ jobs:
   build:
     strategy:
       matrix:
-        node: [ 24 ]
+        node: [ 26 ]
     runs-on: ubuntu-latest
     name: Astro Build for Node.js ${{ matrix.node }} # Corrected job name
     steps:
@@ -61,10 +61,10 @@ jobs:
         run: echo "MEILI_MASTER_KEY=${{ secrets.MEILI_MASTER_KEY }}" > .env
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
         with:
           run_install: false # Disable auto-install
-          version: 10
+          version: 11
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
