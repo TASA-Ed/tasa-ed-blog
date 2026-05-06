@@ -1,5 +1,4 @@
-onlyBuiltDependencies:
-  - esbuild
-  - sharp
-  - sse4_crc32
-  - swup
+allowBuilds:
+  esbuild: true
+  sharp: true
+  swup: true
