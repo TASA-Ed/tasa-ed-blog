@@ -840,7 +840,10 @@ export type GalleryAlbum = {
 	date?: string; // 日期
 	location?: string; // 拍摄地点
 	tags?: string[]; // 标签（用于首页筛选）
-	cover?: string; // 手动指定封面（可选，省略则自动取 cover.* 或第一张）
+	// 手动指定封面（可选，省略则自动取 cover.* 或第一张）
+	cover?: string;
+	// 扩展
+	extra?: string[];
 };
 
 // 相册配置

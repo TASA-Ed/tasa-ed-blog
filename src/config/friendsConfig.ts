@@ -122,15 +122,6 @@ export const friendsConfig: FriendLink[] = [
         enabled: true,
     },
     {
-        title: "希乐博客",
-        imgurl: "https://q.qlogo.cn/headimg_dl?dst_uin=1043865083&spec=640",
-        desc: "总有人间人间一两风，吹我十万八千梦",
-        siteurl: "https://blog.xlenco.top",
-        tags: ["博客"],
-        weight: 9,
-        enabled: true,
-    },
-    {
         title: "B84F2246 的节点",
         imgurl: "https://assets.b84f2246.top/img/avatar.png",
         desc: "TECH OTAKUS SAVE THE WORLD!",
