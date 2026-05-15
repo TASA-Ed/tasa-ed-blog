@@ -843,8 +843,10 @@ export type GalleryAlbum = {
 	date?: string; // 日期
 	location?: string; // 拍摄地点
 	tags?: string[]; // 标签（用于首页筛选）
-	// 手动指定封面（可选，省略则自动取 cover.* 或第一张）
-	cover?: string;
+	cover?: string; // 手动指定封面（可选，省略则自动取 cover.* 或第一张）
+	password?: string; // 加密密码（非空时启用加密）
+	// 密码提示
+	passwordHint?: string;
 	// 扩展
 	extra?: string[];
 };
