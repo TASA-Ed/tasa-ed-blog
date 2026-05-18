@@ -36,12 +36,6 @@ export const profileConfig: ProfileConfig = {
 			icon: "fa7-solid:envelope",
 			url: "mailto:tasaedem@outlook.com",
 			showName: false,
-    },
-		{
-			name: "RSS",
-			icon: "fa7-solid:rss",
-			url: "/blog/rss/",
-			showName: false,
-		},
+    }
 	],
 };

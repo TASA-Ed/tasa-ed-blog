@@ -9,7 +9,7 @@ async function getRawSortedPosts() {
 		return import.meta.env.PROD ? data.draft !== true : true;
 	});
 
-	const sorted = allBlogPosts.sort((a, b) => {
+	return allBlogPosts.sort((a, b) => {
 		// 首先按置顶状态排序，置顶文章在前
 		if (a.data.pinned && !b.data.pinned) return -1;
 		if (!a.data.pinned && b.data.pinned) return 1;
@@ -19,7 +19,6 @@ async function getRawSortedPosts() {
 		const dateB = new Date(b.data.published);
 		return dateA > dateB ? -1 : 1;
 	});
-	return sorted;
 }
 
 export async function getSortedPosts() {
@@ -44,12 +43,10 @@ export async function getSortedPostsList(): Promise<PostForList[]> {
 	const sortedFullPosts = await getRawSortedPosts();
 
 	// delete post.body
-	const sortedPostsList = sortedFullPosts.map((post) => ({
+	return sortedFullPosts.map((post) => ({
 		id: post.id,
 		data: post.data,
 	}));
-
-	return sortedPostsList;
 }
 export type Tag = {
 	name: string;

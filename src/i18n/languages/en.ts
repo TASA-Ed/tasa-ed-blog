@@ -82,67 +82,6 @@ export const en: Translation = {
 	[Key.updatedAt]: "Updated at",
 	[Key.readTime]: "Read time",
 	[Key.license]: "License",
-	[Key.bangumi]: "Bangumi",
-
-	// Bangumi Filter and Status Text
-	[Key.bangumiTitle]: "My Bangumi",
-	[Key.bangumiSubtitle]: "Record my ACG journey",
-	[Key.bangumiFilterAll]: "All",
-	[Key.bangumiFilterWatched]: "Watched",
-	[Key.bangumiFilterWatching]: "Watching",
-	[Key.bangumiFilterWish]: "Wish",
-	[Key.bangumiFilterOnHold]: "On Hold",
-	[Key.bangumiFilterDropped]: "Dropped",
-	[Key.bangumiFilterGamePlayed]: "Played",
-	[Key.bangumiFilterGamePlaying]: "Playing",
-	[Key.bangumiFilterGameWish]: "Wish to Play",
-	[Key.bangumiFilterBookRead]: "Read",
-	[Key.bangumiFilterBookReading]: "Reading",
-	[Key.bangumiFilterBookWish]: "Wish to Read",
-	[Key.bangumiFilterMusicListened]: "Listened",
-	[Key.bangumiFilterMusicListening]: "Listening",
-	[Key.bangumiFilterMusicWish]: "Wish to Listen",
-	[Key.bangumiStatusWish]: "Wish",
-	[Key.bangumiStatusWatched]: "Watched",
-	[Key.bangumiStatusWatching]: "Watching",
-	[Key.bangumiStatusOnHold]: "On Hold",
-	[Key.bangumiStatusDropped]: "Dropped",
-	[Key.bangumiStatusGameWish]: "Wish to Play",
-	[Key.bangumiStatusGamePlayed]: "Played",
-	[Key.bangumiStatusGamePlaying]: "Playing",
-	[Key.bangumiStatusBookWish]: "Wish to Read",
-	[Key.bangumiStatusBookRead]: "Read",
-	[Key.bangumiStatusBookReading]: "Reading",
-	[Key.bangumiStatusMusicWish]: "Wish to Listen",
-	[Key.bangumiStatusMusicListened]: "Listened",
-	[Key.bangumiStatusMusicListening]: "Listening",
-	[Key.bangumiStatusUnknown]: "Unknown",
-	[Key.bangumiNoData]: "No Data",
-	[Key.bangumiNoDataDescription]: "No items in this category",
-	[Key.bangumiEmpty]: "No Data",
-	[Key.bangumiEmptyReason]:
-		"Possible reasons: username does not exist, network connection issue, or API limit",
-	[Key.bangumiUsername]: "Username",
-	[Key.bangumiApi]: "API",
-	[Key.bangumiConfigTip]:
-		"Tip: Please set the correct Bangumi username in the page configuration",
-	[Key.bangumiPrevPage]: "Previous",
-	[Key.bangumiNextPage]: "Next",
-	[Key.bangumiCurrentPage]: "Page",
-	[Key.bangumiTotalPages]: "of",
-	[Key.bangumiPage]: "page",
-
-	// Bangumi Categories
-	[Key.bangumiCategoryBook]: "Book",
-	[Key.bangumiCategoryAnime]: "Anime",
-	[Key.bangumiCategoryMusic]: "Music",
-	[Key.bangumiCategoryGame]: "Game",
-	[Key.bangumiCategoryReal]: "Real",
-
-	// Bangumi Data Update
-	[Key.bangumiLastUpdated]: "Data updated at",
-	[Key.bangumiUpdatedAt]: "Build time",
-	[Key.bangumiDataStatic]: "Static data",
 
 	// Pagination
 	[Key.paginationFirst]: "First",
@@ -160,28 +99,6 @@ export const en: Translation = {
 	[Key.notFoundDescription]:
 		"Sorry, the page you visited does not exist or has been moved.",
 	[Key.backToHome]: "Back to Home",
-
-	// RSS Page
-	[Key.rss]: "RSS Feed",
-	[Key.rssDescription]: "Subscribe to get latest updates",
-	[Key.rssSubtitle]:
-		"Subscribe via RSS to get the latest articles and updates imediately",
-	[Key.rssLink]: "RSS Link",
-	[Key.rssCopyToReader]: "Copy link to your RSS reader",
-	[Key.rssCopyLink]: "Copy Link",
-	[Key.rssLatestPosts]: "Latest Posts",
-	[Key.rssWhatIsRSS]: "What is RSS?",
-	[Key.rssWhatIsRSSDescription]:
-		"RSS (Really Simple Syndication) is a standard format for publishing frequently updated content. With RSS, you can:",
-	[Key.rssBenefit1]:
-		"Get the latest website content in time without manually visiting",
-	[Key.rssBenefit2]: "Manage subscriptions to multiple websites in one place",
-	[Key.rssBenefit3]: "Avoid missing important updates and articles",
-	[Key.rssBenefit4]: "Enjoy an ad-free, clean reading experience",
-	[Key.rssHowToUse]:
-		"It is recommended to use Feedly, Inoreader or other RSS readers to subscribe to this site.",
-	[Key.rssCopied]: "RSS link copied to clipboard!",
-	[Key.rssCopyFailed]: "Copy failed, please copy the link manually",
 
 	// Last Modified Time Card
 	[Key.lastModifiedPrefix]: "Last updated on ",

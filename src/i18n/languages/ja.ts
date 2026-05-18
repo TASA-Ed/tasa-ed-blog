@@ -82,67 +82,6 @@ export const ja: Translation = {
 	[Key.updatedAt]: "更新日",
 	[Key.readTime]: "読了時間",
 	[Key.license]: "ライセンス",
-	[Key.bangumi]: "バングミ",
-
-	// バングミフィルターと状態文本
-	[Key.bangumiTitle]: "私のバングミ",
-	[Key.bangumiSubtitle]: "私の二次元の旅を記録する",
-	[Key.bangumiFilterAll]: "すべて",
-	[Key.bangumiFilterWatched]: "見た",
-	[Key.bangumiFilterWatching]: "視聴中",
-	[Key.bangumiFilterWish]: "見たい",
-	[Key.bangumiFilterOnHold]: "保留",
-	[Key.bangumiFilterDropped]: "中断",
-	[Key.bangumiFilterGamePlayed]: "プレイ済み",
-	[Key.bangumiFilterGamePlaying]: "プレイ中",
-	[Key.bangumiFilterGameWish]: "プレイしたい",
-	[Key.bangumiFilterBookRead]: "読んだ",
-	[Key.bangumiFilterBookReading]: "読んでいる",
-	[Key.bangumiFilterBookWish]: "読みたい",
-	[Key.bangumiFilterMusicListened]: "聴いた",
-	[Key.bangumiFilterMusicListening]: "聴いている",
-	[Key.bangumiFilterMusicWish]: "聴きたい",
-	[Key.bangumiStatusWish]: "見たい",
-	[Key.bangumiStatusWatched]: "見た",
-	[Key.bangumiStatusWatching]: "視聴中",
-	[Key.bangumiStatusOnHold]: "保留",
-	[Key.bangumiStatusDropped]: "中断",
-	[Key.bangumiStatusGameWish]: "プレイしたい",
-	[Key.bangumiStatusGamePlayed]: "プレイ済み",
-	[Key.bangumiStatusGamePlaying]: "プレイ中",
-	[Key.bangumiStatusBookWish]: "読みたい",
-	[Key.bangumiStatusBookRead]: "読んだ",
-	[Key.bangumiStatusBookReading]: "読んでいる",
-	[Key.bangumiStatusMusicWish]: "聴きたい",
-	[Key.bangumiStatusMusicListened]: "聴いた",
-	[Key.bangumiStatusMusicListening]: "聴いている",
-	[Key.bangumiStatusUnknown]: "不明",
-	[Key.bangumiNoData]: "データなし",
-	[Key.bangumiNoDataDescription]: "このカテゴリに項目がありません",
-	[Key.bangumiEmpty]: "データなし",
-	[Key.bangumiEmptyReason]:
-		"考えられる理由：ユーザー名が存在しない、ネットワーク接続の問題、またはAPI制限",
-	[Key.bangumiUsername]: "ユーザー名",
-	[Key.bangumiApi]: "API",
-	[Key.bangumiConfigTip]:
-		"ヒント：ページ設定で正しいBangumiユーザー名を設定してください",
-	[Key.bangumiPrevPage]: "前へ",
-	[Key.bangumiNextPage]: "次へ",
-	[Key.bangumiCurrentPage]: "ページ",
-	[Key.bangumiTotalPages]: "の",
-	[Key.bangumiPage]: "ページ",
-
-	// バングミカテゴリ
-	[Key.bangumiCategoryBook]: "本",
-	[Key.bangumiCategoryAnime]: "アニメ",
-	[Key.bangumiCategoryMusic]: "音楽",
-	[Key.bangumiCategoryGame]: "ゲーム",
-	[Key.bangumiCategoryReal]: "実写",
-
-	// バングミデータ更新
-	[Key.bangumiLastUpdated]: "データ更新",
-	[Key.bangumiUpdatedAt]: "ビルド時間",
-	[Key.bangumiDataStatic]: "静的データ",
 
 	// ページネーション
 	[Key.paginationFirst]: "最初",
@@ -160,27 +99,6 @@ export const ja: Translation = {
 	[Key.notFoundDescription]:
 		"申し訳ありませんが、アクセスしたページは存在しないか、移動されています。",
 	[Key.backToHome]: "ホームに戻る",
-
-	// RSSページ
-	[Key.rss]: "RSSフィード",
-	[Key.rssDescription]: "最新の更新を購読する",
-	[Key.rssSubtitle]: "RSSで購読して、最新の記事と更新を第一时间で取得する",
-	[Key.rssLink]: "RSSリンク",
-	[Key.rssCopyToReader]: "RSSリンクをリーダーにコピー",
-	[Key.rssCopyLink]: "リンクをコピー",
-	[Key.rssLatestPosts]: "最新の投稿",
-	[Key.rssWhatIsRSS]: "RSSとは？",
-	[Key.rssWhatIsRSSDescription]:
-		"RSS（Really Simple Syndication）は、頻繁に更新されるコンテンツを公開するための標準形式です。RSSを使用すると：",
-	[Key.rssBenefit1]:
-		"手動で訪問することなく、最新のウェブサイトコンテンツを及时に取得",
-	[Key.rssBenefit2]: "1か所で複数のウェブサイトの購読を管理",
-	[Key.rssBenefit3]: "重要な更新や記事を見逃すことを回避",
-	[Key.rssBenefit4]: "広告なしのクリーンな読書体験を楽しむ",
-	[Key.rssHowToUse]:
-		"Feedly、Inoreaderまたは他のRSSリーダーを使用してこのサイトを購読することを推奨します。",
-	[Key.rssCopied]: "RSSリンクがクリップボードにコピーされました！",
-	[Key.rssCopyFailed]: "コピーに失敗しました。手動でリンクをコピーしてください",
 
 	// 最終更新時間カード
 	[Key.lastModifiedPrefix]: "最終更新日：",
