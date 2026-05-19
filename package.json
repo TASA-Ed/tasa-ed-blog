@@ -44,7 +44,7 @@
     "dayjs": "^1.11.20",
     "expressive-code-collapsible": "^0.1.0",
     "expressive-code-language-badge": "^1.1.0",
-    "glob": "^11.1.0",
+    "glob": "^13.0.6",
     "gray-matter": "^4.0.3",
     "hastscript": "^9.0.1",
     "katex": "^0.16.46",
