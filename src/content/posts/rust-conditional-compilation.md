@@ -75,6 +75,11 @@ fn main() {
     {
         start_server();
     }
+    // 编译时没启用 "server" feature 就编译这个代码块
+    #[cfg(not(feature = "server"))]
+    {
+        // ...
+    }
 }
 ```
 

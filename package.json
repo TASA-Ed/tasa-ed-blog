@@ -6,7 +6,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "check": "astro check",
-    "build": "node scripts/generate-icons.js && npx tsx scripts/generate-lqips.ts && astro build",
+    "build": "node scripts/generate-icons.js && node scripts/generate-lqips.ts && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "type-check": "tsc --noEmit --isolatedDeclarations",
@@ -14,9 +14,9 @@
     "format": "biome format --write ./src",
     "lint": "biome check --write ./src",
     "preinstall": "npx only-allow pnpm",
-    "index:meili": "npx tsx src/scripts/index-to-meilisearch.mts",
+    "index:meili": "pnpx tsx src/scripts/index-to-meilisearch.mts",
     "icons": "node scripts/generate-icons.js",
-    "lqips": "npx tsx scripts/generate-lqips.ts"
+    "lqips": "node scripts/generate-lqips.ts"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
@@ -67,7 +67,7 @@
     "sharp": "^0.34.5",
     "stylus": "^0.64.0",
     "svelte": "^5.55.9",
-    "typescript": "^5.9.2",
+    "typescript": "^6.0.3",
     "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {
@@ -80,8 +80,8 @@
     "@types/mdast": "^4.0.4",
     "@types/qrcode": "^1.5.6",
     "@types/sanitize-html": "^2.16.1",
-    "@waline/client": "^3.13.0",
-    "markdownlint-cli2": "^0.22.0",
+    "@waline/client": "^3.15.0",
+    "markdownlint-cli2": "^0.22.1",
     "postcss-import": "^16.1.1",
     "postcss-nesting": "^13.0.2",
     "tailwindcss": "^4.3.0"

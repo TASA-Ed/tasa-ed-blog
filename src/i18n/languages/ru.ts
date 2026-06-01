@@ -54,6 +54,8 @@ export const ru: Translation = {
 	[Key.friends]: "Ссылки",
 	[Key.friendsDescription]:
 		"Вот мои друзья, добро пожаловать посетить и общаться друг с другом",
+	[Key.searchFriends]: "Поиск друзей...",
+	[Key.friendsEmpty]: "Друзей пока нет.",
 	[Key.guestbook]: "Гостевая книга",
 	[Key.guestbookDescription]:
 		"Добро пожаловать, оставьте свой след здесь, поделитесь своими мыслями и предложениями",
@@ -230,6 +232,7 @@ export const ru: Translation = {
 	[Key.galleryAlbums]: "альбомов",
 	[Key.galleryNoAlbums]: "Пока нет альбомов",
 	[Key.galleryBackToAlbums]: "Вернуться к альбомам",
+	[Key.searchAlbums]: "Поиск альбомов...",
 
 	// Защита паролем
 	[Key.passwordProtected]: "Защищено паролем",
