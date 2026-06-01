@@ -77,6 +77,8 @@ enum I18nKey {
 	license = "license",
 	friends = "friends",
 	friendsDescription = "friendsDescription",
+	searchFriends = "searchFriends",
+	friendsEmpty = "friendsEmpty",
 	guestbook = "guestbook",
 	guestbookDescription = "guestbookDescription",
 
@@ -223,6 +225,7 @@ enum I18nKey {
 	galleryAlbums = "galleryAlbums",
 	galleryNoAlbums = "galleryNoAlbums",
 	galleryBackToAlbums = "galleryBackToAlbums",
+	searchAlbums = "searchAlbums",
 
 	// 密码保护
 	passwordProtected = "passwordProtected",

@@ -5,6 +5,7 @@ import { commentConfig, siteConfig, sponsorConfig } from "@/config";
 import I18nKey from "@/i18n/i18nKey";
 import { i18n } from "@/i18n/translation";
 import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import { getLqipProps } from "@/utils/lqip-utils";
 import { url } from "@/utils/url-utils";
 
 // 检查页面是否启用
@@ -24,6 +25,11 @@ const description =
 const enabledMethods = sponsorConfig.methods.filter((method) => method.enabled);
 const sponsors = sponsorConfig.sponsors || [];
 const showSponsorsList = sponsorConfig.showSponsorsList !== false;
+
+// LQIP 渐变占位
+function getQrLqipProps(qrCode: string) {
+	return getLqipProps(qrCode, undefined, true);
+}
 ---
 
 <MainGridLayout title={title} description={description}>
@@ -81,11 +87,12 @@ const showSponsorsList = sponsorConfig.showSponsorsList !== false;
 
                         <!-- 二维码或链接 -->
                         {method.qrCode && (
-                          <div class="relative w-full max-w-[200px] aspect-square bg-white rounded-lg p-4 shadow-md mb-4">
+                          <div class="relative w-full max-w-[200px] aspect-square bg-white rounded-lg p-4 shadow-md mb-4 overflow-hidden">
+                            <div class="lqip-placeholder absolute inset-0 rounded-lg pointer-events-none" style={getQrLqipProps(method.qrCode).style} aria-hidden="true"></div>
                             <img
                               src={url(method.qrCode)}
                               alt={`${method.name} ${i18n(I18nKey.scanToSponsor)}`}
-                              class="w-full h-full object-contain"
+                              class="relative w-full h-full object-contain opacity-0 transition-opacity duration-500 ease-out"
                               loading="lazy"
                             />
                           </div>
@@ -133,7 +140,21 @@ const showSponsorsList = sponsorConfig.showSponsorsList !== false;
             {sponsors.map((sponsor) => (
               <div class="group flex items-center gap-3 p-3 rounded-xl border border-(--line-divider) hover:border-(--primary) transition-all duration-200">
                 {/* 头像占位 */}
-                <div class="w-9 h-9 rounded-full bg-(--primary)/10 flex items-center justify-center shrink-0 group-hover:bg-(--primary)/20 transition-colors">
+                <!-- 新的头像逻辑：有头像用图片，没有用首字母 -->
+                {sponsor.avatar ? (
+                  <img 
+                    src={url(sponsor.avatar)}
+                    alt={sponsor.name}
+                    class="w-9 h-9 rounded-full object-cover shrink-0"
+                    loading="lazy"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                ) : null}
+
+                <!-- 首字母头像（作为兜底，图片加载失败也会显示这个） -->
+                <div 
+                  class={`w-9 h-9 rounded-full bg-(--primary)/10 flex items-center justify-center shrink-0 group-hover:bg-(--primary)/20 transition-colors ${sponsor.avatar ? 'hidden' : ''}`}
+                >
                   <span class="text-sm font-bold text-(--primary)">{sponsor.name.charAt(0)}</span>
                 </div>
 

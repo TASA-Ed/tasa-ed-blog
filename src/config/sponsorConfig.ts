@@ -43,6 +43,4 @@ export const sponsorConfig: SponsorConfig = {
 			enabled: true,
 		},
 	],
-
-	// 赞助者列表（可选）
 };
