@@ -72,6 +72,16 @@ export const LinkPresets: { [key in LinkPreset]: NavBarLink } = {
       LinkPreset.About,
     ]
   },
+	[LinkPreset.cPosts]: {
+		name: i18n(I18nKey.siteStatsPostCount),
+		url: "/content/",
+		icon: "material-symbols:article-outline",
+		children: [
+			LinkPreset.Archive,
+			LinkPreset.Tags,
+			LinkPreset.Categories
+		]
+	},
 	[LinkPreset.Tags]: {
 		name: i18n(I18nKey.tags),
 		url: "/tags/",

@@ -208,7 +208,11 @@ export enum LinkPreset {
   /**
    * 关于
    */
-	cAbout = 11
+	cAbout = 11,
+	/**
+	 * 文章
+	 */
+	cPosts = 12
 }
 
 export type NavBarLink = {
@@ -473,6 +477,7 @@ export type WidgetComponentType =
 	| "sidebarToc"
 	| "advertisement"
 	| "stats"
+	| "tags"
 	| "calendar";
 
 export type WidgetComponentConfig = {

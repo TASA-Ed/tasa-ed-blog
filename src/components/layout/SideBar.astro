@@ -7,6 +7,7 @@ import Categories from "@/components/widget/Categories.astro";
 import Profile from "@/components/widget/Profile.astro";
 import SidebarTOC from "@/components/widget/SidebarTOC.astro";
 import SiteStats from "@/components/widget/SiteStats.astro";
+import Tags from "@/components/widget/Tags.astro";
 import { sidebarLayoutConfig } from "@/config";
 import type {
 	MobileBottomComponentConfig,
@@ -44,6 +45,7 @@ const componentMap = {
 	sidebarToc: SidebarTOC,
 	advertisement: Advertisement,
 	stats: SiteStats,
+	tags: Tags,
 	calendar: Calendar,
 } satisfies Record<WidgetComponentType, (...args: any[]) => any>;
 
