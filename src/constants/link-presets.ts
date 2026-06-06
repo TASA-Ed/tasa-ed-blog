@@ -71,5 +71,15 @@ export const LinkPresets: { [key in LinkPreset]: NavBarLink } = {
       LinkPreset.Sponsor,
       LinkPreset.About,
     ]
-  }
+  },
+	[LinkPreset.Tags]: {
+		name: i18n(I18nKey.tags),
+		url: "/tags/",
+		icon: "material-symbols:tag-rounded",
+	},
+	[LinkPreset.Categories]: {
+		name: i18n(I18nKey.categories),
+		url: "/categories/",
+		icon: "material-symbols:folder-open-rounded",
+	},
 };

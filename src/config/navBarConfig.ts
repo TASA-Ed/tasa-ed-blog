@@ -11,6 +11,8 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 	const links: (NavBarLink | LinkPreset)[] = [
 		LinkPreset.Home,
 		LinkPreset.Archive,
+		LinkPreset.Tags,
+		LinkPreset.Categories,
 		LinkPreset.cLink,
 		LinkPreset.Gallery,
 		LinkPreset.Friends,
