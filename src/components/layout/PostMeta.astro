@@ -110,7 +110,7 @@ const path = customPath || (id ? url(`/posts/${id}`) : "");
      showTags && (
        <div class:list={["items-center", {"flex": !hideTagsForMobile, "hidden md:flex": hideTagsForMobile}]}>
          <div class="meta-icon">
-           <Icon name="material-symbols:tag-rounded" class="text-xl" />
+           <Icon name="material-symbols:tag-rounded" is:inline class="text-xl" />
          </div>
          <div class="flex flex-row flex-nowrap items-center">
            {(tags && tags.length > 0) && tags.map((tag, i) => (
