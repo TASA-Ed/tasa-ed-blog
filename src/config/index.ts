@@ -4,7 +4,6 @@
 // 类型导出
 export type {
 	AdConfig,
-	AnalyticsConfig,
 	AnnouncementConfig,
 	BackgroundWallpaperConfig,
 	CommentConfig,
@@ -27,7 +26,6 @@ export type {
 	WidgetComponentType,
 	WidgetSpecificConfig,
 } from "../types/config";
-export { analyticsConfig } from "./analyticsConfig"; // 统计分析配置
 export { announcementConfig } from "./announcementConfig"; // 公告配置
 // 样式配置
 export { backgroundWallpaper } from "./backgroundWallpaper"; // 背景壁纸配置

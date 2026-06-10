@@ -259,7 +259,5 @@ export const zh_CN: Translation = {
 	[Key.passwordProtectedRss]: "本文已加密保护，请访问网站查看。",
 
 	// 自定义
-	[Key.cNavLink]: "链接",
-	[Key.cNavAbout]: "关于",
 	[Key.cBackToTop]: "返回顶部",
 };

@@ -265,7 +265,5 @@ export const ru: Translation = {
 		"Эта статья зашифрована. Пожалуйста, посетите сайт для просмотра.",
 
 	// 自定义
-	[Key.cNavLink]: "Ссылки",
-	[Key.cNavAbout]: "О нас",
 	[Key.cBackToTop]: "Вернуться к началу",
 };

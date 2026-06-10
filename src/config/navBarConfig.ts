@@ -3,8 +3,6 @@ import {
 	type NavBarLink,
 	type NavBarSearchConfig,
 } from "../types/config";
-import { i18n } from "@i18n/translation.ts";
-import I18nKey from "@i18n/i18nKey.ts";
 
 // ============================================================================
 // 导航栏配置 - 根据顺序动态生成导航栏链接
@@ -16,7 +14,7 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 	const links: NavBarLink[] = [
 		LinkPresets.Home,
 		{
-			name: i18n(I18nKey.siteStatsPostCount),
+			name: "文章",
 			url: "/content/",
 			icon: "material-symbols:article-outline",
 			children: [
@@ -30,7 +28,7 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 		LinkPresets.Friends,
 		LinkPresets.Guestbook,
 		{
-			name: i18n(I18nKey.cNavAbout),
+			name: "关于",
 			url: "/content/",
 			icon: "material-symbols:info",
 			children: [
@@ -61,42 +59,52 @@ export const navBarSearchConfig: NavBarSearchConfig = {
 // ============================================================================
 export const LinkPresets: Record<string, NavBarLink> = {
 	Home: {
-		name: i18n(I18nKey.home),
+		name: "主页",
 		url: "/",
 		icon: "material-symbols:home",
 	},
 	Archive: {
-		name: i18n(I18nKey.archive),
+		name: "归档",
 		url: "/archive/",
 		icon: "material-symbols:archive",
 	},
+	Categories: {
+		name: "分类",
+		url: "/categories/",
+		icon: "material-symbols:folder-open-rounded",
+	},
+	Tags: {
+		name: "标签",
+		url: "/tags/",
+		icon: "material-symbols:tag-rounded",
+	},
 	Friends: {
-		name: i18n(I18nKey.friends),
+		name: "友链",
 		url: "/friends/",
 		icon: "material-symbols:group",
 	},
 	Sponsor: {
-		name: i18n(I18nKey.sponsor),
+		name: "赞助",
 		url: "/sponsor/",
 		icon: "material-symbols:favorite",
 	},
 	Guestbook: {
-		name: i18n(I18nKey.guestbook),
+		name: "留言",
 		url: "/guestbook/",
 		icon: "material-symbols:chat",
 	},
 	About: {
-		name: i18n(I18nKey.about),
+		name: "关于我",
 		url: "/about/",
 		icon: "material-symbols:person",
 	},
 	Gallery: {
-		name: i18n(I18nKey.gallery),
+		name: "相册",
 		url: "/gallery/",
 		icon: "material-symbols:photo-library",
 	},
 	cLink: {
-		name: i18n(I18nKey.cNavLink),
+		name: "链接",
 		url: "/links/",
 		icon: "material-symbols:link",
 		children: [
@@ -119,16 +127,6 @@ export const LinkPresets: Record<string, NavBarLink> = {
 				icon: "fa7-brands:qq",
 			},
 		]
-	},
-	Tags: {
-		name: i18n(I18nKey.tags),
-		url: "/tags/",
-		icon: "material-symbols:tag-rounded",
-	},
-	Categories: {
-		name: i18n(I18nKey.categories),
-		url: "/categories/",
-		icon: "material-symbols:folder-open-rounded",
 	},
 };
 

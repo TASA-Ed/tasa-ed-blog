@@ -265,7 +265,5 @@ export const ja: Translation = {
 		"この記事は暗号化されています。ウェブサイトにアクセスしてご覧ください。",
 
 	// 自定义
-	[Key.cNavLink]: "リンク集",
-	[Key.cNavAbout]: "ついて",
 	[Key.cBackToTop]: "トップへ戻る",
 };

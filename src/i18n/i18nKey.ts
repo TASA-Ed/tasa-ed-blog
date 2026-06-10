@@ -256,8 +256,6 @@ enum I18nKey {
 	passwordProtectedRss = "passwordProtectedRss",
 
 	// custom
-	cNavAbout = "cNavAbout",
-	cNavLink = "cNavLink",
 	cBackToTop = "cBackToTop",
 }
 

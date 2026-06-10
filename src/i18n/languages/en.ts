@@ -265,7 +265,5 @@ export const en: Translation = {
 		"This article is encrypted. Please visit the website to view it.",
 
 	// 自定义
-	[Key.cNavLink]: "Links",
-	[Key.cNavAbout]: "About",
 	[Key.cBackToTop]: "Back to Top",
 };
