@@ -1,9 +1,10 @@
 ---
 import { Icon } from "astro-icon/components";
 import WidgetLayout from "@/components/common/WidgetLayout.astro";
-import { sidebarLayoutConfig, siteConfig } from "@/config";
+import { siteConfig } from "@/config";
 import I18nKey from "@/i18n/i18nKey";
 import { i18n } from "@/i18n/translation";
+import type { WidgetComponentConfig } from "@/types/config";
 import {
 	getCategoryList,
 	getSortedPosts,
@@ -13,16 +14,12 @@ import {
 interface Props {
 	class?: string;
 	style?: string;
+	widgetConfig?: WidgetComponentConfig;
 }
 
-const { class: className, style } = Astro.props;
+const { class: className, style, widgetConfig } = Astro.props;
 
-const statsComponent = [
-	...sidebarLayoutConfig.leftComponents,
-	...sidebarLayoutConfig.rightComponents,
-	...sidebarLayoutConfig.mobileBottomComponents,
-].find((c) => c.type === "stats");
-const showTitle = statsComponent?.showTitle !== false;
+const showTitle = widgetConfig?.showTitle !== false;
 
 // 从配置中获取站点开始日期
 const siteStartDate = siteConfig.siteStartDate || "2025-01-01";
@@ -115,7 +112,7 @@ const stats = [
       <div class="flex items-center justify-between px-3 py-1.5">
         <div class="flex items-center gap-2.5">
           <div class="text-(--primary) text-xl">
-            <Icon is:inline name={stat.icon} />
+            <Icon name={stat.icon} is:inline />
           </div>
           <span class="text-neutral-700 dark:text-neutral-300 font-medium text-sm">
             {stat.label}
