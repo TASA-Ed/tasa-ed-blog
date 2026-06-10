@@ -6,6 +6,7 @@ import Calendar from "@/components/widget/Calendar.astro";
 import Categories from "@/components/widget/Categories.astro";
 import Profile from "@/components/widget/Profile.astro";
 import SidebarTOC from "@/components/widget/SidebarTOC.astro";
+import SiteInfo from "@/components/widget/SiteInfo.astro";
 import SiteStats from "@/components/widget/SiteStats.astro";
 import Tags from "@/components/widget/Tags.astro";
 import { sidebarLayoutConfig } from "@/config";
@@ -47,6 +48,7 @@ const componentMap = {
 	stats: SiteStats,
 	tags: Tags,
 	calendar: Calendar,
+	siteInfo: SiteInfo,
 } satisfies Record<WidgetComponentType, (...args: any[]) => any>;
 
 // 获取侧边栏位置
