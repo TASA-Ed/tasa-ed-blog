@@ -1,5 +1,4 @@
 import type { SiteConfig } from "@/types/config";
-import { fontConfig } from "./fontConfig";
 
 // 定义站点语言
 // 语言代码，例如：'zh_CN', 'zh_TW', 'en', 'ja', 'ru'。
@@ -107,7 +106,7 @@ export const siteConfig: SiteConfig = {
 	generateOgImages: false,
 
 	// 页面开关配置 - 控制特定页面的访问权限，设为false会返回404
-	// bangumi的数据为编译时获取的，所以不是实时数据，请配置bangumi.userId
+	// 关闭后请前往src/config/navBarConfig.ts中手动移除对应页面的导航栏链接
 	pages: {
 		// 友链页面开关
 		friends: true,
@@ -168,8 +167,4 @@ export const siteConfig: SiteConfig = {
 		// 可解决指定域名图片加载时的 403 问题（如防盗链图片）
 		noReferrerDomains: [],
 	},
-
-	// 字体配置
-	// 在src/config/fontConfig.ts中配置具体字体
-	font: fontConfig,
 };

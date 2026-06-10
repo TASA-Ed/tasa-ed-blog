@@ -4,8 +4,10 @@ import FontManager from "@components/features/FontManager.astro";
 import ConfigCarrier from "@components/layout/ConfigCarrier.astro";
 
 import {
+	analyticsConfig,
 	backgroundWallpaper,
 	expressiveCodeConfig,
+	fontConfig,
 	profileConfig,
 	siteConfig,
 } from "@/config";
@@ -92,6 +94,7 @@ const siteLang = lang.replace("_", "-");
 <html lang={siteLang} class="bg-(--page-bg) text-[14px] md:text-[16px]" data-wallpaper-mode={backgroundWallpaper.mode}>
   <head>
     <meta charset="UTF-8" />
+
     <title>{pageTitle}</title>
     <meta
       name="description"
@@ -529,10 +532,10 @@ const siteLang = lang.replace("_", "-");
         "enable-card-border": siteConfig.card?.border,
         "card-follow-theme-hue": siteConfig.card?.followTheme,
       },
-      ...(siteConfig.font.enable && siteConfig.font.selected
-        ? (Array.isArray(siteConfig.font.selected)
-            ? siteConfig.font.selected
-            : [siteConfig.font.selected]
+      ...(fontConfig.enable && fontConfig.selected
+        ? (Array.isArray(fontConfig.selected)
+            ? fontConfig.selected
+            : [fontConfig.selected]
           ).map((fontId) => `font-${fontId}-enabled`)
         : []),
     ]}
