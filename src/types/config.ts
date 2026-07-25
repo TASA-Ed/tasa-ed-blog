@@ -16,7 +16,7 @@ export type {
 } from "./expressiveCodeConfig";
 export type { PlantUMLConfig } from "./plantumlConfig";
 export type { AnnouncementConfig } from "./announcementConfig";
-export type { FontConfig, FontItem } from "./fontConfig";
+export type { FontSelectionConfig } from "./fontConfig";
 export type { FooterConfig } from "./footerConfig";
 export type { CoverImageConfig } from "./coverImageConfig";
 export type {
