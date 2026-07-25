@@ -9,7 +9,7 @@ Firefly is a feature-rich static blog theme built on **Astro 6** with **Svelte 5
 ## Commands
 
 | Command | Purpose |
-|---|---|
+| --- | --- |
 | `pnpm dev` | Dev server at `localhost:4321` |
 | `pnpm build` | Production build (icons → LQIPs → Astro build → Pagefind indexing) |
 | `pnpm preview` | Preview production build |
@@ -45,6 +45,7 @@ All features are toggled/configured via TypeScript files in `src/config/`, expor
 ### Content Collections
 
 Defined in `src/content.config.ts`:
+
 - `posts` — blog posts (`.md`/`.mdx`) with frontmatter: title, published, tags, category, draft, pinned, password, comment, etc.
 - `spec` — special pages (about, guestbook)
 
@@ -78,4 +79,3 @@ Icons/LQIP data are generated into `src/constants/` and committed. Regenerate wi
 - **Vercel** (default, `vercel.json`)
 - **Cloudflare Workers** (`wrangler.jsonc`, set `CF_WORKERS` env var)
 - Static output to `dist/`
-
