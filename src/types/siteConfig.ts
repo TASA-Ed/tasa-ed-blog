@@ -84,10 +84,6 @@ export type SiteConfig = {
 		stickyNavbar?: boolean; // 导航栏是否固定在顶部始终可见
 	};
 
-	showLastModified: boolean; // 控制"上次编辑"卡片显示的开关
-	outdatedThreshold?: number; // 文章过期阈值（天数），超过此天数才显示"上次编辑"卡片
-	sharePoster?: boolean; // 是否显示分享海报按钮
-
 	// 页面开关配置
 	pages: {
 		friends: boolean; // 友链页面开关
@@ -113,6 +109,23 @@ export type SiteConfig = {
 			// 网格模式卡片最小宽度(px)，浏览器根据容器宽度自动计算列数，默认 320
 			columnWidth?: number;
 		};
+	};
+
+	// 文章内容页配置
+	post: {
+		// 提醒框（Admonitions）配置
+		rehypeCallouts: {
+			theme: "github" | "obsidian" | "vitepress";
+			enablePythonMarkdownAdmonitions?: boolean;
+		};
+		// 控制"上次编辑时间"卡片显示的开关
+		showLastModified: boolean;
+		// 文章过期阈值（天数），超过此天数才显示"上次编辑"卡片
+		outdatedThreshold?: number;
+		// 是否显示分享海报按钮
+		sharePoster?: boolean;
+		// OpenGraph图片功能
+		generateOgImages: boolean;
 	};
 
 	// 分页配置
