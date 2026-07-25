@@ -4,7 +4,7 @@ import { onMount } from "svelte";
 import { siteConfig } from "@/config";
 import I18nKey from "@/i18n/i18nKey";
 import { i18n } from "@/i18n/translation";
-import { getPostUrlBySlug } from "@/utils/url-utils";
+import { getPostUrlBySlug, url } from "@/utils/url-utils";
 
 export let tags: string[] = [];
 export let categories: string[] = [];
@@ -201,7 +201,7 @@ onMount(async () => {
 		<div class="mb-5">
 			<div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
 				<div class="min-w-0 text-sm text-75">
-					<a href={primaryFilter.labelKey === I18nKey.categories ? '/categories/' : '/tags/'}
+					<a href={primaryFilter.labelKey === I18nKey.categories ? url('/categories/') : url('/tags/')}
 					   class="text-50 hover:text-(--primary) transition-colors">{i18n(primaryFilter.labelKey)}</a>
 					<span class="mx-2 text-30">/</span>
 					<span class="font-semibold text-(--primary)">{formatFilterValues(primaryFilter)}</span>
