@@ -84,7 +84,7 @@ export const LinkPresets: Record<string, NavBarLink> = {
 		icon: "material-symbols:group",
 	},
 	Sponsor: {
-		name: "赞助",
+		name: "打赏",
 		url: "/sponsor/",
 		icon: "material-symbols:favorite",
 	},

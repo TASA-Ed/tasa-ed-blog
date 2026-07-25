@@ -89,7 +89,7 @@ export const siteConfig: SiteConfig = {
 	pages: {
 		// 友链页面开关
 		friends: true,
-		// 赞助页面开关
+		// 打赏页面开关
 		sponsor: true,
 		// 留言板页面开关，需要配置评论系统
 		guestbook: true,
@@ -99,6 +99,9 @@ export const siteConfig: SiteConfig = {
 
 	// 分类导航栏开关，在首页和归档页顶部显示分类快捷导航
 	categoryBar: true,
+
+	// 归档页是否折叠非最新年份文章，禁用后默认展开全部年份
+	foldArticle: true,
 
 	// 文章列表布局配置
 	postListLayout: {
