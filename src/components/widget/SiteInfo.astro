@@ -2,6 +2,7 @@
 import { readFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import { Icon } from "astro-icon/components";
+import ci from "ci-info";
 import WidgetLayout from "@/components/common/WidgetLayout.astro";
 import { licenseConfig, siteConfig } from "@/config";
 import I18nKey from "@/i18n/i18nKey";
@@ -52,21 +53,14 @@ if (pnpmMatch) {
 // 构建时间
 const buildTime = formatDateI18nWithTime(new Date());
 
-// 构建平台检测
-function detectBuildPlatform(): string {
-	if (process.env.VERCEL) return "Vercel";
-	if (process.env.CF_PAGES || process.env.CF_WORKERS) return "Cloudflare";
-	if (process.env.NETLIFY) return "Netlify";
-	if (process.env.GITHUB_ACTIONS) return "GitHub Actions";
-	if (process.env.RENDER) return "Render";
-	if (process.env.RAILWAY_STATIC_URL) return "Railway";
-	if (process.env.HEROKU_APP_NAME || process.env.DYNO) return "Heroku";
-	if (process.env.TENCENTCLOUD_SECRETID || process.env.EO_ENV_ID)
-		return "EdgeOne";
-	if (process.env.ALIBABA_CLOUD || process.env.ESA_PROJECT) return "ESA";
-	return "Local";
-}
-const buildPlatform = detectBuildPlatform();
+// 构建平台检测（使用 ci-info 自动识别 CI 环境）
+const unknownBuildPlatform =
+	widgetConfig?.specificConfig?.siteInfo?.unknownBuildPlatform || "Unknown CI";
+const buildPlatform = ci.isCI
+	? ci.name || unknownBuildPlatform
+	: import.meta.env.DEV
+		? "Local Dev"
+		: "Local";
 
 // 系统信息（平台 + 架构）
 const platformMap: Record<string, string> = {
@@ -107,11 +101,6 @@ const mainItems = [
 		value: `Firefly v${blogVersion}`,
 	},
 	{
-		icon: "material-symbols:language",
-		label: i18n(I18nKey.siteInfoDomain),
-		value: siteDomain,
-	},
-	{
 		icon: "material-symbols:copyright-outline",
 		label: i18n(I18nKey.siteInfoLicense),
 		value: licenseName,
@@ -126,6 +115,12 @@ const detailItems: {
 	value: string;
 	fullWidth?: boolean;
 }[] = [
+	{
+		icon: "material-symbols:language",
+		label: i18n(I18nKey.siteInfoDomain),
+		value: siteDomain,
+		fullWidth: true,
+	},
 	{
 		icon: "mdi:clover",
 		label: "Firefly",
@@ -183,7 +178,7 @@ const detailItems: {
               </span>
             </div>
             <span
-              class="text-sm font-bold text-neutral-900 dark:text-neutral-100 text-right max-w-[55%] truncate"
+              class="text-xs font-bold text-neutral-900 dark:text-neutral-100 text-right max-w-[55%] truncate"
               title={item.value}
             >
               {item.value}
