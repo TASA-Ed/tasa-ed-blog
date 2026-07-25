@@ -57,13 +57,6 @@ export type SiteConfig = {
 	// 可选：站点时区，使用 IANA 时区标识，例如 "Asia/Shanghai"、"UTC"
 	timezone?: string;
 
-	// 提醒框配置
-	rehypeCallouts: {
-		theme: "github" | "obsidian" | "vitepress";
-		enablePythonMarkdownAdmonitions?: boolean;
-	};
-
-	generateOgImages: boolean;
 	favicon: Array<{
 		src: string;
 		theme?: "light" | "dark";
