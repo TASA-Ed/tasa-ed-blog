@@ -13,6 +13,7 @@ export type {
 	GalleryAlbum,
 	GalleryConfig,
 	LicenseConfig,
+	MermaidConfig,
 	NavBarConfig,
 	PlantUMLConfig,
 	ProfileConfig,
@@ -46,6 +47,7 @@ export { friendsPageConfig, getEnabledFriends } from "./friendsConfig"; // 友�
 export { galleryConfig } from "./galleryConfig"; // 相册配置
 export { licenseConfig } from "./licenseConfig"; // 许可证配置
 // 组件配置
+export { mermaidConfig } from "./mermaidConfig"; // Mermaid 图表配置
 export { navBarConfig, navBarSearchConfig } from "./navBarConfig"; // 导航栏配置与搜索配置
 export { plantumlConfig } from "./plantumlConfig"; // PlantUML 图表配置
 export { profileConfig } from "./profileConfig"; // 用户资料配置
