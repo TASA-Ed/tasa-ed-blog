@@ -24,9 +24,10 @@ export const siteConfig: SiteConfig = {
 	lang: SITE_LANG,
 
 	themeColor: {
-		hue: 40, // 主题色的默认色相，范围从 0 到 360。例如：红色：0，青色：200，蓝绿色：250，粉色：345
-		fixed: true, // 对访问者隐藏主题色选择器
-		defaultMode: "system", // 默认模式："light" 亮色，"dark" 暗色，"system" 跟随系统
+		// 主题色的默认色相，范围从 0 到 360。例如：红色：0，青色：200，蓝绿色：250，粉色：345
+		hue: 40,
+		// 默认模式："light" 亮色，"dark" 暗色，"system" 跟随系统
+		defaultMode: "system",
 	},
 
 	// 页面整体宽度（单位：rem）
@@ -109,8 +110,6 @@ export const siteConfig: SiteConfig = {
 		defaultMode: "list",
 		// 移动端默认布局模式，不设置则跟随 defaultMode
 		mobileDefaultMode: "list",
-		// 是否允许用户切换布局
-		allowSwitch: false,
 		// 文章简介显示行数，设为 0 则不截断
 		descriptionLines: 2,
 		// 文章卡片底部统计和发布日期是否显示图标
