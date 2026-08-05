@@ -50,7 +50,6 @@ Defined in `src/content.config.ts`:
 
 - `posts` — blog posts (`.md`/`.mdx`) with frontmatter: title, published, tags, category, draft, pinned, password, comment, etc.
 - `spec` — special pages (about, guestbook)
-- `dynamic` — microblog entries (`.md`) with frontmatter: published, pinned, location
 
 ### Key Directories
 
@@ -59,7 +58,7 @@ Defined in `src/content.config.ts`:
 - `src/i18n/` — translation keys in `i18nKey.ts`, language files in `languages/*.ts`, lookup via `translation.ts`
 - `src/utils/` — content sorting, crypto (encrypted posts), date formatting, image processing/LQIP, TOC generation
 - `src/pages/` — Astro file-based routing
-- `scripts/` — build-time utilities (`generate-lqips.ts`, `subset-fonts.ts`, `new-post.js`, `new-dynamic.js`)
+- `scripts/` — build-time utilities `generate-lqips.ts`
 
 ### Path Aliases (tsconfig.json)
 
@@ -68,17 +67,15 @@ Defined in `src/content.config.ts`:
 ## Code Style
 
 - **Biome** enforces: tab indentation, double quotes, recommended lint rules
-- Relaxed rules for `.svelte`/`.astro`/`.vue` files (`useConst`, `useImportType`, `noUnusedVariables`, `noUnusedImports` off)
+- Relaxed rules for `.svelte`/`.astro` files (`useConst`, `useImportType`, `noUnusedVariables`, `noUnusedImports` off)
 - Commit convention: **Conventional Commits** (`feat:`, `fix:`, `chore:`, etc.)
 
 ## Build Pipeline
 
-Multi-step: `scripts/generate-lqips.ts` → `astro build` → `scripts/subset-fonts.ts` → `pagefind --site dist`
+Multi-step: `scripts/generate-lqips.ts` → `astro build` → `src/scripts/index-to-meilisearch.mts`
 
 LQIP data is generated into `src/constants/lqips.json` and committed — regenerate with `pnpm lqips`. Icon data lives in `src/constants/icons-data.json` (committed, Biome-ignored, consumed by `src/components/common/Icon.svelte`) but has no generator script in the current build.
 
 ## Deployment
 
-- **Vercel** (default, `vercel.json`)
-- **Cloudflare Workers** (`wrangler.jsonc`, set `CF_WORKERS` env var)
 - Static output to `dist/`
