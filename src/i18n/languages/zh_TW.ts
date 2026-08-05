@@ -103,6 +103,25 @@ export const zh_TW: Translation = {
 	[Key.notFoundDescription]: "抱歉，您訪問的頁面不存在或已被移動。",
 	[Key.backToHome]: "返回首頁",
 
+	// RSS頁面
+	[Key.rss]: "RSS 訂閱",
+	[Key.rssDescription]: "訂閱獲取最新更新",
+	[Key.rssSubtitle]: "通過 RSS 訂閱，第一時間獲取最新文章和動態",
+	[Key.rssLink]: "RSS 鏈接",
+	[Key.rssCopyToReader]: "複製鏈接到你的 RSS 閱讀器",
+	[Key.rssCopyLink]: "複製鏈接",
+	[Key.rssLatestPosts]: "最新文章",
+	[Key.rssWhatIsRSS]: "什麼是 RSS？",
+	[Key.rssWhatIsRSSDescription]:
+		"RSS（Really Simple Syndication）是一種用於發布經常更新內容的標準格式。通過 RSS，你可以：",
+	[Key.rssBenefit1]: "及時獲取網站最新內容，無需手動訪問",
+	[Key.rssBenefit2]: "在一個地方管理多個網站的訂閱",
+	[Key.rssBenefit3]: "避免錯過重要更新和文章",
+	[Key.rssBenefit4]: "享受無廣告的純淨閱讀體驗",
+	[Key.rssHowToUse]: "推薦使用 Feedly、Inoreader 或其他 RSS 閱讀器來訂閱本站。",
+	[Key.rssCopied]: "RSS 鏈接已複製到剪貼板！",
+	[Key.rssCopyFailed]: "複製失敗，請手動複製鏈接",
+
 	//最後編輯時間卡片
 	[Key.lastModifiedPrefix]: "最後更新於 ",
 	[Key.lastModifiedOutdated]: "部分內容可能已過時",

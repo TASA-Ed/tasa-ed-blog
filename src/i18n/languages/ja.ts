@@ -106,6 +106,27 @@ export const ja: Translation = {
 		"申し訳ありませんが、アクセスしたページは存在しないか、移動されています。",
 	[Key.backToHome]: "ホームに戻る",
 
+	// RSSページ
+	[Key.rss]: "RSSフィード",
+	[Key.rssDescription]: "最新の更新を購読する",
+	[Key.rssSubtitle]: "RSSで購読して、最新の記事と更新を第一时间で取得する",
+	[Key.rssLink]: "RSSリンク",
+	[Key.rssCopyToReader]: "RSSリンクをリーダーにコピー",
+	[Key.rssCopyLink]: "リンクをコピー",
+	[Key.rssLatestPosts]: "最新の投稿",
+	[Key.rssWhatIsRSS]: "RSSとは？",
+	[Key.rssWhatIsRSSDescription]:
+		"RSS（Really Simple Syndication）は、頻繁に更新されるコンテンツを公開するための標準形式です。RSSを使用すると：",
+	[Key.rssBenefit1]:
+		"手動で訪問することなく、最新のウェブサイトコンテンツを及时に取得",
+	[Key.rssBenefit2]: "1か所で複数のウェブサイトの購読を管理",
+	[Key.rssBenefit3]: "重要な更新や記事を見逃すことを回避",
+	[Key.rssBenefit4]: "広告なしのクリーンな読書体験を楽しむ",
+	[Key.rssHowToUse]:
+		"Feedly、Inoreaderまたは他のRSSリーダーを使用してこのサイトを購読することを推奨します。",
+	[Key.rssCopied]: "RSSリンクがクリップボードにコピーされました！",
+	[Key.rssCopyFailed]: "コピーに失敗しました。手動でリンクをコピーしてください",
+
 	// 最終更新時間カード
 	[Key.lastModifiedPrefix]: "最終更新日：",
 	[Key.lastModifiedOutdated]: "一部の内容が古くなっている可能性があります",
