@@ -1,4 +1,5 @@
 ---
+import CodeGroupManager from "@components/features/CodeGroupManager.astro";
 import FancyboxManager from "@components/features/FancyboxManager.astro";
 import FontSetup from "@components/features/FontSetup.astro";
 import ConfigCarrier from "@components/layout/ConfigCarrier.astro";
@@ -553,6 +554,9 @@ const siteLang = lang.replace("_", "-");
 
     <!-- Fancybox Manager -->
     <FancyboxManager />
+
+    <!-- Tab 代码块交互 -->
+    <CodeGroupManager />
   </body>
 </html>
 
