@@ -75,8 +75,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Run Generate Icons
-        run: node scripts/generate-icons.js
+      - name: Run Generate Lqips
+        run: node scripts/generate-lqips.ts
 
       - name: Run Astro Build
         run: pnpm astro build
