@@ -100,8 +100,8 @@ export default defineConfig({
 
 	// 图像优化配置
 	image: {
-		// 全局响应式布局
-		layout: "constrained",
+		// 组件可自行传入 layout/widths；这里只控制 Markdown 正文图片
+		layout: "none",
 	},
 
 	integrations: [
@@ -158,7 +158,8 @@ export default defineConfig({
 					? [
 							pluginLanguageLogo({
 								color: expressiveCodeConfig.pluginLanguageLogo.color ?? "mono",
-								excludedLangs: expressiveCodeConfig.pluginLanguageLogo.excludedLangs ?? [],
+								excludedLangs:
+									expressiveCodeConfig.pluginLanguageLogo.excludedLangs ?? [],
 							}),
 						]
 					: []),
