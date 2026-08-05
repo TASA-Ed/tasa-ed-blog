@@ -22,7 +22,6 @@ interface Props {
 	description: string;
 	draft: boolean;
 	pinned?: boolean;
-	password?: boolean;
 	style: string;
 	loading?: "lazy" | "eager";
 }
@@ -36,7 +35,6 @@ const {
 	image,
 	description,
 	pinned,
-	password,
 	style,
 	loading = "lazy",
 } = Astro.props;

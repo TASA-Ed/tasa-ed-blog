@@ -9,7 +9,7 @@ author: 德二吹风机
 draft: false
 ---
 
-> 你可能要寻找：[TASA-Ed 服务运行状态查询 | TASA-Ed官网](../status/)
+> 你可能要寻找：[[status]]
 
 展示了 TASA-Ed 工作室各项目的状态。
 
