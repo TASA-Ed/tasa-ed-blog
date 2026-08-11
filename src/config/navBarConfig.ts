@@ -49,7 +49,7 @@ export const navBarSearchConfig: NavBarSearchConfig = {
 		MEILI_HOST: "https://api.tasaed.top/search",
 		PUBLIC_MEILI_HOST: "https://api.tasaed.top/search",
 		PUBLIC_MEILI_SEARCH_KEY:
-			"abe955d602ba2a76e7ec203374535d5c0d3257afb0df5f8c14d9378da6859b70",
+			"b6172b0e10057d2ec84390688f3a602a42935095a238e29fcf70e5a4827a2a77",
 	},
 };
 
