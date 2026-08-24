@@ -13,4 +13,4 @@ draft: false
 
 导航栏里面也放了，友链里面的Q群就是。
 
-[点此加入](https://qm.qq.com/cgi-bin/qm/qr?k=meZHnANAtGqxFXNHBnad1m1ms3li_Pgj&jump_from=webapi&authKey=YfabJovSWyCBqhrV7B5VWkVSG5hQTsd19AEvjMTFy2jafZ9goaIlJOm9jh7dv6f/)（群号：597524393）
+[点此加入](https://qm.qq.com/q/nC2N5Y1UX0)（群号：597524393）
