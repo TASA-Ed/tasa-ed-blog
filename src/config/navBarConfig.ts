@@ -45,7 +45,6 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 export const navBarSearchConfig: NavBarSearchConfig = {
 	meiliSearchConfig: {
 		INDEX_NAME: "astro_blog",
-		CONTENT_DIR: "src/content/posts",
 		MEILI_HOST: "https://api.tasaed.top/search",
 		PUBLIC_MEILI_HOST: "https://api.tasaed.top/search",
 		PUBLIC_MEILI_SEARCH_KEY:

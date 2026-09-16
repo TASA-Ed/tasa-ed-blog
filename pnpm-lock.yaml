@@ -129,8 +129,8 @@ importers:
         specifier: ^4.0.0
         version: 4.0.0
       meilisearch:
-        specifier: ^0.60.0
-        version: 0.60.0
+        specifier: ^0.62.0
+        version: 0.62.0
       pako:
         specifier: ^3.0.1
         version: 3.0.1
@@ -4028,8 +4028,8 @@ packages:
   mdurl@2.1.0:
     resolution: {integrity: sha512-1+HBaOx0zi/dQWht8rNv9MYf9qqpqL/kxI0hXImU6Y547zM6Sni8BQibt7ifgMcYtQg41ao3Ivd6cnSM86inpg==}
 
-  meilisearch@0.60.0:
-    resolution: {integrity: sha512-z32KgxE6/7hRzbVfzUgzlmNl2OS7TwGE6wSWs2tVEuAY9DWrX6zAmt0s7wTyelH36orIaZ3/t1mQsCsExGtVDQ==}
+  meilisearch@0.62.0:
+    resolution: {integrity: sha512-/ETDW7mmWI2NcSmtJdTPhbjsIbs3VcuapszX5X6JhdHB0XbszPOhqd3EB2bEylL0HK7dgwh/4Z3MdyuycWVf5A==}
     engines: {node: ^20.19.0 || >=22.12.0}
 
   merge-stream@2.0.0:
@@ -10440,7 +10440,7 @@ snapshots:
 
   mdurl@2.1.0: {}
 
-  meilisearch@0.60.0: {}
+  meilisearch@0.62.0: {}
 
   merge-stream@2.0.0: {}
 
