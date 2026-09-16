@@ -7,13 +7,13 @@ import { readdirSync, readFileSync, statSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { slug } from "github-slugger";
-import matter from "gray-matter";
+import { parse } from "yaml";
 import { getApiUrlList, processCoverImageSync } from "../utils/image-utils";
 
 const POSTS_DIR = fileURLToPath(new URL("../content/posts/", import.meta.url));
 const MARKDOWN_EXTENSION = /\.(?:md|mdx|markdown)$/i;
-const WIKI_LINK = /!?\[\[([^[\]\n]+)\]\]/g;
-const STANDALONE_WIKI_LINK = /^\[\[([^[\]\n]+)\]\]$/;
+const WIKI_LINK = /!?\[\[([^[\]\n]+)]]/g;
+const STANDALONE_WIKI_LINK = /^\[\[([^[\]\n]+)]]$/;
 const SKIPPED_NODE_TYPES = new Set([
 	"link",
 	"linkReference",
@@ -86,6 +86,27 @@ function toPostId(meta) {
 	return declaredSlug || toContentPath(meta.filePath);
 }
 
+function parseFrontmatter(source) {
+	const match = source
+		.replace(/^\uFEFF/, "")
+		.match(/^---[ \t]*\r?\n([\s\S]*?)^---[ \t]*(?:\r?\n|$)/m);
+
+	if (!match || match.index !== 0) {
+		return {};
+	}
+
+	const data = parse(match[1]);
+
+	if (data == null) {
+		return {};
+	}
+	if (typeof data !== "object" || Array.isArray(data)) {
+		throw new TypeError("Frontmatter must be a YAML mapping");
+	}
+
+	return data;
+}
+
 function readMetaFile(filePath) {
 	let stats;
 	try {
@@ -104,8 +125,9 @@ function readMetaFile(filePath) {
 
 	let data;
 	try {
-		data = matter(readFileSync(filePath, "utf8")).data ?? {};
+		data = parseFrontmatter(readFileSync(filePath, "utf8"));
 	} catch {
+		console.error("Unable to parse frontmatter:", filePath);
 		return null;
 	}
 
