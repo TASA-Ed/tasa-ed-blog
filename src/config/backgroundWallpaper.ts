@@ -117,15 +117,6 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 			// 渐变高度
 			height: "10%",
 		},
-		// 壁纸轮播配置，横幅壁纸和全屏壁纸共享，仅在配置多张图片时生效
-		carousel: {
-			// 是否启用壁纸轮播；关闭时保持每次刷新随机显示一张
-			enable: false,
-			// 轮播切换间隔（毫秒）
-			interval: 5000,
-			// 过渡效果: 'fade' 渐变 | 'zoom' 缩放 | 'slide' 滑动 | 'kenburns' 旋转木马
-			transitionEffect: "zoom",
-		},
 	},
 	// Banner模式特有配置
 	banner: {
