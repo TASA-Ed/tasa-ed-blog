@@ -48,12 +48,6 @@ export type BackgroundWallpaperConfig = {
 				  }; // 是否启用渐变过渡，支持布尔值或分别设置桌面端和移动端，默认true（水波纹关闭时自动生效）
 			height?: string; // 渐变高度，默认 "30vh"
 		};
-		// 壁纸轮播配置，横幅壁纸和全屏壁纸共享
-		carousel?: {
-			enable: boolean; // 是否启用壁纸轮播
-			interval?: number; // 轮播间隔时间，单位毫秒
-			transitionEffect?: "fade" | "zoom" | "slide" | "kenburns"; // 过渡效果: 'fade' 渐变 | 'zoom' 缩放 | 'slide' 滑动 | 'kenburns' 旋转木马
-		};
 	};
 
 	// Banner模式特有配置
