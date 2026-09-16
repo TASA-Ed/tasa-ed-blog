@@ -45,7 +45,7 @@ const hasChildren = processedLink.children && processedLink.children.length > 0;
 						href={child.external ? child.url : url(child.url)}
 						target={child.external ? "_blank" : undefined}
 						isLast={index === (processedLink.children?.length || 0) - 1}
-						class="dropdown-item h-10"
+						class="dropdown-item focus-ring-inset h-10"
             title={child.name}
             ariaLabel={child.name}
 					>

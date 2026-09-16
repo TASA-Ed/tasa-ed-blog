@@ -181,8 +181,8 @@
 </div>
 
 <!-- toggle btn for phone/tablet view -->
-<button on:click={togglePanel} aria-label="Search Panel" id="search-switch"
-        class="btn-plain scale-animation lg:hidden! rounded-lg w-9 h-9 md:w-11 md:h-11 active:scale-90">
+<button on:click={togglePanel} aria-label="Search Panel" aria-controls="search-panel" aria-expanded={isPanelOpen} id="search-switch"
+		class="btn-plain scale-animation lg:hidden! rounded-lg w-9 h-9 md:w-11 md:h-11 active:scale-90">
     <Icon icon="material-symbols:search" class="text-[1.25rem]"></Icon>
 </button>
 
@@ -273,4 +273,3 @@ top-20 left-4 md:left-[unset] right-4 shadow-2xl rounded-2xl p-2"
         overflow-y: auto;
     }
 </style>
-
