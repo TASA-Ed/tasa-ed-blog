@@ -12,7 +12,6 @@ export type {
   PluginLanguageBadgeConfig,
 } from "./expressiveCodeConfig";
 export type { FontSelectionConfig } from "./fontConfig";
-export type { FooterConfig } from "./footerConfig";
 export type { FriendLink, FriendsPageConfig } from "./friendsConfig";
 export type { GalleryAlbum, GalleryConfig } from "./galleryConfig";
 export type { LicenseConfig } from "./licenseConfig";
