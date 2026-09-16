@@ -104,6 +104,16 @@ export const siteConfig: SiteConfig = {
 	// 分类导航栏开关，在首页和归档页顶部显示分类快捷导航
 	categoryBar: true,
 
+	// 分类导航栏按钮样式
+	// "pill"：胶囊，主题色浅底圆角
+	// "rectangle"：矩形，配色同胶囊，仅圆角更小
+	categoryStyle: "rectangle",
+
+	// 标签样式，作用于文章列表底部标签、标签页和侧边栏标签
+	// "pill"：胶囊，中性灰底圆角
+	// "rectangle"：矩形，主题色底小圆角
+	tagStyle: "pill",
+
 	// 归档页是否折叠非最新年份文章，禁用后默认展开全部年份
 	foldArticle: true,
 
@@ -124,6 +134,10 @@ export const siteConfig: SiteConfig = {
 		// 设置为"meta"：显示在文章标题下的元数据
 		// 设置为"bottom"：顶替stats在底部显示
 		tagsPosition: "bottom",
+		// 底部标签样式，仅在 tagsPosition 为 "bottom" 时生效
+		// "chip"：按钮样式，形状跟随上方的 tagStyle 配置
+		// "text"：无底色，只有文字
+		tagsBottomStyle: "chip",
 		// PostMeta 元数据显示控制
 		meta: {
 			// 是否显示发布日期
@@ -133,7 +147,7 @@ export const siteConfig: SiteConfig = {
 			// 是否显示标签
 			showTags: true,
 			// 标签数量，设为 0 则不限制
-			tagCount: 5,
+			tagCount: 3,
 			// 是否显示字数
 			showWords: false,
 			// 是否显示阅读时间
@@ -155,6 +169,10 @@ export const siteConfig: SiteConfig = {
 			masonry: true,
 			// 网格模式卡片最小宽度(px)，浏览器根据容器宽度自动计算列数
 			columnWidth: 320,
+			// 网格模式封面是否撑满卡片贴边
+			// true：封面顶到卡片左右和上边缘，只有上面两角是圆角
+			// false：封面按卡片内边距内缩，上、左、右留出间距，四角都是圆角
+			coverFullWidth: false,
 		},
 	},
 
