@@ -5,10 +5,7 @@ export function formatDateToYYYYMMDD(date: Date): string {
 }
 
 // 国际化日期格式化函数
-export function formatDateI18n(
-	dateInput: Date | string,
-	includeTime?: boolean,
-): string {
+export function formatDateI18n(dateInput: Date | string, includeTime?: boolean): string {
 	const date = typeof dateInput === "string" ? new Date(dateInput) : dateInput;
 	const lang = siteConfig.lang || "en";
 
@@ -76,10 +73,7 @@ export function formatDynamicDate(dateInput: Date | string): string {
 	return `${get("year")}-${get("month")}-${get("day")} ${get("hour")}:${get("minute")}:${get("second")}`;
 }
 
-export function formatTimezoneOffset(
-	timezone: string,
-	dateInput: Date | string,
-): string {
+export function formatTimezoneOffset(timezone: string, dateInput: Date | string): string {
 	const date = typeof dateInput === "string" ? new Date(dateInput) : dateInput;
 	const timezoneName = new Intl.DateTimeFormat("en-US", {
 		timeZone: timezone,

@@ -51,8 +51,7 @@ export const zh_CN: Translation = {
 	[Key.commentSection]: "评论区",
 	[Key.commentSubtitle]: "分享你的想法，与大家交流讨论",
 	[Key.commentNotConfigured]: "评论系统暂未配置",
-	[Key.guestbookCommentHint]:
-		"您还未在配置文件中启用评论系统，启用后访客才可在此留言",
+	[Key.guestbookCommentHint]: "您还未在配置文件中启用评论系统，启用后访客才可在此留言",
 	[Key.friends]: "友链",
 	[Key.friendsDescription]: "这里是我的朋友们，欢迎互相访问交流",
 	[Key.searchFriends]: "搜索友链...",
@@ -203,8 +202,7 @@ export const zh_CN: Translation = {
 	[Key.scanToSponsor]: "扫码打赏",
 	[Key.sponsorGoTo]: "前往打赏",
 	[Key.sponsorButton]: "支持与分享",
-	[Key.sponsorButtonText]:
-		"如果这篇文章对你有帮助，欢迎分享给更多人或打赏支持！",
+	[Key.sponsorButtonText]: "如果这篇文章对你有帮助，欢迎分享给更多人或打赏支持！",
 
 	[Key.shareOnSocial]: "文章分享",
 	[Key.shareOnSocialDescription]: "如果这篇文章对你有帮助，欢迎分享给更多人！",

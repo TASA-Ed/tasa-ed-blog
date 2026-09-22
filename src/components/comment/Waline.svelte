@@ -1,16 +1,15 @@
 <script lang="ts">
+	import { init } from "@waline/client";
+	import { onMount, onDestroy } from "svelte";
+
+	import "@waline/client/waline.css";
 	import { commentConfig } from "@/config";
-	import { init } from '@waline/client';
-	import '@waline/client/waline.css';
-	import { onMount, onDestroy } from 'svelte';
 
 	interface Props {
 		path: string;
 	}
 
-	const {
-		path,
-	}: Props = $props();
+	const { path }: Props = $props();
 
 	let walineInstance;
 	let el;
@@ -26,7 +25,7 @@
 			recaptchaV3Key: commentConfig.waline?.recaptchaV3Key,
 			imageUploader: commentConfig.waline?.imageUploader,
 			locale: commentConfig.waline?.locales,
-			requiredMeta: ['nick', 'mail'],
+			requiredMeta: ["nick", "mail"],
 			el: "#waline",
 			path: path,
 			dark: "html.dark",
@@ -45,50 +44,50 @@
 </script>
 
 <div class="relative w-full">
-  <div id="waline" bind:this={el}></div>
+	<div id="waline" bind:this={el}></div>
 </div>
 
 <style>
-    :root {
-        --waline-theme-color: var(--primary) !important;
-        --waline-active-color: var(--primary) !important;
-    }
+	:root {
+		--waline-theme-color: var(--primary) !important;
+		--waline-active-color: var(--primary) !important;
+	}
 
-    :root.dark {
-        --waline-bg-color: rgba(0, 0, 0, 0) !important;
-        --waline-color: var(--content-meta) !important;
-        --waline-info-color: var(--color-neutral-500) !important;
-    }
+	:root.dark {
+		--waline-bg-color: rgba(0, 0, 0, 0) !important;
+		--waline-color: var(--content-meta) !important;
+		--waline-info-color: var(--color-neutral-500) !important;
+	}
 
-    :global(.wl-editor),
-    :global(.wl-link),
-    :global(.wl-mail),
-    :global(.wl-nick) {
-        background: transparent !important;
-        border-radius: 10px !important;
-        border: var(--waline-border) !important;
-        border-color: transparent !important;
-    }
+	:global(.wl-editor),
+	:global(.wl-link),
+	:global(.wl-mail),
+	:global(.wl-nick) {
+		background: transparent !important;
+		border-radius: 10px !important;
+		border: var(--waline-border) !important;
+		border-color: transparent !important;
+	}
 
-    :global(.wl-editor) {
-        padding: 0 0 0 4px !important;
-    }
+	:global(.wl-editor) {
+		padding: 0 0 0 4px !important;
+	}
 
-    :global(.wl-editor):focus,
-    :global(.wl-link):focus,
-    :global(.wl-mail):focus,
-    :global(.wl-nick):focus {
-        background: transparent !important;
-        border-color: var(--primary) !important;
-    }
+	:global(.wl-editor):focus,
+	:global(.wl-link):focus,
+	:global(.wl-mail):focus,
+	:global(.wl-nick):focus {
+		background: transparent !important;
+		border-color: var(--primary) !important;
+	}
 
-    :global(.wl-preview),
-    :global(.wl-count),
-    :global(.wl-reaction-title) {
-        color: var(--btn-content) !important;
-    }
+	:global(.wl-preview),
+	:global(.wl-count),
+	:global(.wl-reaction-title) {
+		color: var(--btn-content) !important;
+	}
 
-    /*:global(html.dark .wl-gif-popup input)::placeholder {*/
-    /*	color: var(--color-neutral-100);*/
-    /*}*/
+	/*:global(html.dark .wl-gif-popup input)::placeholder {*/
+	/*	color: var(--color-neutral-100);*/
+	/*}*/
 </style>

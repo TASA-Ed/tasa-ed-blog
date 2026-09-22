@@ -148,12 +148,12 @@ function renderRandomPosts() {
     var base = apiUrl.replace(/\/api\/allPostMeta\.json$/, '');
 
     picked.forEach(function(post, idx) {
-      var href = base + '/posts/' + post.id + '/';
+      var href = `${base  }/posts/${  post.id  }/`;
 
       var a = document.createElement('a');
       a.href = href;
-      a.className = 'group flex items-center gap-3 px-3 py-3 -mx-1 rounded-lg transition-all hover:bg-black/5 dark:hover:bg-white/5 active:scale-[0.98]'
-        + (idx < picked.length - 1 ? ' border-b border-dashed border-(--line-divider)' : '');
+      a.className = `group flex items-center gap-3 px-3 py-3 -mx-1 rounded-lg transition-all hover:bg-black/5 dark:hover:bg-white/5 active:scale-[0.98]${
+         idx < picked.length - 1 ? ' border-b border-dashed border-(--line-divider)' : ''}`;
 
       var num = document.createElement('div');
       num.className = 'shrink-0 w-6 h-6 rounded-md bg-(--enter-btn-bg) text-(--primary) flex items-center justify-center text-sm font-bold transition';

@@ -32,10 +32,7 @@ function appendSeedParam(apiUrl: string, hash: number): string {
  * @param image - 文章frontmatter中的image字段值
  * @param seed - 用于生成唯一URL的种子（文章id或slug）
  */
-export function processCoverImageSync(
-	image: string | undefined,
-	seed?: string,
-): string {
+export function processCoverImageSync(image: string | undefined, seed?: string): string {
 	if (!image || image === "") {
 		return "";
 	}
@@ -44,11 +41,7 @@ export function processCoverImageSync(
 		return image;
 	}
 
-	if (
-		!randomCoverImage.enable ||
-		!randomCoverImage.apis ||
-		randomCoverImage.apis.length === 0
-	) {
+	if (!randomCoverImage.enable || !randomCoverImage.apis || randomCoverImage.apis.length === 0) {
 		return "";
 	}
 
@@ -63,10 +56,7 @@ export function processCoverImageSync(
  * @param image - 文章frontmatter中的image字段值
  * @param seed - 用于生成唯一URL的种子（文章id或slug）
  */
-export function getApiUrlList(
-	image: string | undefined,
-	seed?: string,
-): string[] {
+export function getApiUrlList(image: string | undefined, seed?: string): string[] {
 	if (image !== "api" || !randomCoverImage.enable || !randomCoverImage.apis) {
 		return [];
 	}

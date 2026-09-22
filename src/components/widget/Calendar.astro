@@ -213,7 +213,7 @@ const postUrlPrefix = url("/posts/");
     // Click on cell to navigate to that month
     gridEl.querySelectorAll('.heatmap-cell[data-month]').forEach(cell => {
       cell.addEventListener('click', () => {
-        const m = parseInt(cell.getAttribute('data-month'));
+        const m = Number.parseInt(cell.getAttribute('data-month'));
         displayMonth = m;
         currentView = 'day';
         renderCalendar();
@@ -247,8 +247,8 @@ const postUrlPrefix = url("/posts/");
         tooltipEl.textContent = cell.getAttribute('data-tooltip');
         tooltipEl.style.opacity = '1';
         const rect = cell.getBoundingClientRect();
-        tooltipEl.style.left = rect.left + rect.width / 2 - tooltipEl.offsetWidth / 2 + 'px';
-        tooltipEl.style.top = rect.top - tooltipEl.offsetHeight - 6 + 'px';
+        tooltipEl.style.left = `${rect.left + rect.width / 2 - tooltipEl.offsetWidth / 2  }px`;
+        tooltipEl.style.top = `${rect.top - tooltipEl.offsetHeight - 6  }px`;
       });
       cell.addEventListener('mouseleave', () => {
         tooltipEl.style.opacity = '0';
@@ -427,7 +427,7 @@ const postUrlPrefix = url("/posts/");
 
     container.querySelectorAll('[data-month]').forEach(el => {
       el.addEventListener('click', () => {
-        displayMonth = parseInt(el.getAttribute('data-month'));
+        displayMonth = Number.parseInt(el.getAttribute('data-month'));
         currentView = 'day';
         renderCalendar();
       });
@@ -453,7 +453,7 @@ const postUrlPrefix = url("/posts/");
 
     container.querySelectorAll('[data-year]').forEach(el => {
       el.addEventListener('click', () => {
-        displayYear = parseInt(el.getAttribute('data-year'));
+        displayYear = Number.parseInt(el.getAttribute('data-year'));
         currentView = 'month';
         renderCalendar();
       });

@@ -74,11 +74,7 @@ export function getSearchUrl(query: string): string {
 
 export function url(path: string): string {
 	// 关键修复：如果是网络URL，直接返回原地址
-	if (
-		path.startsWith("http://") ||
-		path.startsWith("https://") ||
-		path.startsWith("//")
-	) {
+	if (path.startsWith("http://") || path.startsWith("https://") || path.startsWith("//")) {
 		return path;
 	}
 

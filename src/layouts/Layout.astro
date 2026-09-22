@@ -183,7 +183,7 @@ const siteLang = lang.replace("_", "-");
 
               return patterns.some(function(pattern) {
                 const regexPattern = pattern.replace(/\./g, '\\.').replace(/\*/g, '.*');
-                const regex = new RegExp('^' + regexPattern + '$');
+                const regex = new RegExp(`^${  regexPattern  }$`);
                 return regex.test(hostname);
               });
             } catch (e) {
@@ -287,7 +287,7 @@ const siteLang = lang.replace("_", "-");
 
       // 设置卡片透明度（全屏透明模式下使用），优先使用用户自定义值
       const storedCardOpacity = localStorage.getItem("overlayCardOpacity");
-      const parsedCardOpacity = storedCardOpacity === null ? NaN : Number.parseFloat(storedCardOpacity);
+      const parsedCardOpacity = storedCardOpacity === null ? Number.NaN : Number.parseFloat(storedCardOpacity);
       const resolvedCardOpacity = Number.isFinite(parsedCardOpacity)
         ? Math.min(1, Math.max(0, parsedCardOpacity))
         : cardTransparentOpacity;
@@ -311,13 +311,13 @@ const siteLang = lang.replace("_", "-");
 
       // 在下一帧重新计算精确值（仅在值变化时更新，避免闪烁）
       requestAnimationFrame(() => {
-        const oldValue = parseInt(
+        const oldValue = Number.parseInt(
           document.documentElement.style.getPropertyValue(
             "--banner-height-extend"
           )
         );
         calculateBannerHeightExtend();
-        const newValue = parseInt(
+        const newValue = Number.parseInt(
           document.documentElement.style.getPropertyValue(
             "--banner-height-extend"
           )

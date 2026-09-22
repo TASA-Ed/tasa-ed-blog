@@ -3,7 +3,7 @@ title: 【教程】使用1Panel部署NodeBB论坛
 published: 2025-04-06
 pinned: false
 description: 使用1Panel部署NodeBB论坛教程
-tags: [服务器,NodeBB,1Panel,教程]
+tags: [服务器, NodeBB, 1Panel, 教程]
 category: 教程
 author: 德二吹风机
 draft: false

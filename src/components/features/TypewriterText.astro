@@ -28,12 +28,12 @@ const textData = Array.isArray(text) ? JSON.stringify(text) : text;
   class TypewriterEffect {
     private element: HTMLElement;
     private texts: string[];
-    private currentTextIndex: number = 0;
+    private currentTextIndex = 0;
     private speed: number;
     private deleteSpeed: number;
     private pauseTime: number;
-    private currentIndex: number = 0;
-    private isDeleting: boolean = false;
+    private currentIndex = 0;
+    private isDeleting = false;
     private timeoutId: number | null = null;
 
     constructor(element: HTMLElement) {
@@ -48,9 +48,9 @@ const textData = Array.isArray(text) ? JSON.stringify(text) : text;
         this.texts = [textData];
       }
 
-      this.speed = parseInt(element.dataset.speed || "100");
-      this.deleteSpeed = parseInt(element.dataset.deleteSpeed || "50");
-      this.pauseTime = parseInt(element.dataset.pauseTime || "2000");
+      this.speed = Number.parseInt(element.dataset.speed || "100");
+      this.deleteSpeed = Number.parseInt(element.dataset.deleteSpeed || "50");
+      this.pauseTime = Number.parseInt(element.dataset.pauseTime || "2000");
 
       // 如果有多条文本且未启用打字机效果，随机显示一条
       if (this.texts.length > 1 && !this.isTypewriterEnabled()) {

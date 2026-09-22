@@ -3,7 +3,7 @@ title: ICP 备案通过流程分享
 published: 2026-02-28
 pinned: false
 description: ICP 备案今日通过！分享流程。
-tags: [TASA-Ed 工作室,公告,教程]
+tags: [TASA-Ed 工作室, 公告, 教程]
 category: 公告
 author: 德二吹风机
 draft: false

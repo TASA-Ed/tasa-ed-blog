@@ -9,8 +9,8 @@
     "build": "node scripts/generate-lqips.ts && astro build",
     "preview": "astro preview",
     "typecheck": "tsc --noEmit",
-    "format": "biome format --write ./src ./scripts",
-    "lint": "biome check --write ./src ./scripts",
+    "fmt": "oxfmt --write ./src ./scripts",
+    "lint": "oxlint --fix ./src ./scripts",
     "preinstall": "npx only-allow pnpm",
     "index:meili": "pnpx tsx src/scripts/index-to-meilisearch.mts",
     "lqips": "node scripts/generate-lqips.ts"
@@ -80,7 +80,6 @@
   },
   "devDependencies": {
     "@astrojs/ts-plugin": "^1.10.10",
-    "@biomejs/biome": "2.5.7",
     "@iconify-json/mdi": "^1.2.3",
     "@iconify-json/svg-spinners": "^1.2.4",
     "@tailwindcss/vite": "^4.3.3",
@@ -88,6 +87,8 @@
     "@types/sanitize-html": "^2.16.1",
     "@waline/client": "^3.15.2",
     "markdownlint-cli2": "^0.23.2",
+    "oxfmt": "^0.51.0",
+    "oxlint": "^1.85.0",
     "postcss-import": "^16.1.1",
     "postcss-nesting": "^14.0.1",
     "rehype-callouts": "^2.2.0"

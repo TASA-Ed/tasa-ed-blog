@@ -1,5 +1,6 @@
-import { getCollection } from "astro:content";
 import type { APIRoute } from "astro";
+import { getCollection } from "astro:content";
+
 import type { MeiliSearchDocument } from "@/types/meilisearch";
 import { getPostUrlBySlug } from "@/utils/url-utils";
 

@@ -1,5 +1,6 @@
 import { h } from "hastscript";
 import { visit } from "unist-util-visit";
+
 import { shouldAddNoReferrer } from "../utils/image-utils.ts";
 
 /**
@@ -45,9 +46,9 @@ export default function rehypeFigure() {
 
 			let figure;
 			// 如果定义了大小
-			if (alt.includes("=")){
+			if (alt.includes("=")) {
 				// 获取大小
-				const size = (alt.slice(alt.indexOf("=") + 1)).split("x");
+				const size = alt.slice(alt.indexOf("=") + 1).split("x");
 				// 去掉定义大小的属性
 				alt = alt.slice(0, alt.indexOf("="));
 				// 创建 figure 元素，包含原始的 img 加大小和居中的 figcaption
@@ -57,7 +58,7 @@ export default function rehypeFigure() {
 						...imgProps,
 						// 更新大小
 						height: size[1],
-						width: size[0]
+						width: size[0],
 					}),
 					h("figcaption", alt),
 				]);

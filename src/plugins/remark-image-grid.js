@@ -109,9 +109,7 @@ function processGridBlocks(children) {
 				const imgCount = node.children.filter(
 					(n) =>
 						n.type === "image" ||
-						(n.type === "link" &&
-							n.children &&
-							n.children.some((c) => c.type === "image")),
+						(n.type === "link" && n.children && n.children.some((c) => c.type === "image")),
 				).length;
 				const cols = imgCount || 2;
 				const mdColClass = getGridColumnClass(cols);
@@ -121,19 +119,10 @@ function processGridBlocks(children) {
 					data: {
 						hName: "div",
 						hProperties: {
-							className: [
-								"image-grid",
-								"grid",
-								"grid-cols-1",
-								mdColClass,
-								"gap-4",
-								"my-4",
-							],
+							className: ["image-grid", "grid", "grid-cols-1", mdColClass, "gap-4", "my-4"],
 						},
 					},
-					children: node.children.filter(
-						(n) => n.type !== "text" || n.value.trim() !== "",
-					), // Remove empty text nodes left over
+					children: node.children.filter((n) => n.type !== "text" || n.value.trim() !== ""), // Remove empty text nodes left over
 				});
 				continue;
 			}

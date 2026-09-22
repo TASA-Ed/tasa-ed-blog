@@ -16,9 +16,7 @@ import type { FontSelectionConfig } from "../types/fontConfig";
  *
  * @returns 去重后的 CSS 变量名集合（如 "--font-inter"）
  */
-export function collectUsedFontCssVars(
-	config: FontSelectionConfig,
-): Set<string> {
+export function collectUsedFontCssVars(config: FontSelectionConfig): Set<string> {
 	const used = new Set<string>();
 
 	const sel = config.selected;

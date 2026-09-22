@@ -1,0 +1,35 @@
+{
+	"$schema": "./node_modules/oxlint/configuration_schema.json",
+	"ignorePatterns": [
+		"src/**/*.css",
+		"src/public/**",
+		"dist/**",
+		"src/constants/icons-data.json",
+		"src/constants/lqips.json"
+	],
+	"plugins": ["eslint", "typescript", "unicorn", "oxc", "import", "react"],
+	"categories": {
+		"correctness": "off"
+	},
+	"rules": {
+		"eslint/no-param-reassign": "error",
+		"typescript/prefer-as-const": "error",
+		"eslint/default-param-last": "error",
+		"react/self-closing-comp": "error",
+		"eslint/one-var": ["error", "never"],
+		"eslint/prefer-template": "error",
+		"unicorn/prefer-number-properties": "error",
+		"typescript/no-inferrable-types": "error",
+		"eslint/no-else-return": "error"
+	},
+	"overrides": [
+		{
+			"files": ["**/*.svelte", "**/*.astro", "**/*.vue"],
+			"rules": {
+				"eslint/prefer-const": "off",
+				"typescript/consistent-type-imports": "off",
+				"eslint/no-unused-vars": "off"
+			}
+		}
+	]
+}

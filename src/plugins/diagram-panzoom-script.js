@@ -32,14 +32,10 @@
 
 		// 收集所有可操作的目标元素（Mermaid 有 light+dark 两个 SVG）
 		var targets = Array.from(
-			container.querySelectorAll(
-				".mermaid-svg-light svg, .mermaid-svg-dark svg",
-			),
+			container.querySelectorAll(".mermaid-svg-light svg, .mermaid-svg-dark svg"),
 		);
 		if (targets.length === 0) {
-			const single = container.querySelector(
-				"svg, img, .diagram-panzoom-target",
-			);
+			const single = container.querySelector("svg, img, .diagram-panzoom-target");
 			if (single) targets = [single];
 		}
 		if (targets.length === 0) return;
@@ -270,10 +266,7 @@
 					e.preventDefault();
 					const t0 = e.touches[0];
 					const t1 = e.touches[1];
-					pinchDist = Math.hypot(
-						t1.clientX - t0.clientX,
-						t1.clientY - t0.clientY,
-					);
+					pinchDist = Math.hypot(t1.clientX - t0.clientX, t1.clientY - t0.clientY);
 					pinchScale = st.scale;
 					pinchTx = st.tx;
 					pinchTy = st.ty;
@@ -290,10 +283,7 @@
 					e.preventDefault();
 					const t0 = e.touches[0];
 					const t1 = e.touches[1];
-					const newDist = Math.hypot(
-						t1.clientX - t0.clientX,
-						t1.clientY - t0.clientY,
-					);
+					const newDist = Math.hypot(t1.clientX - t0.clientX, t1.clientY - t0.clientY);
 					const newScale = Math.min(
 						MAX_SCALE,
 						Math.max(MIN_SCALE, pinchScale * (newDist / pinchDist)),

@@ -1,4 +1,5 @@
 import { h } from "hastscript";
+
 import clientScript from "./diagram-panzoom-script.js?raw";
 
 /** 已注入脚本的 tree 集合，避免同一 tree 多次注入 */

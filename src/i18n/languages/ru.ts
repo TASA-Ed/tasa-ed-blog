@@ -54,8 +54,7 @@ export const ru: Translation = {
 	[Key.guestbookCommentHint]:
 		"Вы еще не включили систему комментариев в файле конфигурации. После включения посетители смогут оставлять сообщения здесь",
 	[Key.friends]: "Ссылки",
-	[Key.friendsDescription]:
-		"Вот мои друзья, добро пожаловать посетить и общаться друг с другом",
+	[Key.friendsDescription]: "Вот мои друзья, добро пожаловать посетить и общаться друг с другом",
 	[Key.searchFriends]: "Поиск друзей...",
 	[Key.friendsEmpty]: "Друзей пока нет.",
 	[Key.guestbook]: "Гостевая книга",
@@ -110,8 +109,7 @@ export const ru: Translation = {
 	// RSS Страница
 	[Key.rss]: "RSS лента",
 	[Key.rssDescription]: "Подпишитесь, чтобы получать последние обновления",
-	[Key.rssSubtitle]:
-		"Подписаться через RSS, чтобы сразу получать последние статьи и обновления",
+	[Key.rssSubtitle]: "Подписаться через RSS, чтобы сразу получать последние статьи и обновления",
 	[Key.rssLink]: "RSS ссылка",
 	[Key.rssCopyToReader]: "Скопировать ссылку в ваш RSS читатель",
 	[Key.rssCopyLink]: "Скопировать ссылку",
@@ -119,16 +117,14 @@ export const ru: Translation = {
 	[Key.rssWhatIsRSS]: "Что такое RSS?",
 	[Key.rssWhatIsRSSDescription]:
 		"RSS (Really Simple Syndication) — стандартный формат для публикации часто обновляемого контента. С RSS вы можете:",
-	[Key.rssBenefit1]:
-		"Получать последний контент сайта вовремя без ручного посещения",
+	[Key.rssBenefit1]: "Получать последний контент сайта вовремя без ручного посещения",
 	[Key.rssBenefit2]: "Управлять подписками на несколько сайтов в одном месте",
 	[Key.rssBenefit3]: "Не пропускать важные обновления и статьи",
 	[Key.rssBenefit4]: "Наслаждаться чистым чтением без рекламы",
 	[Key.rssHowToUse]:
 		"Рекомендуется использовать Feedly, Inoreader или другие RSS читатели для подписки на этот сайт.",
 	[Key.rssCopied]: "RSS ссылка скопирована в буфер обмена!",
-	[Key.rssCopyFailed]:
-		"Ошибка копирования, пожалуйста, скопируйте ссылку вручную",
+	[Key.rssCopyFailed]: "Ошибка копирования, пожалуйста, скопируйте ссылку вручную",
 
 	// Последнее изменение
 	[Key.lastModifiedPrefix]: "Последнее обновление: ",
@@ -210,8 +206,7 @@ export const ru: Translation = {
 	[Key.scanToSponsor]: "Сканировать для поддержки",
 	[Key.sponsorGoTo]: "Перейти к спонсору",
 	[Key.sponsorButton]: "Поддержка и Поделиться",
-	[Key.sponsorButtonText]:
-		"Если эта статья помогла вам, пожалуйста, поделитесь или поддержите!",
+	[Key.sponsorButtonText]: "Если эта статья помогла вам, пожалуйста, поделитесь или поддержите!",
 
 	[Key.shareOnSocial]: "Поделиться статьей",
 	[Key.shareOnSocialDescription]:
@@ -297,8 +292,7 @@ export const ru: Translation = {
 	[Key.passwordPlaceholder]: "Введите пароль",
 	[Key.passwordSubmit]: "Разблокировать",
 	[Key.passwordError]: "Неверный пароль, попробуйте снова.",
-	[Key.passwordProtectedRss]:
-		"Эта статья зашифрована. Пожалуйста, посетите сайт для просмотра.",
+	[Key.passwordProtectedRss]: "Эта статья зашифрована. Пожалуйста, посетите сайт для просмотра.",
 
 	// 自定义
 	[Key.cBackToTop]: "Вернуться к началу",

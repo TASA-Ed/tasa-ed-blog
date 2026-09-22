@@ -47,10 +47,7 @@ export const getBackgroundImages = (): BackgroundImages => {
 
 // 类型守卫函数
 export const isBannerSrcObject = (
-	src:
-		| string
-		| string[]
-		| { desktop?: string | string[]; mobile?: string | string[] },
+	src: string | string[] | { desktop?: string | string[]; mobile?: string | string[] },
 ): src is { desktop?: string | string[]; mobile?: string | string[] } => {
 	return (
 		typeof src === "object" &&
@@ -86,8 +83,5 @@ export const getBannerOffset = (position = "center"): string => {
 		center: "50vh",
 		bottom: "0",
 	};
-	return (
-		bannerOffsetByPosition[position as keyof typeof bannerOffsetByPosition] ||
-		"50vh"
-	);
+	return bannerOffsetByPosition[position as keyof typeof bannerOffsetByPosition] || "50vh";
 };

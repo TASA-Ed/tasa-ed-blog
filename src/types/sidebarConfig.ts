@@ -3,7 +3,7 @@ export type WidgetComponentType =
 	| "profile"
 	| "announcement"
 	| "categories"
-  | "tags"
+	| "tags"
 	| "sidebarToc"
 	| "advertisement"
 	| "stats"

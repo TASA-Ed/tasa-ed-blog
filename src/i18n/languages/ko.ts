@@ -54,13 +54,11 @@ export const ko: Translation = {
 	[Key.guestbookCommentHint]:
 		"설정 파일에서 댓글 시스템을 아직 활성화하지 않았습니다. 활성화하면 방문자가 이곳에 메시지를 남길 수 있습니다",
 	[Key.friends]: "친구",
-	[Key.friendsDescription]:
-		"여기는 제 친구들입니다. 방문하여 서로 교류해 보세요",
+	[Key.friendsDescription]: "여기는 제 친구들입니다. 방문하여 서로 교류해 보세요",
 	[Key.searchFriends]: "친구 검색...",
 	[Key.friendsEmpty]: "아직 친구가 없습니다.",
 	[Key.guestbook]: "방명록",
-	[Key.guestbookDescription]:
-		"이곳에 흔적을 남기고 생각과 제안을 공유해 주세요",
+	[Key.guestbookDescription]: "이곳에 흔적을 남기고 생각과 제안을 공유해 주세요",
 	[Key.untitled]: "제목 없음",
 	[Key.uncategorized]: "미분류",
 	[Key.noTags]: "태그 없음",
@@ -103,8 +101,7 @@ export const ko: Translation = {
 	// 404 Page
 	[Key.notFound]: "404",
 	[Key.notFoundTitle]: "페이지를 찾을 수 없습니다",
-	[Key.notFoundDescription]:
-		"죄송합니다. 방문하신 페이지가 존재하지 않거나 이동되었습니다.",
+	[Key.notFoundDescription]: "죄송합니다. 방문하신 페이지가 존재하지 않거나 이동되었습니다.",
 	[Key.backToHome]: "홈으로 돌아가기",
 
 	// RSS Page
@@ -118,8 +115,7 @@ export const ko: Translation = {
 	[Key.rssWhatIsRSS]: "RSS란 무엇인가요?",
 	[Key.rssWhatIsRSSDescription]:
 		"RSS(Really Simple Syndication)는 자주 업데이트되는 콘텐츠를 게시하기 위한 표준 형식입니다. RSS를 사용하면 다음이 가능합니다:",
-	[Key.rssBenefit1]:
-		"직접 방문하지 않고도 최신 웹사이트 콘텐츠를 제때 받아볼 수 있습니다",
+	[Key.rssBenefit1]: "직접 방문하지 않고도 최신 웹사이트 콘텐츠를 제때 받아볼 수 있습니다",
 	[Key.rssBenefit2]: "여러 웹사이트의 구독을 한 곳에서 관리할 수 있습니다",
 	[Key.rssBenefit3]: "중요한 업데이트와 글을 놓치지 않을 수 있습니다",
 	[Key.rssBenefit4]: "광고 없는 깔끔한 읽기 환경을 즐길 수 있습니다",
@@ -211,8 +207,7 @@ export const ko: Translation = {
 	[Key.sponsorButtonText]: "이 글이 도움이 되셨다면 공유하거나 후원해 주세요!",
 
 	[Key.shareOnSocial]: "글 공유하기",
-	[Key.shareOnSocialDescription]:
-		"이 글이 도움이 되셨다면 다른 사람과 공유해 주세요!",
+	[Key.shareOnSocialDescription]: "이 글이 도움이 되셨다면 다른 사람과 공유해 주세요!",
 
 	// Site Statistics
 	[Key.siteStats]: "사이트 통계",
@@ -294,8 +289,7 @@ export const ko: Translation = {
 	[Key.passwordPlaceholder]: "비밀번호 입력",
 	[Key.passwordSubmit]: "잠금 해제",
 	[Key.passwordError]: "비밀번호가 올바르지 않습니다. 다시 시도해 주세요.",
-	[Key.passwordProtectedRss]:
-		"이 글은 암호화되어 있습니다. 웹사이트에서 확인해 주세요.",
+	[Key.passwordProtectedRss]: "이 글은 암호화되어 있습니다. 웹사이트에서 확인해 주세요.",
 
 	// 自定义
 	[Key.cBackToTop]: "맨 위로",

@@ -48,14 +48,8 @@
 				const newImg = new Image();
 				newImg.className = "plantuml-image";
 				newImg.alt = img.alt;
-				newImg.setAttribute(
-					"data-light-src",
-					img.getAttribute("data-light-src") || "",
-				);
-				newImg.setAttribute(
-					"data-dark-src",
-					img.getAttribute("data-dark-src") || "",
-				);
+				newImg.setAttribute("data-light-src", img.getAttribute("data-light-src") || "");
+				newImg.setAttribute("data-dark-src", img.getAttribute("data-dark-src") || "");
 				newImg.loading = "lazy";
 				newImg.decoding = "async";
 				wrapper.appendChild(newImg);
@@ -73,21 +67,16 @@
 	}
 
 	function initAll() {
-		document
-			.querySelectorAll(".plantuml-diagram-container")
-			.forEach((container) => {
-				const img = container.querySelector(".plantuml-image");
-				if (img) bindErrorHandler(img, container);
-			});
+		document.querySelectorAll(".plantuml-diagram-container").forEach((container) => {
+			const img = container.querySelector(".plantuml-image");
+			if (img) bindErrorHandler(img, container);
+		});
 		applyTheme();
 	}
 
 	const themeObserver = new MutationObserver((mutations) => {
 		for (const mutation of mutations) {
-			if (
-				mutation.type === "attributes" &&
-				mutation.attributeName === "class"
-			) {
+			if (mutation.type === "attributes" && mutation.attributeName === "class") {
 				applyTheme();
 				break;
 			}

@@ -6,8 +6,10 @@
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+
 import { slug } from "github-slugger";
 import { parse } from "yaml";
+
 import { getApiUrlList, processCoverImageSync } from "../utils/image-utils";
 
 const POSTS_DIR = fileURLToPath(new URL("../content/posts/", import.meta.url));
@@ -32,10 +34,7 @@ function normalizeContentPath(value) {
 		.replace(MARKDOWN_EXTENSION, "");
 	const segments = contentPath.split("/").filter(Boolean);
 
-	if (
-		segments.length === 0 ||
-		segments.some((segment) => segment === "." || segment === "..")
-	) {
+	if (segments.length === 0 || segments.some((segment) => segment === "." || segment === "..")) {
 		return "";
 	}
 
@@ -51,14 +50,10 @@ function createPostUrl(contentPath, base = "") {
 		segments.pop();
 	}
 
-	const encodedPath = segments
-		.map((segment) => encodeURIComponent(segment))
-		.join("/");
+	const encodedPath = segments.map((segment) => encodeURIComponent(segment)).join("/");
 
 	// 确保 base 以 / 开头且不以 / 结尾（除非是根路径 "/"）
-	const normalizedBase = base
-		? `/${base.replace(/^\/+|\/+$/g, "")}`
-		: "";
+	const normalizedBase = base ? `/${base.replace(/^\/+|\/+$/g, "")}` : "";
 
 	return `${normalizedBase}/posts/${encodedPath ? `${encodedPath}/` : ""}`;
 }
@@ -67,10 +62,7 @@ function createPostUrl(contentPath, base = "") {
  * 由文章文件的绝对路径反推 content path。
  */
 function toContentPath(filePath) {
-	return path
-		.relative(POSTS_DIR, filePath)
-		.replaceAll("\\", "/")
-		.replace(MARKDOWN_EXTENSION, "");
+	return path.relative(POSTS_DIR, filePath).replaceAll("\\", "/").replace(MARKDOWN_EXTENSION, "");
 }
 
 /**
@@ -80,8 +72,7 @@ function toContentPath(filePath) {
  * 所以它只在这里（直接读 frontmatter）可见，`entry.data` 上取不到。
  */
 function toPostId(meta) {
-	const declaredSlug =
-		typeof meta.data.slug === "string" ? meta.data.slug.trim() : "";
+	const declaredSlug = typeof meta.data.slug === "string" ? meta.data.slug.trim() : "";
 
 	return declaredSlug || toContentPath(meta.filePath);
 }
@@ -172,10 +163,8 @@ function collectPostMetas() {
 
 function findMetaBySlug(metas, target) {
 	return (
-		metas.find(
-			(meta) =>
-				typeof meta.data.slug === "string" && meta.data.slug.trim() === target,
-		) ?? null
+		metas.find((meta) => typeof meta.data.slug === "string" && meta.data.slug.trim() === target) ??
+		null
 	);
 }
 
@@ -189,8 +178,7 @@ function findMetaByBaseName(metas, target) {
 	}
 
 	const matches = metas.filter(
-		(meta) =>
-			path.basename(meta.filePath).replace(MARKDOWN_EXTENSION, "") === target,
+		(meta) => path.basename(meta.filePath).replace(MARKDOWN_EXTENSION, "") === target,
 	);
 
 	if (matches.length === 1) {
@@ -264,8 +252,7 @@ function createRemoteCoverImg(src, extraProperties) {
 }
 
 function createCoverNode(meta, resolvedPath, context) {
-	const image =
-		typeof meta.data.image === "string" ? meta.data.image.trim() : "";
+	const image = typeof meta.data.image === "string" ? meta.data.image.trim() : "";
 
 	if (!image) {
 		return null;
@@ -313,12 +300,8 @@ function createCoverNode(meta, resolvedPath, context) {
 		return null;
 	}
 
-	const relativePath = path
-		.relative(context.currentDir, absolutePath)
-		.replaceAll("\\", "/");
-	const coverUrl = relativePath.startsWith(".")
-		? relativePath
-		: `./${relativePath}`;
+	const relativePath = path.relative(context.currentDir, absolutePath).replaceAll("\\", "/");
+	const coverUrl = relativePath.startsWith(".") ? relativePath : `./${relativePath}`;
 
 	// 走 Astro 图片管线，width:640 生成小尺寸缩略图
 	return {
@@ -331,11 +314,8 @@ function createCoverNode(meta, resolvedPath, context) {
 
 function parseWikiLinkValue(value) {
 	const aliasSeparator = value.indexOf("|");
-	const destination = (
-		aliasSeparator === -1 ? value : value.slice(0, aliasSeparator)
-	).trim();
-	const alias =
-		aliasSeparator === -1 ? "" : value.slice(aliasSeparator + 1).trim();
+	const destination = (aliasSeparator === -1 ? value : value.slice(0, aliasSeparator)).trim();
+	const alias = aliasSeparator === -1 ? "" : value.slice(aliasSeparator + 1).trim();
 
 	if (!destination) {
 		return null;
@@ -343,13 +323,8 @@ function parseWikiLinkValue(value) {
 
 	const headingSeparator = destination.indexOf("#");
 	const pageName =
-		headingSeparator === -1
-			? destination
-			: destination.slice(0, headingSeparator).trim();
-	const heading =
-		headingSeparator === -1
-			? ""
-			: destination.slice(headingSeparator + 1).trim();
+		headingSeparator === -1 ? destination : destination.slice(0, headingSeparator).trim();
+	const heading = headingSeparator === -1 ? "" : destination.slice(headingSeparator + 1).trim();
 	const contentPath = pageName ? normalizeContentPath(pageName) : "";
 
 	if ((pageName && !contentPath) || (!contentPath && !heading)) {
@@ -403,32 +378,22 @@ function createWikiLinkCard(parsed, context) {
 	const resolvedPath = toPostId(meta);
 	const title =
 		resolveAlias(parsed, meta) ||
-		(typeof meta.data.title === "string" && meta.data.title
-			? meta.data.title
-			: resolvedPath);
-	const encrypted =
-		typeof meta.data.password === "string" && meta.data.password.length > 0;
+		(typeof meta.data.title === "string" && meta.data.title ? meta.data.title : resolvedPath);
+	const encrypted = typeof meta.data.password === "string" && meta.data.password.length > 0;
 	const description =
-		!encrypted && typeof meta.data.description === "string"
-			? meta.data.description.trim()
-			: "";
+		!encrypted && typeof meta.data.description === "string" ? meta.data.description.trim() : "";
 	const published = formatPublishedDate(meta.data.published);
-	const category =
-		typeof meta.data.category === "string" ? meta.data.category.trim() : "";
+	const category = typeof meta.data.category === "string" ? meta.data.category.trim() : "";
 	const tags = Array.isArray(meta.data.tags)
 		? meta.data.tags.filter((tag) => typeof tag === "string" && tag)
 		: [];
 
 	const metaItems = [];
 	if (published) {
-		metaItems.push(
-			createElement("span", { class: "wlc-date" }, [createText(published)]),
-		);
+		metaItems.push(createElement("span", { class: "wlc-date" }, [createText(published)]));
 	}
 	if (category) {
-		metaItems.push(
-			createElement("span", { class: "wlc-category" }, [createText(category)]),
-		);
+		metaItems.push(createElement("span", { class: "wlc-category" }, [createText(category)]));
 	}
 	if (tags.length > 0) {
 		// 标签作为一个整体，宽度不够时整组换行
@@ -436,22 +401,14 @@ function createWikiLinkCard(parsed, context) {
 			createElement(
 				"span",
 				{ class: "wlc-tags" },
-				tags.map((tag) =>
-					createElement("span", { class: "wlc-tag" }, [createText(`#${tag}`)]),
-				),
+				tags.map((tag) => createElement("span", { class: "wlc-tag" }, [createText(`#${tag}`)])),
 			),
 		);
 	}
 
-	const info = [
-		createElement("div", { class: "wlc-title" }, [createText(title)]),
-	];
+	const info = [createElement("div", { class: "wlc-title" }, [createText(title)])];
 	if (description) {
-		info.push(
-			createElement("div", { class: "wlc-description" }, [
-				createText(description),
-			]),
-		);
+		info.push(createElement("div", { class: "wlc-description" }, [createText(description)]));
 	}
 	if (metaItems.length > 0) {
 		info.push(createElement("div", { class: "wlc-meta" }, metaItems));
@@ -481,16 +438,12 @@ function createWikiLink(value, context) {
 	}
 
 	const meta = parsed.contentPath ? readPostMeta(parsed.contentPath) : null;
-	const title =
-		typeof meta?.data.title === "string" && meta.data.title
-			? meta.data.title
-			: "";
+	const title = typeof meta?.data.title === "string" && meta.data.title ? meta.data.title : "";
 
 	let text = resolveAlias(parsed, meta);
 	if (!text) {
 		if (parsed.contentPath) {
-			const pageText =
-				title || parsed.destination.replace(MARKDOWN_EXTENSION, "");
+			const pageText = title || parsed.destination.replace(MARKDOWN_EXTENSION, "");
 			text = parsed.heading ? `${pageText}#${parsed.heading}` : pageText;
 		} else {
 			text = parsed.heading;

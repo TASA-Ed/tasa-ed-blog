@@ -54,8 +54,7 @@ export const en: Translation = {
 	[Key.guestbookCommentHint]:
 		"You have not enabled the comment system in the configuration file yet. After enabling it, visitors will be able to leave messages here",
 	[Key.friends]: "Friends",
-	[Key.friendsDescription]:
-		"Here are my friends, welcome to visit and communicate with each other",
+	[Key.friendsDescription]: "Here are my friends, welcome to visit and communicate with each other",
 	[Key.searchFriends]: "Search friends...",
 	[Key.friendsEmpty]: "No friends yet.",
 	[Key.guestbook]: "Guestbook",
@@ -103,15 +102,13 @@ export const en: Translation = {
 	// 404 Page
 	[Key.notFound]: "404",
 	[Key.notFoundTitle]: "Page Not Found",
-	[Key.notFoundDescription]:
-		"Sorry, the page you visited does not exist or has been moved.",
+	[Key.notFoundDescription]: "Sorry, the page you visited does not exist or has been moved.",
 	[Key.backToHome]: "Back to Home",
 
 	// RSS Page
 	[Key.rss]: "RSS Feed",
 	[Key.rssDescription]: "Subscribe to get latest updates",
-	[Key.rssSubtitle]:
-		"Subscribe via RSS to get the latest articles and updates imediately",
+	[Key.rssSubtitle]: "Subscribe via RSS to get the latest articles and updates imediately",
 	[Key.rssLink]: "RSS Link",
 	[Key.rssCopyToReader]: "Copy link to your RSS reader",
 	[Key.rssCopyLink]: "Copy Link",
@@ -119,8 +116,7 @@ export const en: Translation = {
 	[Key.rssWhatIsRSS]: "What is RSS?",
 	[Key.rssWhatIsRSSDescription]:
 		"RSS (Really Simple Syndication) is a standard format for publishing frequently updated content. With RSS, you can:",
-	[Key.rssBenefit1]:
-		"Get the latest website content in time without manually visiting",
+	[Key.rssBenefit1]: "Get the latest website content in time without manually visiting",
 	[Key.rssBenefit2]: "Manage subscriptions to multiple websites in one place",
 	[Key.rssBenefit3]: "Avoid missing important updates and articles",
 	[Key.rssBenefit4]: "Enjoy an ad-free, clean reading experience",
@@ -209,12 +205,10 @@ export const en: Translation = {
 	[Key.scanToSponsor]: "Scan to Sponsor",
 	[Key.sponsorGoTo]: "Go to Sponsor",
 	[Key.sponsorButton]: "Support & Share",
-	[Key.sponsorButtonText]:
-		"If this article helped you, please share or support!",
+	[Key.sponsorButtonText]: "If this article helped you, please share or support!",
 
 	[Key.shareOnSocial]: "Share Article",
-	[Key.shareOnSocialDescription]:
-		"If this article helped you, please share it with others!",
+	[Key.shareOnSocialDescription]: "If this article helped you, please share it with others!",
 
 	// Site Statistics
 	[Key.siteStats]: "Site Statistics",
@@ -296,8 +290,7 @@ export const en: Translation = {
 	[Key.passwordPlaceholder]: "Enter password",
 	[Key.passwordSubmit]: "Unlock",
 	[Key.passwordError]: "Incorrect password, please try again.",
-	[Key.passwordProtectedRss]:
-		"This article is encrypted. Please visit the website to view it.",
+	[Key.passwordProtectedRss]: "This article is encrypted. Please visit the website to view it.",
 
 	// 自定义
 	[Key.cBackToTop]: "Back to Top",

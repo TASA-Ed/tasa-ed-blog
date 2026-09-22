@@ -423,7 +423,7 @@ const mobileQuality = Math.round(configQuality * 0.9);
 
             function materialize() {
                 var device = lgQuery.matches ? 'desktop' : 'mobile';
-                var slot = container.querySelector('[data-device="' + device + '"]');
+                var slot = container.querySelector(`[data-device="${  device  }"]`);
                 if (!slot || slot.dataset.loaded) return;
                 var templates = slot.querySelectorAll('template');
                 if (!templates.length) return;
@@ -786,7 +786,7 @@ const mobileQuality = Math.round(configQuality * 0.9);
             var frame = target.closest('.expressive-code .frame');
 
             // 点到别处就收起之前展开的按钮
-            document.querySelectorAll('.' + CLASS).forEach(function (revealed) {
+            document.querySelectorAll(`.${  CLASS}`).forEach(function (revealed) {
                 if (revealed !== frame) revealed.classList.remove(CLASS);
             });
 

@@ -6,9 +6,7 @@ function withBase(assetPath: string): string {
 	if (/^(https?:)?\/\//i.test(assetPath) || /^(data|blob):/i.test(assetPath)) {
 		return assetPath;
 	}
-	const normalizedPath = assetPath.startsWith("/")
-		? assetPath
-		: `/${assetPath}`;
+	const normalizedPath = assetPath.startsWith("/") ? assetPath : `/${assetPath}`;
 	const base = import.meta.env.BASE_URL || "/";
 	if (base !== "/" && normalizedPath.startsWith(base)) {
 		return normalizedPath;

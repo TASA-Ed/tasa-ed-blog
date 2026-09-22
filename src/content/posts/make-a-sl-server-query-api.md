@@ -3,7 +3,7 @@ title: 自行实现查询SCP：秘密实验室服务器信息（A2S 协议）
 published: 2025-11-01
 pinned: false
 description: 自行实现查询SCP：秘密实验室服务器信息（A2S 协议）
-tags: [游戏,A2S,PHP,服务器]
+tags: [游戏, A2S, PHP, 服务器]
 category: 教程
 author: 德二吹风机
 draft: false
@@ -98,8 +98,8 @@ Array
     [Bots] => 0
     [Dedicated] => d
     [Os] => w
-    [Password] => 
-    [Secure] => 
+    [Password] =>
+    [Secure] =>
     [Version] => 14.2.0
     [ExtraDataFlags] => 145
     [GamePort] => 55513

@@ -217,7 +217,7 @@ const coverPositionClass =
 
     // 瀑布流配置
     const gap = 16; // 1rem = 16px
-    const columnWidth = parseInt(container.getAttribute("data-column-width") || "280");
+    const columnWidth = Number.parseInt(container.getAttribute("data-column-width") || "280");
 
     // 重置容器样式以允许绝对定位
     container.style.position = "relative";

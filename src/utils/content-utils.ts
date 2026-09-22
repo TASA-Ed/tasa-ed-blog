@@ -1,7 +1,7 @@
-import { type CollectionEntry, getCollection } from "astro:content";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import { getCategoryUrl } from "@utils/url-utils";
+import { type CollectionEntry, getCollection } from "astro:content";
 
 // // Retrieve posts and sort them by publication date
 async function getRawSortedPosts() {
@@ -101,9 +101,7 @@ export async function getCategoryList(): Promise<Category[]> {
 	});
 
 	const lst = Object.keys(count).sort((a, b) => {
-		return (
-			count[b] - count[a] || a.toLowerCase().localeCompare(b.toLowerCase())
-		);
+		return count[b] - count[a] || a.toLowerCase().localeCompare(b.toLowerCase());
 	});
 
 	const ret: Category[] = [];
@@ -162,9 +160,7 @@ export async function getRelatedPosts(
 	});
 
 	// 排除自身和加密文章
-	const candidates = allPosts.filter(
-		(p) => p.id !== currentPost.id && !p.data.password,
-	);
+	const candidates = allPosts.filter((p) => p.id !== currentPost.id && !p.data.password);
 
 	const currentTags = new Set(currentPost.data.tags || []);
 	const currentTokens = tokenizeTitle(currentPost.data.title);
@@ -179,24 +175,19 @@ export async function getRelatedPosts(
 
 		// titleSimilarityScore (0-100)
 		const postTokens = tokenizeTitle(post.data.title);
-		const titleSimilarityScore =
-			jaccardSimilarity(currentTokens, postTokens) * 100;
+		const titleSimilarityScore = jaccardSimilarity(currentTokens, postTokens) * 100;
 
 		// timeFreshnessScore (0-30): 6 个月半衰期
 		const daysSincePublished =
 			(now - new Date(post.data.published).getTime()) / (1000 * 60 * 60 * 24);
-		const timeFreshnessScore =
-			30 * Math.exp((-Math.LN2 * daysSincePublished) / 180);
+		const timeFreshnessScore = 30 * Math.exp((-Math.LN2 * daysSincePublished) / 180);
 
 		// categoryBonus (0 or 10)
 		const postCategory = post.data.category || "";
 		const categoryBonus =
-			currentCategory && postCategory && currentCategory === postCategory
-				? 10
-				: 0;
+			currentCategory && postCategory && currentCategory === postCategory ? 10 : 0;
 
-		const totalScore =
-			tagMatchScore + titleSimilarityScore + timeFreshnessScore + categoryBonus;
+		const totalScore = tagMatchScore + titleSimilarityScore + timeFreshnessScore + categoryBonus;
 
 		return {
 			post,
@@ -224,10 +215,7 @@ export async function getRelatedPosts(
 	// 不足时从剩余候选中按 timeFreshnessScore + categoryBonus 降序补充
 	if (result.length < maxCount) {
 		withoutTagMatch.sort(
-			(a, b) =>
-				b.timeFreshnessScore +
-				b.categoryBonus -
-				(a.timeFreshnessScore + a.categoryBonus),
+			(a, b) => b.timeFreshnessScore + b.categoryBonus - (a.timeFreshnessScore + a.categoryBonus),
 		);
 		for (const s of withoutTagMatch) {
 			if (result.length >= maxCount) break;

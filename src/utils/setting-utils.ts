@@ -9,7 +9,9 @@ import {
 	WALLPAPER_NONE,
 	WALLPAPER_OVERLAY,
 } from "@constants/constants";
+
 import type { LIGHT_DARK_MODE, WALLPAPER_MODE } from "@/types/config";
+
 import {
 	backgroundWallpaper,
 	displaySettingsConfig,
@@ -37,9 +39,7 @@ export function getSystemTheme(): LIGHT_DARK_MODE {
 	if (typeof window === "undefined") {
 		return LIGHT_MODE;
 	}
-	return window.matchMedia("(prefers-color-scheme: dark)").matches
-		? DARK_MODE
-		: LIGHT_MODE;
+	return window.matchMedia("(prefers-color-scheme: dark)").matches ? DARK_MODE : LIGHT_MODE;
 }
 
 // 解析主题（如果是system模式，则获取系统主题）
@@ -111,16 +111,11 @@ export function applyThemeToDocument(theme: LIGHT_DARK_MODE): void {
 }
 
 // 系统主题监听器引用
-let systemThemeListener:
-	| ((e: MediaQueryListEvent | MediaQueryList) => void)
-	| null = null;
+let systemThemeListener: ((e: MediaQueryListEvent | MediaQueryList) => void) | null = null;
 
 export function setTheme(theme: LIGHT_DARK_MODE): void {
 	// 检查是否在浏览器环境中
-	if (
-		typeof localStorage === "undefined" ||
-		typeof localStorage.setItem !== "function"
-	) {
+	if (typeof localStorage === "undefined" || typeof localStorage.setItem !== "function") {
 		return;
 	}
 
@@ -211,23 +206,15 @@ function cleanupSystemThemeListener() {
 
 export function getStoredTheme(): LIGHT_DARK_MODE {
 	// 检查是否在浏览器环境中
-	if (
-		typeof localStorage === "undefined" ||
-		typeof localStorage.getItem !== "function"
-	) {
+	if (typeof localStorage === "undefined" || typeof localStorage.getItem !== "function") {
 		return getDefaultTheme();
 	}
-	return (
-		(localStorage.getItem("theme") as LIGHT_DARK_MODE) || getDefaultTheme()
-	);
+	return (localStorage.getItem("theme") as LIGHT_DARK_MODE) || getDefaultTheme();
 }
 
 // 初始化主题监听器（用于页面加载后）
 export function initThemeListener(): void {
-	if (
-		typeof localStorage === "undefined" ||
-		typeof localStorage.getItem !== "function"
-	) {
+	if (typeof localStorage === "undefined" || typeof localStorage.getItem !== "function") {
 		return;
 	}
 
@@ -240,15 +227,11 @@ export function initThemeListener(): void {
 }
 
 // Wallpaper mode functions
-export function applyWallpaperModeToDocument(
-	mode: WALLPAPER_MODE,
-	animate = true,
-): void {
+export function applyWallpaperModeToDocument(mode: WALLPAPER_MODE, animate = true): void {
 	// 获取当前的壁纸模式
 	const currentMode =
-		(document.documentElement.getAttribute(
-			"data-wallpaper-mode",
-		) as WALLPAPER_MODE) || backgroundWallpaper.mode;
+		(document.documentElement.getAttribute("data-wallpaper-mode") as WALLPAPER_MODE) ||
+		backgroundWallpaper.mode;
 
 	// 检查是否允许切换壁纸模式
 	const isSwitchable = displaySettingsConfig.wallpaperModeSwitchable;
@@ -279,11 +262,7 @@ export function applyWallpaperModeToDocument(
 		const body = document.body;
 
 		// 移除所有壁纸相关的CSS类
-		body.classList.remove(
-			"enable-banner",
-			"wallpaper-transparent",
-			"no-banner-layout",
-		);
+		body.classList.remove("enable-banner", "wallpaper-transparent", "no-banner-layout");
 
 		// 根据模式添加相应的CSS类
 		switch (mode) {
@@ -325,11 +304,7 @@ function ensureWallpaperState(mode: WALLPAPER_MODE) {
 	const body = document.body;
 
 	// 移除所有壁纸相关的CSS类
-	body.classList.remove(
-		"enable-banner",
-		"wallpaper-transparent",
-		"no-banner-layout",
-	);
+	body.classList.remove("enable-banner", "wallpaper-transparent", "no-banner-layout");
 
 	// 根据模式添加相应的CSS类
 	switch (mode) {
@@ -414,9 +389,7 @@ function showBannerMode(animate = false) {
 	adjustMainContentPosition("banner", animate);
 
 	// 处理移动端非首页主内容区域位置
-	const mainContentWrapper = document.querySelector(
-		".w-full.z-30.pointer-events-none",
-	);
+	const mainContentWrapper = document.querySelector(".w-full.z-30.pointer-events-none");
 	if (mainContentWrapper) {
 		const isHomePage = checkIsHomePage(window.location.pathname);
 		const isMobile = window.innerWidth < 1024;
@@ -435,8 +408,7 @@ function showBannerMode(animate = false) {
 	const navbar = document.getElementById("navbar");
 	if (navbar) {
 		// 获取导航栏透明模式配置（banner模式）
-		const transparentMode =
-			backgroundWallpaper.common?.navbar?.transparentMode || "semi";
+		const transparentMode = backgroundWallpaper.common?.navbar?.transparentMode || "semi";
 		navbar.setAttribute("data-transparent-mode", transparentMode);
 
 		// 重新初始化半透明模式滚动检测（如果需要）
@@ -511,8 +483,7 @@ function showFullscreenMode(animate = false) {
 	// 调整导航栏透明度
 	const navbar = document.getElementById("navbar");
 	if (navbar) {
-		const transparentMode =
-			backgroundWallpaper.common?.navbar?.transparentMode || "semi";
+		const transparentMode = backgroundWallpaper.common?.navbar?.transparentMode || "semi";
 		navbar.setAttribute("data-transparent-mode", transparentMode);
 
 		if (
@@ -597,13 +568,11 @@ function updateNavbarTransparency(mode: WALLPAPER_MODE) {
 		blurAmount = 0;
 	} else if (mode === WALLPAPER_FULLSCREEN) {
 		// 全屏壁纸模式：使用 fullscreen 配置的透明模式和模糊效果
-		transparentMode =
-			backgroundWallpaper.common?.navbar?.transparentMode || "semi";
+		transparentMode = backgroundWallpaper.common?.navbar?.transparentMode || "semi";
 		blurAmount = backgroundWallpaper.common?.navbar?.blur ?? 20;
 	} else {
 		// Banner模式：使用配置的透明模式和模糊效果
-		transparentMode =
-			backgroundWallpaper.common?.navbar?.transparentMode || "semi";
+		transparentMode = backgroundWallpaper.common?.navbar?.transparentMode || "semi";
 		blurAmount = backgroundWallpaper.common?.navbar?.blur ?? 20;
 	}
 
@@ -643,9 +612,7 @@ function adjustMainContentPosition(
 	mode: WALLPAPER_MODE | "banner" | "none" | "overlay" | "fullscreen",
 	animate = false,
 ) {
-	const mainContent = document.querySelector(
-		".w-full.z-30.pointer-events-none",
-	) as HTMLElement;
+	const mainContent = document.querySelector(".w-full.z-30.pointer-events-none") as HTMLElement;
 	if (!mainContent) return;
 
 	// 取消上一次全屏模式动画的 setTimeout，防止快速切换时竞态覆盖
@@ -774,9 +741,7 @@ function adjustMainContentPosition(
 }
 
 function adjustMainContentTransparency(enable: boolean) {
-	const mainContent = document.querySelector(
-		".w-full.z-30.pointer-events-none",
-	);
+	const mainContent = document.querySelector(".w-full.z-30.pointer-events-none");
 	const body = document.body;
 
 	if (enable) {
@@ -804,10 +769,7 @@ export function initWallpaperMode(): void {
 
 export function getStoredWallpaperMode(): WALLPAPER_MODE {
 	// 检查是否在浏览器环境中
-	if (
-		typeof localStorage === "undefined" ||
-		typeof localStorage.getItem !== "function"
-	) {
+	if (typeof localStorage === "undefined" || typeof localStorage.getItem !== "function") {
 		return backgroundWallpaper.mode;
 	}
 
@@ -817,10 +779,7 @@ export function getStoredWallpaperMode(): WALLPAPER_MODE {
 		return backgroundWallpaper.mode;
 	}
 
-	return (
-		(localStorage.getItem("wallpaperMode") as WALLPAPER_MODE) ||
-		backgroundWallpaper.mode
-	);
+	return (localStorage.getItem("wallpaperMode") as WALLPAPER_MODE) || backgroundWallpaper.mode;
 }
 
 // Overlay settings functions
@@ -841,10 +800,7 @@ export function getDefaultOverlayCardOpacity(): number {
 }
 
 export function getStoredOverlayOpacity(): number {
-	if (
-		typeof localStorage === "undefined" ||
-		typeof localStorage.getItem !== "function"
-	) {
+	if (typeof localStorage === "undefined" || typeof localStorage.getItem !== "function") {
 		return getDefaultOverlayOpacity();
 	}
 	const stored = localStorage.getItem("overlayOpacity");
@@ -859,10 +815,7 @@ export function getStoredOverlayOpacity(): number {
 }
 
 export function getStoredOverlayBlur(): number {
-	if (
-		typeof localStorage === "undefined" ||
-		typeof localStorage.getItem !== "function"
-	) {
+	if (typeof localStorage === "undefined" || typeof localStorage.getItem !== "function") {
 		return getDefaultOverlayBlur();
 	}
 	const stored = localStorage.getItem("overlayBlur");
@@ -877,10 +830,7 @@ export function getStoredOverlayBlur(): number {
 }
 
 export function getStoredOverlayCardOpacity(): number {
-	if (
-		typeof localStorage === "undefined" ||
-		typeof localStorage.getItem !== "function"
-	) {
+	if (typeof localStorage === "undefined" || typeof localStorage.getItem !== "function") {
 		return getDefaultOverlayCardOpacity();
 	}
 	const stored = localStorage.getItem("overlayCardOpacity");
@@ -901,10 +851,7 @@ export function applyOverlayOpacityToDocument(opacity: number): void {
 	const safeOpacity = clampNumber(opacity, 0, 1);
 	const wallpaperWrapper = document.getElementById("wallpaper-wrapper");
 	if (wallpaperWrapper) {
-		wallpaperWrapper.style.setProperty(
-			"--overlay-opacity",
-			String(safeOpacity),
-		);
+		wallpaperWrapper.style.setProperty("--overlay-opacity", String(safeOpacity));
 	}
 }
 
@@ -924,10 +871,7 @@ export function applyOverlayCardOpacityToDocument(cardOpacity: number): void {
 		return;
 	}
 	const safeCardOpacity = clampNumber(cardOpacity, 0, 1);
-	document.documentElement.style.setProperty(
-		"--card-transparent-opacity",
-		String(safeCardOpacity),
-	);
+	document.documentElement.style.setProperty("--card-transparent-opacity", String(safeCardOpacity));
 }
 export function applyStoredOverlaySettingsToDocument(): void {
 	applyOverlayOpacityToDocument(getStoredOverlayOpacity());

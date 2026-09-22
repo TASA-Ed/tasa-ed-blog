@@ -67,20 +67,14 @@ export function generateGridClasses(config: ResponsiveSidebarConfig): {
 } {
 	let gridCols = "grid-cols-1";
 
-	if (
-		config.isBothSidebars &&
-		config.hasLeftComponents &&
-		config.hasRightComponents
-	) {
+	if (config.isBothSidebars && config.hasLeftComponents && config.hasRightComponents) {
 		// 双侧边栏
 		if (config.tabletSidebar === "right") {
 			// 平板端显示右侧栏: 769-1279px [内容+右侧栏], 1280px+ [左+中+右]
-			gridCols =
-				"grid-cols-1 md:grid-cols-[1fr_17.5rem] xl:grid-cols-[17.5rem_1fr_17.5rem]";
+			gridCols = "grid-cols-1 md:grid-cols-[1fr_17.5rem] xl:grid-cols-[17.5rem_1fr_17.5rem]";
 		} else {
 			// 平板端显示左侧栏（默认）: 769-1279px [左侧栏+内容], 1280px+ [左+中+右]
-			gridCols =
-				"grid-cols-1 md:grid-cols-[17.5rem_1fr] xl:grid-cols-[17.5rem_1fr_17.5rem]";
+			gridCols = "grid-cols-1 md:grid-cols-[17.5rem_1fr] xl:grid-cols-[17.5rem_1fr_17.5rem]";
 		}
 	} else if (config.hasLeftComponents && !config.hasRightComponents) {
 		// 仅左侧边栏: 769px+显示左+中，768-以下单列
@@ -96,9 +90,7 @@ export function generateGridClasses(config: ResponsiveSidebarConfig): {
 /**
  * 生成左侧边栏容器CSS类
  */
-export function generateSidebarClasses(
-	config: ResponsiveSidebarConfig,
-): string {
+export function generateSidebarClasses(config: ResponsiveSidebarConfig): string {
 	const classes = [
 		"mb-4",
 		"hidden",
@@ -124,9 +116,7 @@ export function generateSidebarClasses(
 /**
  * 生成右侧边栏CSS类
  */
-export function generateRightSidebarClasses(
-	config: ResponsiveSidebarConfig,
-): string {
+export function generateRightSidebarClasses(config: ResponsiveSidebarConfig): string {
 	const classes = ["mb-4", "hidden", "onload-animation"];
 
 	if (config.isBothSidebars && config.tabletSidebar === "right") {
@@ -178,20 +168,14 @@ export function generateRightSidebarClasses(
 /**
  * 生成主内容区CSS类
  */
-export function generateMainContentClasses(
-	config: ResponsiveSidebarConfig,
-): string {
+export function generateMainContentClasses(config: ResponsiveSidebarConfig): string {
 	const classes = [
 		"transition-main",
 		// 768px及以下: 单列布局
 		"col-span-1",
 	];
 
-	if (
-		config.isBothSidebars &&
-		config.hasLeftComponents &&
-		config.hasRightComponents
-	) {
+	if (config.isBothSidebars && config.hasLeftComponents && config.hasRightComponents) {
 		if (config.tabletSidebar === "right") {
 			// 双侧栏+平板端右侧栏: 平板端内容在第1列，桌面端内容在第2列
 			classes.push("md:col-span-1");

@@ -1,11 +1,5 @@
 /** 内置字体提供商名称 */
-export type BuiltinFontProvider =
-	| "google"
-	| "fontsource"
-	| "local"
-	| "bunny"
-	| "fontshare"
-	| "npm";
+export type BuiltinFontProvider = "google" | "fontsource" | "local" | "bunny" | "fontshare" | "npm";
 
 /**
  * 自定义字体提供商接口

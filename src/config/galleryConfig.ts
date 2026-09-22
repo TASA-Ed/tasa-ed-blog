@@ -40,8 +40,8 @@ export const galleryConfig: GalleryConfig = {
 				"https://cdn.tasaed.top/image/game/game_15.avif",
 				"https://cdn.tasaed.top/image/game/game_16.avif",
 				"https://cdn.tasaed.top/image/game/game_17.avif",
-				"https://cdn.tasaed.top/image/game/game_18.avif"
-			]
+				"https://cdn.tasaed.top/image/game/game_18.avif",
+			],
 		},
 		{
 			id: "dress",
@@ -70,9 +70,9 @@ export const galleryConfig: GalleryConfig = {
 				"https://cdn.tasaed.top/image/ccd2s_dress/ccd2s_dress_17.avif",
 				"https://cdn.tasaed.top/image/ccd2s_dress/ccd2s_dress_18.avif",
 				"https://cdn.tasaed.top/image/ccd2s_dress/ccd2s_dress_19.avif",
-				"https://cdn.tasaed.top/image/ccd2s_dress/ccd2s_dress_20.avif"
-			]
-		}
+				"https://cdn.tasaed.top/image/ccd2s_dress/ccd2s_dress_20.avif",
+			],
+		},
 	],
 
 	// 瀑布流最小列宽(px)，浏览器根据容器宽度自动计算列数，默认 240

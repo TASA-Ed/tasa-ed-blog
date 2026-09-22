@@ -3,7 +3,7 @@ title: 2026 届历圈模组作者大会我的发言部分
 published: 2026-08-11
 pinned: false
 description: 2026 届历史时代模组作者大会我的发言部分，介绍了 LLM Playing 项目。
-tags: [TASA-Ed 工作室,公告,教程]
+tags: [TASA-Ed 工作室, 公告, 教程]
 category: 公告
 author: 德二吹风机
 draft: false

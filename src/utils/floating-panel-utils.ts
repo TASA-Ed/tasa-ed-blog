@@ -8,9 +8,7 @@ const panelOpenStates = new WeakMap<HTMLElement, boolean>();
 let escapeListenerAttached = false;
 
 function getPanelTriggers(panel: HTMLElement): HTMLElement[] {
-	const triggerIds = panel.dataset.floatingPanelTrigger
-		?.split(/\s+/)
-		.filter(Boolean);
+	const triggerIds = panel.dataset.floatingPanelTrigger?.split(/\s+/).filter(Boolean);
 
 	if (!triggerIds) return [];
 
@@ -22,9 +20,7 @@ function getPanelTriggers(panel: HTMLElement): HTMLElement[] {
 function isVisible(element: HTMLElement): boolean {
 	const style = window.getComputedStyle(element);
 	return (
-		style.display !== "none" &&
-		style.visibility !== "hidden" &&
-		element.getClientRects().length > 0
+		style.display !== "none" && style.visibility !== "hidden" && element.getClientRects().length > 0
 	);
 }
 
@@ -57,15 +53,14 @@ function handleEscape(event: KeyboardEvent): void {
 	if (event.key !== "Escape") return;
 
 	const target = event.target instanceof Node ? event.target : null;
-	const openPanels = Array.from(
-		document.querySelectorAll<HTMLElement>(PANEL_SELECTOR),
-	).filter((panel) => !panel.classList.contains(CLOSED_CLASS));
+	const openPanels = Array.from(document.querySelectorAll<HTMLElement>(PANEL_SELECTOR)).filter(
+		(panel) => !panel.classList.contains(CLOSED_CLASS),
+	);
 
 	const activePanel = openPanels.find((panel) => {
 		if (!target) return false;
 		return (
-			panel.contains(target) ||
-			getPanelTriggers(panel).some((trigger) => trigger.contains(target))
+			panel.contains(target) || getPanelTriggers(panel).some((trigger) => trigger.contains(target))
 		);
 	});
 

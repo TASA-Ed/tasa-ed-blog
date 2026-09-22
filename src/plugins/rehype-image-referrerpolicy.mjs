@@ -37,8 +37,7 @@ export default function rehypeImageReferrerPolicy(options = {}) {
 	return (tree) => {
 		visit(tree, "element", (node) => {
 			if (node.tagName !== "img") return;
-			if (node.properties?.referrerPolicy || node.properties?.referrerpolicy)
-				return;
+			if (node.properties?.referrerPolicy || node.properties?.referrerpolicy) return;
 
 			const src = node.properties?.src;
 			if (matchesDomain(src)) {

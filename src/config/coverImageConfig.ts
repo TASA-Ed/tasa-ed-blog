@@ -31,6 +31,6 @@ export const coverImageConfig: CoverImageConfig = {
 		// 随机封面图功能开关
 		enable: false,
 		// 封面图API列表
-		apis: []
+		apis: [],
 	},
 };

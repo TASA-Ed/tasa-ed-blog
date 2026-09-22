@@ -1,34 +1,80 @@
 # Repository Guidelines
 
-## Project Structure & Module Organization
+## Project Overview
 
-Firefly is an Astro 7 site with Svelte islands and TypeScript configuration. Main source code lives in `src/`: routes in `src/pages`, layouts in `src/layouts`, reusable UI in `src/components`, styles in `src/styles`, content in `src/content`, helpers in `src/utils`, and Markdown/HTML plugins in `src/plugins`. Site configuration is split across `src/config` with matching type definitions in `src/types`; prefer imports from `@/config` when available. Static files served directly belong in `public`, source-managed images in `src/assets`, docs in `docs` and `Firefly-Docs`, and automation in `scripts`.
+Firefly is a feature-rich static blog theme built on **Astro 7** with **Svelte 5** for interactive components. It's a fork of [Fuwari](https://github.com/saicaca/fuwari) extended with extensive features. Primary language is Chinese (Simplified) with i18n for en, zh_TW, ja, ko, ru.
 
-## Build, Test, and Development Commands
+## Commands
 
-Use `pnpm`; the `preinstall` script enforces it.
+| Command | Purpose |
+| --- | --- |
+| `pnpm dev` | Dev server at `localhost:4321` |
+| `pnpm build` | Production build (LQIPs → Astro build → MeiliSearch indexing) |
+| `pnpm preview` | Preview production build |
+| `pnpm check` | `astro check` for type/error checking |
+| `pnpm typecheck` | `tsc --noEmit` (covers `src/` and `scripts/`) |
+| `pnpm lint` | Oxlint + auto-fix |
+| `pnpm fmt` | Oxfmt format |
+| `pnpm lqips` | Regenerate LQIP data into `src/constants/lqips.json` |
 
-- `pnpm dev` or `pnpm start`: run the local Astro dev server.
-- `pnpm check`: run Astro diagnostics.
-- `pnpm type-check`: run TypeScript with `--noEmit`.
-- `pnpm format`: format `src` with Biome.
-- `pnpm lint`: run Biome checks and safe fixes on `src`.
-- `pnpm build`: generate LQIPs, the Astro build and Meilisearch index.
-- `pnpm preview`: preview the production build locally.
-- `pnpm new-post`: scaffold a new content post.
+Package manager is **pnpm** (enforced). Node.js >= 22 required.
 
-## Coding Style & Naming Conventions
+## Architecture
 
-Biome is the formatter and linter. It uses tabs for indentation and double quotes for JavaScript/TypeScript strings. Keep Astro and Svelte components in `PascalCase` (`PostCard.astro`, `Search.svelte`), config modules in `camelCase` ending with `Config.ts`, and utilities in descriptive kebab case such as `date-utils.ts`. Keep `src/types` aligned with `src/config`. Avoid unrelated formatting churn.
+### Astro + Svelte Hybrid
 
-## Testing Guidelines
+- `.astro` components for static content and layouts
+- `.svelte` components for interactive UI (search, settings, pagination, archive) — mounted with `client:load` or `client:visible`
+- Swup.js handles SPA-like page transitions with multiple container targets
 
-There is no dedicated unit-test framework configured. Before submitting changes, run `pnpm check`, `pnpm type-check`, and `pnpm build` for rendering, content, or generated asset work. For visual or interactive changes, verify with `pnpm dev` or `pnpm preview` and include screenshots in the PR. Name future tests near the feature they cover, using the local file name as the stem.
+### Configuration-Driven
 
-## Commit & Pull Request Guidelines
+All features are toggled/configured via TypeScript files in `src/config/`, exported through the barrel at `src/config/index.ts`. Key configs:
 
-Use Conventional Commits, matching the current history: `feat: ...`, `fix: ...`, and `chore: ...`. Keep commits and PRs focused on one concern. PRs should include a concise summary, linked issues when relevant, validation commands run, and screenshots for UI changes. Discuss major features or design changes in an issue or discussion before implementation.
+- `siteConfig.ts` — core site settings, theme, pagination
+- `sidebarConfig.ts` — sidebar layout (left/right/both, widget ordering)
+- `commentConfig.ts`, `analyticsConfig.ts`, `fontConfig.ts`, etc.
 
-## Security & Configuration Tips
+### Layout System
 
-Do not commit secrets, tokens, or service keys in config files. Keep deployment-specific settings in the target platform environment, and review generated files such as `dist`, `src/constants/lqips.json`, and `src/constants/icons.ts` before committing them.
+- `Layout.astro` — base HTML shell (head, body, theme init, analytics, Swup hooks)
+- `MainGridLayout.astro` — full page grid with sidebar(s), navbar, wallpaper, footer
+
+### Content Collections
+
+Defined in `src/content.config.ts`:
+
+- `posts` — blog posts (`.md`/`.mdx`) with frontmatter: title, published, tags, category, draft, pinned, password, comment, etc.
+- `spec` — special pages (about, guestbook)
+
+### Key Directories
+
+- `src/components/` — organized by domain: `analytics/`, `comment/`, `common/`, `controls/`, `features/`, `layout/`, `misc/`, `pages/`, `widget/`
+- `src/plugins/` — 15 custom remark/rehype plugins (Mermaid, PlantUML, KaTeX, GitHub cards, reading time, wiki links, etc.)
+- `src/i18n/` — translation keys in `i18nKey.ts`, language files in `languages/*.ts`, lookup via `translation.ts`
+- `src/utils/` — content sorting, crypto (encrypted posts), date formatting, image processing/LQIP, TOC generation
+- `src/pages/` — Astro file-based routing
+- `scripts/` — build-time utilities (`generate-lqips.ts`)
+
+### Path Aliases (tsconfig.json)
+
+`@components/*`, `@assets/*`, `@constants/*`, `@utils/*`, `@i18n/*`, `@layouts/*` → `./src/<dir>/*`; `@/*` → `./src/*`
+
+## Code Style
+
+- **Oxfmt** / **Oxlint** enforce: tab indentation, double quotes, correctness lint rules
+- Relaxed rules for `.svelte`/`.astro`/`.vue` files (`prefer-const`, `consistent-type-imports`, `no-unused-vars` off)
+- `pnpm lint`/`pnpm fmt` target `./src` and `./scripts`
+- Commit convention: **Conventional Commits** (`feat:`, `fix:`, `chore:`, etc.)
+
+## Build Pipeline
+
+Multi-step: `scripts/generate-lqips.ts` → `astro build` → `src\integrations\searchIndex.mts` Meilisearch index.
+
+LQIP data is generated into `src/constants/lqips.json` and committed — regenerate with `pnpm lqips`. Icon data lives in `src/constants/icons-data.json` (committed, Oxlint/Oxfmt-ignored, consumed by `src/components/common/Icon.svelte`) but has no generator script in the current build.
+
+Astro Build and export JSON → Push script to Meilisearch → Delete JSON
+
+## Deployment
+
+- Static output to `dist/`

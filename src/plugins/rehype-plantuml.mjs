@@ -1,5 +1,6 @@
 import { h } from "hastscript";
 import { visit } from "unist-util-visit";
+
 import plantumlThemeScript from "./plantuml-theme-switch.js?raw";
 import {
 	DIAGRAM_CONTAINER,
@@ -49,17 +50,10 @@ export function rehypePlantuml() {
 			}
 
 			const lightSrc =
-				node.properties["data-plantuml-light"] ||
-				node.properties.dataPlantumlLight ||
-				"";
+				node.properties["data-plantuml-light"] || node.properties.dataPlantumlLight || "";
 			const darkSrc =
-				node.properties["data-plantuml-dark"] ||
-				node.properties.dataPlantumlDark ||
-				lightSrc;
-			let altText =
-				node.properties["data-plantuml-alt"] ||
-				node.properties.dataPlantumlAlt ||
-				"";
+				node.properties["data-plantuml-dark"] || node.properties.dataPlantumlDark || lightSrc;
+			let altText = node.properties["data-plantuml-alt"] || node.properties.dataPlantumlAlt || "";
 			if (!altText) {
 				altText = extractText(node).trim().slice(0, 200);
 			}
@@ -99,11 +93,7 @@ export function rehypePlantuml() {
 
 		if (foundAny && !scriptInjectedTrees.has(tree)) {
 			scriptInjectedTrees.add(tree);
-			const script = h(
-				"script",
-				{ type: "text/javascript" },
-				plantumlThemeScript,
-			);
+			const script = h("script", { type: "text/javascript" }, plantumlThemeScript);
 			tree.children = [...(tree.children || []), script];
 		}
 	};

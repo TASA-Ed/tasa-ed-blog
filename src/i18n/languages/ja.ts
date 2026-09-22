@@ -54,13 +54,11 @@ export const ja: Translation = {
 	[Key.guestbookCommentHint]:
 		"設定ファイルでコメントシステムをまだ有効にしていません。有効にすると、訪問者がここにメッセージを残せるようになります",
 	[Key.friends]: "友達",
-	[Key.friendsDescription]:
-		"ここは私の友達です、お互いに訪問して交流することを歓迎します",
+	[Key.friendsDescription]: "ここは私の友達です、お互いに訪問して交流することを歓迎します",
 	[Key.searchFriends]: "友達を検索...",
 	[Key.friendsEmpty]: "まだ友達がいません",
 	[Key.guestbook]: "ゲストブック",
-	[Key.guestbookDescription]:
-		"ここに足跡を残して、あなたの考えや提案を共有してください",
+	[Key.guestbookDescription]: "ここに足跡を残して、あなたの考えや提案を共有してください",
 	[Key.untitled]: "無題",
 	[Key.uncategorized]: "未分類",
 	[Key.noTags]: "タグなし",
@@ -118,8 +116,7 @@ export const ja: Translation = {
 	[Key.rssWhatIsRSS]: "RSSとは？",
 	[Key.rssWhatIsRSSDescription]:
 		"RSS（Really Simple Syndication）は、頻繁に更新されるコンテンツを公開するための標準形式です。RSSを使用すると：",
-	[Key.rssBenefit1]:
-		"手動で訪問することなく、最新のウェブサイトコンテンツを及时に取得",
+	[Key.rssBenefit1]: "手動で訪問することなく、最新のウェブサイトコンテンツを及时に取得",
 	[Key.rssBenefit2]: "1か所で複数のウェブサイトの購読を管理",
 	[Key.rssBenefit3]: "重要な更新や記事を見逃すことを回避",
 	[Key.rssBenefit4]: "広告なしのクリーンな読書体験を楽しむ",
@@ -208,12 +205,10 @@ export const ja: Translation = {
 	[Key.scanToSponsor]: "スキャンしてスポンサー",
 	[Key.sponsorGoTo]: "スポンサーへ",
 	[Key.sponsorButton]: "サポートと共有",
-	[Key.sponsorButtonText]:
-		"この記事が役に立ったなら、共有またはサポートをお願いします！",
+	[Key.sponsorButtonText]: "この記事が役に立ったなら、共有またはサポートをお願いします！",
 
 	[Key.shareOnSocial]: "記事を共有",
-	[Key.shareOnSocialDescription]:
-		"この記事が役に立ったなら、ぜひ他の人と共有してください！",
+	[Key.shareOnSocialDescription]: "この記事が役に立ったなら、ぜひ他の人と共有してください！",
 
 	// サイト統計
 	[Key.siteStats]: "サイト統計",

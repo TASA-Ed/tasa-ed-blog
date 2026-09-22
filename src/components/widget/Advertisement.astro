@@ -145,8 +145,8 @@ const useContentPadding = !adConfig.padding;
 
     // 检查显示次数限制（每个广告独立计数）
     if (displayCount > 0) {
-      var storageKey = "ad-display-" + widgetId;
-      var currentCount = parseInt(localStorage.getItem(storageKey) || "0", 10);
+      var storageKey = `ad-display-${  widgetId}`;
+      var currentCount = Number.parseInt(localStorage.getItem(storageKey) || "0", 10);
 
       if (currentCount >= displayCount) {
         wrapper.style.display = "none";

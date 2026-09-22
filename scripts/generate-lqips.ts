@@ -2,6 +2,7 @@
 
 import fs from "node:fs/promises";
 import path from "node:path";
+
 import { glob } from "glob";
 import sharp from "sharp";
 
@@ -70,9 +71,7 @@ async function main() {
 	try {
 		const content = await fs.readFile(OUTPUT_FILE, "utf-8");
 		existingLqips = JSON.parse(content);
-		console.log(
-			`Loaded ${Object.keys(existingLqips).length} existing entries from ${OUTPUT_FILE}`,
-		);
+		console.log(`Loaded ${Object.keys(existingLqips).length} existing entries from ${OUTPUT_FILE}`);
 	} catch {
 		console.log(`No existing ${OUTPUT_FILE} found, will create new.`);
 	}
@@ -88,16 +87,12 @@ async function main() {
 
 	// 移除已不存在的图片数据
 	const currentKeys = new Set(files.map((file) => filePathToKey(file)));
-	const removedKeys = Object.keys(existingLqips).filter(
-		(key) => !currentKeys.has(key),
-	);
+	const removedKeys = Object.keys(existingLqips).filter((key) => !currentKeys.has(key));
 	for (const key of removedKeys) {
 		delete existingLqips[key];
 	}
 	if (removedKeys.length > 0) {
-		console.log(
-			`Removed ${removedKeys.length} stale entries: ${removedKeys.join(", ")}`,
-		);
+		console.log(`Removed ${removedKeys.length} stale entries: ${removedKeys.join(", ")}`);
 	}
 
 	// 过滤掉已有数据的图片
@@ -106,9 +101,7 @@ async function main() {
 		return !(key in existingLqips);
 	});
 
-	console.log(
-		`Found ${files.length} images, ${newFiles.length} new to process.`,
-	);
+	console.log(`Found ${files.length} images, ${newFiles.length} new to process.`);
 
 	const lqips: LqipMap = { ...existingLqips };
 	let processed = 0;
@@ -116,9 +109,7 @@ async function main() {
 	if (newFiles.length > 0) {
 		for (const file of newFiles) {
 			const filePath = path.resolve(file);
-			process.stdout.write(
-				`\rProcessing ${processed + 1}/${newFiles.length}...`,
-			);
+			process.stdout.write(`\rProcessing ${processed + 1}/${newFiles.length}...`);
 			const compact = await processImage(filePath);
 			if (compact !== null) {
 				const key = filePathToKey(file);

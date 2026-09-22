@@ -40,18 +40,14 @@ function readEnableEnv(): unknown {
 	try {
 		return import.meta.env.PUBLIC_DISPLAY_SETTINGS;
 	} catch {
-		return typeof process === "undefined"
-			? undefined
-			: process.env.PUBLIC_DISPLAY_SETTINGS;
+		return typeof process === "undefined" ? undefined : process.env.PUBLIC_DISPLAY_SETTINGS;
 	}
 }
 
 // 应用总开关：环境变量 PUBLIC_DISPLAY_SETTINGS 优先于配置文件里的 enable
 // 这样在部署平台（Vercel / Cloudflare 等）配置环境变量即可开启面板，无需修改配置文件
 // 变量名必须带 PUBLIC_ 前缀，否则不会注入到浏览器端的设置面板代码中
-export function resolveDisplaySettingsConfig(
-	config: DisplaySettingsConfig,
-): DisplaySettingsConfig {
+export function resolveDisplaySettingsConfig(config: DisplaySettingsConfig): DisplaySettingsConfig {
 	const enable = parseBooleanEnv(readEnableEnv()) ?? config.enable;
 	return enable ? { ...config, enable: true } : DISABLED_SETTINGS;
 }

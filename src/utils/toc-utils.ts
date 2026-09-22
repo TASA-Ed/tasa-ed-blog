@@ -5,11 +5,7 @@
 
 import I18nKey from "@/i18n/i18nKey";
 import { i18n } from "@/i18n/translation";
-import {
-	computeTocItems,
-	renderTocItemHTML,
-	type TocInput,
-} from "@/utils/toc-shared";
+import { computeTocItems, renderTocItemHTML, type TocInput } from "@/utils/toc-shared";
 
 export interface TOCConfig {
 	contentId: string;
@@ -53,9 +49,7 @@ export class TOCManager {
 		if (!contentContainer) {
 			return [];
 		}
-		return Array.from(
-			contentContainer.querySelectorAll("h1, h2, h3, h4, h5, h6"),
-		);
+		return Array.from(contentContainer.querySelectorAll("h1, h2, h3, h4, h5, h6"));
 	}
 
 	/**
@@ -139,9 +133,7 @@ export class TOCManager {
 		if (!tocContent) return;
 
 		tocContent.innerHTML = this.generateTOCHTML();
-		this.tocItems = Array.from(
-			document.querySelectorAll(`#${this.contentId} a`),
-		);
+		this.tocItems = Array.from(document.querySelectorAll(`#${this.contentId} a`));
 	}
 
 	/**
@@ -273,8 +265,7 @@ export class TOCManager {
 
 			// 只在元素不在可视区域时才滚动
 			const isVisible =
-				itemRect.top >= containerRect.top &&
-				itemRect.bottom <= containerRect.bottom;
+				itemRect.top >= containerRect.top && itemRect.bottom <= containerRect.bottom;
 
 			if (!isVisible) {
 				const itemOffsetTop = (activeItem as HTMLElement).offsetTop;
@@ -282,8 +273,7 @@ export class TOCManager {
 				const itemHeight = activeItem.clientHeight;
 
 				// 计算目标滚动位置，将元素居中显示
-				const targetScroll =
-					itemOffsetTop - containerHeight / 2 + itemHeight / 2;
+				const targetScroll = itemOffsetTop - containerHeight / 2 + itemHeight / 2;
 
 				tocContainer.scrollTo({
 					top: targetScroll,
@@ -299,16 +289,12 @@ export class TOCManager {
 	public handleClick(event: Event): void {
 		event.preventDefault();
 		const target = event.currentTarget as HTMLAnchorElement;
-		const id = decodeURIComponent(
-			target.getAttribute("href")?.substring(1) || "",
-		);
+		const id = decodeURIComponent(target.getAttribute("href")?.substring(1) || "");
 		const targetElement = document.getElementById(id);
 
 		if (targetElement) {
 			const targetTop =
-				targetElement.getBoundingClientRect().top +
-				window.pageYOffset -
-				this.scrollOffset;
+				targetElement.getBoundingClientRect().top + window.pageYOffset - this.scrollOffset;
 
 			window.scrollTo({
 				top: targetTop,
@@ -384,14 +370,11 @@ export class TOCManager {
 	 * 期望 id 序列并逐一比对——不同文章即使共用个别标题名也不会误判。
 	 */
 	private anchorsMatchCurrentContent(anchors: HTMLElement[]): boolean {
-		const expected = computeTocItems(
-			this.domHeadingsToInputs(this.getAllHeadings()),
-			{ maxLevel: this.maxLevel },
-		);
+		const expected = computeTocItems(this.domHeadingsToInputs(this.getAllHeadings()), {
+			maxLevel: this.maxLevel,
+		});
 		if (expected.length !== anchors.length) return false;
-		return expected.every(
-			(item, i) => anchors[i].dataset.headingId === item.headingId,
-		);
+		return expected.every((item, i) => anchors[i].dataset.headingId === item.headingId);
 	}
 
 	/**

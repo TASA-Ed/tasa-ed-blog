@@ -1,8 +1,4 @@
-import {
-	type NavBarConfig,
-	type NavBarLink,
-	type NavBarSearchConfig,
-} from "../types/navBarConfig";
+import { type NavBarConfig, type NavBarLink, type NavBarSearchConfig } from "../types/navBarConfig";
 
 // ============================================================================
 // 导航栏配置 - 根据顺序动态生成导航栏链接
@@ -17,11 +13,7 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 			name: "文章",
 			url: "/content/",
 			icon: "material-symbols:article-outline",
-			children: [
-				LinkPresets.Archive,
-				LinkPresets.Tags,
-				LinkPresets.Categories
-			]
+			children: [LinkPresets.Archive, LinkPresets.Tags, LinkPresets.Categories],
 		},
 		LinkPresets.cLink,
 		LinkPresets.Gallery,
@@ -31,11 +23,8 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 			name: "关于",
 			url: "/content/",
 			icon: "material-symbols:info",
-			children: [
-				LinkPresets.Sponsor,
-				LinkPresets.About,
-			]
-		}
+			children: [LinkPresets.Sponsor, LinkPresets.About],
+		},
 	];
 
 	return { links } as NavBarConfig;
@@ -47,8 +36,7 @@ export const navBarSearchConfig: NavBarSearchConfig = {
 		INDEX_NAME: "astro_blog",
 		MEILI_HOST: "https://api.tasaed.top/search",
 		PUBLIC_MEILI_HOST: "https://api.tasaed.top/search",
-		PUBLIC_MEILI_SEARCH_KEY:
-			"b6172b0e10057d2ec84390688f3a602a42935095a238e29fcf70e5a4827a2a77",
+		PUBLIC_MEILI_SEARCH_KEY: "b6172b0e10057d2ec84390688f3a602a42935095a238e29fcf70e5a4827a2a77",
 	},
 };
 
@@ -129,7 +117,7 @@ export const LinkPresets: Record<string, NavBarLink> = {
 				external: true,
 				icon: "fa7-brands:qq",
 			},
-		]
+		],
 	},
 };
 

@@ -1,5 +1,7 @@
 import fs from "node:fs/promises";
+
 import type { AstroIntegration } from "astro";
+
 import { navBarSearchConfig } from "../config/index.ts";
 import MeiliSearchIndexer from "../scripts/index-to-meilisearch.mts";
 
@@ -14,9 +16,7 @@ export default function searchIndexer(): AstroIntegration {
 			"astro:build:done": async ({ dir }) => {
 				const documentsPath = new URL("meilisearch.json", dir);
 				try {
-					console.log(
-						`${"=".repeat(10)}Running Search Indexer...${"=".repeat(10)}`,
-					);
+					console.log(`${"=".repeat(10)}Running Search Indexer...${"=".repeat(10)}`);
 					const meiliSearchConfig = navBarSearchConfig.meiliSearchConfig;
 					if (!meiliSearchConfig) {
 						throw new Error("MeiliSearch configuration is missing.");

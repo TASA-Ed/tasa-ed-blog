@@ -3,7 +3,7 @@ title: 【教程】在2025年使用Server 2003 R2搭建网站
 published: 2025-03-28
 pinned: false
 description: 【教程】在2025年使用Server 2003 R2搭建网站
-tags: [教程,Windows,网站]
+tags: [教程, Windows, 网站]
 category: 教程
 author: 德二吹风机
 draft: false

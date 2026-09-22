@@ -3,7 +3,7 @@ title: 【语音模型】半条命1 G-Man中配AI语音模型
 published: 2025-03-13
 pinned: false
 description: 【语音模型】半条命1 G-Man中配AI语音模型
-tags: [推荐,开源]
+tags: [推荐, 开源]
 category: 推荐
 author: 德二吹风机
 draft: false

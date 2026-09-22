@@ -9,20 +9,15 @@ export function initIconLoader(): void {
 		if (container.hasAttribute("data-icon-initialized")) return;
 		container.setAttribute("data-icon-initialized", "true");
 
-		const loadingIndicator = container.querySelector(
-			"[data-loading-indicator]",
-		) as HTMLElement;
-		const iconElement = container.querySelector(
-			"[data-icon-element]",
-		) as HTMLElement;
+		const loadingIndicator = container.querySelector("[data-loading-indicator]") as HTMLElement;
+		const iconElement = container.querySelector("[data-icon-element]") as HTMLElement;
 		const iconName = iconElement?.getAttribute("icon");
 
 		if (!loadingIndicator || !iconElement) return;
 
 		// 检查图标是否已经加载
 		function checkIconLoaded() {
-			const hasContent =
-				iconElement.shadowRoot && iconElement.shadowRoot.children.length > 0;
+			const hasContent = iconElement.shadowRoot && iconElement.shadowRoot.children.length > 0;
 
 			if (hasContent) {
 				showIcon();
@@ -104,9 +99,7 @@ export function initIconLoader(): void {
 						if (el.hasAttribute?.("data-icon-container")) {
 							initContainer(el);
 						} else {
-							el.querySelectorAll("[data-icon-container]").forEach(
-								initContainer,
-							);
+							el.querySelectorAll("[data-icon-container]").forEach(initContainer);
 						}
 					}
 				});

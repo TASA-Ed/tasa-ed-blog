@@ -8,10 +8,7 @@ type DetectBuildPlatformOptions = {
 //“FIREFLY_BUILD_PLATFORM”环境变量自定义命名构建平台
 const BUILD_PLATFORM_OVERRIDE_KEY = "FIREFLY_BUILD_PLATFORM";
 
-function hasNonEmptyEnv(
-	env: Record<string, string | undefined>,
-	key: string,
-): boolean {
+function hasNonEmptyEnv(env: Record<string, string | undefined>, key: string): boolean {
 	const value = env[key];
 	return typeof value === "string" && value.trim() !== "";
 }

@@ -42,20 +42,14 @@ export function parseDirectiveNode() {
 
 				// 检查是否是 Admonition 类型
 				// 仅对 containerDirective 进行 Admonition 转换
-				if (
-					node.type === "containerDirective" &&
-					ADMONITION_TYPES.includes(name)
-				) {
+				if (node.type === "containerDirective" && ADMONITION_TYPES.includes(name)) {
 					const type = name.toUpperCase();
 
 					// 处理 label (自定义标题)
 					const firstChild = node.children[0];
 					if (firstChild?.data?.directiveLabel) {
 						// 如果有 label，注入 [!TYPE] 到 label 开头
-						if (
-							firstChild.children.length > 0 &&
-							firstChild.children[0].type === "text"
-						) {
+						if (firstChild.children.length > 0 && firstChild.children[0].type === "text") {
 							firstChild.children[0].value = `[!${type}] ${firstChild.children[0].value}`;
 						} else {
 							firstChild.children.unshift({

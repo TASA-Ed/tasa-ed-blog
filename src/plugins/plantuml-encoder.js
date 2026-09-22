@@ -5,8 +5,7 @@ import * as pako from "pako";
  * 与标准 base64 不同，PlantUML 使用自定义映射以便放入 URL path 段。
  * @see https://plantuml.com/text-encoding
  */
-const PLANTUML_ALPHABET =
-	"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_";
+const PLANTUML_ALPHABET = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_";
 
 /**
  * 将 0-63 的 6-bit 数值映射到 PlantUML 字母表字符。
@@ -71,9 +70,7 @@ function encode64(bytes) {
  */
 export function encodePlantUML(source) {
 	if (typeof source !== "string") {
-		throw new TypeError(
-			`encodePlantUML expects a string, got ${typeof source}`,
-		);
+		throw new TypeError(`encodePlantUML expects a string, got ${typeof source}`);
 	}
 	const utf8Bytes = new TextEncoder().encode(source);
 	const deflated = pako.deflateRaw(utf8Bytes, { level: 9 });
@@ -88,10 +85,7 @@ export function encodePlantUML(source) {
  * @returns {boolean} true 表示源码已包含 `!theme` 或 `skinparam backgroundColor`
  */
 function hasExplicitTheme(source) {
-	return (
-		/^\s*!theme\s+\S+/m.test(source) ||
-		/^\s*skinparam\s+backgroundColor\b/im.test(source)
-	);
+	return /^\s*!theme\s+\S+/m.test(source) || /^\s*skinparam\s+backgroundColor\b/im.test(source);
 }
 
 /**
@@ -109,9 +103,7 @@ function hasExplicitTheme(source) {
  */
 export function injectTheme(source, themeName) {
 	if (typeof source !== "string") {
-		throw new TypeError(
-			`injectTheme expects a string source, got ${typeof source}`,
-		);
+		throw new TypeError(`injectTheme expects a string source, got ${typeof source}`);
 	}
 	if (!themeName?.trim()) {
 		return source;

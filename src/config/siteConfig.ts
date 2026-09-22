@@ -8,8 +8,7 @@ export const siteConfig: SiteConfig = {
 	title: "TASA-Ed Blog",
 	subtitle: "德二吹风机的博客",
 	site_url: "https://www.tasaed.top/blog",
-	description:
-		"德二吹风机的博客！分享有趣的技术和疑难杂症解决方式！",
+	description: "德二吹风机的博客！分享有趣的技术和疑难杂症解决方式！",
 	keywords: [
 		"德二吹风机",
 		"TASA-Ed",

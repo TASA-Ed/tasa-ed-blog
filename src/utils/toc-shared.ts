@@ -32,10 +32,7 @@ export interface TocItem {
  * 根据标题列表计算目录项。
  * 复刻 TOCManager 里的 calculateMinDepth + filterHeadings + 深度/徽章逻辑。
  */
-export function computeTocItems(
-	headings: TocInput[],
-	opts: { maxLevel: number },
-): TocItem[] {
+export function computeTocItems(headings: TocInput[], opts: { maxLevel: number }): TocItem[] {
 	if (!headings || headings.length === 0) return [];
 
 	// 计算最小深度
@@ -55,8 +52,7 @@ export function computeTocItems(
 		if (!h.slug) continue;
 
 		const depth = h.depth;
-		const depthLevel: 0 | 1 | 2 =
-			depth === minDepth ? 0 : depth === minDepth + 1 ? 1 : 2;
+		const depthLevel: 0 | 1 | 2 = depth === minDepth ? 0 : depth === minDepth + 1 ? 1 : 2;
 
 		let badgeKind: "index" | "dot" | "dot-sm";
 		let badgeIndex: number | undefined;

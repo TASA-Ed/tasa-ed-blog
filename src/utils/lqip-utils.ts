@@ -4,8 +4,7 @@ import lqipData from "@constants/lqips.json";
 
 const lqips: Record<string, string> = lqipData as Record<string, string>;
 
-const DEFAULT_GRADIENT =
-	"linear-gradient(135deg, #d6d3d1 0%, #a8a29e 50%, #d6d3d1 100%)";
+const DEFAULT_GRADIENT = "linear-gradient(135deg, #d6d3d1 0%, #a8a29e 50%, #d6d3d1 100%)";
 
 function normalizePath(p: string): string {
 	return p.replace(/\/\.\//g, "/").replace(/\/+/g, "/");
@@ -33,11 +32,7 @@ export function getLqipGradient(
 
 	// src 图片：key 格式为 src:xxx
 	const fullPath = basePath ? normalizePath(`${basePath}/${src}`) : src;
-	const compact =
-		lqips[`src:${fullPath}`] ||
-		lqips[`src:${src}`] ||
-		lqips[fullPath] ||
-		lqips[src];
+	const compact = lqips[`src:${fullPath}`] || lqips[`src:${src}`] || lqips[fullPath] || lqips[src];
 	if (compact?.length !== 18) return undefined;
 
 	const c1 = `#${compact.slice(0, 6)}`;
@@ -48,11 +43,7 @@ export function getLqipGradient(
 
 /** 判断是否为外部图片 */
 export function isExternalImage(src: string): boolean {
-	return (
-		src.startsWith("http://") ||
-		src.startsWith("https://") ||
-		src.startsWith("data:")
-	);
+	return src.startsWith("http://") || src.startsWith("https://") || src.startsWith("data:");
 }
 
 /** 获取 LQIP 内联样式 */

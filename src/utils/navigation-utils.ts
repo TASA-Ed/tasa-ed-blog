@@ -23,11 +23,7 @@ export function navigateToPage(
 	}
 
 	// 如果是外部链接，直接跳转
-	if (
-		url.startsWith("http://") ||
-		url.startsWith("https://") ||
-		url.startsWith("//")
-	) {
+	if (url.startsWith("http://") || url.startsWith("https://") || url.startsWith("//")) {
 		window.open(url, "_blank");
 		return;
 	}

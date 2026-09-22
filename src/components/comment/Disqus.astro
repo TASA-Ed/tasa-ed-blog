@@ -33,9 +33,9 @@ const shortname = commentConfig.disqus.shortname;
   }
 
   ;(function () {
-    var d = document,
-      s = d.createElement('script')
-    s.src = 'https://' + shortname + '.disqus.com/embed.js'
+    var d = document;
+      var s = d.createElement('script')
+    s.src = `https://${  shortname  }.disqus.com/embed.js`
     s.setAttribute('data-timestamp', new Date().toString())
     ;(d.head || d.body).appendChild(s)
   })()

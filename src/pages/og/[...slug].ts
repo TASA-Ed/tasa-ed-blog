@@ -1,8 +1,10 @@
+import * as fs from "node:fs";
+
+import type { APIContext, GetStaticPaths } from "astro";
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
-import * as fs from "node:fs";
-import type { APIContext, GetStaticPaths } from "astro";
 import satori from "satori";
+
 import { removeFileExtension } from "@/utils/url-utils";
 
 import { profileConfig } from "../../config/profileConfig";
@@ -50,10 +52,7 @@ async function fetchNotoSansSCFonts() {
 		const cssText = await cssResp.text();
 
 		const getUrlForWeight = (weight: number) => {
-			const blockRe = new RegExp(
-				`@font-face\\s*{[^}]*font-weight:\\s*${weight}[^}]*}`,
-				"g",
-			);
+			const blockRe = new RegExp(`@font-face\\s*{[^}]*font-weight:\\s*${weight}[^}]*}`, "g");
 			const match = cssText.match(blockRe);
 			if (!match || match.length === 0) return null;
 			const urlMatch = match[0].match(/url\((https:[^)]+)\)/);
@@ -64,21 +63,14 @@ async function fetchNotoSansSCFonts() {
 		const boldUrl = getUrlForWeight(700);
 
 		if (!regularUrl || !boldUrl) {
-			console.warn(
-				"Could not find font urls in Google Fonts CSS; falling back to no fonts.",
-			);
+			console.warn("Could not find font urls in Google Fonts CSS; falling back to no fonts.");
 			fontCache = { regular: null, bold: null };
 			return { regular: null, bold: null };
 		}
 
-		const [rResp, bResp] = await Promise.all([
-			fetch(regularUrl),
-			fetch(boldUrl),
-		]);
+		const [rResp, bResp] = await Promise.all([fetch(regularUrl), fetch(boldUrl)]);
 		if (!rResp.ok || !bResp.ok) {
-			console.warn(
-				"Failed to download font files from Google; falling back to no fonts.",
-			);
+			console.warn("Failed to download font files from Google; falling back to no fonts.");
 			fontCache = { regular: null, bold: null };
 			return { regular: null, bold: null };
 		}
@@ -95,7 +87,7 @@ async function fetchNotoSansSCFonts() {
 }
 
 // 缓存 sharp 模块，避免在每次 GET 调用中重复动态导入
-let sharpPromise: Promise<typeof import("sharp")["default"]> | null = null;
+let sharpPromise: Promise<(typeof import("sharp"))["default"]> | null = null;
 function getSharp() {
 	if (!sharpPromise) {
 		sharpPromise = import("sharp").then((m) => m.default);
@@ -145,10 +137,7 @@ const convertedImageCache = new Map<string, string>();
  * @param sourcePath - 图片文件的磁盘路径，用作缓存键
  * @returns `data:image/png;base64,...` 格式的 PNG Data URL；处理失败时返回透明图
  */
-async function imageToPngBase64(
-	imageBuffer: Buffer,
-	sourcePath: string,
-): Promise<string> {
+async function imageToPngBase64(imageBuffer: Buffer, sourcePath: string): Promise<string> {
 	const cached = convertedImageCache.get(sourcePath);
 	if (cached) return cached;
 
@@ -187,24 +176,16 @@ export async function GET({
 		const avatarPath = profileConfig.avatar?.startsWith("/")
 			? `./public${profileConfig.avatar}`
 			: `./src/${profileConfig.avatar}`;
-		avatarBase64 = await imageToPngBase64(
-			fs.readFileSync(avatarPath),
-			avatarPath,
-		);
+		avatarBase64 = await imageToPngBase64(fs.readFileSync(avatarPath), avatarPath);
 	}
 
 	// 站点图标处理：优先选择 png 格式的图标，回退到第一个 favicon
 	let iconPath = "./public/favicon/favicon-dark-192.png";
 	if (siteConfig.favicon.length > 0) {
-		const pngFavicon = siteConfig.favicon.find((f) =>
-			f.src.toLowerCase().endsWith(".png"),
-		);
+		const pngFavicon = siteConfig.favicon.find((f) => f.src.toLowerCase().endsWith(".png"));
 		iconPath = `./public${(pngFavicon ?? siteConfig.favicon[0]).src}`;
 	}
-	const iconBase64 = await imageToPngBase64(
-		fs.readFileSync(iconPath),
-		iconPath,
-	);
+	const iconBase64 = await imageToPngBase64(fs.readFileSync(iconPath), iconPath);
 
 	const hue = siteConfig.themeColor.hue;
 	const primaryColor = `hsl(${hue}, 90%, 65%)`;

@@ -1,4 +1,5 @@
 import { visit } from "unist-util-visit";
+
 import { buildUrl, encodePlantUML, injectTheme } from "./plantuml-encoder.js";
 
 /**
@@ -51,9 +52,7 @@ export function remarkPlantuml(options = {}) {
 
 			const lightUrl = buildUrl(config.server, encodePlantUML(lightSource));
 			const darkUrl =
-				darkSource === lightSource
-					? lightUrl
-					: buildUrl(config.server, encodePlantUML(darkSource));
+				darkSource === lightSource ? lightUrl : buildUrl(config.server, encodePlantUML(darkSource));
 
 			node.type = "plantuml";
 			node.data = {

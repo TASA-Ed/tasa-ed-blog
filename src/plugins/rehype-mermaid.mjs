@@ -1,7 +1,9 @@
 import { readFile } from "node:fs/promises";
+
 import { assertSafeSvgForDom, initMerman, renderSvg } from "@mermanjs/web";
 import { h } from "hastscript";
 import { visit } from "unist-util-visit";
+
 import {
 	DIAGRAM_CONTAINER,
 	DIAGRAM_WRAPPER,
@@ -14,9 +16,7 @@ import {
 } from "./utils/diagramConstants.js";
 import { extractText } from "./utils/extractText.js";
 
-const mermanWasmUrl = import.meta.resolve(
-	"@mermanjs/web/pkg/merman_wasm_bg.wasm",
-);
+const mermanWasmUrl = import.meta.resolve("@mermanjs/web/pkg/merman_wasm_bg.wasm");
 await initMerman({
 	wasm: {
 		module_or_path: await readFile(new URL(mermanWasmUrl)),
@@ -79,10 +79,7 @@ export function rehypeMermaid(options = {}) {
 		let diagramIndex = 0;
 
 		visit(tree, "element", (node) => {
-			if (
-				node.tagName !== "div" ||
-				!node.properties?.className?.includes("mermaid-container")
-			) {
+			if (node.tagName !== "div" || !node.properties?.className?.includes("mermaid-container")) {
 				return;
 			}
 
@@ -95,24 +92,15 @@ export function rehypeMermaid(options = {}) {
 			let lightSvg;
 			let darkSvg;
 			try {
-				({ lightSvg, darkSvg } = buildMermaidSvgs(
-					mermaidCode,
-					themeConfig,
-					diagramIndex,
-				));
+				({ lightSvg, darkSvg } = buildMermaidSvgs(mermaidCode, themeConfig, diagramIndex));
 				diagramIndex += 1;
 			} catch (e) {
 				const preview =
-					mermaidCode.length > 200
-						? `${mermaidCode.slice(0, 200)}…[truncated]`
-						: mermaidCode;
+					mermaidCode.length > 200 ? `${mermaidCode.slice(0, 200)}…[truncated]` : mermaidCode;
 				if (process.env.NODE_ENV === "development") {
 					console.error("[rehype-mermaid] 渲染失败:", e, preview);
 				} else {
-					console.error(
-						"[rehype-mermaid] 渲染失败:",
-						e instanceof Error ? e.message : String(e),
-					);
+					console.error("[rehype-mermaid] 渲染失败:", e instanceof Error ? e.message : String(e));
 				}
 				node.properties = {
 					class: `${DIAGRAM_CONTAINER} ${MERMAID_CONTAINER}`,
@@ -130,12 +118,8 @@ export function rehypeMermaid(options = {}) {
 			node.properties = { class: `${DIAGRAM_CONTAINER} ${MERMAID_CONTAINER}` };
 			node.children = [
 				h("div", { class: `${DIAGRAM_WRAPPER} ${MERMAID_WRAPPER}` }, [
-					h("div", { class: MERMAID_SVG_LIGHT }, [
-						{ type: "raw", value: lightSvg },
-					]),
-					h("div", { class: MERMAID_SVG_DARK }, [
-						{ type: "raw", value: darkSvg },
-					]),
+					h("div", { class: MERMAID_SVG_LIGHT }, [{ type: "raw", value: lightSvg }]),
+					h("div", { class: MERMAID_SVG_DARK }, [{ type: "raw", value: darkSvg }]),
 				]),
 			];
 		});

@@ -11,6 +11,6 @@ draft: false
 
 SL音频文件：
 
-[https://1drv.ms/f/c/568ae44e1937060b/EifPkhgdNa9Nqb\_HBzpGI5cBH9FzoLcGmqODIwJUr3dFgw?e=UCcyJu](https://1drv.ms/f/c/568ae44e1937060b/EifPkhgdNa9Nqb_HBzpGI5cBH9FzoLcGmqODIwJUr3dFgw?e=UCcyJu)
+[https://1drv.ms/f/c/568ae44e1937060b/EifPkhgdNa9Nqb_HBzpGI5cBH9FzoLcGmqODIwJUr3dFgw?e=UCcyJu](https://1drv.ms/f/c/568ae44e1937060b/EifPkhgdNa9Nqb_HBzpGI5cBH9FzoLcGmqODIwJUr3dFgw?e=UCcyJu)
 
 来源于 NorthWood Studio 制作的 [SCP: Secret Laboratory](https://scpslgame.com/) ，侵删

@@ -3,7 +3,7 @@ title: 从零开始用 Node.js 写库踩坑记录
 published: 2026-04-14
 pinned: false
 description: 从零开始用 Node.js 写 TypeScript 命令行库踩坑记录。
-tags: [Node.js,TypeScript,Rolldown,Vite,教程]
+tags: [Node.js, TypeScript, Rolldown, Vite, 教程]
 category: 教程
 author: 德二吹风机
 draft: false

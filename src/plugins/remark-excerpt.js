@@ -1,4 +1,4 @@
-// biome-ignore lint/suspicious/noShadowRestrictedNames: <toString from mdast-util-to-string>
+// oxlint-disable-next-line no-shadow-restricted-names -- toString from mdast-util-to-string
 import { toString } from "mdast-util-to-string";
 
 /* Use the post's first paragraph as the excerpt */

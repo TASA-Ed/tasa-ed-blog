@@ -51,8 +51,7 @@ export const zh_TW: Translation = {
 	[Key.commentSection]: "評論區",
 	[Key.commentSubtitle]: "分享你的想法，與大家交流討論",
 	[Key.commentNotConfigured]: "評論系統暫未配置",
-	[Key.guestbookCommentHint]:
-		"您還未在配置文件中啟用評論系統，啟用後訪客才可在此留言",
+	[Key.guestbookCommentHint]: "您還未在配置文件中啟用評論系統，啟用後訪客才可在此留言",
 	[Key.friends]: "友鏈",
 	[Key.friendsDescription]: "這裡是我的朋友們，歡迎互相訪問交流",
 	[Key.searchFriends]: "搜尋友鏈...",
@@ -203,8 +202,7 @@ export const zh_TW: Translation = {
 	[Key.scanToSponsor]: "掃碼打賞",
 	[Key.sponsorGoTo]: "前往打賞",
 	[Key.sponsorButton]: "支持與分享",
-	[Key.sponsorButtonText]:
-		"如果這篇文章對你有幫助，歡迎分享給更多人或打賞支持！",
+	[Key.sponsorButtonText]: "如果這篇文章對你有幫助，歡迎分享給更多人或打賞支持！",
 
 	[Key.shareOnSocial]: "文章分享",
 	[Key.shareOnSocialDescription]: "如果這篇文章對你有幫助，歡迎分享給更多人！",

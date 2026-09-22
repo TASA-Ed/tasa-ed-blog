@@ -1,7 +1,9 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
+
 import { Meilisearch } from "meilisearch";
+
 import { navBarSearchConfig } from "../config/index.ts";
 import type { MeiliSearchDocument } from "../types/meilisearch.ts";
 
@@ -32,9 +34,7 @@ class MeiliSearchIndexer {
 	}
 
 	async getDocuments(): Promise<MeiliSearchDocument[]> {
-		const documents = JSON.parse(
-			await fs.readFile(this.documentsPath, "utf-8"),
-		);
+		const documents = JSON.parse(await fs.readFile(this.documentsPath, "utf-8"));
 		if (!Array.isArray(documents)) {
 			throw new Error("Error: MeiliSearch export must contain a JSON array.");
 		}
@@ -60,13 +60,7 @@ class MeiliSearchIndexer {
 			// 更新配置
 			const settingsTask = await index.updateSettings({
 				searchableAttributes: ["title", "content", "description"],
-				displayedAttributes: [
-					"title",
-					"description",
-					"content",
-					"pubDate",
-					"slug",
-				],
+				displayedAttributes: ["title", "description", "content", "pubDate", "slug"],
 				sortableAttributes: ["pubDate"],
 			});
 			await this.waitForTask(settingsTask.taskUid);
@@ -97,15 +91,12 @@ class MeiliSearchIndexer {
 	}
 }
 
-const isMain =
-	process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
+const isMain = process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
 
 if (isMain) {
 	const { meiliSearchConfig } = navBarSearchConfig;
 	if (!meiliSearchConfig) {
-		console.error(
-			"Error: MeiliSearch configuration is missing in navBarConfig.",
-		);
+		console.error("Error: MeiliSearch configuration is missing in navBarConfig.");
 		process.exit(1);
 	}
 	const MEILI_MASTER_KEY = process.env.MEILI_MASTER_KEY;
