@@ -17,23 +17,23 @@ import type { FontSelectionConfig } from "../types/fontConfig";
  * @returns 去重后的 CSS 变量名集合（如 "--font-inter"）
  */
 export function collectUsedFontCssVars(config: FontSelectionConfig): Set<string> {
-	const used = new Set<string>();
+  const used = new Set<string>();
 
-	const sel = config.selected;
-	if (Array.isArray(sel)) {
-		for (const v of sel) {
-			if (v !== "system") used.add(v);
-		}
-	} else if (sel !== "system") {
-		used.add(sel);
-	}
+  const sel = config.selected;
+  if (Array.isArray(sel)) {
+    for (const v of sel) {
+      if (v !== "system") used.add(v);
+    }
+  } else if (sel !== "system") {
+    used.add(sel);
+  }
 
-	if (config.bannerTitleFont) used.add(config.bannerTitleFont);
-	if (config.bannerSubtitleFont) used.add(config.bannerSubtitleFont);
-	if (config.navbarTitleFont) used.add(config.navbarTitleFont);
-	if (config.codeFont) used.add(config.codeFont);
+  if (config.bannerTitleFont) used.add(config.bannerTitleFont);
+  if (config.bannerSubtitleFont) used.add(config.bannerSubtitleFont);
+  if (config.navbarTitleFont) used.add(config.navbarTitleFont);
+  if (config.codeFont) used.add(config.codeFont);
 
-	return used;
+  return used;
 }
 
 /**
@@ -49,18 +49,18 @@ export function collectUsedFontCssVars(config: FontSelectionConfig): Set<string>
  * @returns 转换后的访问路径，或 null 表示无法转换
  */
 export function toPublicPath(rawSrc: string): string | null {
-	// 已是绝对路径（包括 /public/ 前缀的路径，去掉 /public 前缀）
-	if (rawSrc.startsWith("/")) {
-		const match = rawSrc.match(/^\/public\/(.+)$/);
-		return match ? `/${match[1]}` : rawSrc;
-	}
+  // 已是绝对路径（包括 /public/ 前缀的路径，去掉 /public 前缀）
+  if (rawSrc.startsWith("/")) {
+    const match = rawSrc.match(/^\/public\/(.+)$/);
+    return match ? `/${match[1]}` : rawSrc;
+  }
 
-	// 匹配 public/ 前缀的各种写法
-	const match = rawSrc.match(/^\.?\/?public\/(.+)$/);
-	if (match) {
-		return `/${match[1]}`;
-	}
+  // 匹配 public/ 前缀的各种写法
+  const match = rawSrc.match(/^\.?\/?public\/(.+)$/);
+  if (match) {
+    return `/${match[1]}`;
+  }
 
-	// 相对路径且不含 public/ 前缀，无法安全转换
-	return null;
+  // 相对路径且不含 public/ 前缀，无法安全转换
+  return null;
 }

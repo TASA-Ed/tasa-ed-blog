@@ -1,6 +1,6 @@
 {
 	"$schema": "./node_modules/oxfmt/configuration_schema.json",
-	"useTabs": true,
+	"useTabs": false,
 	"singleQuote": false,
 	"sortImports": true,
 	"svelte": true,

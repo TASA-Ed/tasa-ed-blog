@@ -2,39 +2,39 @@
 /// <reference path="../.astro/types.d.ts" />
 
 declare global {
-	interface ImportMetaEnv {
-		readonly MEILI_MASTER_KEY: string;
-		// 视图设置面板总开关，可在部署平台配置（true / 1 / on / yes 开启）
-		readonly PUBLIC_DISPLAY_SETTINGS?: string;
-	}
+  interface ImportMetaEnv {
+    readonly MEILI_MASTER_KEY: string;
+    // 视图设置面板总开关，可在部署平台配置（true / 1 / on / yes 开启）
+    readonly PUBLIC_DISPLAY_SETTINGS?: string;
+  }
 
-	interface ITOCManager {
-		init: () => void;
-		render: () => void;
-		attach: () => void;
-		cleanup: () => void;
-	}
+  interface ITOCManager {
+    init: () => void;
+    render: () => void;
+    attach: () => void;
+    cleanup: () => void;
+  }
 
-	interface Window {
-		SidebarTOC: {
-			manager: ITOCManager | null;
-		};
-		FloatingTOC: {
-			btn: HTMLElement | null;
-			panel: HTMLElement | null;
-			manager: ITOCManager | null;
-			isPostPage: () => boolean;
-		};
-		toggleFloatingTOC: () => void;
-		tocInternalNavigation: boolean;
-		// swup is defined in global.d.ts
-		// oxlint-disable-next-line typescript/no-explicit-any -- External library without types
-		spine: any;
-		closeAnnouncement: () => void;
-		// __fireflyMusic type is defined in global.d.ts
-		semifullScrollHandler?: (() => void) | undefined;
-		initSemifullScrollDetection?: () => void;
-	}
+  interface Window {
+    SidebarTOC: {
+      manager: ITOCManager | null;
+    };
+    FloatingTOC: {
+      btn: HTMLElement | null;
+      panel: HTMLElement | null;
+      manager: ITOCManager | null;
+      isPostPage: () => boolean;
+    };
+    toggleFloatingTOC: () => void;
+    tocInternalNavigation: boolean;
+    // swup is defined in global.d.ts
+    // oxlint-disable-next-line typescript/no-explicit-any -- External library without types
+    spine: any;
+    closeAnnouncement: () => void;
+    // __fireflyMusic type is defined in global.d.ts
+    semifullScrollHandler?: (() => void) | undefined;
+    initSemifullScrollDetection?: () => void;
+  }
 }
 
 export {};

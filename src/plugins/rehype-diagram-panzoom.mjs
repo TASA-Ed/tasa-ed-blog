@@ -15,11 +15,11 @@ const injectedTrees = new WeakSet();
  * 本插件只负责为它们统一添加交互能力。
  */
 export function rehypeDiagramPanZoom() {
-	return (tree) => {
-		if (injectedTrees.has(tree)) return;
-		injectedTrees.add(tree);
+  return (tree) => {
+    if (injectedTrees.has(tree)) return;
+    injectedTrees.add(tree);
 
-		const script = h("script", { type: "text/javascript" }, clientScript);
-		tree.children = [...(tree.children || []), script];
-	};
+    const script = h("script", { type: "text/javascript" }, clientScript);
+    tree.children = [...(tree.children || []), script];
+  };
 }

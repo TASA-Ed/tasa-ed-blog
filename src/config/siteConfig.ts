@@ -5,218 +5,218 @@ import type { SiteConfig } from "@/types/siteConfig";
 const SITE_LANG = "zh_CN";
 
 export const siteConfig: SiteConfig = {
-	title: "TASA-Ed Blog",
-	subtitle: "德二吹风机的博客",
-	site_url: "https://www.tasaed.top/blog",
-	description: "德二吹风机的博客！分享有趣的技术和疑难杂症解决方式！",
-	keywords: [
-		"德二吹风机",
-		"TASA-Ed",
-		"Astro",
-		"TASA-Ed Studio",
-		"TASA-Ed 工作室",
-		"博客",
-		"技术博客",
-		"静态博客",
-	],
+  title: "TASA-Ed Blog",
+  subtitle: "德二吹风机的博客",
+  site_url: "https://www.tasaed.top/blog",
+  description: "德二吹风机的博客！分享有趣的技术和疑难杂症解决方式！",
+  keywords: [
+    "德二吹风机",
+    "TASA-Ed",
+    "Astro",
+    "TASA-Ed Studio",
+    "TASA-Ed 工作室",
+    "博客",
+    "技术博客",
+    "静态博客",
+  ],
 
-	lang: SITE_LANG,
+  lang: SITE_LANG,
 
-	themeColor: {
-		// 主题色的默认色相，范围从 0 到 360。例如：红色：0，青色：200，蓝绿色：250，粉色：345
-		hue: 40,
-		// 默认模式："light" 亮色，"dark" 暗色，"system" 跟随系统
-		defaultMode: "system",
-	},
+  themeColor: {
+    // 主题色的默认色相，范围从 0 到 360。例如：红色：0，青色：200，蓝绿色：250，粉色：345
+    hue: 40,
+    // 默认模式："light" 亮色，"dark" 暗色，"system" 跟随系统
+    defaultMode: "system",
+  },
 
-	// 页面整体宽度（单位：rem）
-	// 数值越大可以让页面内容区域更宽
-	// 在使用单侧栏边栏时，建议调低一些宽度以获得更好的视觉效果。
-	pageWidth: 100,
+  // 页面整体宽度（单位：rem）
+  // 数值越大可以让页面内容区域更宽
+  // 在使用单侧栏边栏时，建议调低一些宽度以获得更好的视觉效果。
+  pageWidth: 100,
 
-	// 网站Card样式配置
-	card: {
-		// 是否开启卡片边框和阴影，开启后让网站更有立体感
-		border: false,
-		// 是否让卡片风格跟随主题色相
-		followTheme: false,
-	},
+  // 网站Card样式配置
+  card: {
+    // 是否开启卡片边框和阴影，开启后让网站更有立体感
+    border: false,
+    // 是否让卡片风格跟随主题色相
+    followTheme: false,
+  },
 
-	// Favicon 配置
-	// 如果启用了OpenGraph图片功能，数组中需要包含png格式的favicon图标
-	favicon: [
-		// 留空以使用默认 favicon
-		{
-			src: "/favicon.ico", // 图标文件路径
-			theme: "light", // 可选，指定主题 'light' | 'dark'
-			sizes: "39x39", // 可选，图标大小
-		},
-	],
+  // Favicon 配置
+  // 如果启用了OpenGraph图片功能，数组中需要包含png格式的favicon图标
+  favicon: [
+    // 留空以使用默认 favicon
+    {
+      src: "/favicon.ico", // 图标文件路径
+      theme: "light", // 可选，指定主题 'light' | 'dark'
+      sizes: "39x39", // 可选，图标大小
+    },
+  ],
 
-	// 导航栏配置
-	navbar: {
-		// 导航栏Logo
-		// 支持三种类型：
-		// 1. Astro图标库: { type: "icon", value: "material-symbols:home-pin-outline" }
-		// 2. 本地图片（public目录，不优化）: { type: "image", value: "/assets/images/logo.webp", alt: "Logo" }
-		// 3. 本地图片（src目录，自动优化但会增加构建时间）: { type: "image", value: "assets/images/logo.webp", alt: "Logo" }
-		// 4. 网络图片: { type: "url", value: "https://example.com/logo.png", alt: "Logo" }
-		// image 和 url 类型可额外设置 valueDark，用于暗色模式下显示另一张图片，不设置则亮暗色共用 value
-		// 例如: { type: "image", value: "assets/images/logo.png", valueDark: "assets/images/logo-dark.png", alt: "Logo" }
-		// 使用 Astro 图标库时不需要设置 valueDark，图标会自动跟随主题亮暗色切换
-		logo: {
-			type: "image",
-			value: "/assets/logos/tasaed.svg",
-			alt: "TASA-Ed",
-		},
-		// 导航栏标题
-		title: "德二吹风机的博客",
-		// 全宽导航栏，导航栏是否占满屏幕宽度
-		widthFull: false,
-		// 导航菜单对齐方式，left：左对齐，center：居中
-		menuAlign: "center",
-		// 导航栏图标和标题是否跟随主题色
-		followTheme: false,
-		// 导航栏是否固定在顶部并始终可见
-		stickyNavbar: true,
-	},
+  // 导航栏配置
+  navbar: {
+    // 导航栏Logo
+    // 支持三种类型：
+    // 1. Astro图标库: { type: "icon", value: "material-symbols:home-pin-outline" }
+    // 2. 本地图片（public目录，不优化）: { type: "image", value: "/assets/images/logo.webp", alt: "Logo" }
+    // 3. 本地图片（src目录，自动优化但会增加构建时间）: { type: "image", value: "assets/images/logo.webp", alt: "Logo" }
+    // 4. 网络图片: { type: "url", value: "https://example.com/logo.png", alt: "Logo" }
+    // image 和 url 类型可额外设置 valueDark，用于暗色模式下显示另一张图片，不设置则亮暗色共用 value
+    // 例如: { type: "image", value: "assets/images/logo.png", valueDark: "assets/images/logo-dark.png", alt: "Logo" }
+    // 使用 Astro 图标库时不需要设置 valueDark，图标会自动跟随主题亮暗色切换
+    logo: {
+      type: "image",
+      value: "/assets/logos/tasaed.svg",
+      alt: "TASA-Ed",
+    },
+    // 导航栏标题
+    title: "德二吹风机的博客",
+    // 全宽导航栏，导航栏是否占满屏幕宽度
+    widthFull: false,
+    // 导航菜单对齐方式，left：左对齐，center：居中
+    menuAlign: "center",
+    // 导航栏图标和标题是否跟随主题色
+    followTheme: false,
+    // 导航栏是否固定在顶部并始终可见
+    stickyNavbar: true,
+  },
 
-	// 站点开始日期，用于统计运行天数
-	siteStartDate: "2022-03-01", // 请修改为你的站点实际开始日期，格式：YYYY-MM-DD
+  // 站点开始日期，用于统计运行天数
+  siteStartDate: "2022-03-01", // 请修改为你的站点实际开始日期，格式：YYYY-MM-DD
 
-	// 站点时区（IANA 时区字符串），用于格式化bangumi、rss里的构建日期时间等等..
-	// 示例："Asia/Shanghai", "UTC", 如果为空，则按照构建服务器的时区进行时区转换
-	timezone: "Asia/Shanghai",
+  // 站点时区（IANA 时区字符串），用于格式化bangumi、rss里的构建日期时间等等..
+  // 示例："Asia/Shanghai", "UTC", 如果为空，则按照构建服务器的时区进行时区转换
+  timezone: "Asia/Shanghai",
 
-	// 页面开关配置 - 控制特定页面的访问权限，设为false会返回404并自动隐藏对应的导航栏菜单项
-	pages: {
-		// 友链页面开关
-		friends: true,
-		// 打赏页面开关
-		sponsor: true,
-		// 留言板页面开关，需要配置评论系统
-		guestbook: true,
-		// 相册页面开关
-		gallery: true,
-	},
+  // 页面开关配置 - 控制特定页面的访问权限，设为false会返回404并自动隐藏对应的导航栏菜单项
+  pages: {
+    // 友链页面开关
+    friends: true,
+    // 打赏页面开关
+    sponsor: true,
+    // 留言板页面开关，需要配置评论系统
+    guestbook: true,
+    // 相册页面开关
+    gallery: true,
+  },
 
-	// 分类导航栏开关，在首页和归档页顶部显示分类快捷导航
-	categoryBar: true,
+  // 分类导航栏开关，在首页和归档页顶部显示分类快捷导航
+  categoryBar: true,
 
-	// 分类导航栏按钮样式
-	// "pill"：胶囊，主题色浅底圆角
-	// "rectangle"：矩形，配色同胶囊，仅圆角更小
-	categoryStyle: "rectangle",
+  // 分类导航栏按钮样式
+  // "pill"：胶囊，主题色浅底圆角
+  // "rectangle"：矩形，配色同胶囊，仅圆角更小
+  categoryStyle: "rectangle",
 
-	// 标签样式，作用于文章列表底部标签、标签页和侧边栏标签
-	// "pill"：胶囊，中性灰底圆角
-	// "rectangle"：矩形，主题色底小圆角
-	tagStyle: "pill",
+  // 标签样式，作用于文章列表底部标签、标签页和侧边栏标签
+  // "pill"：胶囊，中性灰底圆角
+  // "rectangle"：矩形，主题色底小圆角
+  tagStyle: "pill",
 
-	// 归档页是否折叠非最新年份文章，禁用后默认展开全部年份
-	foldArticle: true,
+  // 归档页是否折叠非最新年份文章，禁用后默认展开全部年份
+  foldArticle: true,
 
-	// 文章列表布局配置
-	postListLayout: {
-		// 默认布局模式："list" 列表模式（单列布局），"grid" 网格模式（多列布局）
-		defaultMode: "list",
-		// 移动端默认布局模式，不设置则跟随 defaultMode
-		mobileDefaultMode: "list",
-		// 列表模式下封面图显示在哪一侧："right" 右侧，"left" 左侧
-		// 网格模式的封面固定在卡片顶部，不受此项影响
-		coverPosition: "right",
-		// 文章简介显示行数，设为 0 则不截断
-		descriptionLines: 2,
-		// 文章卡片底部统计和发布日期是否显示图标
-		showStatsIcons: true,
-		// 标签显示位置
-		// 设置为"meta"：显示在文章标题下的元数据
-		// 设置为"bottom"：顶替stats在底部显示
-		tagsPosition: "bottom",
-		// 底部标签样式，仅在 tagsPosition 为 "bottom" 时生效
-		// "chip"：按钮样式，形状跟随上方的 tagStyle 配置
-		// "text"：无底色，只有文字
-		tagsBottomStyle: "chip",
-		// PostMeta 元数据显示控制
-		meta: {
-			// 是否显示发布日期
-			showPublished: true,
-			// 是否显示分类
-			showCategory: true,
-			// 是否显示标签
-			showTags: true,
-			// 标签数量，设为 0 则不限制
-			tagCount: 3,
-			// 是否显示字数
-			showWords: false,
-			// 是否显示阅读时间
-			showReadingTime: false,
-		},
-		// 底部 PostStats 统计信息显示控制
-		// 如果tagsPosition设置为"bottom"，则stats将不显示
-		stats: {
-			// 是否显示发布日期
-			showPublished: true,
-			// 是否显示字数
-			showWords: true,
-			// 是否显示阅读时间
-			showReadingTime: true,
-		},
-		// 网格布局配置，仅在 defaultMode 为 "grid" 或允许切换布局时生效
-		grid: {
-			// 是否开启瀑布流布局，同时有封面图和无封面图的混合文章推荐开启
-			masonry: true,
-			// 网格模式卡片最小宽度(px)，浏览器根据容器宽度自动计算列数
-			columnWidth: 320,
-			// 网格模式封面是否撑满卡片贴边
-			// true：封面顶到卡片左右和上边缘，只有上面两角是圆角
-			// false：封面按卡片内边距内缩，上、左、右留出间距，四角都是圆角
-			coverFullWidth: false,
-		},
-	},
+  // 文章列表布局配置
+  postListLayout: {
+    // 默认布局模式："list" 列表模式（单列布局），"grid" 网格模式（多列布局）
+    defaultMode: "list",
+    // 移动端默认布局模式，不设置则跟随 defaultMode
+    mobileDefaultMode: "list",
+    // 列表模式下封面图显示在哪一侧："right" 右侧，"left" 左侧
+    // 网格模式的封面固定在卡片顶部，不受此项影响
+    coverPosition: "right",
+    // 文章简介显示行数，设为 0 则不截断
+    descriptionLines: 2,
+    // 文章卡片底部统计和发布日期是否显示图标
+    showStatsIcons: true,
+    // 标签显示位置
+    // 设置为"meta"：显示在文章标题下的元数据
+    // 设置为"bottom"：顶替stats在底部显示
+    tagsPosition: "bottom",
+    // 底部标签样式，仅在 tagsPosition 为 "bottom" 时生效
+    // "chip"：按钮样式，形状跟随上方的 tagStyle 配置
+    // "text"：无底色，只有文字
+    tagsBottomStyle: "chip",
+    // PostMeta 元数据显示控制
+    meta: {
+      // 是否显示发布日期
+      showPublished: true,
+      // 是否显示分类
+      showCategory: true,
+      // 是否显示标签
+      showTags: true,
+      // 标签数量，设为 0 则不限制
+      tagCount: 3,
+      // 是否显示字数
+      showWords: false,
+      // 是否显示阅读时间
+      showReadingTime: false,
+    },
+    // 底部 PostStats 统计信息显示控制
+    // 如果tagsPosition设置为"bottom"，则stats将不显示
+    stats: {
+      // 是否显示发布日期
+      showPublished: true,
+      // 是否显示字数
+      showWords: true,
+      // 是否显示阅读时间
+      showReadingTime: true,
+    },
+    // 网格布局配置，仅在 defaultMode 为 "grid" 或允许切换布局时生效
+    grid: {
+      // 是否开启瀑布流布局，同时有封面图和无封面图的混合文章推荐开启
+      masonry: true,
+      // 网格模式卡片最小宽度(px)，浏览器根据容器宽度自动计算列数
+      columnWidth: 320,
+      // 网格模式封面是否撑满卡片贴边
+      // true：封面顶到卡片左右和上边缘，只有上面两角是圆角
+      // false：封面按卡片内边距内缩，上、左、右留出间距，四角都是圆角
+      coverFullWidth: false,
+    },
+  },
 
-	// 文章内容页配置
-	post: {
-		// 提醒框（Admonitions）配置，修改后需要重启开发服务器才能生效
-		// 主题：'github' | 'obsidian' | 'vitepress' | 'docusaurus'，每个主题风格和语法不同，可根据喜好选择
-		rehypeCallouts: {
-			theme: "github",
-			// 是否启用兼容 Python-Markdown 风格的 admonition 语法（!!!和???语法）
-			// 注意：只有 theme 配置成 obsidian 主题才能基本支持这些语法，其他主题会有样式问题或不兼容的情况
-			enablePythonMarkdownAdmonitions: false,
-		},
-		// 文章页底部的"上次编辑时间"卡片开关
-		showLastModified: true,
-		// 文章过期阈值（天数），超过此天数才显示"上次编辑"卡片
-		outdatedThreshold: 30,
-		// 是否开启分享海报生成功能
-		sharePoster: true,
-		// OpenGraph图片功能，注意开启后要渲染很长时间，不建议本地调试的时候开启
-		generateOgImages: false,
-	},
+  // 文章内容页配置
+  post: {
+    // 提醒框（Admonitions）配置，修改后需要重启开发服务器才能生效
+    // 主题：'github' | 'obsidian' | 'vitepress' | 'docusaurus'，每个主题风格和语法不同，可根据喜好选择
+    rehypeCallouts: {
+      theme: "github",
+      // 是否启用兼容 Python-Markdown 风格的 admonition 语法（!!!和???语法）
+      // 注意：只有 theme 配置成 obsidian 主题才能基本支持这些语法，其他主题会有样式问题或不兼容的情况
+      enablePythonMarkdownAdmonitions: false,
+    },
+    // 文章页底部的"上次编辑时间"卡片开关
+    showLastModified: true,
+    // 文章过期阈值（天数），超过此天数才显示"上次编辑"卡片
+    outdatedThreshold: 30,
+    // 是否开启分享海报生成功能
+    sharePoster: true,
+    // OpenGraph图片功能，注意开启后要渲染很长时间，不建议本地调试的时候开启
+    generateOgImages: false,
+  },
 
-	// 分页配置
-	pagination: {
-		// 每页显示的文章数量
-		postsPerPage: 10,
-	},
+  // 分页配置
+  pagination: {
+    // 每页显示的文章数量
+    postsPerPage: 10,
+  },
 
-	// 图像优化及响应式配置
-	// 图像优化压缩只保留avif或webp
-	// 响应式图像是为在不同设备上提高性能而调整的图像。这些图像可以调整大小以适应其容器，并且可以根据访问者的屏幕尺寸和分辨率以不同的大小提供。
-	// Astro 仅能对 src 目录下的图像进行优化，src 目录下的图像越多，构建时间会越长
-	// Astro 图像文档 https://docs.astro.build/zh-cn/guides/images/
-	imageOptimization: {
-		// 输出图片格式
-		// - "avif": 仅输出 AVIF 格式（最新技术，最小体积，目前兼容性较低）
-		// - "webp": 仅输出 WebP 格式（体积适中，兼容性好）
-		// - "both": 同时输出 AVIF 和 WebP（推荐，浏览器自动选择最佳格式）
-		formats: "avif",
-		// 图片压缩质量 (1-100)，值越低体积越小但质量越差，推荐 70-85
-		quality: 85,
-		// 为特定域名的图片添加 referrerpolicy="no-referrer" 属性
-		// 支持通配符 *，例如：["i0.hdslb.com", "*.bilibili.com"]
-		// 可解决指定域名图片加载时的 403 问题（如防盗链图片）
-		noReferrerDomains: [],
-	},
+  // 图像优化及响应式配置
+  // 图像优化压缩只保留avif或webp
+  // 响应式图像是为在不同设备上提高性能而调整的图像。这些图像可以调整大小以适应其容器，并且可以根据访问者的屏幕尺寸和分辨率以不同的大小提供。
+  // Astro 仅能对 src 目录下的图像进行优化，src 目录下的图像越多，构建时间会越长
+  // Astro 图像文档 https://docs.astro.build/zh-cn/guides/images/
+  imageOptimization: {
+    // 输出图片格式
+    // - "avif": 仅输出 AVIF 格式（最新技术，最小体积，目前兼容性较低）
+    // - "webp": 仅输出 WebP 格式（体积适中，兼容性好）
+    // - "both": 同时输出 AVIF 和 WebP（推荐，浏览器自动选择最佳格式）
+    formats: "avif",
+    // 图片压缩质量 (1-100)，值越低体积越小但质量越差，推荐 70-85
+    quality: 85,
+    // 为特定域名的图片添加 referrerpolicy="no-referrer" 属性
+    // 支持通配符 *，例如：["i0.hdslb.com", "*.bilibili.com"]
+    // 可解决指定域名图片加载时的 403 问题（如防盗链图片）
+    noReferrerDomains: [],
+  },
 };

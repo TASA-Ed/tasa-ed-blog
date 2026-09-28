@@ -5,7 +5,7 @@
  * @returns {string} 拼接后的文本
  */
 export function extractText(node) {
-	if (node.type === "text") return node.value || "";
-	if (node.children) return node.children.map(extractText).join("");
-	return "";
+  if (node.type === "text") return node.value || "";
+  if (node.children) return node.children.map(extractText).join("");
+  return "";
 }

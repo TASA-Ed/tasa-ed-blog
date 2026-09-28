@@ -1,6 +1,6 @@
 export type LicenseConfig = {
-	enable: boolean;
-	name: string;
-	url: string;
-	icon?: string;
+  enable: boolean;
+  name: string;
+  url: string;
+  icon?: string;
 };

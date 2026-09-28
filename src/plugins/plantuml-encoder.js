@@ -14,7 +14,7 @@ const PLANTUML_ALPHABET = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
  * @returns {string} 单字符的编码
  */
 function encode6bit(value) {
-	return PLANTUML_ALPHABET.charAt(value & 0x3f);
+  return PLANTUML_ALPHABET.charAt(value & 0x3f);
 }
 
 /**
@@ -27,11 +27,11 @@ function encode6bit(value) {
  * @returns {string} 长度为 4 的编码串
  */
 function append3bytes(b1, b2, b3) {
-	const c1 = b1 >> 2;
-	const c2 = ((b1 & 0x3) << 4) | (b2 >> 4);
-	const c3 = ((b2 & 0xf) << 2) | (b3 >> 6);
-	const c4 = b3 & 0x3f;
-	return encode6bit(c1) + encode6bit(c2) + encode6bit(c3) + encode6bit(c4);
+  const c1 = b1 >> 2;
+  const c2 = ((b1 & 0x3) << 4) | (b2 >> 4);
+  const c3 = ((b2 & 0xf) << 2) | (b3 >> 6);
+  const c4 = b3 & 0x3f;
+  return encode6bit(c1) + encode6bit(c2) + encode6bit(c3) + encode6bit(c4);
 }
 
 /**
@@ -43,18 +43,18 @@ function append3bytes(b1, b2, b3) {
  * @returns {string} PlantUML 编码后的字符串
  */
 function encode64(bytes) {
-	let result = "";
-	const length = bytes.length;
-	for (let i = 0; i < length; i += 3) {
-		if (i + 2 === length) {
-			result += append3bytes(bytes[i], bytes[i + 1], 0);
-		} else if (i + 1 === length) {
-			result += append3bytes(bytes[i], 0, 0);
-		} else {
-			result += append3bytes(bytes[i], bytes[i + 1], bytes[i + 2]);
-		}
-	}
-	return result;
+  let result = "";
+  const length = bytes.length;
+  for (let i = 0; i < length; i += 3) {
+    if (i + 2 === length) {
+      result += append3bytes(bytes[i], bytes[i + 1], 0);
+    } else if (i + 1 === length) {
+      result += append3bytes(bytes[i], 0, 0);
+    } else {
+      result += append3bytes(bytes[i], bytes[i + 1], bytes[i + 2]);
+    }
+  }
+  return result;
 }
 
 /**
@@ -69,12 +69,12 @@ function encode64(bytes) {
  * @throws {TypeError} 当 `source` 不是字符串时抛出
  */
 export function encodePlantUML(source) {
-	if (typeof source !== "string") {
-		throw new TypeError(`encodePlantUML expects a string, got ${typeof source}`);
-	}
-	const utf8Bytes = new TextEncoder().encode(source);
-	const deflated = pako.deflateRaw(utf8Bytes, { level: 9 });
-	return encode64(deflated);
+  if (typeof source !== "string") {
+    throw new TypeError(`encodePlantUML expects a string, got ${typeof source}`);
+  }
+  const utf8Bytes = new TextEncoder().encode(source);
+  const deflated = pako.deflateRaw(utf8Bytes, { level: 9 });
+  return encode64(deflated);
 }
 
 /**
@@ -85,7 +85,7 @@ export function encodePlantUML(source) {
  * @returns {boolean} true 表示源码已包含 `!theme` 或 `skinparam backgroundColor`
  */
 function hasExplicitTheme(source) {
-	return /^\s*!theme\s+\S+/m.test(source) || /^\s*skinparam\s+backgroundColor\b/im.test(source);
+  return /^\s*!theme\s+\S+/m.test(source) || /^\s*skinparam\s+backgroundColor\b/im.test(source);
 }
 
 /**
@@ -102,22 +102,22 @@ function hasExplicitTheme(source) {
  * @returns {string} 可能已注入 `!theme` 的源码
  */
 export function injectTheme(source, themeName) {
-	if (typeof source !== "string") {
-		throw new TypeError(`injectTheme expects a string source, got ${typeof source}`);
-	}
-	if (!themeName?.trim()) {
-		return source;
-	}
-	if (hasExplicitTheme(source)) {
-		return source;
-	}
-	const themeDirective = `!theme ${themeName.trim()}`;
-	const startumlMatch = source.match(/^[^\S\r\n]*@startuml[^\r\n]*\r?\n?/);
-	if (startumlMatch) {
-		const insertAt = startumlMatch.index + startumlMatch[0].length;
-		return `${source.slice(0, insertAt)}${themeDirective}\n${source.slice(insertAt)}`;
-	}
-	return `${themeDirective}\n${source}`;
+  if (typeof source !== "string") {
+    throw new TypeError(`injectTheme expects a string source, got ${typeof source}`);
+  }
+  if (!themeName?.trim()) {
+    return source;
+  }
+  if (hasExplicitTheme(source)) {
+    return source;
+  }
+  const themeDirective = `!theme ${themeName.trim()}`;
+  const startumlMatch = source.match(/^[^\S\r\n]*@startuml[^\r\n]*\r?\n?/);
+  if (startumlMatch) {
+    const insertAt = startumlMatch.index + startumlMatch[0].length;
+    return `${source.slice(0, insertAt)}${themeDirective}\n${source.slice(insertAt)}`;
+  }
+  return `${themeDirective}\n${source}`;
 }
 
 /**
@@ -129,12 +129,12 @@ export function injectTheme(source, themeName) {
  * @returns {string} 形如 `<server>/svg/<encoded>` 的完整 URL
  */
 export function buildUrl(server, encoded) {
-	if (typeof server !== "string" || !server.trim()) {
-		throw new TypeError("buildUrl expects a non-empty server string");
-	}
-	if (typeof encoded !== "string" || !encoded.trim()) {
-		throw new TypeError("buildUrl expects a non-empty encoded string");
-	}
-	const normalizedServer = server.replace(/\/+$/, "");
-	return `${normalizedServer}/svg/${encoded}`;
+  if (typeof server !== "string" || !server.trim()) {
+    throw new TypeError("buildUrl expects a non-empty server string");
+  }
+  if (typeof encoded !== "string" || !encoded.trim()) {
+    throw new TypeError("buildUrl expects a non-empty encoded string");
+  }
+  const normalizedServer = server.replace(/\/+$/, "");
+  return `${normalizedServer}/svg/${encoded}`;
 }

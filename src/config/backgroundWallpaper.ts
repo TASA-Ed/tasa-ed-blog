@@ -1,144 +1,144 @@
 import type { BackgroundWallpaperConfig } from "@/types/backgroundWallpaper";
 
 export const backgroundWallpaper: BackgroundWallpaperConfig = {
-	// 壁纸模式："banner" 横幅壁纸，"fullscreen" 全屏壁纸，"overlay" 全屏透明，"none" 纯色背景无壁纸
-	mode: "banner",
-	/**
-	 * 背景图片配置
-	 * 图片路径支持三种格式：
-	 * 1. public 目录（以 "/" 开头，不优化）："/assets/images/banner.avif"
-	 * 2. src 目录（不以 "/" 开头，自动优化但会增加构建时间，推荐）："assets/images/banner.avif"
-	 * 3. 远程 URL："https://example.com/banner.jpg"
-	 * 注意：远程URL和public目录的图片不会被优化，请确保图片体积足够小以免影响加载速度
-	 *
-	 * 建议不要替换d1-d6，m1-m6这些默认示例图片，但你可以删除掉节省空间
-	 * 因为以后可能会更换示例图片，导致你自定义的图片被覆盖
-	 * 所以建议使用自己的图片的时候命名为其他名称，不要使用d1-d6，m1-m6这些名称
-	 *
-	 * 如果只使用一张图片或者使用随机图API，推荐直接使用字符串格式：
-	 * desktop: "https://t.alcy.cc/pc",   // 随机图API
-	 * desktop: "assets/images/DesktopWallpaper/d1.avif", // 单张图片
-	 *
-	 * mobile: "https://t.alcy.cc/mp", // 随机图API
-	 * mobile: "assets/images/MobileWallpaper/m1.avif", // 单张图片
-	 *
-	 * 支持配置多张图片（数组），每次刷新页面随机显示一张：
-	 * desktop: [
-	 * "assets/images/DesktopWallpaper/d1.avif",
-	 * "assets/images/DesktopWallpaper/d2.avif",
-	 * ],
-	 *
-	 * mobile:[
-	 *   "assets/images/MobileWallpaper/m1.avif",
-	 *   "assets/images/MobileWallpaper/m2.avif",
-	 * ],
-	 */
-	src: {
-		// 桌面背景图片（支持单张或多张随机）
-		// desktop: "assets/images/DesktopWallpaper/d1.avif",
-		desktop: "https://api.tasaed.top/get/bingtoday/?type=f",
-		// 移动背景图片（支持单张或多张随机）
-		// mobile: "assets/images/MobileWallpaper/m1.avif",
-		mobile: "https://api.tasaed.top/get/bingtoday/?type=m",
-	},
-	// 横幅壁纸和全屏壁纸共享配置
-	common: {
-		// 壁纸遮罩暗度，让横幅文字显示更清晰，0-1之间，值越大越暗
-		dimOpacity: 0.2,
-		// 主页横幅文字
-		homeText: {
-			// 是否启用主页横幅文字
-			enable: true,
-			// 主页横幅主标题
-			title: "德二吹风机的博客！",
-			// 主页横幅主标题字体大小
-			titleSize: "4.5rem",
-			// 主页横幅副标题
-			subtitle: [
-				"欢迎来到德二吹风机的博客！这里有一些好玩的东西等你来看！或者留在这也行，这会有一些名言名句：",
-				"错过了，就很难再遇见了，所以请珍惜眼前的人，或事物。——德二吹风机",
-				"人道洛阳花似锦，偏我来时不遇春。——张四维",
-				"凡属金子不一定发光；并不是所有流浪的人都迷失；老骥伏枥志在千里；霜冻无法触及深根。——J. R. R.托尔金",
-				"待年华已逝，青春不再，令你抱憾余生的，不会是你曾做过什么，而是你未曾做过什么。所以扬起白帆，离开避风塘，趁着东风正起，春光正好，乘长风破万里浪：去探索，去梦想，去追寻。——佚名",
-				"苟日新，日日新，又日新。——曾子",
-				"大胆挑战，世界总会让步。如果有时候你被它打败了，不断地挑战，它总会屈服。——萨克雷",
-				"在科学上没有平坦的大道，只有不畏劳苦沿着其崎岖之路攀登的人，才有希望达到它光辉的顶点。——马克思",
-				"成功不是终点，失败也不是致命的：能够有继续前进的勇气才是最重要的。——温斯顿·丘吉尔",
-				"人有悲欢离合，月有阴晴圆缺，此事古难全。——苏轼",
-				"莫愁前路无知己，天下谁人不识君。——高适",
-				"海内存知己，天涯若比邻。——王勃",
-				"一向年光有限身，等闲离别易销魂，酒筵歌席莫辞频。 满目山河空念远，落花风雨更伤春，不如怜取眼前人。——晏殊",
-				"有志者，事竟成。——范晔",
-			],
-			// 主页横幅副标题字体大小
-			subtitleSize: "1.5rem",
-			typewriter: {
-				// 是否启用打字机效果
-				// 打字机开启 → 循环显示所有副标题
-				// 打字机关闭 → 每次刷新随机显示一条副标题
-				enable: true,
-				// 打字速度（毫秒）
-				speed: 100,
-				// 删除速度（毫秒）
-				deleteSpeed: 50,
-				// 完全显示后的暂停时间（毫秒）
-				pauseTime: 2000,
-			},
-		},
-		// 文章横幅信息："description" 显示描述，"meta" 显示日期、字数和阅读时长
-		postInfo: {
-			mode: "description",
-		},
-		// 导航栏配置
-		navbar: {
-			// 导航栏透明模式："semi" 半透明，"full" 完全透明，"semifull" 动态透明
-			transparentMode: "semi",
-			// 毛玻璃模糊度，0 即关闭导航栏的毛玻璃
-			// 注意：导航栏子菜单与浮动面板始终保留毛玻璃，模糊度跟随此项但有最小值
-			blur: 5,
-		},
-		// 水波纹动画效果配置，开启会影响页面性能，请根据自己的喜好开启
-		waves: {
-			enable: {
-				// 桌面端是否启用水波纹动画效果
-				desktop: false,
-				// 移动端是否启用水波纹动画效果
-				mobile: false,
-			},
-		},
-		// 渐变过渡效果配置，当水波纹关闭时自动启用，提供壁纸底部到背景色的平滑过渡
-		gradient: {
-			enable: {
-				// 桌面端是否启用渐变过渡
-				desktop: true,
-				// 移动端是否启用渐变过渡
-				mobile: true,
-			},
-			// 渐变高度
-			height: "10%",
-		},
-	},
-	// Banner模式特有配置
-	banner: {
-		// 图片位置
-		// 支持所有CSS object-position值，如: 'top', 'center', 'bottom', 'left top', 'right bottom', '25% 75%', '10px 20px'..
-		// 如果不知道怎么配置百分百之类的配置，推荐直接使用：'center'居中，'top'顶部居中，'bottom' 底部居中，'left'左侧居中，'right'右侧居中
-		position: "0% 20%",
-	},
-	// 全屏透明覆盖模式特有配置
-	overlay: {
-		// 层级，确保壁纸在背景层
-		zIndex: -1,
-		// 壁纸透明度
-		opacity: 0.8,
-		// 背景模糊度
-		blur: 10,
-		// 卡片透明度，0-1之间，值越小越透明
-		cardOpacity: 0.5,
-	},
-	// 全屏壁纸模式特有配置
-	fullscreen: {
-		// 图片位置
-		position: "center",
-	},
+  // 壁纸模式："banner" 横幅壁纸，"fullscreen" 全屏壁纸，"overlay" 全屏透明，"none" 纯色背景无壁纸
+  mode: "banner",
+  /**
+   * 背景图片配置
+   * 图片路径支持三种格式：
+   * 1. public 目录（以 "/" 开头，不优化）："/assets/images/banner.avif"
+   * 2. src 目录（不以 "/" 开头，自动优化但会增加构建时间，推荐）："assets/images/banner.avif"
+   * 3. 远程 URL："https://example.com/banner.jpg"
+   * 注意：远程URL和public目录的图片不会被优化，请确保图片体积足够小以免影响加载速度
+   *
+   * 建议不要替换d1-d6，m1-m6这些默认示例图片，但你可以删除掉节省空间
+   * 因为以后可能会更换示例图片，导致你自定义的图片被覆盖
+   * 所以建议使用自己的图片的时候命名为其他名称，不要使用d1-d6，m1-m6这些名称
+   *
+   * 如果只使用一张图片或者使用随机图API，推荐直接使用字符串格式：
+   * desktop: "https://t.alcy.cc/pc",   // 随机图API
+   * desktop: "assets/images/DesktopWallpaper/d1.avif", // 单张图片
+   *
+   * mobile: "https://t.alcy.cc/mp", // 随机图API
+   * mobile: "assets/images/MobileWallpaper/m1.avif", // 单张图片
+   *
+   * 支持配置多张图片（数组），每次刷新页面随机显示一张：
+   * desktop: [
+   * "assets/images/DesktopWallpaper/d1.avif",
+   * "assets/images/DesktopWallpaper/d2.avif",
+   * ],
+   *
+   * mobile:[
+   *   "assets/images/MobileWallpaper/m1.avif",
+   *   "assets/images/MobileWallpaper/m2.avif",
+   * ],
+   */
+  src: {
+    // 桌面背景图片（支持单张或多张随机）
+    // desktop: "assets/images/DesktopWallpaper/d1.avif",
+    desktop: "https://api.tasaed.top/get/bingtoday/?type=f",
+    // 移动背景图片（支持单张或多张随机）
+    // mobile: "assets/images/MobileWallpaper/m1.avif",
+    mobile: "https://api.tasaed.top/get/bingtoday/?type=m",
+  },
+  // 横幅壁纸和全屏壁纸共享配置
+  common: {
+    // 壁纸遮罩暗度，让横幅文字显示更清晰，0-1之间，值越大越暗
+    dimOpacity: 0.2,
+    // 主页横幅文字
+    homeText: {
+      // 是否启用主页横幅文字
+      enable: true,
+      // 主页横幅主标题
+      title: "德二吹风机的博客！",
+      // 主页横幅主标题字体大小
+      titleSize: "4.5rem",
+      // 主页横幅副标题
+      subtitle: [
+        "欢迎来到德二吹风机的博客！这里有一些好玩的东西等你来看！或者留在这也行，这会有一些名言名句：",
+        "错过了，就很难再遇见了，所以请珍惜眼前的人，或事物。——德二吹风机",
+        "人道洛阳花似锦，偏我来时不遇春。——张四维",
+        "凡属金子不一定发光；并不是所有流浪的人都迷失；老骥伏枥志在千里；霜冻无法触及深根。——J. R. R.托尔金",
+        "待年华已逝，青春不再，令你抱憾余生的，不会是你曾做过什么，而是你未曾做过什么。所以扬起白帆，离开避风塘，趁着东风正起，春光正好，乘长风破万里浪：去探索，去梦想，去追寻。——佚名",
+        "苟日新，日日新，又日新。——曾子",
+        "大胆挑战，世界总会让步。如果有时候你被它打败了，不断地挑战，它总会屈服。——萨克雷",
+        "在科学上没有平坦的大道，只有不畏劳苦沿着其崎岖之路攀登的人，才有希望达到它光辉的顶点。——马克思",
+        "成功不是终点，失败也不是致命的：能够有继续前进的勇气才是最重要的。——温斯顿·丘吉尔",
+        "人有悲欢离合，月有阴晴圆缺，此事古难全。——苏轼",
+        "莫愁前路无知己，天下谁人不识君。——高适",
+        "海内存知己，天涯若比邻。——王勃",
+        "一向年光有限身，等闲离别易销魂，酒筵歌席莫辞频。 满目山河空念远，落花风雨更伤春，不如怜取眼前人。——晏殊",
+        "有志者，事竟成。——范晔",
+      ],
+      // 主页横幅副标题字体大小
+      subtitleSize: "1.5rem",
+      typewriter: {
+        // 是否启用打字机效果
+        // 打字机开启 → 循环显示所有副标题
+        // 打字机关闭 → 每次刷新随机显示一条副标题
+        enable: true,
+        // 打字速度（毫秒）
+        speed: 100,
+        // 删除速度（毫秒）
+        deleteSpeed: 50,
+        // 完全显示后的暂停时间（毫秒）
+        pauseTime: 2000,
+      },
+    },
+    // 文章横幅信息："description" 显示描述，"meta" 显示日期、字数和阅读时长
+    postInfo: {
+      mode: "description",
+    },
+    // 导航栏配置
+    navbar: {
+      // 导航栏透明模式："semi" 半透明，"full" 完全透明，"semifull" 动态透明
+      transparentMode: "semi",
+      // 毛玻璃模糊度，0 即关闭导航栏的毛玻璃
+      // 注意：导航栏子菜单与浮动面板始终保留毛玻璃，模糊度跟随此项但有最小值
+      blur: 5,
+    },
+    // 水波纹动画效果配置，开启会影响页面性能，请根据自己的喜好开启
+    waves: {
+      enable: {
+        // 桌面端是否启用水波纹动画效果
+        desktop: false,
+        // 移动端是否启用水波纹动画效果
+        mobile: false,
+      },
+    },
+    // 渐变过渡效果配置，当水波纹关闭时自动启用，提供壁纸底部到背景色的平滑过渡
+    gradient: {
+      enable: {
+        // 桌面端是否启用渐变过渡
+        desktop: true,
+        // 移动端是否启用渐变过渡
+        mobile: true,
+      },
+      // 渐变高度
+      height: "10%",
+    },
+  },
+  // Banner模式特有配置
+  banner: {
+    // 图片位置
+    // 支持所有CSS object-position值，如: 'top', 'center', 'bottom', 'left top', 'right bottom', '25% 75%', '10px 20px'..
+    // 如果不知道怎么配置百分百之类的配置，推荐直接使用：'center'居中，'top'顶部居中，'bottom' 底部居中，'left'左侧居中，'right'右侧居中
+    position: "0% 20%",
+  },
+  // 全屏透明覆盖模式特有配置
+  overlay: {
+    // 层级，确保壁纸在背景层
+    zIndex: -1,
+    // 壁纸透明度
+    opacity: 0.8,
+    // 背景模糊度
+    blur: 10,
+    // 卡片透明度，0-1之间，值越小越透明
+    cardOpacity: 0.5,
+  },
+  // 全屏壁纸模式特有配置
+  fullscreen: {
+    // 图片位置
+    position: "center",
+  },
 };

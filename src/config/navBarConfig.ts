@@ -5,39 +5,39 @@ import { type NavBarConfig, type NavBarLink, type NavBarSearchConfig } from "../
 // NavBar Configuration - Dynamically generate navigation bar links based on order
 // ============================================================================
 const getDynamicNavBarConfig = (): NavBarConfig => {
-	// 基础导航栏链接
-	const links: NavBarLink[] = [
-		// 主页
-		LinkPresets.Home,
-		{
-			name: "文章",
-			url: "/content/",
-			icon: "material-symbols:article-outline",
-			children: [LinkPresets.Archive, LinkPresets.Tags, LinkPresets.Categories],
-		},
-		LinkPresets.cLink,
-		LinkPresets.Gallery,
-		LinkPresets.Friends,
-		LinkPresets.Guestbook,
-		{
-			name: "关于",
-			url: "/content/",
-			icon: "material-symbols:info",
-			children: [LinkPresets.Sponsor, LinkPresets.About],
-		},
-	];
+  // 基础导航栏链接
+  const links: NavBarLink[] = [
+    // 主页
+    LinkPresets.Home,
+    {
+      name: "文章",
+      url: "/content/",
+      icon: "material-symbols:article-outline",
+      children: [LinkPresets.Archive, LinkPresets.Tags, LinkPresets.Categories],
+    },
+    LinkPresets.cLink,
+    LinkPresets.Gallery,
+    LinkPresets.Friends,
+    LinkPresets.Guestbook,
+    {
+      name: "关于",
+      url: "/content/",
+      icon: "material-symbols:info",
+      children: [LinkPresets.Sponsor, LinkPresets.About],
+    },
+  ];
 
-	return { links } as NavBarConfig;
+  return { links } as NavBarConfig;
 };
 
 // 导航搜索配置
 export const navBarSearchConfig: NavBarSearchConfig = {
-	meiliSearchConfig: {
-		INDEX_NAME: "astro_blog",
-		MEILI_HOST: "https://api.tasaed.top/search",
-		PUBLIC_MEILI_HOST: "https://api.tasaed.top/search",
-		PUBLIC_MEILI_SEARCH_KEY: "b6172b0e10057d2ec84390688f3a602a42935095a238e29fcf70e5a4827a2a77",
-	},
+  meiliSearchConfig: {
+    INDEX_NAME: "astro_blog",
+    MEILI_HOST: "https://api.tasaed.top/search",
+    PUBLIC_MEILI_HOST: "https://api.tasaed.top/search",
+    PUBLIC_MEILI_SEARCH_KEY: "b6172b0e10057d2ec84390688f3a602a42935095a238e29fcf70e5a4827a2a77",
+  },
 };
 
 // ============================================================================
@@ -45,80 +45,80 @@ export const navBarSearchConfig: NavBarSearchConfig = {
 // Link Presets - Allows free customization of the name, icon, and URL of navigation bar links
 // ============================================================================
 export const LinkPresets: Record<string, NavBarLink> = {
-	Home: {
-		name: "主页",
-		url: "/",
-		icon: "material-symbols:home",
-	},
-	Archive: {
-		name: "归档",
-		url: "/archive/",
-		icon: "material-symbols:archive",
-	},
-	Categories: {
-		name: "分类",
-		url: "/categories/",
-		icon: "material-symbols:folder-open-rounded",
-	},
-	Tags: {
-		name: "标签",
-		url: "/tags/",
-		icon: "material-symbols:tag-rounded",
-	},
-	Friends: {
-		name: "友链",
-		url: "/friends/",
-		icon: "material-symbols:group",
-		pageKey: "friends",
-	},
-	Sponsor: {
-		name: "打赏",
-		url: "/sponsor/",
-		icon: "material-symbols:favorite",
-		pageKey: "sponsor",
-	},
-	Guestbook: {
-		name: "留言",
-		url: "/guestbook/",
-		icon: "material-symbols:chat",
-		pageKey: "guestbook",
-	},
-	About: {
-		name: "关于我",
-		url: "/about/",
-		icon: "material-symbols:person",
-	},
-	Gallery: {
-		name: "相册",
-		url: "/gallery/",
-		icon: "material-symbols:photo-library",
-		pageKey: "gallery",
-	},
-	cLink: {
-		name: "链接",
-		url: "/links/",
-		icon: "material-symbols:link",
-		children: [
-			{
-				name: "GitHub",
-				url: "https://github.com/ccd2s",
-				external: true,
-				icon: "fa7-brands:github",
-			},
-			{
-				name: "Bilibili",
-				url: "https://space.bilibili.com/1936406435",
-				external: true,
-				icon: "fa7-brands:bilibili",
-			},
-			{
-				name: "QQ群",
-				url: "https://qm.qq.com/q/nC2N5Y1UX0",
-				external: true,
-				icon: "fa7-brands:qq",
-			},
-		],
-	},
+  Home: {
+    name: "主页",
+    url: "/",
+    icon: "material-symbols:home",
+  },
+  Archive: {
+    name: "归档",
+    url: "/archive/",
+    icon: "material-symbols:archive",
+  },
+  Categories: {
+    name: "分类",
+    url: "/categories/",
+    icon: "material-symbols:folder-open-rounded",
+  },
+  Tags: {
+    name: "标签",
+    url: "/tags/",
+    icon: "material-symbols:tag-rounded",
+  },
+  Friends: {
+    name: "友链",
+    url: "/friends/",
+    icon: "material-symbols:group",
+    pageKey: "friends",
+  },
+  Sponsor: {
+    name: "打赏",
+    url: "/sponsor/",
+    icon: "material-symbols:favorite",
+    pageKey: "sponsor",
+  },
+  Guestbook: {
+    name: "留言",
+    url: "/guestbook/",
+    icon: "material-symbols:chat",
+    pageKey: "guestbook",
+  },
+  About: {
+    name: "关于我",
+    url: "/about/",
+    icon: "material-symbols:person",
+  },
+  Gallery: {
+    name: "相册",
+    url: "/gallery/",
+    icon: "material-symbols:photo-library",
+    pageKey: "gallery",
+  },
+  cLink: {
+    name: "链接",
+    url: "/links/",
+    icon: "material-symbols:link",
+    children: [
+      {
+        name: "GitHub",
+        url: "https://github.com/ccd2s",
+        external: true,
+        icon: "fa7-brands:github",
+      },
+      {
+        name: "Bilibili",
+        url: "https://space.bilibili.com/1936406435",
+        external: true,
+        icon: "fa7-brands:bilibili",
+      },
+      {
+        name: "QQ群",
+        url: "https://qm.qq.com/q/nC2N5Y1UX0",
+        external: true,
+        icon: "fa7-brands:qq",
+      },
+    ],
+  },
 };
 
 export const navBarConfig: NavBarConfig = getDynamicNavBarConfig();
