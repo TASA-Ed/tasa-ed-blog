@@ -1,13 +1,15 @@
 ---
-title: Sublime Text 4213 Patch 方法
-published: 2026-09-22
+title: Sublime Text 4213 和 4215 的 Patch 方法
+published: 2026-09-28
 pinned: false
-description: Sublime Text Build 4213 的 Patch 方法
+description: Sublime Text Build 4213 和 Build 4215 的 Patch 方法
 tags: [SublimeText, 教程]
 category: 教程
 author: 德二吹风机
 draft: false
 ---
+
+> 2026.09.28 更新：本方法同样适配 Build 4215。
 
 各位好，昨天 Sublime Text 更新了 Build 4213 版本，然后我更新后发现以前的 Patch 失效了，要重新 Patch 一遍。
 
