@@ -1,3 +1,6 @@
+import type { WavesManagerLike } from "./types/waves";
+
+
 declare global {
   interface HTMLElementTagNameMap {
     "table-of-contents": HTMLElement & {
@@ -10,6 +13,8 @@ declare global {
     swup: any;
     spineModelInitialized?: boolean;
     floatingTOCListenersInitialized?: boolean;
+    wavesManager?: WavesManagerLike;
+    wavesInitialized?: boolean;
     // oxlint-disable-next-line typescript/no-explicit-any -- External library
     spinePlayerInstance?: any;
   }

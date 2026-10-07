@@ -85,6 +85,13 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
         pauseTime: 2000,
       },
     },
+  },
+  // Banner模式特有配置
+  banner: {
+    // 图片位置
+    // 支持所有CSS object-position值，如: 'top', 'center', 'bottom', 'left top', 'right bottom', '25% 75%', '10px 20px'..
+    // 如果不知道怎么配置百分百之类的配置，推荐直接使用：'center'居中，'top'顶部居中，'bottom' 底部居中，'left'左侧居中，'right'右侧居中
+    position: "0% 20%",
     // 文章横幅信息："description" 显示描述，"meta" 显示日期、字数和阅读时长
     postInfo: {
       mode: "description",
@@ -118,13 +125,6 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
       height: "10%",
     },
   },
-  // Banner模式特有配置
-  banner: {
-    // 图片位置
-    // 支持所有CSS object-position值，如: 'top', 'center', 'bottom', 'left top', 'right bottom', '25% 75%', '10px 20px'..
-    // 如果不知道怎么配置百分百之类的配置，推荐直接使用：'center'居中，'top'顶部居中，'bottom' 底部居中，'left'左侧居中，'right'右侧居中
-    position: "0% 20%",
-  },
   // 全屏透明覆盖模式特有配置
   overlay: {
     // 层级，确保壁纸在背景层
@@ -137,8 +137,14 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
     cardOpacity: 0.5,
   },
   // 全屏壁纸模式特有配置
+  // 全屏模式下壁纸固定全屏显示，首屏居中标题，内容区在首屏之下、下滑时覆盖壁纸
+  // 模糊度、卡片透明度、层级复用 overlay 配置；导航栏透明模式由卡片透明度控制
   fullscreen: {
     // 图片位置
     position: "center",
+    navbar: {
+      // 开启后首页顶部导航栏透明，下滑后变不透明（仅首页生效）
+      dynamicTransparent: false,
+    },
   },
 };

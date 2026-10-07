@@ -117,9 +117,10 @@ export const siteConfig: SiteConfig = {
   categoryStyle: "rectangle",
 
   // 标签样式，作用于文章列表底部标签、标签页和侧边栏标签
-  // "pill"：胶囊，中性灰底圆角
+  // "pill"：胶囊，主题色底圆角
+  // "pill-gray"：胶囊，中性灰底圆角
   // "rectangle"：矩形，主题色底小圆角
-  tagStyle: "pill",
+  tagStyle: "pill-gray",
 
   // 归档页是否折叠非最新年份文章，禁用后默认展开全部年份
   foldArticle: true,
