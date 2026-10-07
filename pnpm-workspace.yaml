@@ -4,3 +4,4 @@ allowBuilds:
   esbuild: true
   sharp: true
   swup: true
+minimumReleaseAge: 30
