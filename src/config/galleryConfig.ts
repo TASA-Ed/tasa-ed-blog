@@ -41,6 +41,8 @@ export const galleryConfig: GalleryConfig = {
         "https://cdn.tasaed.top/image/game/game_16.avif",
         "https://cdn.tasaed.top/image/game/game_17.avif",
         "https://cdn.tasaed.top/image/game/game_18.avif",
+        "https://cdn.tasaed.top/image/game/game_19.avif",
+        "https://cdn.tasaed.top/image/game/game_20.avif",
       ],
     },
     {
