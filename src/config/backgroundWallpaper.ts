@@ -146,5 +146,13 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
       // 开启后首页顶部导航栏透明，下滑后变不透明（仅首页生效）
       dynamicTransparent: false,
     },
+    // 首页下滑时壁纸模糊渐变开关（从 0 渐变为 overlay.blur 的最大模糊）
+    // 保持桌面端和移动端均启用的默认行为
+    blurRamp: {
+      enable: {
+        desktop: true,
+        mobile: true,
+      },
+    },
   },
 };
