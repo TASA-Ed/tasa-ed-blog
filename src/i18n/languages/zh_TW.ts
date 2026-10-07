@@ -2,18 +2,25 @@ import Key from "../i18nKey";
 import type { Translation } from "../translation";
 
 export const zh_TW: Translation = {
-  [Key.home]: "首頁",
-  [Key.about]: "關於我",
-  [Key.archive]: "歸檔",
-  [Key.search]: "搜尋",
-  [Key.searchNoResults]: "找不到相關結果。",
-  [Key.searchTypeSomething]: "請輸入搜尋關鍵字。",
-  [Key.searchLoading]: "搜尋中...",
-  [Key.searchSummary]: "摘要",
-  [Key.searchContent]: "內容",
-  [Key.searchViewMore]: "查看更多結果 ({count} 個更多)",
-  [Key.other]: "其他",
-  [Key.all]: "全部",
+	[Key.home]: "首頁",
+	[Key.about]: "關於我",
+	[Key.archive]: "歸檔",
+	[Key.search]: "搜尋",
+	[Key.searchNoResults]: "找不到相關結果。",
+	[Key.searchTypeSomething]: "請輸入搜尋關鍵字。",
+	[Key.searchLoading]: "搜尋中...",
+	[Key.searchSummary]: "摘要",
+	[Key.searchContent]: "內容",
+	[Key.searchViewMore]: "查看更多結果 ({count} 個更多)",
+	[Key.other]: "其他",
+
+	// 導覽列選單分組
+	[Key.navArticles]: "文章",
+	[Key.navSocial]: "社交",
+	[Key.navMine]: "我的",
+	[Key.navAbout]: "關於",
+	[Key.navLinks]: "連結",
+	[Key.all]: "全部",
 
   [Key.tags]: "標籤",
   [Key.categories]: "分類",

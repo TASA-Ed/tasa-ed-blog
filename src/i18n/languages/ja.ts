@@ -2,18 +2,25 @@ import Key from "../i18nKey";
 import type { Translation } from "../translation";
 
 export const ja: Translation = {
-  [Key.home]: "ホーム",
-  [Key.about]: "について",
-  [Key.archive]: "アーカイブ",
-  [Key.search]: "検索",
-  [Key.searchNoResults]: "結果が見つかりません。",
-  [Key.searchTypeSomething]: "検索キーワードを入力してください。",
-  [Key.searchLoading]: "検索中...",
-  [Key.searchSummary]: "摘要",
-  [Key.searchContent]: "内容",
-  [Key.searchViewMore]: "さらに結果を表示 ({count} 件)",
-  [Key.other]: "その他",
-  [Key.all]: "すべて",
+	[Key.home]: "ホーム",
+	[Key.about]: "について",
+	[Key.archive]: "アーカイブ",
+	[Key.search]: "検索",
+	[Key.searchNoResults]: "結果が見つかりません。",
+	[Key.searchTypeSomething]: "検索キーワードを入力してください。",
+	[Key.searchLoading]: "検索中...",
+	[Key.searchSummary]: "摘要",
+	[Key.searchContent]: "内容",
+	[Key.searchViewMore]: "さらに結果を表示 ({count} 件)",
+	[Key.other]: "その他",
+
+	// ナビバーメニューグループ
+	[Key.navArticles]: "記事",
+	[Key.navSocial]: "ソーシャル",
+	[Key.navMine]: "マイ",
+	[Key.navAbout]: "について",
+	[Key.navLinks]: "リンク",
+	[Key.all]: "すべて",
 
   [Key.tags]: "タグ",
   [Key.categories]: "カテゴリ",
@@ -81,12 +88,6 @@ export const ja: Translation = {
   [Key.more]: "もっと",
   [Key.collapse]: "折りたたむ",
 
-  [Key.author]: "著者",
-  [Key.publishedAt]: "公開日",
-  [Key.updatedAt]: "更新日",
-  [Key.readTime]: "読了時間",
-  [Key.license]: "ライセンス",
-
   // ページネーション
   [Key.paginationFirst]: "最初",
   [Key.paginationPrev]: "前へ",
@@ -97,6 +98,11 @@ export const ja: Translation = {
   [Key.paginationTotal]: "ページ、合計",
   [Key.paginationRecords]: "件",
   [Key.paginationJump]: "指定ページへ移動",
+	[Key.author]: "著者",
+	[Key.publishedAt]: "公開日",
+	[Key.updatedAt]: "更新日",
+	[Key.readTime]: "読了時間",
+	[Key.license]: "ライセンス",
 
   // 404ページ
   [Key.notFound]: "404",

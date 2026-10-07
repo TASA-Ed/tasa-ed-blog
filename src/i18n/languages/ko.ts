@@ -2,18 +2,25 @@ import Key from "../i18nKey";
 import type { Translation } from "../translation";
 
 export const ko: Translation = {
-  [Key.home]: "홈",
-  [Key.about]: "소개",
-  [Key.archive]: "아카이브",
-  [Key.search]: "검색",
-  [Key.searchNoResults]: "검색 결과가 없습니다.",
-  [Key.searchTypeSomething]: "검색어를 입력하세요...",
-  [Key.searchLoading]: "검색 중...",
-  [Key.searchSummary]: "요약",
-  [Key.searchContent]: "내용",
-  [Key.searchViewMore]: "더 많은 결과 보기 ({count}개 더)",
-  [Key.other]: "기타",
-  [Key.all]: "전체",
+	[Key.home]: "홈",
+	[Key.about]: "소개",
+	[Key.archive]: "아카이브",
+	[Key.search]: "검색",
+	[Key.searchNoResults]: "검색 결과가 없습니다.",
+	[Key.searchTypeSomething]: "검색어를 입력하세요...",
+	[Key.searchLoading]: "검색 중...",
+	[Key.searchSummary]: "요약",
+	[Key.searchContent]: "내용",
+	[Key.searchViewMore]: "더 많은 결과 보기 ({count}개 더)",
+	[Key.other]: "기타",
+
+	// 네비게이션 메뉴 그룹
+	[Key.navArticles]: "글",
+	[Key.navSocial]: "소셜",
+	[Key.navMine]: "마이",
+	[Key.navAbout]: "소개",
+	[Key.navLinks]: "링크",
+	[Key.all]: "전체",
 
   [Key.tags]: "태그",
   [Key.categories]: "카테고리",
@@ -81,12 +88,6 @@ export const ko: Translation = {
   [Key.more]: "더 보기",
   [Key.collapse]: "접기",
 
-  [Key.author]: "작성자",
-  [Key.publishedAt]: "게시일",
-  [Key.updatedAt]: "수정일",
-  [Key.readTime]: "읽는 시간",
-  [Key.license]: "라이선스",
-
   // Pagination
   [Key.paginationFirst]: "처음",
   [Key.paginationPrev]: "이전",
@@ -97,6 +98,11 @@ export const ko: Translation = {
   [Key.paginationTotal]: ", 총",
   [Key.paginationRecords]: "개",
   [Key.paginationJump]: "지정한 페이지로 이동",
+	[Key.author]: "작성자",
+	[Key.publishedAt]: "게시일",
+	[Key.updatedAt]: "수정일",
+	[Key.readTime]: "읽는 시간",
+	[Key.license]: "라이선스",
 
   // 404 Page
   [Key.notFound]: "404",

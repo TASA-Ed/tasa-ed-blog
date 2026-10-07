@@ -89,30 +89,39 @@ export function rehypeMermaid(options = {}) {
         mermaidCode = extractText(node).trim();
       }
 
-      let lightSvg;
-      let darkSvg;
-      try {
-        ({ lightSvg, darkSvg } = buildMermaidSvgs(mermaidCode, themeConfig, diagramIndex));
-        diagramIndex += 1;
-      } catch (e) {
-        const preview =
-          mermaidCode.length > 200 ? `${mermaidCode.slice(0, 200)}…[truncated]` : mermaidCode;
-        if (process.env.NODE_ENV === "development") {
-          console.error("[rehype-mermaid] 渲染失败:", e, preview);
-        } else {
-          console.error("[rehype-mermaid] 渲染失败:", e instanceof Error ? e.message : String(e));
-        }
-        node.properties = {
-          class: `${DIAGRAM_CONTAINER} ${MERMAID_CONTAINER}`,
-        };
-        node.children = [
-          h("div", { class: MERMAID_ERROR }, [
-            h("p", {}, "Mermaid 图表渲染失败，请检查图表语法是否正确"),
-            h("pre", { class: MERMAID_FALLBACK_CODE }, mermaidCode),
-          ]),
-        ];
-        return;
-      }
+			let lightSvg;
+			let darkSvg;
+			try {
+				({ lightSvg, darkSvg } = buildMermaidSvgs(
+					mermaidCode,
+					themeConfig,
+					diagramIndex,
+				));
+				diagramIndex += 1;
+			} catch (e) {
+				const preview =
+					mermaidCode.length > 200
+						? `${mermaidCode.slice(0, 200)}…[truncated]`
+						: mermaidCode;
+				if (process.env.NODE_ENV === "development") {
+					console.error("[rehype-mermaid] Render failed:", e, preview);
+				} else {
+					console.error(
+						"[rehype-mermaid] Render failed:",
+						e instanceof Error ? e.message : String(e),
+					);
+				}
+				node.properties = {
+					class: `${DIAGRAM_CONTAINER} ${MERMAID_CONTAINER}`,
+				};
+				node.children = [
+					h("div", { class: MERMAID_ERROR }, [
+						h("p", {}, "Mermaid 图表渲染失败，请检查图表语法是否正确"),
+						h("pre", { class: MERMAID_FALLBACK_CODE }, mermaidCode),
+					]),
+				];
+				return;
+			}
 
       // 替换为静态 SVG（浅色 + 深色双版本，CSS 控制显示）
       node.properties = { class: `${DIAGRAM_CONTAINER} ${MERMAID_CONTAINER}` };

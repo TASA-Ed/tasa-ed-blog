@@ -2,18 +2,25 @@ import Key from "../i18nKey";
 import type { Translation } from "../translation";
 
 export const en: Translation = {
-  [Key.home]: "Home",
-  [Key.about]: "About Me",
-  [Key.archive]: "Archive",
-  [Key.search]: "Search",
-  [Key.searchNoResults]: "No results found.",
-  [Key.searchTypeSomething]: "Type something to search...",
-  [Key.searchLoading]: "Searching...",
-  [Key.searchSummary]: "Summary",
-  [Key.searchContent]: "Content",
-  [Key.searchViewMore]: "View more results ({count} more)",
-  [Key.other]: "Other",
-  [Key.all]: "All",
+	[Key.home]: "Home",
+	[Key.about]: "About",
+	[Key.archive]: "Archive",
+	[Key.search]: "Search",
+	[Key.searchNoResults]: "No results found.",
+	[Key.searchTypeSomething]: "Type something to search...",
+	[Key.searchLoading]: "Searching...",
+	[Key.searchSummary]: "Summary",
+	[Key.searchContent]: "Content",
+	[Key.searchViewMore]: "View more results ({count} more)",
+	[Key.other]: "Other",
+
+	// Navbar menu groups
+	[Key.navArticles]: "Articles",
+	[Key.navSocial]: "Social",
+	[Key.navMine]: "Mine",
+	[Key.navAbout]: "About",
+	[Key.navLinks]: "Links",
+	[Key.all]: "All",
 
   [Key.tags]: "Tags",
   [Key.categories]: "Categories",
@@ -47,22 +54,23 @@ export const en: Translation = {
   [Key.announcement]: "Announcement",
   [Key.announcementClose]: "Close",
 
-  [Key.comments]: "Comments",
-  [Key.commentSection]: "Comments",
-  [Key.commentSubtitle]: "Share your thoughts and discuss with everyone",
-  [Key.commentNotConfigured]: "Comment system not configured",
-  [Key.guestbookCommentHint]:
-    "You have not enabled the comment system in the configuration file yet. After enabling it, visitors will be able to leave messages here",
-  [Key.friends]: "Friends",
-  [Key.friendsDescription]: "Here are my friends, welcome to visit and communicate with each other",
-  [Key.searchFriends]: "Search friends...",
-  [Key.friendsEmpty]: "No friends yet.",
-  [Key.guestbook]: "Guestbook",
-  [Key.guestbookDescription]:
-    "Welcome to leave your mark here, share your thoughts and suggestions",
-  [Key.untitled]: "Untitled",
-  [Key.uncategorized]: "Uncategorized",
-  [Key.noTags]: "No Tags",
+	[Key.comments]: "Comments",
+	[Key.commentSection]: "Comments",
+	[Key.commentSubtitle]: "Share your thoughts and discuss with everyone",
+	[Key.commentNotConfigured]: "Comment system not configured",
+	[Key.guestbookCommentHint]:
+		"You have not enabled the comment system in the configuration file yet. After enabling it, visitors will be able to leave messages here",
+	[Key.friends]: "Friends",
+	[Key.friendsDescription]:
+		"Here are my friends, welcome to visit and communicate with each other",
+	[Key.searchFriends]: "Search friends...",
+	[Key.friendsEmpty]: "No friends yet.",
+	[Key.guestbook]: "Guestbook",
+	[Key.guestbookDescription]:
+		"Welcome to leave your mark here, share your thoughts and suggestions",
+	[Key.untitled]: "Untitled",
+	[Key.uncategorized]: "Uncategorized",
+	[Key.noTags]: "No Tags",
 
   [Key.wordCount]: "word",
   [Key.wordsCount]: "words",

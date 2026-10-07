@@ -2,18 +2,25 @@ import Key from "../i18nKey";
 import type { Translation } from "../translation";
 
 export const ru: Translation = {
-  [Key.home]: "Главная",
-  [Key.about]: "О себе",
-  [Key.archive]: "Архив",
-  [Key.search]: "Поиск",
-  [Key.searchNoResults]: "Результаты не найдены.",
-  [Key.searchTypeSomething]: "Введите ключевое слово для поиска...",
-  [Key.searchLoading]: "Поиск...",
-  [Key.searchSummary]: "Резюме",
-  [Key.searchContent]: "Содержание",
-  [Key.searchViewMore]: "Показать еще ({count} шт)",
-  [Key.other]: "Прочее",
-  [Key.all]: "Все",
+	[Key.home]: "Главная",
+	[Key.about]: "О нас",
+	[Key.archive]: "Архив",
+	[Key.search]: "Поиск",
+	[Key.searchNoResults]: "Результаты не найдены.",
+	[Key.searchTypeSomething]: "Введите ключевое слово для поиска...",
+	[Key.searchLoading]: "Поиск...",
+	[Key.searchSummary]: "Резюме",
+	[Key.searchContent]: "Содержание",
+	[Key.searchViewMore]: "Показать еще ({count} шт)",
+	[Key.other]: "Прочее",
+
+	// Группы меню навигации
+	[Key.navArticles]: "Статьи",
+	[Key.navSocial]: "Соцсети",
+	[Key.navMine]: "Моё",
+	[Key.navAbout]: "Обо мне",
+	[Key.navLinks]: "Ссылки",
+	[Key.all]: "Все",
 
   [Key.tags]: "Теги",
   [Key.categories]: "Категории",
@@ -82,12 +89,6 @@ export const ru: Translation = {
   [Key.more]: "Ещё",
   [Key.collapse]: "Свернуть",
 
-  [Key.author]: "Автор",
-  [Key.publishedAt]: "Опубликовано",
-  [Key.updatedAt]: "Обновлено",
-  [Key.readTime]: "Время чтения",
-  [Key.license]: "Лицензия",
-
   // Пагинация
   [Key.paginationFirst]: "Первая",
   [Key.paginationPrev]: "Предыдущая",
@@ -98,6 +99,11 @@ export const ru: Translation = {
   [Key.paginationTotal]: ", всего",
   [Key.paginationRecords]: " записей",
   [Key.paginationJump]: "Перейти к странице",
+	[Key.author]: "Автор",
+	[Key.publishedAt]: "Опубликовано",
+	[Key.updatedAt]: "Обновлено",
+	[Key.readTime]: "Время чтения",
+	[Key.license]: "Лицензия",
 
   // 404 Страница
   [Key.notFound]: "404",
