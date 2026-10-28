@@ -19,6 +19,6 @@ draft: false
 
 ## 相关链接
 
-- [Velin - GitHub](https://github.com/moeru-ai/velin)
-- [LLM Playing Server 端 - GitHub](https://github.com/TASA-Ed/aoh2de-llm-playing)
-- [LLM Playing Agent 端 - GitHub](https://github.com/TASA-Ed/aoh2de-llm-playing-agent)
+::github{repo="moeru-ai/velin"}
+::github{repo="TASA-Ed/aoh2de-llm-playing"}
+::github{repo="TASA-Ed/aoh2de-llm-playing-agent"}

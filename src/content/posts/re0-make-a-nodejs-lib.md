@@ -11,6 +11,8 @@ draft: false
 
 最近咱写了一个叫 [NanoYunHu](https://github.com/TASA-Ed/nanoyunhu) 的命令行库，嗯，命令行库，应该是这么叫，反正定义是 能通过命令行运行也可以通过依赖调用。
 
+::github{repo="TASA-Ed/nanoyunhu"}
+
 总之想法的是挺好的，然后就踩坑了（）。
 
 ## 构建工具

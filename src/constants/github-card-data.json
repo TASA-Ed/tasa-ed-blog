@@ -1,0 +1,56 @@
+{
+	"ccd2s/multilogin-bukkit": {
+		"description": "bukkit version.",
+		"language": "Java",
+		"avatarUrl": "https://avatars.githubusercontent.com/u/178539356?v=4",
+		"license": "GPL-3.0"
+	},
+	"moeru-ai/velin": {
+		"description": "👩‍💻✍️ Prompt orchestration with Vue/React components. Compatible on any Node.js/browser runtime. No more context rendering and templating",
+		"language": "TypeScript",
+		"avatarUrl": "https://avatars.githubusercontent.com/u/165476306?v=4",
+		"license": "MIT"
+	},
+	"tasa-ed/age-of-history-mod-dev-skills": {
+		"description": "AI skills for developing mods for the Age of History series.",
+		"language": "TypeScript",
+		"avatarUrl": "https://avatars.githubusercontent.com/u/107293570?v=4",
+		"license": "MIT"
+	},
+	"tasa-ed/aoh2de-llm-playing": {
+		"description": "Let LLM Play Age of History 2: Definitive Edition. (Server-side)",
+		"language": "Java",
+		"avatarUrl": "https://avatars.githubusercontent.com/u/107293570?v=4",
+		"license": "AGPL-3.0"
+	},
+	"tasa-ed/aoh2de-llm-playing-agent": {
+		"description": "Let LLM Play Age of History 2: Definitive Edition. (Agent Side)",
+		"language": "TypeScript",
+		"avatarUrl": "https://avatars.githubusercontent.com/u/107293570?v=4",
+		"license": "AGPL-3.0"
+	},
+	"tasa-ed/makerframedocs": {
+		"description": "鹰歌游戏引擎文档 MakerFrame Game Engine Documentation",
+		"language": "TypeScript",
+		"avatarUrl": "https://avatars.githubusercontent.com/u/107293570?v=4",
+		"license": "NOASSERTION"
+	},
+	"tasa-ed/nanoyunhu": {
+		"description": "NanoYunHu, Headless YunHu. NanoYunHu，无头云湖。",
+		"language": "TypeScript",
+		"avatarUrl": "https://avatars.githubusercontent.com/u/107293570?v=4",
+		"license": "AGPL-3.0"
+	},
+	"tasa-ed/scp25d": {
+		"description": "SCP：2.5D",
+		"language": "JavaScript",
+		"avatarUrl": "https://avatars.githubusercontent.com/u/107293570?v=4",
+		"license": "NOASSERTION"
+	},
+	"xpaw/php-source-query": {
+		"description": "🐘 PHP library to query servers that implement Steam query protocol (also known as Source Engine Query protocol)",
+		"language": "PHP",
+		"avatarUrl": "https://avatars.githubusercontent.com/u/613331?v=4",
+		"license": "LGPL-2.1"
+	}
+}

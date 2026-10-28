@@ -30,6 +30,8 @@ A2S 是一种基于 UDP 的游戏服务器查询协议，由 Valve Software 作�
 
 因为在 [Server queries/Implementations](https://developer.valvesoftware.com/wiki/Server_queries#Implementations) 中有 30+ 种 A2S 库，所以咱们将借助成熟的开发库来实现，避免从零造轮子，以 PHP 为例，本文使用 [xPaw/PHP-Source-Query](https://github.com/xPaw/PHP-Source-Query) PHP 库做示例。
 
+::github{repo="xPaw/PHP-Source-Query"}
+
 这个库共提供了 8 个函数，除去连接服务器相关的有 6 个，但是在这 6 个函数中，SCP: Secret Laboratory 服务器只支持应答 GetInfo 函数，使用其他函数不会返回任何信息（只会报错），不过好消息是 GetInfo 获取的信息中包含了人数等，对于基础查询来说是够用的了。
 
 ### 安装

@@ -209,6 +209,8 @@ LLM 可以让新人们更早动手，但是对机制的理解应该随着动手�
 
 在此我推荐我的项目 [Age of History Modding Skills](https://github.com/TASA-Ed/age-of-history-mod-dev-skills)，可以更好地帮助 LLM 理解模组制作，不过目前尚未完善，只是个雏形，可能在 11 月后才会有内容吧。
 
+::github{repo="TASA-Ed/age-of-history-mod-dev-skills"}
+
 ## 尾声
 
 到这里就结束了，其实我还有没说的问题，但是应该没什么必要，主要还是这三个问题，解决以后其他的问题应该会迎刃而解。

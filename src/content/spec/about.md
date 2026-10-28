@@ -38,13 +38,13 @@ description: "关于德二吹风机！"
 - MultiLogin-Bukkit
 - ...
 
-::GitHub{repo="TASA-Ed/MakerFrameDocs"}
+::github{repo="TASA-Ed/MakerFrameDocs"}
 
-::GitHub{repo="TASA-Ed/scp25d"}
+::github{repo="TASA-Ed/scp25d"}
 
-::GitHub{repo="TASA-Ed/nanoyunhu"}
+::github{repo="TASA-Ed/nanoyunhu"}
 
-::GitHub{repo="ccd2s/MultiLogin-Bukkit"}
+::github{repo="ccd2s/MultiLogin-Bukkit"}
 
 ...
 
