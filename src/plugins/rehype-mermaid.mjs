@@ -1,4 +1,5 @@
 import { readFile } from "node:fs/promises";
+
 import { assertSafeSvgForDom, initMerman, renderSvg } from "@mermanjs/web";
 import { h } from "hastscript";
 import { visit } from "unist-util-visit";
@@ -15,13 +16,11 @@ import {
 } from "./utils/diagramConstants.js";
 import { extractText } from "./utils/extractText.js";
 
-const mermanWasmUrl = import.meta.resolve(
-	"@mermanjs/web/pkg/merman_wasm_bg.wasm",
-);
+const mermanWasmUrl = import.meta.resolve("@mermanjs/web/pkg/merman_wasm_bg.wasm");
 await initMerman({
-	wasm: {
-		module_or_path: await readFile(new URL(mermanWasmUrl)),
-	},
+  wasm: {
+    module_or_path: await readFile(new URL(mermanWasmUrl)),
+  },
 });
 
 /**
@@ -41,23 +40,23 @@ function removeSvgMaxWidth(svg) {
 }
 
 function buildMermaidSvgs(mermaidCode, themeConfig, diagramIndex) {
-	const lightSvg = renderSvg(mermaidCode, {
-		host_theme: { preset: themeConfig.lightTheme },
-		svg: {
-			diagram_id: `mermaid-${diagramIndex}-light`,
-			pipeline: "parity",
-		},
-	});
-	const darkSvg = renderSvg(mermaidCode, {
-		host_theme: { preset: themeConfig.darkTheme },
-		svg: {
-			diagram_id: `mermaid-${diagramIndex}-dark`,
-			pipeline: "parity",
-		},
-	});
+  const lightSvg = renderSvg(mermaidCode, {
+    host_theme: { preset: themeConfig.lightTheme },
+    svg: {
+      diagram_id: `mermaid-${diagramIndex}-light`,
+      pipeline: "parity",
+    },
+  });
+  const darkSvg = renderSvg(mermaidCode, {
+    host_theme: { preset: themeConfig.darkTheme },
+    svg: {
+      diagram_id: `mermaid-${diagramIndex}-dark`,
+      pipeline: "parity",
+    },
+  });
 
-	assertSafeSvgForDom(lightSvg);
-	assertSafeSvgForDom(darkSvg);
+  assertSafeSvgForDom(lightSvg);
+  assertSafeSvgForDom(darkSvg);
 
   return {
     lightSvg: removeSvgMaxWidth(lightSvg),
@@ -90,39 +89,33 @@ export function rehypeMermaid(options = {}) {
         mermaidCode = extractText(node).trim();
       }
 
-			let lightSvg;
-			let darkSvg;
-			try {
-				({ lightSvg, darkSvg } = buildMermaidSvgs(
-					mermaidCode,
-					themeConfig,
-					diagramIndex,
-				));
-				diagramIndex += 1;
-			} catch (e) {
-				const preview =
-					mermaidCode.length > 200
-						? `${mermaidCode.slice(0, 200)}…[truncated]`
-						: mermaidCode;
-				if (process.env.NODE_ENV === "development") {
-					console.error("[rehype-mermaid] Render failed:", e, preview);
-				} else {
-					console.error(
-						"[rehype-mermaid] Render failed:",
-						e instanceof Error ? e.message : String(e),
-					);
-				}
-				node.properties = {
-					class: `${DIAGRAM_CONTAINER} ${MERMAID_CONTAINER}`,
-				};
-				node.children = [
-					h("div", { class: MERMAID_ERROR }, [
-						h("p", {}, "Mermaid 图表渲染失败，请检查图表语法是否正确"),
-						h("pre", { class: MERMAID_FALLBACK_CODE }, mermaidCode),
-					]),
-				];
-				return;
-			}
+      let lightSvg;
+      let darkSvg;
+      try {
+        ({ lightSvg, darkSvg } = buildMermaidSvgs(mermaidCode, themeConfig, diagramIndex));
+        diagramIndex += 1;
+      } catch (e) {
+        const preview =
+          mermaidCode.length > 200 ? `${mermaidCode.slice(0, 200)}…[truncated]` : mermaidCode;
+        if (process.env.NODE_ENV === "development") {
+          console.error("[rehype-mermaid] Render failed:", e, preview);
+        } else {
+          console.error(
+            "[rehype-mermaid] Render failed:",
+            e instanceof Error ? e.message : String(e),
+          );
+        }
+        node.properties = {
+          class: `${DIAGRAM_CONTAINER} ${MERMAID_CONTAINER}`,
+        };
+        node.children = [
+          h("div", { class: MERMAID_ERROR }, [
+            h("p", {}, "Mermaid 图表渲染失败，请检查图表语法是否正确"),
+            h("pre", { class: MERMAID_FALLBACK_CODE }, mermaidCode),
+          ]),
+        ];
+        return;
+      }
 
       // 替换为静态 SVG（浅色 + 深色双版本，CSS 控制显示）
       node.properties = { class: `${DIAGRAM_CONTAINER} ${MERMAID_CONTAINER}` };

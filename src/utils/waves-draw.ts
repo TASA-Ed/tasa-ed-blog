@@ -18,7 +18,7 @@ export const VIEWBOX = { x: 0, y: 24, w: 150, h: 28 } as const;
 
 /** gentle-wave 路径(Path2D 支持 SVG path 语法) */
 export const WAVE_PATH_D =
-	"M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v48h-352z";
+  "M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v48h-352z";
 
 /** 路径局部 x 最小值(path 起点 x = -160) */
 export const WAVE_PATH_X_MIN: number = -160;
@@ -32,26 +32,26 @@ export const WAVE_STRIP_W: number = WAVE_X_MAX - WAVE_X_MIN;
 
 /** 波浪层参数(透明度、垂直偏移、动画时长/延迟,与原 CSS 一致) */
 export interface WavesLayer {
-	/** `<use y>` 的 viewBox 垂直偏移 */
-	y: number;
-	/** 对应原 CSS 的 opacity-25/50/65/75 */
-	alpha: number;
-	/** animation-duration */
-	duration: number;
-	/**
-	 * animation-delay:负数表示从循环中途开始。
-	 * 取值使四层起始相位均匀铺开(0 / 0.25 / 0.5 / 0.75),首帧即呈交错排列。
-	 * 时长取接近值(8/9/10/11s)以放慢相位漂移,让交错尽量保持更久;
-	 * (差速视差与永久交错本质矛盾,接近时长是两者的折中)
-	 */
-	delay: number;
+  /** `<use y>` 的 viewBox 垂直偏移 */
+  y: number;
+  /** 对应原 CSS 的 opacity-25/50/65/75 */
+  alpha: number;
+  /** animation-duration */
+  duration: number;
+  /**
+   * animation-delay:负数表示从循环中途开始。
+   * 取值使四层起始相位均匀铺开(0 / 0.25 / 0.5 / 0.75),首帧即呈交错排列。
+   * 时长取接近值(8/9/10/11s)以放慢相位漂移,让交错尽量保持更久;
+   * (差速视差与永久交错本质矛盾,接近时长是两者的折中)
+   */
+  delay: number;
 }
 
 export const WAVE_LAYERS: readonly WavesLayer[] = [
-	{ y: 0, alpha: 0.25, duration: 8, delay: 0 },
-	{ y: 3, alpha: 0.5, duration: 9, delay: -2.25 },
-	{ y: 5, alpha: 0.65, duration: 10, delay: -5 },
-	{ y: 7, alpha: 0.75, duration: 11, delay: -8.25 },
+  { y: 0, alpha: 0.25, duration: 8, delay: 0 },
+  { y: 3, alpha: 0.5, duration: 9, delay: -2.25 },
+  { y: 5, alpha: 0.65, duration: 10, delay: -5 },
+  { y: 7, alpha: 0.75, duration: 11, delay: -8.25 },
 ];
 
 /** @keyframes wave 的位移范围(viewBox 用户单位) */
@@ -65,62 +65,52 @@ export const EASE = [0.5, 0.5, 0.45, 0.5] as const;
 // ---------------------------------------------------------------------------
 
 function sampleBezierX(u: number, x1: number, x2: number): number {
-	return 3 * (1 - u) * (1 - u) * u * x1 + 3 * (1 - u) * u * u * x2 + u * u * u;
+  return 3 * (1 - u) * (1 - u) * u * x1 + 3 * (1 - u) * u * u * x2 + u * u * u;
 }
 
 function sampleBezierY(u: number, y1: number, y2: number): number {
-	return 3 * (1 - u) * (1 - u) * u * y1 + 3 * (1 - u) * u * u * y2 + u * u * u;
+  return 3 * (1 - u) * (1 - u) * u * y1 + 3 * (1 - u) * u * u * y2 + u * u * u;
 }
 
 function sampleBezierDX(u: number, x1: number, x2: number): number {
-	return (
-		3 * (1 - u) * (1 - u) * x1 +
-		6 * (1 - u) * u * (x2 - x1) +
-		3 * u * u * (1 - x2)
-	);
+  return 3 * (1 - u) * (1 - u) * x1 + 6 * (1 - u) * u * (x2 - x1) + 3 * u * u * (1 - x2);
 }
 
 /** 解三次贝塞尔:给定 x=t 求 y(牛顿迭代 + 二分兜底) */
-export function cubicBezier(
-	x1: number,
-	y1: number,
-	x2: number,
-	y2: number,
-	t: number,
-): number {
-	const clamped = Math.min(1, Math.max(0, t));
+export function cubicBezier(x1: number, y1: number, x2: number, y2: number, t: number): number {
+  const clamped = Math.min(1, Math.max(0, t));
 
-	// 牛顿迭代解 u 使 X(u) = clamped
-	let u = clamped;
-	for (let i = 0; i < 6; i++) {
-		const x = sampleBezierX(u, x1, x2) - clamped;
-		const dx = sampleBezierDX(u, x1, x2);
-		if (Math.abs(x) < 1e-5 || Math.abs(dx) < 1e-6) break;
-		u -= x / dx;
-		u = Math.min(1, Math.max(0, u));
-	}
+  // 牛顿迭代解 u 使 X(u) = clamped
+  let u = clamped;
+  for (let i = 0; i < 6; i++) {
+    const x = sampleBezierX(u, x1, x2) - clamped;
+    const dx = sampleBezierDX(u, x1, x2);
+    if (Math.abs(x) < 1e-5 || Math.abs(dx) < 1e-6) break;
+    u -= x / dx;
+    u = Math.min(1, Math.max(0, u));
+  }
 
-	// 牛顿不收敛时二分兜底
-	if (Math.abs(sampleBezierX(u, x1, x2) - clamped) > 1e-3) {
-		let lo = 0;
-		let hi = 1;
-		for (let i = 0; i < 20; i++) {
-			const mid = (lo + hi) / 2;
-			if (sampleBezierX(mid, x1, x2) < clamped) {
-				lo = mid;
-			} else {
-				hi = mid;
-			}
-		}
-		u = (lo + hi) / 2;
-	}
+  // 牛顿不收敛时二分兜底
+  if (Math.abs(sampleBezierX(u, x1, x2) - clamped) > 1e-3) {
+    let lo = 0;
+    let hi = 1;
+    for (let i = 0; i < 20; i++) {
+      const mid = (lo + hi) / 2;
+      if (sampleBezierX(mid, x1, x2) < clamped) {
+        lo = mid;
+      } else {
+        hi = mid;
+      }
+    }
+    u = (lo + hi) / 2;
+  }
 
-	return sampleBezierY(u, y1, y2);
+  return sampleBezierY(u, y1, y2);
 }
 
 /** 当前波浪动画的缓动函数 */
 export function ease(t: number): number {
-	return cubicBezier(...EASE, t);
+  return cubicBezier(...EASE, t);
 }
 
 // ---------------------------------------------------------------------------
@@ -129,14 +119,14 @@ export function ease(t: number): number {
 
 let wavePath: Path2D | null | undefined;
 function getWavePath(): Path2D | null {
-	if (wavePath === undefined) {
-		try {
-			wavePath = new Path2D(WAVE_PATH_D);
-		} catch {
-			wavePath = null;
-		}
-	}
-	return wavePath;
+  if (wavePath === undefined) {
+    try {
+      wavePath = new Path2D(WAVE_PATH_D);
+    } catch {
+      wavePath = null;
+    }
+  }
+  return wavePath;
 }
 
 // ---------------------------------------------------------------------------
@@ -144,10 +134,10 @@ function getWavePath(): Path2D | null {
 // ---------------------------------------------------------------------------
 
 function createCanvas(w: number, h: number): HTMLCanvasElement {
-	const c = document.createElement("canvas");
-	c.width = w;
-	c.height = h;
-	return c;
+  const c = document.createElement("canvas");
+  c.width = w;
+  c.height = h;
+  return c;
 }
 
 /**
@@ -156,99 +146,98 @@ function createCanvas(w: number, h: number): HTMLCanvasElement {
  * 条带自身高度天然裁剪波身,对应原 SVG viewBox 在 y=52 处裁剪。
  */
 export class WavesRenderer {
-	private readonly ctx: CanvasRenderingContext2D;
-	private strips: HTMLCanvasElement[] = [];
-	private cssWidth: number;
-	private cssHeight: number;
-	private dpr: number;
-	private fillColor: string;
-	/** 每 CSS 像素对应的 viewBox 单位数(viewBox 非等比拉伸) */
-	private sx = 1;
-	private sy = 1;
+  private readonly ctx: CanvasRenderingContext2D;
+  private strips: HTMLCanvasElement[] = [];
+  private cssWidth: number;
+  private cssHeight: number;
+  private dpr: number;
+  private fillColor: string;
+  /** 每 CSS 像素对应的 viewBox 单位数(viewBox 非等比拉伸) */
+  private sx = 1;
+  private sy = 1;
 
-	constructor(
-		ctx: CanvasRenderingContext2D,
-		cssWidth: number,
-		cssHeight: number,
-		dpr: number,
-		fillColor: string,
-	) {
-		this.ctx = ctx;
-		this.cssWidth = cssWidth;
-		this.cssHeight = cssHeight;
-		this.dpr = dpr;
-		this.fillColor = fillColor;
-		this.updateScale();
-		this.buildStrips();
-	}
+  constructor(
+    ctx: CanvasRenderingContext2D,
+    cssWidth: number,
+    cssHeight: number,
+    dpr: number,
+    fillColor: string,
+  ) {
+    this.ctx = ctx;
+    this.cssWidth = cssWidth;
+    this.cssHeight = cssHeight;
+    this.dpr = dpr;
+    this.fillColor = fillColor;
+    this.updateScale();
+    this.buildStrips();
+  }
 
-	private updateScale(): void {
-		this.sx = (this.cssWidth * this.dpr) / VIEWBOX.w;
-		this.sy = (this.cssHeight * this.dpr) / VIEWBOX.h;
-	}
+  private updateScale(): void {
+    this.sx = (this.cssWidth * this.dpr) / VIEWBOX.w;
+    this.sy = (this.cssHeight * this.dpr) / VIEWBOX.h;
+  }
 
-	/** 尺寸/dpr 变化时更新比例并重建条带 */
-	setSize(cssWidth: number, cssHeight: number, dpr: number): void {
-		this.cssWidth = cssWidth;
-		this.cssHeight = cssHeight;
-		this.dpr = dpr;
-		this.updateScale();
-		this.buildStrips();
-	}
+  /** 尺寸/dpr 变化时更新比例并重建条带 */
+  setSize(cssWidth: number, cssHeight: number, dpr: number): void {
+    this.cssWidth = cssWidth;
+    this.cssHeight = cssHeight;
+    this.dpr = dpr;
+    this.updateScale();
+    this.buildStrips();
+  }
 
-	/** 主题色变化时仅重建条带(颜色烘焙进条带) */
-	setFillColor(fillColor: string): void {
-		this.fillColor = fillColor;
-		this.buildStrips();
-	}
+  /** 主题色变化时仅重建条带(颜色烘焙进条带) */
+  setFillColor(fillColor: string): void {
+    this.fillColor = fillColor;
+    this.buildStrips();
+  }
 
-	private buildStrips(): void {
-		const w = Math.max(1, Math.ceil(WAVE_STRIP_W * this.sx));
-		const h = Math.max(1, Math.ceil(this.cssHeight * this.dpr));
-		const path = getWavePath();
+  private buildStrips(): void {
+    const w = Math.max(1, Math.ceil(WAVE_STRIP_W * this.sx));
+    const h = Math.max(1, Math.ceil(this.cssHeight * this.dpr));
+    const path = getWavePath();
 
-		this.strips = WAVE_LAYERS.map((layer) => {
-			const strip = createCanvas(w, h);
-			const c = strip.getContext("2d");
-			if (!c || !path) return strip;
-			// 条带坐标:strip px x = (viewBox x + 160) * sx,strip px y = (viewBox y - 24) * sy
-			c.setTransform(
-				this.sx,
-				0,
-				0,
-				this.sy,
-				-WAVE_PATH_X_MIN * this.sx,
-				(layer.y - VIEWBOX.y) * this.sy,
-			);
-			c.fillStyle = this.fillColor;
-			c.globalAlpha = layer.alpha;
-			c.fill(path);
-			return strip;
-		});
-	}
+    this.strips = WAVE_LAYERS.map((layer) => {
+      const strip = createCanvas(w, h);
+      const c = strip.getContext("2d");
+      if (!c || !path) return strip;
+      // 条带坐标:strip px x = (viewBox x + 160) * sx,strip px y = (viewBox y - 24) * sy
+      c.setTransform(
+        this.sx,
+        0,
+        0,
+        this.sy,
+        -WAVE_PATH_X_MIN * this.sx,
+        (layer.y - VIEWBOX.y) * this.sy,
+      );
+      c.fillStyle = this.fillColor;
+      c.globalAlpha = layer.alpha;
+      c.fill(path);
+      return strip;
+    });
+  }
 
-	/**
-	 * 绘制一帧。
-	 * @param now performance.now() 时刻
-	 * @param startTime 动画起点时刻
-	 */
-	draw(now: number, startTime: number): void {
-		const w = Math.max(1, Math.ceil(this.cssWidth * this.dpr));
-		const h = Math.max(1, Math.ceil(this.cssHeight * this.dpr));
-		this.ctx.clearRect(0, 0, w, h);
+  /**
+   * 绘制一帧。
+   * @param now performance.now() 时刻
+   * @param startTime 动画起点时刻
+   */
+  draw(now: number, startTime: number): void {
+    const w = Math.max(1, Math.ceil(this.cssWidth * this.dpr));
+    const h = Math.max(1, Math.ceil(this.cssHeight * this.dpr));
+    this.ctx.clearRect(0, 0, w, h);
 
-		for (let i = 0; i < WAVE_LAYERS.length; i++) {
-			const strip = this.strips[i];
-			if (!strip) continue;
-			const layer = WAVE_LAYERS[i];
-			// t = τ - delay(与 CSS animation-delay 语义一致:负延迟 = 已播放 |delay| 秒)。
-			// 四层起始相位均匀铺开(0/0.25/0.5/0.75),首帧即交错,与静态占位 SVG 逐像素一致。
-			const t = (now - startTime) / 1000 - layer.delay;
-			// 负时间也正确归一到 [0,1):phase = t/duration - floor(t/duration)
-			const phase = t / layer.duration - Math.floor(t / layer.duration);
-			const offset =
-				TRANSLATE_FROM + (TRANSLATE_TO - TRANSLATE_FROM) * ease(phase);
-			this.ctx.drawImage(strip, (offset + WAVE_X_MIN) * this.sx, 0);
-		}
-	}
+    for (let i = 0; i < WAVE_LAYERS.length; i++) {
+      const strip = this.strips[i];
+      if (!strip) continue;
+      const layer = WAVE_LAYERS[i];
+      // t = τ - delay(与 CSS animation-delay 语义一致:负延迟 = 已播放 |delay| 秒)。
+      // 四层起始相位均匀铺开(0/0.25/0.5/0.75),首帧即交错,与静态占位 SVG 逐像素一致。
+      const t = (now - startTime) / 1000 - layer.delay;
+      // 负时间也正确归一到 [0,1):phase = t/duration - floor(t/duration)
+      const phase = t / layer.duration - Math.floor(t / layer.duration);
+      const offset = TRANSLATE_FROM + (TRANSLATE_TO - TRANSLATE_FROM) * ease(phase);
+      this.ctx.drawImage(strip, (offset + WAVE_X_MIN) * this.sx, 0);
+    }
+  }
 }

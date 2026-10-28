@@ -4,8 +4,8 @@
 // 会报 "Cannot find module"。编辑器/`astro check` 走 @astrojs/ts-plugin，能拿到
 // 真实类型；这里只是给 `pnpm type-check`（纯 tsc）兜底，不影响实际渲染。
 declare module "*.astro" {
-	import type { AstroComponentFactory } from "astro/runtime/server/index.js";
+  import type { AstroComponentFactory } from "astro/runtime/server/index.js";
 
-	const component: AstroComponentFactory;
-	export default component;
+  const component: AstroComponentFactory;
+  export default component;
 }

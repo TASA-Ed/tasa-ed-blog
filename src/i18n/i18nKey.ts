@@ -11,22 +11,22 @@ enum I18nKey {
   searchViewMore = "searchViewMore",
   other = "other",
 
-	// 导航栏菜单分组
-	navArticles = "navArticles",
-	navSocial = "navSocial",
-	navMine = "navMine",
-	navAbout = "navAbout",
-	navLinks = "navLinks",
+  // 导航栏菜单分组
+  navArticles = "navArticles",
+  navSocial = "navSocial",
+  navMine = "navMine",
+  navAbout = "navAbout",
+  navLinks = "navLinks",
 
-	tags = "tags",
-	categories = "categories",
-	allCategories = "allCategories",
-	allTags = "allTags",
-	recentPosts = "recentPosts",
-	postList = "postList",
-	tableOfContents = "tableOfContents",
-	tocEmpty = "tocEmpty",
-	music = "music",
+  tags = "tags",
+  categories = "categories",
+  allCategories = "allCategories",
+  allTags = "allTags",
+  recentPosts = "recentPosts",
+  postList = "postList",
+  tableOfContents = "tableOfContents",
+  tocEmpty = "tocEmpty",
+  music = "music",
 
   // 公告栏
   announcement = "announcement",

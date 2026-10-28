@@ -1,4 +1,5 @@
 import type { SiteConfig } from "@/types/siteConfig";
+
 import { resolvePageToggles } from "../utils/page-toggle-utils";
 import { resolveSiteLang } from "../utils/site-config-utils";
 
@@ -8,22 +9,22 @@ const SITE_LANG = resolveSiteLang("zh_CN");
 
 // 页面开关配置 - 控制特定页面的访问权限，设为false会返回404并自动隐藏对应的导航栏菜单项
 const pages = resolvePageToggles({
-	// ── 社交 (Social) ──────────────────────────────────
+  // ── 社交 (Social) ──────────────────────────────────
 
-	// 友链页面开关
-	friends: true,
-	// 留言板页面开关，需要配置评论系统
-	guestbook: true,
+  // 友链页面开关
+  friends: true,
+  // 留言板页面开关，需要配置评论系统
+  guestbook: true,
 
-	// ── 我的 (My) ──────────────────────────────────
+  // ── 我的 (My) ──────────────────────────────────
 
-	// 相册页面开关
-	gallery: true,
+  // 相册页面开关
+  gallery: true,
 
-	// ── 关于 (About) ──────────────────────────────────
+  // ── 关于 (About) ──────────────────────────────────
 
-	// 打赏页面开关
-	sponsor: true,
+  // 打赏页面开关
+  sponsor: true,
 });
 
 export const siteConfig: SiteConfig = {
@@ -70,6 +71,11 @@ export const siteConfig: SiteConfig = {
       src: "/favicon.ico", // 图标文件路径
       theme: "light", // 可选，指定主题 'light' | 'dark'
       sizes: "39x39", // 可选，图标大小
+    },
+    {
+      src: "/assets/logos/T832.png", // 图标文件路径
+      theme: "light", // 可选，指定主题 'light' | 'dark'
+      sizes: "832x832", // 可选，图标大小
     },
   ],
 
@@ -204,35 +210,34 @@ export const siteConfig: SiteConfig = {
     generateOgImages: true,
   },
 
-	// 分页配置
-	pagination: {
-		// 每页显示的文章数量
-		postsPerPage: 10,
-	},
+  // 分页配置
+  pagination: {
+    // 每页显示的文章数量
+    postsPerPage: 10,
+  },
 
-	// ── 图像优化配置 ──────────────────────────────────
-	// 图像优化压缩只保留avif或webp
-	// 响应式图像是为在不同设备上提高性能而调整的图像。这些图像可以调整大小以适应其容器，并且可以根据访问者的屏幕尺寸和分辨率以不同的大小提供。
-	// Astro 仅能对 src 目录下的图像进行优化，src 目录下的图像越多，构建时间会越长
-	// Astro 图像文档 https://docs.astro.build/zh-cn/guides/images/
-	imageOptimization: {
-		// 输出图片格式
-		// - "avif": 仅输出 AVIF 格式（最新技术，最小体积，目前兼容性较低，构建时间较长）
-		// - "webp": 仅输出 WebP 格式（体积适中，兼容性好，构建时间短）
-		// - "both": 同时输出 AVIF 和 WebP（浏览器自动选择最佳格式）
-		formats: "avif",
-		// 图片压缩质量 (1-100)，值越低体积越小但质量越差，推荐 70-85
-		quality: 85,
-		// 为特定域名的图片添加 referrerpolicy="no-referrer" 属性
-		// 支持通配符 *，例如：["i0.hdslb.com", "*.bilibili.com"]
-		// 可解决指定域名图片加载时的 403 问题（如防盗链图片）
-		noReferrerDomains: [
-		],
-	},
+  // ── 图像优化配置 ──────────────────────────────────
+  // 图像优化压缩只保留avif或webp
+  // 响应式图像是为在不同设备上提高性能而调整的图像。这些图像可以调整大小以适应其容器，并且可以根据访问者的屏幕尺寸和分辨率以不同的大小提供。
+  // Astro 仅能对 src 目录下的图像进行优化，src 目录下的图像越多，构建时间会越长
+  // Astro 图像文档 https://docs.astro.build/zh-cn/guides/images/
+  imageOptimization: {
+    // 输出图片格式
+    // - "avif": 仅输出 AVIF 格式（最新技术，最小体积，目前兼容性较低，构建时间较长）
+    // - "webp": 仅输出 WebP 格式（体积适中，兼容性好，构建时间短）
+    // - "both": 同时输出 AVIF 和 WebP（浏览器自动选择最佳格式）
+    formats: "avif",
+    // 图片压缩质量 (1-100)，值越低体积越小但质量越差，推荐 70-85
+    quality: 85,
+    // 为特定域名的图片添加 referrerpolicy="no-referrer" 属性
+    // 支持通配符 *，例如：["i0.hdslb.com", "*.bilibili.com"]
+    // 可解决指定域名图片加载时的 403 问题（如防盗链图片）
+    noReferrerDomains: [],
+  },
 
-	// 站点语言，在本配置文件顶部SITE_LANG定义
-	lang: SITE_LANG,
+  // 站点语言，在本配置文件顶部SITE_LANG定义
+  lang: SITE_LANG,
 
-	// 页面开关配置，在本配置文件顶部pages定义
-	pages,
+  // 页面开关配置，在本配置文件顶部pages定义
+  pages,
 };

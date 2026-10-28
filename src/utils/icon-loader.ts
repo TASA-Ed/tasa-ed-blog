@@ -91,30 +91,28 @@ export function initIconLoader(): void {
   // 初始化页面上现有的图标
   document.querySelectorAll("[data-icon-container]").forEach(initContainer);
 
-	// 复用单个 body observer，避免 Swup 切页重复调用 initIconLoader 时累积多个 observer
-	bodyObserver?.disconnect();
-	if (window.MutationObserver) {
-		const observer = new MutationObserver((mutations) => {
-			mutations.forEach((mutation) => {
-				mutation.addedNodes.forEach((node) => {
-					if (node.nodeType === Node.ELEMENT_NODE) {
-						const el = node as Element;
-						if (el.hasAttribute?.("data-icon-container")) {
-							initContainer(el);
-						} else {
-							el.querySelectorAll("[data-icon-container]").forEach(
-								initContainer,
-							);
-						}
-					}
-				});
-			});
-		});
+  // 复用单个 body observer，避免 Swup 切页重复调用 initIconLoader 时累积多个 observer
+  bodyObserver?.disconnect();
+  if (window.MutationObserver) {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (node.nodeType === Node.ELEMENT_NODE) {
+            const el = node as Element;
+            if (el.hasAttribute?.("data-icon-container")) {
+              initContainer(el);
+            } else {
+              el.querySelectorAll("[data-icon-container]").forEach(initContainer);
+            }
+          }
+        });
+      });
+    });
 
-		observer.observe(document.body, {
-			childList: true,
-			subtree: true,
-		});
-		bodyObserver = observer;
-	}
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+    bodyObserver = observer;
+  }
 }

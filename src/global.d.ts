@@ -1,6 +1,5 @@
 import type { WavesManagerLike } from "./types/waves";
 
-
 declare global {
   interface HTMLElementTagNameMap {
     "table-of-contents": HTMLElement & {

@@ -1,12 +1,12 @@
 import {
-	DARK_MODE,
-	DEFAULT_THEME,
-	LIGHT_MODE,
-	SYSTEM_MODE,
-	WALLPAPER_BANNER,
-	WALLPAPER_FULLSCREEN,
-	WALLPAPER_NONE,
-	WALLPAPER_OVERLAY,
+  DARK_MODE,
+  DEFAULT_THEME,
+  LIGHT_MODE,
+  SYSTEM_MODE,
+  WALLPAPER_BANNER,
+  WALLPAPER_FULLSCREEN,
+  WALLPAPER_NONE,
+  WALLPAPER_OVERLAY,
 } from "@constants/constants";
 
 import type { LIGHT_DARK_MODE, WALLPAPER_MODE } from "@/types/config";
@@ -233,105 +233,89 @@ export function initThemeListener(): void {
  * 标题开关（user-hidden 类）独立控制，不受影响。
  */
 export function syncBannerHomeTextVisibility(): void {
-	const overlay = document.querySelector(
-		".banner-home-text-overlay",
-	) as HTMLElement | null;
-	if (!overlay) return;
-	const mode = document.documentElement.getAttribute("data-wallpaper-mode");
-	const isHome = checkIsHomePage(window.location.pathname);
-	const show =
-		isHome && (mode === WALLPAPER_BANNER || mode === WALLPAPER_FULLSCREEN);
-	overlay.classList.toggle("hidden", !show);
+  const overlay = document.querySelector(".banner-home-text-overlay") as HTMLElement | null;
+  if (!overlay) return;
+  const mode = document.documentElement.getAttribute("data-wallpaper-mode");
+  const isHome = checkIsHomePage(window.location.pathname);
+  const show = isHome && (mode === WALLPAPER_BANNER || mode === WALLPAPER_FULLSCREEN);
+  overlay.classList.toggle("hidden", !show);
 }
 
-export function applyWallpaperModeToDocument(
-	mode: WALLPAPER_MODE,
-	animate = true,
-): void {
-	const html = document.documentElement;
-	const prevMode = html.getAttribute("data-wallpaper-mode");
+export function applyWallpaperModeToDocument(mode: WALLPAPER_MODE, animate = true): void {
+  const html = document.documentElement;
+  const prevMode = html.getAttribute("data-wallpaper-mode");
 
-	// 先启用过渡类再设置模式：确保 --content-top 变化时 top 过渡已激活（否则位置瞬间到位不动画）
-	if (animate) {
-		html.classList.add("is-wallpaper-transitioning");
-		window.setTimeout(
-			() => html.classList.remove("is-wallpaper-transitioning"),
-			520,
-		);
-	}
+  // 先启用过渡类再设置模式：确保 --content-top 变化时 top 过渡已激活（否则位置瞬间到位不动画）
+  if (animate) {
+    html.classList.add("is-wallpaper-transitioning");
+    window.setTimeout(() => html.classList.remove("is-wallpaper-transitioning"), 520);
+  }
 
-	html.setAttribute("data-wallpaper-mode", mode);
+  html.setAttribute("data-wallpaper-mode", mode);
 
-	// 首页标题显示：按当前模式 + 是否首页同步 hidden 类（SSR 按 config 默认模式渲染 hidden，
-	// 模式运行时切换后需同步）。放在标题动画之前，让下方动画的 !contains("hidden") 判断拿到最新状态。
-	syncBannerHomeTextVisibility();
+  // 首页标题显示：按当前模式 + 是否首页同步 hidden 类（SSR 按 config 默认模式渲染 hidden，
+  // 模式运行时切换后需同步）。放在标题动画之前，让下方动画的 !contains("hidden") 判断拿到最新状态。
+  syncBannerHomeTextVisibility();
 
-	// 卡片透明类：唯一运行时写入者（解析期由 body 起始脚本写入）
-	const transparent = mode === "overlay" || mode === "fullscreen";
-	document.body.classList.toggle("wallpaper-transparent", transparent);
+  // 卡片透明类：唯一运行时写入者（解析期由 body 起始脚本写入）
+  const transparent = mode === "overlay" || mode === "fullscreen";
+  document.body.classList.toggle("wallpaper-transparent", transparent);
 
-	// 标题上下移动动画：banner ↔ fullscreen 切换时 wrapper 高度瞬时变化，
-	// 用 transform 补偿后滑到居中位置（首页标题可见时才动画）
-	if (
-		(mode === WALLPAPER_FULLSCREEN && prevMode === WALLPAPER_BANNER) ||
-		(mode === WALLPAPER_BANNER && prevMode === WALLPAPER_FULLSCREEN)
-	) {
-		const title = document.querySelector(
-			".banner-home-text-overlay",
-		) as HTMLElement | null;
-		if (title && !title.classList.contains("hidden")) {
-			const deltaVh = mode === WALLPAPER_FULLSCREEN ? -17.5 : 17.5;
-			title.style.transition = "none";
-			title.style.transform = `translateY(${deltaVh}vh)`;
-			void title.offsetWidth;
-			title.style.transition =
-				"transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
-			title.style.transform = "translateY(0)";
-		}
-	}
+  // 标题上下移动动画：banner ↔ fullscreen 切换时 wrapper 高度瞬时变化，
+  // 用 transform 补偿后滑到居中位置（首页标题可见时才动画）
+  if (
+    (mode === WALLPAPER_FULLSCREEN && prevMode === WALLPAPER_BANNER) ||
+    (mode === WALLPAPER_BANNER && prevMode === WALLPAPER_FULLSCREEN)
+  ) {
+    const title = document.querySelector(".banner-home-text-overlay") as HTMLElement | null;
+    if (title && !title.classList.contains("hidden")) {
+      const deltaVh = mode === WALLPAPER_FULLSCREEN ? -17.5 : 17.5;
+      title.style.transition = "none";
+      title.style.transform = `translateY(${deltaVh}vh)`;
+      void title.offsetWidth;
+      title.style.transition = "transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+      title.style.transform = "translateY(0)";
+    }
+  }
 
-	updateNavbarTransparency(mode);
-	window.dispatchEvent(
-		new CustomEvent("wallpaperModeChange", { detail: { mode } }),
-	);
+  updateNavbarTransparency(mode);
+  window.dispatchEvent(new CustomEvent("wallpaperModeChange", { detail: { mode } }));
 }
 
 export function updateNavbarTransparency(mode: WALLPAPER_MODE): void {
-	const navbar = document.getElementById("navbar");
-	if (!navbar) return;
+  const navbar = document.getElementById("navbar");
+  if (!navbar) return;
 
   let transparentMode: string;
   let blurAmount: number;
 
-	// 根据当前壁纸模式设置导航栏透明模式和模糊效果
-	if (mode === WALLPAPER_OVERLAY) {
-		// 全屏透明模式
-		transparentMode = "none";
-		blurAmount = 0;
-	} else if (mode === WALLPAPER_NONE) {
-		// 纯色背景模式
-		transparentMode = "none";
-		blurAmount = 0;
-	} else if (mode === WALLPAPER_FULLSCREEN) {
-		// 全屏壁纸模式：脱离 banner 导航栏配置，导航栏默认完全透明
-		// （透明度由卡片透明度 cardOpacity 经 wallpaper-transparent 控制）；
-		// 若开启 fullscreen.navbar.dynamicTransparent，首页顶部透明、下滑后变不透明（semifull）
-		const isHomePage = checkIsHomePage(window.location.pathname);
-		const dynamicTransparent =
-			backgroundWallpaper.fullscreen?.navbar?.dynamicTransparent ?? false;
-		if (isHomePage && dynamicTransparent) {
-			transparentMode = "semifull";
-			blurAmount = 0;
-		} else {
-			transparentMode = "none";
-			blurAmount = 0;
-		}
-	} else {
-		// Banner模式：使用配置的透明模式和模糊效果
-		transparentMode =
-			backgroundWallpaper.banner?.navbar?.transparentMode || "semi";
-		blurAmount = backgroundWallpaper.banner?.navbar?.blur ?? 20;
-	}
+  // 根据当前壁纸模式设置导航栏透明模式和模糊效果
+  if (mode === WALLPAPER_OVERLAY) {
+    // 全屏透明模式
+    transparentMode = "none";
+    blurAmount = 0;
+  } else if (mode === WALLPAPER_NONE) {
+    // 纯色背景模式
+    transparentMode = "none";
+    blurAmount = 0;
+  } else if (mode === WALLPAPER_FULLSCREEN) {
+    // 全屏壁纸模式：脱离 banner 导航栏配置，导航栏默认完全透明
+    // （透明度由卡片透明度 cardOpacity 经 wallpaper-transparent 控制）；
+    // 若开启 fullscreen.navbar.dynamicTransparent，首页顶部透明、下滑后变不透明（semifull）
+    const isHomePage = checkIsHomePage(window.location.pathname);
+    const dynamicTransparent = backgroundWallpaper.fullscreen?.navbar?.dynamicTransparent ?? false;
+    if (isHomePage && dynamicTransparent) {
+      transparentMode = "semifull";
+      blurAmount = 0;
+    } else {
+      transparentMode = "none";
+      blurAmount = 0;
+    }
+  } else {
+    // Banner模式：使用配置的透明模式和模糊效果
+    transparentMode = backgroundWallpaper.banner?.navbar?.transparentMode || "semi";
+    blurAmount = backgroundWallpaper.banner?.navbar?.blur ?? 20;
+  }
 
   // 更新导航栏的透明模式属性
   navbar.setAttribute("data-transparent-mode", transparentMode);
@@ -363,15 +347,12 @@ export function updateNavbarTransparency(mode: WALLPAPER_MODE): void {
 }
 
 export function setWallpaperMode(mode: WALLPAPER_MODE): void {
-	// 检查是否在浏览器环境中
-	if (
-		typeof localStorage === "undefined" ||
-		typeof localStorage.setItem !== "function"
-	) {
-		return;
-	}
-	localStorage.setItem("wallpaperMode", mode);
-	applyWallpaperModeToDocument(mode);
+  // 检查是否在浏览器环境中
+  if (typeof localStorage === "undefined" || typeof localStorage.setItem !== "function") {
+    return;
+  }
+  localStorage.setItem("wallpaperMode", mode);
+  applyWallpaperModeToDocument(mode);
 }
 export function initWallpaperMode(): void {
   // 初始化透明模式参数（透明度/模糊度/卡片透明度）

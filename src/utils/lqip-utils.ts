@@ -74,35 +74,34 @@ export function getLqipProps(
  * 监听器由 layout-init.ts 注册。
  */
 export function initImageLoadFadeIn(): void {
-	const placeholders =
-		document.querySelectorAll<HTMLElement>(".lqip-placeholder");
-	placeholders.forEach((placeholder) => {
-		const container = placeholder.parentElement;
-		if (!container) return;
-		const img = container.querySelector<HTMLImageElement>("img, picture img");
-		if (!img) return;
+  const placeholders = document.querySelectorAll<HTMLElement>(".lqip-placeholder");
+  placeholders.forEach((placeholder) => {
+    const container = placeholder.parentElement;
+    if (!container) return;
+    const img = container.querySelector<HTMLImageElement>("img, picture img");
+    if (!img) return;
 
-		if (img.complete && img.naturalWidth > 0) {
-			img.style.opacity = "1";
-			placeholder.classList.add("loaded");
-		} else {
-			img.addEventListener(
-				"load",
-				() => {
-					img.style.opacity = "1";
-					placeholder.classList.add("loaded");
-				},
-				{ once: true },
-			);
-			img.addEventListener(
-				"error",
-				() => {
-					if (!container.classList.contains("cover-image-container")) {
-						placeholder.classList.add("loaded");
-					}
-				},
-				{ once: true },
-			);
-		}
-	});
+    if (img.complete && img.naturalWidth > 0) {
+      img.style.opacity = "1";
+      placeholder.classList.add("loaded");
+    } else {
+      img.addEventListener(
+        "load",
+        () => {
+          img.style.opacity = "1";
+          placeholder.classList.add("loaded");
+        },
+        { once: true },
+      );
+      img.addEventListener(
+        "error",
+        () => {
+          if (!container.classList.contains("cover-image-container")) {
+            placeholder.classList.add("loaded");
+          }
+        },
+        { once: true },
+      );
+    }
+  });
 }

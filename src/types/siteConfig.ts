@@ -7,7 +7,6 @@ import type {
   WALLPAPER_NONE,
   WALLPAPER_OVERLAY,
 } from "../constants/constants";
-import type { NsfwMode } from "./nsfw";
 
 export type LIGHT_DARK_MODE = typeof LIGHT_MODE | typeof DARK_MODE | typeof SYSTEM_MODE;
 
@@ -89,8 +88,8 @@ export type SiteConfig = {
   // 分类导航栏按钮样式："pill"=胶囊，"rectangle"=矩形（配色同胶囊）
   categoryStyle?: "pill" | "rectangle";
 
-	// 标签样式："pill"=主题色胶囊，"pill-gray"=中性灰胶囊，"rectangle"=主题色矩形
-	tagStyle?: "pill" | "pill-gray" | "rectangle";
+  // 标签样式："pill"=主题色胶囊，"pill-gray"=中性灰胶囊，"rectangle"=主题色矩形
+  tagStyle?: "pill" | "pill-gray" | "rectangle";
 
   // 归档页是否折叠非最新年份文章
   foldArticle?: boolean;
@@ -150,31 +149,31 @@ export type SiteConfig = {
     generateOgImages: boolean;
   };
 
-	// 分页配置
-	pagination: {
-		postsPerPage: number; // 每页显示的文章数量
-	};
+  // 分页配置
+  pagination: {
+    postsPerPage: number; // 每页显示的文章数量
+  };
 
-	// 图片优化配置
-	imageOptimization?: {
-		/**
-		 * 输出图片格式
-		 * - "avif": 仅输出 AVIF 格式（最小体积，兼容性较低）
-		 * - "webp": 仅输出 WebP 格式（体积适中，兼容性好）
-		 * - "both": 同时输出 AVIF 和 WebP（推荐，浏览器自动选择最佳格式）
-		 */
-		formats?: "avif" | "webp" | "both";
-		/**
-		 * 图片压缩质量 (1-100)
-		 * 值越低体积越小但质量越差，推荐 70-85
-		 */
-		quality?: number;
-		/**
-		 * 为特定域名的图片添加 referrerpolicy="no-referrer" 属性
-		 * 开启后可解决指定域名图片加载时的 403 问题（如防盗链图片）
-		 * 示例：["i0.hdslb.com", "*.bilibili.com"] 支持通配符 *
-		 * 仅影响匹配域名的图片标签，不影响其他链接的 referrer 行为
-		 */
-		noReferrerDomains?: string[];
-	};
+  // 图片优化配置
+  imageOptimization?: {
+    /**
+     * 输出图片格式
+     * - "avif": 仅输出 AVIF 格式（最小体积，兼容性较低）
+     * - "webp": 仅输出 WebP 格式（体积适中，兼容性好）
+     * - "both": 同时输出 AVIF 和 WebP（推荐，浏览器自动选择最佳格式）
+     */
+    formats?: "avif" | "webp" | "both";
+    /**
+     * 图片压缩质量 (1-100)
+     * 值越低体积越小但质量越差，推荐 70-85
+     */
+    quality?: number;
+    /**
+     * 为特定域名的图片添加 referrerpolicy="no-referrer" 属性
+     * 开启后可解决指定域名图片加载时的 403 问题（如防盗链图片）
+     * 示例：["i0.hdslb.com", "*.bilibili.com"] 支持通配符 *
+     * 仅影响匹配域名的图片标签，不影响其他链接的 referrer 行为
+     */
+    noReferrerDomains?: string[];
+  };
 };

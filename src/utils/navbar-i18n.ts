@@ -9,38 +9,38 @@ import type { NavBarLink } from "@/types/navBarConfig";
 // VNDB / AnimeList 等品牌名各语言一致，不放入映射，保持原名。
 
 const NAVBAR_DEFAULT_NAMES: Record<string, I18nKey> = {
-	// 分组
-	文章: I18nKey.navArticles,
-	社交: I18nKey.navSocial,
-	我的: I18nKey.navMine,
-	关于: I18nKey.navAbout,
-	链接: I18nKey.navLinks,
-	// 页面
-	主页: I18nKey.home,
-	归档: I18nKey.archive,
-	分类: I18nKey.categories,
-	标签: I18nKey.tags,
-	友链: I18nKey.friends,
-	留言: I18nKey.guestbook,
-	相册: I18nKey.gallery,
-	打赏: I18nKey.sponsor,
-	关于我: I18nKey.about,
+  // 分组
+  文章: I18nKey.navArticles,
+  社交: I18nKey.navSocial,
+  我的: I18nKey.navMine,
+  关于: I18nKey.navAbout,
+  链接: I18nKey.navLinks,
+  // 页面
+  主页: I18nKey.home,
+  归档: I18nKey.archive,
+  分类: I18nKey.categories,
+  标签: I18nKey.tags,
+  友链: I18nKey.friends,
+  留言: I18nKey.guestbook,
+  相册: I18nKey.gallery,
+  打赏: I18nKey.sponsor,
+  关于我: I18nKey.about,
 };
 
 export function resolveNavbarName(name: string): string {
-	const key = NAVBAR_DEFAULT_NAMES[name];
-	return key ? i18n(key) : name;
+  const key = NAVBAR_DEFAULT_NAMES[name];
+  return key ? i18n(key) : name;
 }
 
 export function resolveNavbarLinks(links: NavBarLink[]): NavBarLink[] {
-	return links.map((link) => {
-		const resolved: NavBarLink = {
-			...link,
-			name: resolveNavbarName(link.name),
-		};
-		if (link.children) {
-			resolved.children = resolveNavbarLinks(link.children);
-		}
-		return resolved;
-	});
+  return links.map((link) => {
+    const resolved: NavBarLink = {
+      ...link,
+      name: resolveNavbarName(link.name),
+    };
+    if (link.children) {
+      resolved.children = resolveNavbarLinks(link.children);
+    }
+    return resolved;
+  });
 }
