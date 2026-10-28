@@ -201,14 +201,14 @@ export const siteConfig: SiteConfig = {
     // 是否开启分享海报生成功能
     sharePoster: true,
     // OpenGraph图片功能，注意开启后要渲染很长时间，不建议本地调试的时候开启
-    generateOgImages: false,
+    generateOgImages: true,
   },
 
-  // 分页配置
-  pagination: {
-    // 每页显示的文章数量
-    postsPerPage: 10,
-  },
+	// 分页配置
+	pagination: {
+		// 每页显示的文章数量
+		postsPerPage: 10,
+	},
 
 	// ── 图像优化配置 ──────────────────────────────────
 	// 图像优化压缩只保留avif或webp
