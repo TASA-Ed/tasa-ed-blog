@@ -616,7 +616,7 @@
             <Icon icon="material-symbols:check" />
             <span>{i18n(I18nKey.copied)}</span>
           {:else}
-            <Icon icon="material-symbols:link" is:inline />
+            <Icon icon="material-symbols:link" />
             <span>{i18n(I18nKey.copyLink)}</span>
           {/if}
         </button>
